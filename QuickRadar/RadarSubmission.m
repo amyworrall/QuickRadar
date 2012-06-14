@@ -9,6 +9,7 @@
 #import "RadarSubmission.h"
 #import "NSXMLNode+Additions.h"
 #import "SuperURLConnection.h"
+#import <Security/Security.h>
 
 @interface RadarSubmission ()
 //{
@@ -75,11 +76,32 @@
 		
 //		NSLog(@"login URL = %@", loginURL);
 //		return;
-		
+        NSString *serverName = @"bugreport.apple.com";
+        char *passwordBytes = NULL;
+        UInt32 passwordLength = 0;
 		NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString *username = [prefs objectForKey: @"username"];
+		OSStatus keychainResult = SecKeychainFindInternetPassword(NULL,
+                                                                  (UInt32)[serverName lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
+                                                                  [serverName cStringUsingEncoding: NSUTF8StringEncoding],
+                                                                  0,
+                                                                  NULL,
+                                                                  (UInt32)[username lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
+                                                                  [username cStringUsingEncoding: NSUTF8StringEncoding],
+                                                                  0,
+                                                                  NULL,
+                                                                  443,
+                                                                  kSecProtocolTypeAny,
+                                                                  kSecAuthenticationTypeAny,
+                                                                  &passwordLength,
+                                                                  (void **)&passwordBytes,
+                                                                  NULL);
+        if (keychainResult) { bail(); return; };
+        NSString *password = [NSString stringWithCString: passwordBytes encoding: NSUTF8StringEncoding];
+        SecKeychainItemFreeContent(NULL, passwordBytes);
 		NSDictionary *loginFormParams = [NSDictionary dictionaryWithObjectsAndKeys:
-										 [prefs objectForKey:@"username"], @"theAccountName",
-										 [prefs objectForKey:@"password"], @"theAccountPW",
+										 username, @"theAccountName",
+										 password, @"theAccountPW",
 										 @"4", @"1.Continue.x",
 										 @"5", @"1.Continue.y",
 										 @"", @"theAuxValue",
