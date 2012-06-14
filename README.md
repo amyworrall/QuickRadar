@@ -12,6 +12,17 @@ The code is in just as bad a state. The web scraping is done in one big method w
 
 That said, I do plan to develop it a lot more. I'd also welcome any help and contributions. I'm sharing it now because I've reached the stage where it can post Radars.
 
+Using QuickRadar
+================
+
+Build and run the app. It is meant to run in the background, and does not open any windows at launch.
+
+First, choose "Login Details…" from the QuickBug menu. In there, fill in your username and password for Apple's web-based bug reporter. **These are stored in user defaults as plain text at the moment.** Make sure you get them right!
+
+To invoke QuickRadar, press command-option-control-space. A window will pop up for you to fill in the details of your radar. At the moment, don't choose any Classification that would make the bug reporter require a file upload (such as Crash/Hang/Data Loss), because QuickRadar doesn't support them yet, nor does it have any error handling worth speaking of.
+
+Once you've entered the details, hit Submit. Sadly this bit is anything but quick: in the background, QuickRadar has to log in to the bug reporter web page, fetch the New Problem page, fill it in, and submit the form. However, you can go and do something else while that's happening. Once it is done you'll get a growl notification.
+
 Roadmap
 =======
 
