@@ -1,0 +1,364 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E1C10ACA158A7D02003A3C01 /* License in Resources */ = {isa = PBXBuildFile; fileRef = E1C10AC9158A7D02003A3C01 /* License */; };
+		E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CC518D156257BF0027FB83 /* Cocoa.framework */; };
+		E1CC5198156257BF0027FB83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1CC5196156257BF0027FB83 /* InfoPlist.strings */; };
+		E1CC519A156257BF0027FB83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC5199156257BF0027FB83 /* main.m */; };
+		E1CC519E156257BF0027FB83 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E1CC519C156257BF0027FB83 /* Credits.rtf */; };
+		E1CC51A1156257BF0027FB83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51A0156257BF0027FB83 /* AppDelegate.m */; };
+		E1CC51A4156257BF0027FB83 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CC51A2156257BF0027FB83 /* MainMenu.xib */; };
+		E1CC51AE156259AC0027FB83 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CC51AD156259AC0027FB83 /* Carbon.framework */; };
+		E1CC51B115625A8D0027FB83 /* RadarWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51B015625A8D0027FB83 /* RadarWindowController.m */; };
+		E1CC51B315625AAD0027FB83 /* RadarWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CC51B215625AAD0027FB83 /* RadarWindow.xib */; };
+		E1CC51B515625C5B0027FB83 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1CC51B415625C5B0027FB83 /* Config.plist */; };
+		E1CC51BD156269CC0027FB83 /* RadarSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51BC156269CC0027FB83 /* RadarSubmission.m */; };
+		E1CC51ED1563BC1E0027FB83 /* NSXMLNode+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */; };
+		E1CC51F01563BF720027FB83 /* SuperURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51EF1563BF720027FB83 /* SuperURLConnection.m */; };
+		E1F8590B158A2D2F005F77DA /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
+		E1F8590E158A2EEC005F77DA /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E1F8590D158A2EE5005F77DA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E1F8590E158A2EEC005F77DA /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E1C10AC9158A7D02003A3C01 /* License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License; path = ../License; sourceTree = "<group>"; };
+		E1CC5189156257BF0027FB83 /* QuickRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1CC518D156257BF0027FB83 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E1CC5190156257BF0027FB83 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E1CC5191156257BF0027FB83 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E1CC5192156257BF0027FB83 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E1CC5195156257BF0027FB83 /* QuickRadar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuickRadar-Info.plist"; sourceTree = "<group>"; };
+		E1CC5197156257BF0027FB83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E1CC5199156257BF0027FB83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E1CC519B156257BF0027FB83 /* QuickRadar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickRadar-Prefix.pch"; sourceTree = "<group>"; };
+		E1CC519D156257BF0027FB83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		E1CC519F156257BF0027FB83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E1CC51A0156257BF0027FB83 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E1CC51A3156257BF0027FB83 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E1CC51AD156259AC0027FB83 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		E1CC51AF15625A8D0027FB83 /* RadarWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarWindowController.h; sourceTree = "<group>"; };
+		E1CC51B015625A8D0027FB83 /* RadarWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarWindowController.m; sourceTree = "<group>"; };
+		E1CC51B215625AAD0027FB83 /* RadarWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarWindow.xib; sourceTree = "<group>"; };
+		E1CC51B415625C5B0027FB83 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		E1CC51BB156269CC0027FB83 /* RadarSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarSubmission.h; sourceTree = "<group>"; };
+		E1CC51BC156269CC0027FB83 /* RadarSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarSubmission.m; sourceTree = "<group>"; };
+		E1CC51EB1563BC1D0027FB83 /* NSXMLNode+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLNode+Additions.h"; sourceTree = "<group>"; };
+		E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLNode+Additions.m"; sourceTree = "<group>"; };
+		E1CC51EE1563BF720027FB83 /* SuperURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperURLConnection.h; sourceTree = "<group>"; };
+		E1CC51EF1563BF720027FB83 /* SuperURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperURLConnection.m; sourceTree = "<group>"; };
+		E1F8590A158A2D2F005F77DA /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1CC5186156257BF0027FB83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1CC51AE156259AC0027FB83 /* Carbon.framework in Frameworks */,
+				E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */,
+				E1F8590B158A2D2F005F77DA /* Growl.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E1CC517E156257BF0027FB83 = {
+			isa = PBXGroup;
+			children = (
+				E1CC51AD156259AC0027FB83 /* Carbon.framework */,
+				E1CC5193156257BF0027FB83 /* QuickRadar */,
+				E1CC5194156257BF0027FB83 /* Supporting Files */,
+				E1CC518C156257BF0027FB83 /* Frameworks */,
+				E1CC518A156257BF0027FB83 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1CC518A156257BF0027FB83 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1CC5189156257BF0027FB83 /* QuickRadar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1CC518C156257BF0027FB83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1F8590A158A2D2F005F77DA /* Growl.framework */,
+				E1CC518D156257BF0027FB83 /* Cocoa.framework */,
+				E1CC518F156257BF0027FB83 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1CC518F156257BF0027FB83 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1CC5190156257BF0027FB83 /* AppKit.framework */,
+				E1CC5191156257BF0027FB83 /* CoreData.framework */,
+				E1CC5192156257BF0027FB83 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E1CC5193156257BF0027FB83 /* QuickRadar */ = {
+			isa = PBXGroup;
+			children = (
+				E1CC519F156257BF0027FB83 /* AppDelegate.h */,
+				E1CC51A0156257BF0027FB83 /* AppDelegate.m */,
+				E1CC51A2156257BF0027FB83 /* MainMenu.xib */,
+				E1CC51AF15625A8D0027FB83 /* RadarWindowController.h */,
+				E1CC51B015625A8D0027FB83 /* RadarWindowController.m */,
+				E1CC51B215625AAD0027FB83 /* RadarWindow.xib */,
+				E1CC51B415625C5B0027FB83 /* Config.plist */,
+				E1CC51BB156269CC0027FB83 /* RadarSubmission.h */,
+				E1CC51BC156269CC0027FB83 /* RadarSubmission.m */,
+				E1CC51EE1563BF720027FB83 /* SuperURLConnection.h */,
+				E1CC51EF1563BF720027FB83 /* SuperURLConnection.m */,
+				E1CC51EB1563BC1D0027FB83 /* NSXMLNode+Additions.h */,
+				E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */,
+			);
+			path = QuickRadar;
+			sourceTree = "<group>";
+		};
+		E1CC5194156257BF0027FB83 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1CC5195156257BF0027FB83 /* QuickRadar-Info.plist */,
+				E1CC5196156257BF0027FB83 /* InfoPlist.strings */,
+				E1CC5199156257BF0027FB83 /* main.m */,
+				E1CC519B156257BF0027FB83 /* QuickRadar-Prefix.pch */,
+				E1CC519C156257BF0027FB83 /* Credits.rtf */,
+				E1C10AC9158A7D02003A3C01 /* License */,
+			);
+			name = "Supporting Files";
+			path = QuickRadar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1CC5188156257BF0027FB83 /* QuickRadar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1CC51A7156257BF0027FB83 /* Build configuration list for PBXNativeTarget "QuickRadar" */;
+			buildPhases = (
+				E1CC5185156257BF0027FB83 /* Sources */,
+				E1CC5186156257BF0027FB83 /* Frameworks */,
+				E1CC5187156257BF0027FB83 /* Resources */,
+				E1F8590D158A2EE5005F77DA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickRadar;
+			productName = QuickRadar;
+			productReference = E1CC5189156257BF0027FB83 /* QuickRadar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1CC5180156257BF0027FB83 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = E1CC5183156257BF0027FB83 /* Build configuration list for PBXProject "QuickRadar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E1CC517E156257BF0027FB83;
+			productRefGroup = E1CC518A156257BF0027FB83 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1CC5188156257BF0027FB83 /* QuickRadar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1CC5187156257BF0027FB83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1CC5198156257BF0027FB83 /* InfoPlist.strings in Resources */,
+				E1CC519E156257BF0027FB83 /* Credits.rtf in Resources */,
+				E1CC51A4156257BF0027FB83 /* MainMenu.xib in Resources */,
+				E1CC51B315625AAD0027FB83 /* RadarWindow.xib in Resources */,
+				E1CC51B515625C5B0027FB83 /* Config.plist in Resources */,
+				E1C10ACA158A7D02003A3C01 /* License in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1CC5185156257BF0027FB83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1CC519A156257BF0027FB83 /* main.m in Sources */,
+				E1CC51A1156257BF0027FB83 /* AppDelegate.m in Sources */,
+				E1CC51B115625A8D0027FB83 /* RadarWindowController.m in Sources */,
+				E1CC51BD156269CC0027FB83 /* RadarSubmission.m in Sources */,
+				E1CC51ED1563BC1E0027FB83 /* NSXMLNode+Additions.m in Sources */,
+				E1CC51F01563BF720027FB83 /* SuperURLConnection.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E1CC5196156257BF0027FB83 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1CC5197156257BF0027FB83 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E1CC519C156257BF0027FB83 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1CC519D156257BF0027FB83 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		E1CC51A2156257BF0027FB83 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1CC51A3156257BF0027FB83 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E1CC51A5156257BF0027FB83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E1CC51A6156257BF0027FB83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E1CC51A8156257BF0027FB83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuickRadar/QuickRadar-Prefix.pch";
+				INFOPLIST_FILE = "QuickRadar/QuickRadar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E1CC51A9156257BF0027FB83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuickRadar/QuickRadar-Prefix.pch";
+				INFOPLIST_FILE = "QuickRadar/QuickRadar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1CC5183156257BF0027FB83 /* Build configuration list for PBXProject "QuickRadar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1CC51A5156257BF0027FB83 /* Debug */,
+				E1CC51A6156257BF0027FB83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1CC51A7156257BF0027FB83 /* Build configuration list for PBXNativeTarget "QuickRadar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1CC51A8156257BF0027FB83 /* Debug */,
+				E1CC51A9156257BF0027FB83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1CC5180156257BF0027FB83 /* Project object */;
+}

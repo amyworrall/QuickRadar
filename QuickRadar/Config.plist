@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>products</key>
+	<array>
+		<string>Accessibility</string>
+		<string>App Store</string>
+		<string>Mac App Store</string>
+		<string>Apple TV</string>
+		<string>Bug Reporter</string>
+		<string>Developer Tools</string>
+		<string>Documentation</string>
+		<string>Hardware</string>
+		<string>iAd Network</string>
+		<string>iAd Producer</string>
+		<string>iCloud</string>
+		<string>iLife</string>
+		<string>iPad</string>
+		<string>iPad SDK</string>
+		<string>iPhone/iPod touch</string>
+		<string>iPhone SDK</string>
+		<string>iPod</string>
+		<string>iTunes</string>
+		<string>iWork</string>
+		<string>Java</string>
+		<string>Mac OS X</string>
+		<string>Mac OS X SDK</string>
+		<string>Mac OS X Server</string>
+		<string>Mail</string>
+		<string>MobileMe</string>
+		<string>Printing/Fax</string>
+		<string>Pro Apps</string>
+		<string>QuickTime</string>
+		<string>Safari</string>
+		<string>Sample Code</string>
+		<string>Tech Note/Q&amp;A</string>
+		<string>Other</string>
+	</array>
+	<key>classifications</key>
+	<array>
+		<string>Security </string>
+		<string>Crash/Hang/Data Loss </string>
+		<string>Power </string>
+		<string>Performance </string>
+		<string>UI/Usability </string>
+		<string>Serious Bug </string>
+		<string>Other Bug </string>
+		<string>Feature (New) </string>
+		<string>Enhancement</string>
+	</array>
+	<key>reproducible</key>
+	<array>
+		<string>Always</string>
+		<string>Sometimes </string>
+		<string>Rarely </string>
+		<string>Unable </string>
+		<string>I Didn&apos;t Try </string>
+		<string>Not Applicable</string>
+	</array>
+</dict>
+</plist>
