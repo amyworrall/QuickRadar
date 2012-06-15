@@ -67,6 +67,7 @@
 										   isSticky:NO 
 									   clickContext:[NSDictionary dictionaryWithObject:s.radarURL forKey:@"URL"]];
 
+			[self.window close];
 		}
 		else 
 		{
@@ -79,8 +80,6 @@
 									   clickContext:nil];
 		}
 		
-		NSLog(@"Closing window");
-		[self.window close];
 	}];
 }
 
