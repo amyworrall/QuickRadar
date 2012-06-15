@@ -42,7 +42,11 @@ NSString *serverName = @"bugreport.apple.com";
     if (keychainResult) { return; };
     NSString *password = [NSString stringWithCString: passwordBytes encoding: NSUTF8StringEncoding];
     SecKeychainItemFreeContent(NULL, passwordBytes);
-    self.radarPasswordField.stringValue = password;
+	
+	if (password)
+	{
+		self.radarPasswordField.stringValue = password;
+	}
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
