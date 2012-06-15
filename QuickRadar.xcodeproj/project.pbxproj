@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98EACACC158A86460078D06C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EACACB158A86460078D06C /* Security.framework */; };
+		98EACAD0158A89670078D06C /* PasswordStoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EACACF158A89670078D06C /* PasswordStoring.m */; };
 		E1C10ACA158A7D02003A3C01 /* License in Resources */ = {isa = PBXBuildFile; fileRef = E1C10AC9158A7D02003A3C01 /* License */; };
 		E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CC518D156257BF0027FB83 /* Cocoa.framework */; };
 		E1CC5198156257BF0027FB83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1CC5196156257BF0027FB83 /* InfoPlist.strings */; };
@@ -39,6 +41,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		98EACACB158A86460078D06C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		98EACACE158A89670078D06C /* PasswordStoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStoring.h; sourceTree = "<group>"; };
+		98EACACF158A89670078D06C /* PasswordStoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStoring.m; sourceTree = "<group>"; };
 		E1C10AC9158A7D02003A3C01 /* License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License; path = ../License; sourceTree = "<group>"; };
 		E1CC5189156257BF0027FB83 /* QuickRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CC518D156257BF0027FB83 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -72,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98EACACC158A86460078D06C /* Security.framework in Frameworks */,
 				E1CC51AE156259AC0027FB83 /* Carbon.framework in Frameworks */,
 				E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */,
 				E1F8590B158A2D2F005F77DA /* Growl.framework in Frameworks */,
@@ -103,6 +109,7 @@
 		E1CC518C156257BF0027FB83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98EACACB158A86460078D06C /* Security.framework */,
 				E1F8590A158A2D2F005F77DA /* Growl.framework */,
 				E1CC518D156257BF0027FB83 /* Cocoa.framework */,
 				E1CC518F156257BF0027FB83 /* Other Frameworks */,
@@ -136,6 +143,8 @@
 				E1CC51EF1563BF720027FB83 /* SuperURLConnection.m */,
 				E1CC51EB1563BC1D0027FB83 /* NSXMLNode+Additions.h */,
 				E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */,
+				98EACACE158A89670078D06C /* PasswordStoring.h */,
+				98EACACF158A89670078D06C /* PasswordStoring.m */,
 			);
 			path = QuickRadar;
 			sourceTree = "<group>";
@@ -227,6 +236,7 @@
 				E1CC51BD156269CC0027FB83 /* RadarSubmission.m in Sources */,
 				E1CC51ED1563BC1E0027FB83 /* NSXMLNode+Additions.m in Sources */,
 				E1CC51F01563BF720027FB83 /* SuperURLConnection.m in Sources */,
+				98EACAD0158A89670078D06C /* PasswordStoring.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
