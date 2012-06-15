@@ -96,8 +96,11 @@
                                                                   &passwordLength,
                                                                   (void **)&passwordBytes,
                                                                   NULL);
-        if (keychainResult) { bail(); return; };
-        NSString *password = [NSString stringWithCString: passwordBytes encoding: NSUTF8StringEncoding];
+        if (keychainResult) { NSLog(@"Password not found");  bail(); return; };
+		
+		NSString *password = [NSString stringWithCString:passwordBytes length:passwordLength];
+//        NSString *password2 = [NSString stringWithCString: passwordBytes encoding: NSUTF8StringEncoding];
+						
         SecKeychainItemFreeContent(NULL, passwordBytes);
 		NSDictionary *loginFormParams = [NSDictionary dictionaryWithObjectsAndKeys:
 										 username, @"theAccountName",
@@ -125,7 +128,7 @@
 		
 		data = [conn fetchSyncWithError:&error];
 		
-//		NSLog(@"Fetch sync complete");
+		NSLog(@"Fetch sync complete");
 		
 		if (!data)
 		{
@@ -191,7 +194,7 @@
 		
 		NSString *URL = [a attributeForName:@"href"].stringValue;
 		
-//		NSLog(@"URL: %@", URL);
+		NSLog(@"URL: %@", URL);
 		
 		NSURL *newTicketURL =  [[NSURL URLWithString:@"https://bugreport.apple.com"] URLByAppendingPathComponent:URL];;
 		NSMutableURLRequest *newTicketReq = [NSMutableURLRequest requestWithURL:newTicketURL];
@@ -369,7 +372,7 @@
 							 @"Save.y",
 							 nil];
 		
-//		NSLog(@"%@", bugSubmissionForm);
+		NSLog(@"%@", bugSubmissionForm);
 		
 		
 		/*

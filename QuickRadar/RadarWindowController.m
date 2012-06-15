@@ -78,6 +78,9 @@
 										   priority:0 
 										   isSticky:YES 
 									   clickContext:nil];
+			[self.submitButton setEnabled:YES];
+			[self.spinner stopAnimation:self];
+
 		}
 		
 	}];
