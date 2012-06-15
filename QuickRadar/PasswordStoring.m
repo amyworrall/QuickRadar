@@ -52,22 +52,46 @@ NSString *serverName = @"bugreport.apple.com";
     const char *passwordBytes = [self.radarPasswordField.stringValue cStringUsingEncoding: NSUTF8StringEncoding];
     UInt32 passwordLength = (UInt32)[self.radarPasswordField.stringValue lengthOfBytesUsingEncoding: NSUTF8StringEncoding];
     if (!passwordLength) return YES;
-    OSStatus keychainResult = SecKeychainAddInternetPassword(NULL,
-                                                             (UInt32)[serverName lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
-                                                             [serverName cStringUsingEncoding: NSUTF8StringEncoding],
-                                                             0,
-                                                             NULL,
-                                                             (UInt32)[username lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
-                                                             [username cStringUsingEncoding: NSUTF8StringEncoding],
-                                                             0,
-                                                             NULL,
-                                                             443,
-                                                             kSecProtocolTypeAny,
-                                                             kSecAuthenticationTypeAny,
-                                                             passwordLength,
-                                                             passwordBytes,
-                                                             NULL);
-    if (keychainResult) { NSLog(@"couldn't store password: %d", keychainResult); };
+    
+    //find out if the password already exists
+    SecKeychainItemRef keychainItem;
+    OSStatus keychainFindResult = SecKeychainFindInternetPassword(NULL,
+                                                                  (UInt32)[serverName lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
+                                                                  [serverName cStringUsingEncoding: NSUTF8StringEncoding],
+                                                                  0,
+                                                                  NULL,
+                                                                  (UInt32)[username lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
+                                                                  [username cStringUsingEncoding: NSUTF8StringEncoding],
+                                                                  0,
+                                                                  NULL,
+                                                                  443,
+                                                                  kSecProtocolTypeAny,
+                                                                  kSecAuthenticationTypeAny,
+                                                                  NULL,
+                                                                  NULL,
+                                                                  &keychainItem);
+    OSStatus passwordStoreResult = errSecSuccess;
+    if (keychainFindResult == errSecSuccess) {
+        passwordStoreResult = SecKeychainItemModifyAttributesAndData(keychainItem, NULL, passwordLength, passwordBytes);
+        CFRelease(keychainItem);
+    } else {
+        passwordStoreResult = SecKeychainAddInternetPassword(NULL,
+                                                                 (UInt32)[serverName lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
+                                                                 [serverName cStringUsingEncoding: NSUTF8StringEncoding],
+                                                                 0,
+                                                                 NULL,
+                                                                 (UInt32)[username lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
+                                                                 [username cStringUsingEncoding: NSUTF8StringEncoding],
+                                                                 0,
+                                                                 NULL,
+                                                                 443,
+                                                                 kSecProtocolTypeAny,
+                                                                 kSecAuthenticationTypeAny,
+                                                                 passwordLength,
+                                                                 passwordBytes,
+                                                                 NULL);
+    }
+    if (passwordStoreResult) { NSLog(@"couldn't store password: %d", passwordStoreResult); };
     return YES;
 }
 @end
