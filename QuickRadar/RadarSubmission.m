@@ -98,8 +98,8 @@
                                                                   NULL);
         if (keychainResult) { NSLog(@"Password not found");  bail(); return; };
 		
-		NSString *password = [NSString stringWithCString:passwordBytes length:passwordLength];
-//        NSString *password2 = [NSString stringWithCString: passwordBytes encoding: NSUTF8StringEncoding];
+		NSString *password = [NSString stringWithCString:passwordBytes encoding:NSASCIIStringEncoding];
+		//NSParameterAssert([password isEqualToString:[NSString stringWithCString:passwordBytes length:passwordLength]]);
 						
         SecKeychainItemFreeContent(NULL, passwordBytes);
 		NSDictionary *loginFormParams = [NSDictionary dictionaryWithObjectsAndKeys:

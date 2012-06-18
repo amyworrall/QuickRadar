@@ -90,7 +90,6 @@
 		E1CC517E156257BF0027FB83 = {
 			isa = PBXGroup;
 			children = (
-				E1CC51AD156259AC0027FB83 /* Carbon.framework */,
 				E1CC5193156257BF0027FB83 /* QuickRadar */,
 				E1CC5194156257BF0027FB83 /* Supporting Files */,
 				E1CC518C156257BF0027FB83 /* Frameworks */,
@@ -109,6 +108,7 @@
 		E1CC518C156257BF0027FB83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1CC51AD156259AC0027FB83 /* Carbon.framework */,
 				98EACACB158A86460078D06C /* Security.framework */,
 				E1F8590A158A2D2F005F77DA /* Growl.framework */,
 				E1CC518D156257BF0027FB83 /* Cocoa.framework */,
@@ -190,7 +190,7 @@
 		E1CC5180156257BF0027FB83 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = E1CC5183156257BF0027FB83 /* Build configuration list for PBXProject "QuickRadar" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -276,6 +276,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -303,6 +304,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
