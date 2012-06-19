@@ -41,7 +41,8 @@ OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
 {
     //setup statusItem
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-    statusItem.image = [NSImage imageNamed:@"Menubar"];
+    statusItem.image = [NSImage imageNamed:@"MenubarTemplate"];
+	statusItem.highlightMode = YES;
     statusItem.menu = self.menu;
     
     //setup hotkey
