@@ -3,6 +3,8 @@ QuickRadar
 
 Mac app to simplify posting bug reports to Apple's Radar bug tracking system. It provides a global hotkey to open a window in which to enter a bug report, which can be easily submitted to Apple.
 
+More info at http://www.quickradar.com/
+
 Status
 ======
 
@@ -15,7 +17,7 @@ That said, I do plan to develop it a lot more. I'd also welcome any help and con
 Using QuickRadar
 ================
 
-Build and run the app. It is meant to run in the background, and does not open any windows at launch.
+Build and run the app. It is meant to run in the background, and does not open any windows at launch, it only displays a menubar icon.
 
 First, choose "Login Details…" from the QuickBug menu. In there, fill in your username and password for Apple's web-based bug reporter. Make sure you get them right!
 
@@ -35,4 +37,7 @@ I hope to get it doing the following things:
 * Error handling, incorrect password dialog etc
 * And more! Maybe future versions will let you browse your submitted Radars too.
 
-(TINY modification to UI by Dominik Pich @daijdjan)
+Contributors
+============
+
+A list of contributors can be found in the QuickBug/en.lproj/Credits.rtf file. This file also displays in the About window when the app is running. If you contribute, feel free to add your name and Twitter handle there.
