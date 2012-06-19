@@ -25,6 +25,7 @@ OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
 @interface AppDelegate () <GrowlApplicationBridgeDelegate>
 {
 	NSMutableSet *windowControllerStore;
+    NSStatusItem *statusItem;
 }
 @end
 
@@ -34,12 +35,16 @@ OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize menu = _menu;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	// Insert code here to initialize your application
-	
-	
+    //setup statusItem
+    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+    statusItem.image = [NSImage imageNamed:@"Menubar"];
+    statusItem.menu = self.menu;
+    
+    //setup hotkey
 	EventHotKeyRef gMyHotKeyRef;
 	EventHotKeyID gMyHotKeyID;
 	EventTypeSpec eventType;
@@ -97,11 +102,12 @@ OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
 {
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	
-	RadarWindowController *b = [[RadarWindowController alloc] initWithWindowNibName:@"RadarWindow"];
-	[[b window] makeKeyAndOrderFront:self];
-//	[b focusTextField];
-	
-	[windowControllerStore addObject:b];
+    if(!windowControllerStore.count) {
+        RadarWindowController *b = [[RadarWindowController alloc] initWithWindowNibName:@"RadarWindow"];
+        [windowControllerStore addObject:b];
+    }
+
+    [[windowControllerStore anyObject] showWindow:nil];
 
 }
 

@@ -34,3 +34,5 @@ I hope to get it doing the following things:
 * Uploading config information for crash reports
 * Error handling, incorrect password dialog etc
 * And more! Maybe future versions will let you browse your submitted Radars too.
+
+(TINY modification to UI by Dominik Pich @daijdjan)
