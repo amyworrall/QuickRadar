@@ -49,6 +49,7 @@
     NSString *username = [prefs objectForKey: @"username"];
     if (!username) {
         [[[NSApp delegate] window] makeKeyAndOrderFront:nil];
+        return;
     }
         
 	RadarSubmission *s = [[RadarSubmission alloc] init];

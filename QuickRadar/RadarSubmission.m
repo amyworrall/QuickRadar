@@ -96,7 +96,11 @@
                                                                   &passwordLength,
                                                                   (void **)&passwordBytes,
                                                                   NULL);
-        if (keychainResult) { NSLog(@"Password not found");  bail(); return; };
+        if (keychainResult) {
+            NSLog(@"Password not found");
+            bail();
+            return;
+        };
 		
 		NSString *password = [[NSString alloc] initWithBytes:passwordBytes length:passwordLength encoding:NSUTF8StringEncoding];
 						

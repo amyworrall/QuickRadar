@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PasswordStoring : NSObject <NSTextFieldDelegate>
+@interface PasswordStoring : NSObject <NSTextFieldDelegate, NSWindowDelegate>
 
 @property (weak, nonatomic) IBOutlet NSSecureTextField *radarPasswordField;
 

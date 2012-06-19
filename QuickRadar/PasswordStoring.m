@@ -98,4 +98,8 @@ NSString *serverName = @"bugreport.apple.com";
     if (passwordStoreResult) { NSLog(@"couldn't store password: %d", passwordStoreResult); };
     return YES;
 }
+
+- (void)windowWillClose:(NSNotification *)notification {
+    [self control:radarPasswordField textShouldEndEditing:nil];
+}
 @end

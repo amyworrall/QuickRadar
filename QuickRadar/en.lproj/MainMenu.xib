@@ -1528,7 +1528,6 @@
 											<string key="NSFrame">{{87, 14}, {417, 22}}</string>
 											<reference key="NSSuperview" ref="950777169"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSecureTextFieldCell" key="NSCell" id="743390409">
 												<int key="NSCellFlags">342884416</int>
@@ -2322,6 +2321,14 @@
 						<reference key="destination" ref="1006572515"/>
 					</object>
 					<int key="connectionID">941</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="972006081"/>
+						<reference key="destination" ref="142029637"/>
+					</object>
+					<int key="connectionID">945</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -4583,7 +4590,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">944</int>
+			<int key="maxID">945</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
