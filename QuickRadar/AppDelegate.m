@@ -102,12 +102,10 @@ OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
 {
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	
-    if(!windowControllerStore.count) {
         RadarWindowController *b = [[RadarWindowController alloc] initWithWindowNibName:@"RadarWindow"];
         [windowControllerStore addObject:b];
-    }
-
-    [[windowControllerStore anyObject] showWindow:nil];
+ 
+    [b showWindow:nil];
 
 }
 
