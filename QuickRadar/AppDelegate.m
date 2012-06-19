@@ -37,6 +37,18 @@ OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
 @synthesize window = _window;
 @synthesize menu = _menu;
 
+- (IBAction)activateAndShowAbout:(id)sender;
+{
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	[NSApp orderFrontStandardAboutPanel:self];
+}
+
+- (IBAction)activateAndShowLoginDetails:(id)sender;
+{
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	[self.window makeKeyAndOrderFront:self];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     //setup statusItem

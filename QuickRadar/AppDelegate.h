@@ -15,5 +15,7 @@
 
 - (IBAction)newBug:(id)sender;
 - (IBAction)bugWindowControllerSubmissionComplete:(id)sender;
+- (IBAction)activateAndShowAbout:(id)sender;
+- (IBAction)activateAndShowLoginDetails:(id)sender;
 
 @end
