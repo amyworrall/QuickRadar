@@ -10,6 +10,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property (assign) IBOutlet NSMenu *menu;
 @property (assign) IBOutlet NSWindow *window;
 
 - (IBAction)newBug:(id)sender;

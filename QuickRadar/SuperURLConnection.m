@@ -60,7 +60,7 @@
 				[postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 				
 				[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"\"\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
-				[postBody appendData:[[NSString stringWithFormat:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+				[postBody appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 				[postBody appendData:[self.fileParameters objectForKey:key]];
 				[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 			}
@@ -72,7 +72,7 @@
 		
 			
 			
-			NSString* postLength = [NSString stringWithFormat:@"%ld", [postBody length]];
+			NSString* postLength = [NSString stringWithFormat:@"%lu", [postBody length]];
 			[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
 			
 			[request setHTTPBody: postBody];
@@ -90,7 +90,7 @@
 		}
 		
 		NSData* postVariables = [ps dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-		NSString* postLength = [NSString stringWithFormat:@"%ld", [postVariables length]];
+		NSString* postLength = [NSString stringWithFormat:@"%lu", [postVariables length]];
 		
 		[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
 		[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

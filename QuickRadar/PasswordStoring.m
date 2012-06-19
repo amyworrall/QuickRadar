@@ -40,10 +40,7 @@ NSString *serverName = @"bugreport.apple.com";
                                                               (void **)&passwordBytes,
                                                               NULL);
     if (keychainResult) { return; };
-	
-	NSString *password = (__bridge_transfer NSString *)CFStringCreateWithBytes(kCFAllocatorDefault, (const UInt8 *)passwordBytes, passwordLength, kCFStringEncodingUTF8, false);
-//	NSParameterAssert([password isEqualToString:[NSString stringWithCString:passwordBytes length:passwordLength]]);
-	
+    NSString *password = [[NSString alloc] initWithBytes:passwordBytes length:passwordLength encoding:NSUTF8StringEncoding];
     SecKeychainItemFreeContent(NULL, passwordBytes);
 	
 	if (password)
@@ -100,5 +97,9 @@ NSString *serverName = @"bugreport.apple.com";
     }
     if (passwordStoreResult) { NSLog(@"couldn't store password: %d", passwordStoreResult); };
     return YES;
+}
+
+- (void)windowWillClose:(NSNotification *)notification {
+    [self control:radarPasswordField textShouldEndEditing:nil];
 }
 @end
