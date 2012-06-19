@@ -44,6 +44,13 @@
 
 - (IBAction)submitRadar:(id)sender;
 {
+    //hack to show login details
+    NSUserDefaults *    prefs = [NSUserDefaults standardUserDefaults];
+    NSString *username = [prefs objectForKey: @"username"];
+    if (!username) {
+        [[[NSApp delegate] window] makeKeyAndOrderFront:nil];
+    }
+        
 	RadarSubmission *s = [[RadarSubmission alloc] init];
 	s.product = self.productMenu.selectedItem.title;
 	s.classification = self.classificationMenu.selectedItem.title;

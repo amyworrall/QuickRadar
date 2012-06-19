@@ -40,7 +40,7 @@ NSString *serverName = @"bugreport.apple.com";
                                                               (void **)&passwordBytes,
                                                               NULL);
     if (keychainResult) { return; };
-    NSString *password = [NSString stringWithCString:passwordBytes length:passwordLength];
+    NSString *password = [[NSString alloc] initWithBytes:passwordBytes length:passwordLength encoding:NSUTF8StringEncoding];
     SecKeychainItemFreeContent(NULL, passwordBytes);
 	
 	if (password)

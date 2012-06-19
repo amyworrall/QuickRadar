@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		98EACACC158A86460078D06C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EACACB158A86460078D06C /* Security.framework */; };
 		98EACAD0158A89670078D06C /* PasswordStoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EACACF158A89670078D06C /* PasswordStoring.m */; };
+		B4688666158FF4D900C94B09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B4688665158FF4D900C94B09 /* README.md */; };
+		B4688669158FF91A00C94B09 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4688667158FF91A00C94B09 /* Appicon.icns */; };
+		B468866A158FF91A00C94B09 /* Menubar.png in Resources */ = {isa = PBXBuildFile; fileRef = B4688668158FF91A00C94B09 /* Menubar.png */; };
 		E1C10ACA158A7D02003A3C01 /* License in Resources */ = {isa = PBXBuildFile; fileRef = E1C10AC9158A7D02003A3C01 /* License */; };
 		E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CC518D156257BF0027FB83 /* Cocoa.framework */; };
-		E1CC5198156257BF0027FB83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1CC5196156257BF0027FB83 /* InfoPlist.strings */; };
 		E1CC519A156257BF0027FB83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC5199156257BF0027FB83 /* main.m */; };
 		E1CC519E156257BF0027FB83 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E1CC519C156257BF0027FB83 /* Credits.rtf */; };
 		E1CC51A1156257BF0027FB83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51A0156257BF0027FB83 /* AppDelegate.m */; };
@@ -44,6 +46,9 @@
 		98EACACB158A86460078D06C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		98EACACE158A89670078D06C /* PasswordStoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStoring.h; sourceTree = "<group>"; };
 		98EACACF158A89670078D06C /* PasswordStoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStoring.m; sourceTree = "<group>"; };
+		B4688665158FF4D900C94B09 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		B4688667158FF91A00C94B09 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
+		B4688668158FF91A00C94B09 /* Menubar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menubar.png; sourceTree = "<group>"; };
 		E1C10AC9158A7D02003A3C01 /* License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License; path = ../License; sourceTree = "<group>"; };
 		E1CC5189156257BF0027FB83 /* QuickRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CC518D156257BF0027FB83 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -51,7 +56,6 @@
 		E1CC5191156257BF0027FB83 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E1CC5192156257BF0027FB83 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E1CC5195156257BF0027FB83 /* QuickRadar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuickRadar-Info.plist"; sourceTree = "<group>"; };
-		E1CC5197156257BF0027FB83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E1CC5199156257BF0027FB83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E1CC519B156257BF0027FB83 /* QuickRadar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickRadar-Prefix.pch"; sourceTree = "<group>"; };
 		E1CC519D156257BF0027FB83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -152,8 +156,10 @@
 		E1CC5194156257BF0027FB83 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B4688667158FF91A00C94B09 /* Appicon.icns */,
+				B4688668158FF91A00C94B09 /* Menubar.png */,
+				B4688665158FF4D900C94B09 /* README.md */,
 				E1CC5195156257BF0027FB83 /* QuickRadar-Info.plist */,
-				E1CC5196156257BF0027FB83 /* InfoPlist.strings */,
 				E1CC5199156257BF0027FB83 /* main.m */,
 				E1CC519B156257BF0027FB83 /* QuickRadar-Prefix.pch */,
 				E1CC519C156257BF0027FB83 /* Credits.rtf */,
@@ -190,7 +196,7 @@
 		E1CC5180156257BF0027FB83 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = E1CC5183156257BF0027FB83 /* Build configuration list for PBXProject "QuickRadar" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -214,12 +220,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1CC5198156257BF0027FB83 /* InfoPlist.strings in Resources */,
 				E1CC519E156257BF0027FB83 /* Credits.rtf in Resources */,
 				E1CC51A4156257BF0027FB83 /* MainMenu.xib in Resources */,
 				E1CC51B315625AAD0027FB83 /* RadarWindow.xib in Resources */,
 				E1CC51B515625C5B0027FB83 /* Config.plist in Resources */,
 				E1C10ACA158A7D02003A3C01 /* License in Resources */,
+				B4688666158FF4D900C94B09 /* README.md in Resources */,
+				B4688669158FF91A00C94B09 /* Appicon.icns in Resources */,
+				B468866A158FF91A00C94B09 /* Menubar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,14 +251,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E1CC5196156257BF0027FB83 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1CC5197156257BF0027FB83 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		E1CC519C156257BF0027FB83 /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -276,6 +276,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -303,6 +304,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
