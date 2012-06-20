@@ -11,6 +11,9 @@
 		98EACAD0158A89670078D06C /* PasswordStoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EACACF158A89670078D06C /* PasswordStoring.m */; };
 		B4688666158FF4D900C94B09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B4688665158FF4D900C94B09 /* README.md */; };
 		B4688669158FF91A00C94B09 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4688667158FF91A00C94B09 /* Appicon.icns */; };
+		B4EC27EC1591577000E79E8B /* libPTHotkey-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */; };
+		B4EC27EF1591577A00E79E8B /* PTKeyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */; };
+		B4EC27F01591577A00E79E8B /* PTKeyComboPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */; };
 		E1C10ACA158A7D02003A3C01 /* License in Resources */ = {isa = PBXBuildFile; fileRef = E1C10AC9158A7D02003A3C01 /* License */; };
 		E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CC518D156257BF0027FB83 /* Cocoa.framework */; };
 		E1CC519A156257BF0027FB83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC5199156257BF0027FB83 /* main.m */; };
@@ -48,6 +51,9 @@
 		98EACACF158A89670078D06C /* PasswordStoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStoring.m; sourceTree = "<group>"; };
 		B4688665158FF4D900C94B09 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		B4688667158FF91A00C94B09 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
+		B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPTHotkey-OSX.a"; path = "PTHotkey/libPTHotkey-OSX.a"; sourceTree = "<group>"; };
+		B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = PTKeyCodes.plist; path = PTHotkey/PTKeyCodes.plist; sourceTree = SOURCE_ROOT; };
+		B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PTKeyComboPanel.xib; path = PTHotkey/PTKeyComboPanel.xib; sourceTree = SOURCE_ROOT; };
 		E1C10AC9158A7D02003A3C01 /* License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License; path = ../License; sourceTree = "<group>"; };
 		E1CC5189156257BF0027FB83 /* QuickRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CC518D156257BF0027FB83 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -85,6 +91,7 @@
 				E1CC51AE156259AC0027FB83 /* Carbon.framework in Frameworks */,
 				E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */,
 				E1F8590B158A2D2F005F77DA /* Growl.framework in Frameworks */,
+				B4EC27EC1591577000E79E8B /* libPTHotkey-OSX.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,7 @@
 		E1CC518C156257BF0027FB83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */,
 				E1CC51AD156259AC0027FB83 /* Carbon.framework */,
 				98EACACB158A86460078D06C /* Security.framework */,
 				E1F8590A158A2D2F005F77DA /* Growl.framework */,
@@ -156,6 +164,8 @@
 		E1CC5194156257BF0027FB83 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */,
+				B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */,
 				B4688667158FF91A00C94B09 /* Appicon.icns */,
 				E1E9090F1590ABBA0019F189 /* MenubarTemplate.tif */,
 				B4688665158FF4D900C94B09 /* README.md */,
@@ -228,6 +238,8 @@
 				B4688666158FF4D900C94B09 /* README.md in Resources */,
 				B4688669158FF91A00C94B09 /* Appicon.icns in Resources */,
 				E1E909101590ABBA0019F189 /* MenubarTemplate.tif in Resources */,
+				B4EC27EF1591577A00E79E8B /* PTKeyCodes.plist in Resources */,
+				B4EC27F01591577A00E79E8B /* PTKeyComboPanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +340,13 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickRadar/QuickRadar-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/PTHotKey/";
 				INFOPLIST_FILE = "QuickRadar/QuickRadar-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../doo/doo-mac-osx/PTHotkey\"",
+					"\"$(SRCROOT)/PTHotkey\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -343,7 +361,13 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickRadar/QuickRadar-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/PTHotKey/";
 				INFOPLIST_FILE = "QuickRadar/QuickRadar-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../doo/doo-mac-osx/PTHotkey\"",
+					"\"$(SRCROOT)/PTHotkey\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
