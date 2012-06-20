@@ -57,6 +57,14 @@
 
 		
 		
+		if (!data)
+		{
+			NSLog(@"Connection error %@", error);
+			[NSApp presentError:error];
+			bail(); 
+			return;
+		}
+
 		NSXMLDocument *doc = [[NSXMLDocument alloc] initWithData: data
 																  options:NSXMLDocumentTidyXML 
 																	error:&error];
@@ -135,7 +143,10 @@
 		
 		if (!data)
 		{
-			NSLog(@"BBUC error %@", error);
+			NSLog(@"Connection error %@", error);
+			[NSApp presentError:error];
+			 bail(); 
+			return;
 		}
 		
 		NSXMLDocument *loginResponseDoc = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyXML error:&error];
@@ -166,7 +177,10 @@
 		
 		if (!data)
 		{
-			NSLog(@"BBUC error %@", error);
+			NSLog(@"Connection error %@", error);
+			[NSApp presentError:error];
+			bail(); 
+			return;
 		}
 		
 		NSXMLDocument *jmResponseDoc = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyXML error:&error];
@@ -211,6 +225,14 @@
 		conn.request = newTicketReq;
 		
 		data = [conn fetchSyncWithError:&error];
+		
+		if (!data)
+		{
+			NSLog(@"Connection error %@", error);
+			[NSApp presentError:error];
+			bail(); 
+			return;
+		}
 
 		NSXMLDocument *newBugPageDoc = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyXML error:&error];
 
@@ -398,6 +420,14 @@
 		data = [submitBugConnection fetchSyncWithError:&error];
 		
 //		NSLog(@"Final page %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+		
+		if (!data)
+		{
+			NSLog(@"Connection error %@", error);
+			[NSApp presentError:error];
+			bail(); 
+			return;
+		}
 		
 		NSXMLDocument *successOrFailPage = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyXML error:&error];
 		
