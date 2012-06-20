@@ -26,6 +26,8 @@
 @synthesize window = _window;
 @synthesize menu = _menu;
 
+#pragma mark NSApplicationDelegate
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     //setup statusItem
@@ -107,6 +109,16 @@
 	[windowControllerStore removeObject:sender];
 }
 
+- (IBAction)activateAndShowHotkeySettings:(id)sender {
+    id hotkey = [[PTHotKeyCenter sharedCenter] hotKeyForName:GlobalHotkeyName];
+	[[PTKeyComboPanel sharedPanel] showSheetForHotkey:hotkey forWindow:_window modalDelegate:self]; // Change _window to the window you want the sheet to come down from
+}
+
+#pragma mark keyComboPanelDelegate
+
+- (void)keyComboPanelEnded:(PTKeyComboPanel*)panel {
+	[[NSUserDefaults standardUserDefaults] setObject:[[panel keyCombo] plistRepresentation] forKey:GlobalHotkeyName];
+}
 
 #pragma mark hotkey
 
@@ -139,6 +151,9 @@
     hotKey.target = self;
     hotKey.action = @selector(hitHotKey:);
     [[PTHotKeyCenter sharedCenter] registerHotKey:hotKey];
+    
+    //update menu to show it (HACKISH)
+    [_menu itemWithTag:10].title = [NSString stringWithFormat:@"Post new Bug... (%@)", kc];
 }
 
 - (void)hitHotKey:(id)sender {
