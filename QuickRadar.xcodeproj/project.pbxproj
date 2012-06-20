@@ -340,11 +340,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickRadar/QuickRadar-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/PTHotKey/";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/PTHotKey/\"";
 				INFOPLIST_FILE = "QuickRadar/QuickRadar-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../doo/doo-mac-osx/PTHotkey\"",
 					"\"$(SRCROOT)/PTHotkey\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -361,11 +360,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickRadar/QuickRadar-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/PTHotKey/";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/PTHotKey/\"";
 				INFOPLIST_FILE = "QuickRadar/QuickRadar-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../doo/doo-mac-osx/PTHotkey\"",
 					"\"$(SRCROOT)/PTHotkey\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
