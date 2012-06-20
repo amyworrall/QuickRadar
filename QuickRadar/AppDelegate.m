@@ -7,20 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import <Carbon/Carbon.h>
+#import "PTHotKeyLib.h"
 #import "RadarWindowController.h"
 #import <Growl/Growl.h>
-
-OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
-						 void *userData)
-{
-	//Do something once the key is pressed
-	AppDelegate *d = [[NSApplication sharedApplication] delegate];
-	[d newBug:d];
-	return noErr;
-}
-
-
 
 @interface AppDelegate () <GrowlApplicationBridgeDelegate>
 {
@@ -29,25 +18,15 @@ OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
 }
 @end
 
-
-
+#define GlobalHotkeyName @"hotkey"
+#define GlobalHotkeyKeyPath @"values.hotkey"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize menu = _menu;
 
-- (IBAction)activateAndShowAbout:(id)sender;
-{
-	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-	[NSApp orderFrontStandardAboutPanel:self];
-}
-
-- (IBAction)activateAndShowLoginDetails:(id)sender;
-{
-	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-	[self.window makeKeyAndOrderFront:self];
-}
+#pragma mark NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -56,30 +35,21 @@ OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
     statusItem.image = [NSImage imageNamed:@"MenubarTemplate"];
 	statusItem.highlightMode = YES;
     statusItem.menu = self.menu;
-    
-    //setup hotkey
-	EventHotKeyRef gMyHotKeyRef;
-	EventHotKeyID gMyHotKeyID;
-	EventTypeSpec eventType;
-	eventType.eventClass=kEventClassKeyboard;
-	eventType.eventKind=kEventHotKeyPressed;
-	
-	InstallApplicationEventHandler(&MyHotKeyHandler,1,&eventType,NULL,NULL);
-	
-	gMyHotKeyID.signature='htk2';
-	gMyHotKeyID.id=2;
-	
-	RegisterEventHotKey(49, cmdKey+controlKey+optionKey, gMyHotKeyID,
-						GetApplicationEventTarget(), 0, &gMyHotKeyRef);
 
-	
-	
+    //apply hotkey
+    [self applyHotkey];
+    
+    //observe defaults for hotkey
+    [[NSUserDefaultsController sharedUserDefaultsController]
+     addObserver:self forKeyPath:GlobalHotkeyKeyPath options:0 context: NULL];
+    
 	windowControllerStore = [NSMutableSet set];
 	
 	[GrowlApplicationBridge setGrowlDelegate:self];
 
 }
 
+#pragma mark growl support
 
 - (NSDictionary *) registrationDictionaryForGrowl;
 {
@@ -110,16 +80,27 @@ OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
 }
 
 
+#pragma mark IBActions
+
+- (IBAction)activateAndShowAbout:(id)sender;
+{
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	[NSApp orderFrontStandardAboutPanel:self];
+}
+
+- (IBAction)activateAndShowLoginDetails:(id)sender;
+{
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	[self.window makeKeyAndOrderFront:self];
+}
 
 - (IBAction)newBug:(id)sender;
 {
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	
-        RadarWindowController *b = [[RadarWindowController alloc] initWithWindowNibName:@"RadarWindow"];
-        [windowControllerStore addObject:b];
- 
+    RadarWindowController *b = [[RadarWindowController alloc] initWithWindowNibName:@"RadarWindow"];
+    [windowControllerStore addObject:b];
     [b showWindow:nil];
-
 }
 
 
@@ -128,6 +109,64 @@ OSStatus MyHotKeyHandler(EventHandlerCallRef nextHandler,EventRef theEvent,
 	[windowControllerStore removeObject:sender];
 }
 
+- (IBAction)activateAndShowHotkeySettings:(id)sender {
+    id hotkey = [[PTHotKeyCenter sharedCenter] hotKeyForName:GlobalHotkeyName];
+	[[PTKeyComboPanel sharedPanel] showSheetForHotkey:hotkey forWindow:_window modalDelegate:self]; // Change _window to the window you want the sheet to come down from
+}
 
+#pragma mark keyComboPanelDelegate
+
+- (void)keyComboPanelEnded:(PTKeyComboPanel*)panel {
+	[[NSUserDefaults standardUserDefaults] setObject:[[panel keyCombo] plistRepresentation] forKey:GlobalHotkeyName];
+}
+
+#pragma mark hotkey
+
+- (void)applyHotkey {
+	//unregister old
+	for (PTHotKey *hotkey in [[PTHotKeyCenter sharedCenter] allHotKeys]) {
+		[[PTHotKeyCenter sharedCenter] unregisterHotKey:hotkey];
+	}
+    
+	//read plist
+	id plistTool = [[NSUserDefaults standardUserDefaults] objectForKey:GlobalHotkeyName];
+    
+    //make default
+	if(!plistTool) {
+        plistTool = [NSDictionary dictionaryWithObjectsAndKeys:
+                     [NSNumber numberWithInt:49], @"keyCode",
+                     [NSNumber numberWithInt:cmdKey+controlKey+optionKey], @"modifiers",
+                     nil];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:plistTool forKey:GlobalHotkeyName];
+	}
+    
+    //get key combo
+    PTKeyCombo *kc = [[PTKeyCombo alloc] initWithPlistRepresentation:plistTool];
+    
+    //register it
+    PTHotKey *hotKey = [[PTHotKey alloc] init];
+    hotKey.name = GlobalHotkeyName;
+    hotKey.keyCombo = kc;
+    hotKey.target = self;
+    hotKey.action = @selector(hitHotKey:);
+    [[PTHotKeyCenter sharedCenter] registerHotKey:hotKey];
+    
+    //update menu to show it (HACKISH)
+    [_menu itemWithTag:10].title = [NSString stringWithFormat:@"Post new Bug... (%@)", kc];
+}
+
+- (void)hitHotKey:(id)sender {
+    [self newBug:sender];
+}
+
+#pragma mark KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:object
+						change:(NSDictionary *)change context:(void *)context {
+	if([keyPath isEqualToString:GlobalHotkeyKeyPath]) {
+		[self applyHotkey];
+	}
+}
 
 @end

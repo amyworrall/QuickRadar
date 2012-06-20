@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PTKeyComboPanel.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, PTKeyComboPanelDelegate>
 
 @property (assign) IBOutlet NSMenu *menu;
 @property (assign) IBOutlet NSWindow *window;
@@ -17,5 +18,5 @@
 - (IBAction)bugWindowControllerSubmissionComplete:(id)sender;
 - (IBAction)activateAndShowAbout:(id)sender;
 - (IBAction)activateAndShowLoginDetails:(id)sender;
-
+- (IBAction)activateAndShowHotkeySettings:(id)sender;
 @end
