@@ -109,9 +109,17 @@
 	[windowControllerStore removeObject:sender];
 }
 
-- (IBAction)activateAndShowHotkeySettings:(id)sender {
-    id hotkey = [[PTHotKeyCenter sharedCenter] hotKeyForName:GlobalHotkeyName];
-	[[PTKeyComboPanel sharedPanel] showSheetForHotkey:hotkey forWindow:_window modalDelegate:self]; // Change _window to the window you want the sheet to come down from
+- (IBAction)activateAndShowHotkeySettings:(id)sender 
+{
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	
+	if (!self.window.isVisible)
+	{
+		[self activateAndShowLoginDetails:self];
+	}
+	
+	id hotkey = [[PTHotKeyCenter sharedCenter] hotKeyForName:GlobalHotkeyName];
+	[[PTKeyComboPanel sharedPanel] showSheetForHotkey:hotkey forWindow:_window modalDelegate:self];
 }
 
 #pragma mark keyComboPanelDelegate
