@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		98EACACC158A86460078D06C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EACACB158A86460078D06C /* Security.framework */; };
+		B482F7D515965B2200E1A642 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = B482F7D415965B2100E1A642 /* Credits.html */; };
+		B482F7DA1596641D00E1A642 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B482F7D91596641D00E1A642 /* Config.plist */; };
+		B482F7DB1596641D00E1A642 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B482F7D91596641D00E1A642 /* Config.plist */; };
+		B482F7DD15967CE000E1A642 /* libtidy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B482F7DC15967CE000E1A642 /* libtidy.dylib */; };
+		B482F7E015967DB600E1A642 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = B482F7DF15967DB600E1A642 /* CTidy.m */; };
 		B4BDF8AA1596341F00CA5338 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF8A81596341F00CA5338 /* Growl.framework */; };
 		B4BDF8AC1596342500CA5338 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B4BDF8A81596341F00CA5338 /* Growl.framework */; };
 		B4BDF8E41596352400CA5338 /* libPTHotkey-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF8DA1596352400CA5338 /* libPTHotkey-OSX.a */; };
@@ -15,7 +20,6 @@
 		B4BDF8E61596352400CA5338 /* PTKeyComboPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8E31596352400CA5338 /* PTKeyComboPanel.xib */; };
 		B4BDF8F71596368500CA5338 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8E91596368500CA5338 /* AppDelegate.m */; };
 		B4BDF8F81596368500CA5338 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EA1596368500CA5338 /* AppIcon.icns */; };
-		B4BDF8F91596368500CA5338 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EB1596368500CA5338 /* Config.plist */; };
 		B4BDF8FA1596368500CA5338 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EC1596368500CA5338 /* Credits.rtf */; };
 		B4BDF8FB1596368500CA5338 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8ED1596368500CA5338 /* main.m */; };
 		B4BDF8FC1596368500CA5338 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EE1596368500CA5338 /* MainMenu.xib */; };
@@ -27,9 +31,8 @@
 		B4BDF91F159636CD00CA5338 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF91E159636CD00CA5338 /* UIKit.framework */; };
 		B4BDF921159636CD00CA5338 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF920159636CD00CA5338 /* Foundation.framework */; };
 		B4BDF923159636CD00CA5338 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF922159636CD00CA5338 /* CoreGraphics.framework */; };
-		B4BDF9541596370200CA5338 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF9431596370200CA5338 /* InfoPlist.strings */; };
 		B4BDF9551596370200CA5338 /* QRFlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF9451596370200CA5338 /* QRFlipsideViewController.xib */; };
-		B4BDF9561596370200CA5338 /* QRMainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF9471596370200CA5338 /* QRMainViewController_iPad.xib */; };
+		B4BDF9561596370200CA5338 /* QRMainViewController_iPad--UNUSED_RIGHT_NOW.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF9471596370200CA5338 /* QRMainViewController_iPad--UNUSED_RIGHT_NOW.xib */; };
 		B4BDF9571596370200CA5338 /* QRMainViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF9491596370200CA5338 /* QRMainViewController_iPhone.xib */; };
 		B4BDF9581596370200CA5338 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF94B1596370200CA5338 /* main.m */; };
 		B4BDF9591596370200CA5338 /* QRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF94D1596370200CA5338 /* QRAppDelegate.m */; };
@@ -71,6 +74,11 @@
 
 /* Begin PBXFileReference section */
 		98EACACB158A86460078D06C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B482F7D415965B2100E1A642 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		B482F7D91596641D00E1A642 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		B482F7DC15967CE000E1A642 /* libtidy.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtidy.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/libtidy.dylib; sourceTree = DEVELOPER_DIR; };
+		B482F7DE15967DB600E1A642 /* CTidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTidy.h; sourceTree = "<group>"; };
+		B482F7DF15967DB600E1A642 /* CTidy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTidy.m; sourceTree = "<group>"; };
 		B4BDF8A81596341F00CA5338 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = osx/Growl.framework; sourceTree = "<group>"; };
 		B4BDF8DA1596352400CA5338 /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPTHotkey-OSX.a"; sourceTree = "<group>"; };
 		B4BDF8DB1596352400CA5338 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKey.h; sourceTree = "<group>"; };
@@ -85,7 +93,6 @@
 		B4BDF8E81596368500CA5338 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B4BDF8E91596368500CA5338 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B4BDF8EA1596368500CA5338 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
-		B4BDF8EB1596368500CA5338 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		B4BDF8EC1596368500CA5338 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		B4BDF8ED1596368500CA5338 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B4BDF8EE1596368500CA5338 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -101,9 +108,8 @@
 		B4BDF91E159636CD00CA5338 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B4BDF920159636CD00CA5338 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		B4BDF922159636CD00CA5338 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		B4BDF9441596370200CA5338 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B4BDF9461596370200CA5338 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/QRFlipsideViewController.xib; sourceTree = "<group>"; };
-		B4BDF9481596370200CA5338 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/QRMainViewController_iPad.xib; sourceTree = "<group>"; };
+		B4BDF9481596370200CA5338 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/QRMainViewController_iPad--UNUSED_RIGHT_NOW.xib"; sourceTree = "<group>"; };
 		B4BDF94A1596370200CA5338 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/QRMainViewController_iPhone.xib; sourceTree = "<group>"; };
 		B4BDF94B1596370200CA5338 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B4BDF94C1596370200CA5338 /* QRAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRAppDelegate.h; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B482F7DD15967CE000E1A642 /* libtidy.dylib in Frameworks */,
 				B4BDF999159653E100CA5338 /* Security.framework in Frameworks */,
 				B4BDF997159653CA00CA5338 /* libxml2.dylib in Frameworks */,
 				B4BDF91F159636CD00CA5338 /* UIKit.framework in Frameworks */,
@@ -207,7 +214,6 @@
 				B4BDF8E81596368500CA5338 /* AppDelegate.h */,
 				B4BDF8E91596368500CA5338 /* AppDelegate.m */,
 				B4BDF8EA1596368500CA5338 /* AppIcon.icns */,
-				B4BDF8EB1596368500CA5338 /* Config.plist */,
 				B4BDF8EC1596368500CA5338 /* Credits.rtf */,
 				B4BDF8ED1596368500CA5338 /* main.m */,
 				B4BDF8EE1596368500CA5338 /* MainMenu.xib */,
@@ -227,6 +233,7 @@
 		B4BDF9021596369A00CA5338 /* IOS */ = {
 			isa = PBXGroup;
 			children = (
+				B482F7DC15967CE000E1A642 /* libtidy.dylib */,
 				B4BDF96F1596458700CA5338 /* KissXML */,
 				B4BDF91E159636CD00CA5338 /* UIKit.framework */,
 				B4BDF920159636CD00CA5338 /* Foundation.framework */,
@@ -240,9 +247,9 @@
 		B4BDF9421596370200CA5338 /* IOS-App */ = {
 			isa = PBXGroup;
 			children = (
-				B4BDF9431596370200CA5338 /* InfoPlist.strings */,
+				B482F7D415965B2100E1A642 /* Credits.html */,
 				B4BDF9451596370200CA5338 /* QRFlipsideViewController.xib */,
-				B4BDF9471596370200CA5338 /* QRMainViewController_iPad.xib */,
+				B4BDF9471596370200CA5338 /* QRMainViewController_iPad--UNUSED_RIGHT_NOW.xib */,
 				B4BDF9491596370200CA5338 /* QRMainViewController_iPhone.xib */,
 				B4BDF94B1596370200CA5338 /* main.m */,
 				B4BDF94C1596370200CA5338 /* QRAppDelegate.h */,
@@ -261,6 +268,7 @@
 		B4BDF95D1596374000CA5338 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B482F7D91596641D00E1A642 /* Config.plist */,
 				B4BDF992159650E700CA5338 /* PDKeychainBindingsController.h */,
 				B4BDF993159650E700CA5338 /* PDKeychainBindingsController.m */,
 				B4BDF95E1596374000CA5338 /* NSXMLNode+Additions.h */,
@@ -325,6 +333,8 @@
 		B4BDF97D1596458700CA5338 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				B482F7DE15967DB600E1A642 /* CTidy.h */,
+				B482F7DF15967DB600E1A642 /* CTidy.m */,
 				B4BDF97E1596458700CA5338 /* DDXMLPrivate.h */,
 			);
 			path = Private;
@@ -426,10 +436,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4BDF9541596370200CA5338 /* InfoPlist.strings in Resources */,
 				B4BDF9551596370200CA5338 /* QRFlipsideViewController.xib in Resources */,
-				B4BDF9561596370200CA5338 /* QRMainViewController_iPad.xib in Resources */,
+				B4BDF9561596370200CA5338 /* QRMainViewController_iPad--UNUSED_RIGHT_NOW.xib in Resources */,
 				B4BDF9571596370200CA5338 /* QRMainViewController_iPhone.xib in Resources */,
+				B482F7D515965B2200E1A642 /* Credits.html in Resources */,
+				B482F7DB1596641D00E1A642 /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,12 +451,12 @@
 				B4BDF8E51596352400CA5338 /* PTKeyCodes.plist in Resources */,
 				B4BDF8E61596352400CA5338 /* PTKeyComboPanel.xib in Resources */,
 				B4BDF8F81596368500CA5338 /* AppIcon.icns in Resources */,
-				B4BDF8F91596368500CA5338 /* Config.plist in Resources */,
 				B4BDF8FA1596368500CA5338 /* Credits.rtf in Resources */,
 				B4BDF8FC1596368500CA5338 /* MainMenu.xib in Resources */,
 				B4BDF8FD1596368500CA5338 /* MenubarTemplate.png in Resources */,
 				B4BDF8FF1596368500CA5338 /* QuickRadar-Info.plist in Resources */,
 				B4BDF9001596368500CA5338 /* RadarWindow.xib in Resources */,
+				B482F7DA1596641D00E1A642 /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +481,7 @@
 				B4BDF9821596458700CA5338 /* DDXMLElement.m in Sources */,
 				B4BDF9831596458700CA5338 /* DDXMLNode.m in Sources */,
 				B4BDF995159650EE00CA5338 /* PDKeychainBindingsController.m in Sources */,
+				B482F7E015967DB600E1A642 /* CTidy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,14 +504,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B4BDF9431596370200CA5338 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B4BDF9441596370200CA5338 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		B4BDF9451596370200CA5338 /* QRFlipsideViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -508,12 +512,12 @@
 			name = QRFlipsideViewController.xib;
 			sourceTree = "<group>";
 		};
-		B4BDF9471596370200CA5338 /* QRMainViewController_iPad.xib */ = {
+		B4BDF9471596370200CA5338 /* QRMainViewController_iPad--UNUSED_RIGHT_NOW.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B4BDF9481596370200CA5338 /* en */,
 			);
-			name = QRMainViewController_iPad.xib;
+			name = "QRMainViewController_iPad--UNUSED_RIGHT_NOW.xib";
 			sourceTree = "<group>";
 		};
 		B4BDF9491596370200CA5338 /* QRMainViewController_iPhone.xib */ = {
@@ -540,7 +544,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ios/App/QuickRadar-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					/usr/include/tidy,
+				);
 				INFOPLIST_FILE = "ios/App/QuickRadar-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -563,7 +570,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ios/App/QuickRadar-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					/usr/include/tidy,
+				);
 				INFOPLIST_FILE = "ios/App/QuickRadar-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

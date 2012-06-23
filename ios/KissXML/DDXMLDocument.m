@@ -1,8 +1,8 @@
 #import "DDXMLPrivate.h"
 #import "NSString+DDXML.h"
-//#if TARGET_OS_IPHONE
-//#import "Private/CTidy.h"
-//#endif
+#if TARGET_OS_IPHONE
+    #import "Private/CTidy.h"
+#endif
 
 #if ! __has_feature(objc_arc)
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
@@ -88,15 +88,17 @@
 	}
 
 #if TARGET_OS_IPHONE
-    //ill do this once I finished adding CTidy to KissXML
-//	if (mask & DDXMLDocumentTidyHTML)
-//	{
-//		data = [[CTidy tidy] tidyData:data inputFormat:TidyFormat_HTML outputFormat:TidyFormat_XHTML diagnostics:NULL error:&theError];
-//    }
-//	else if (mask & DDXMLDocumentTidyXML)
-//	{
-//		data = [[CTidy tidy] tidyData:data inputFormat:TidyFormat_XML outputFormat:TidyFormat_XML diagnostics:NULL error:&theError];
-//		}
+    if (mask & DDXMLDocumentTidyHTML)
+    {
+        data = [[CTidy tidy] tidyData:data inputFormat:TidyFormat_HTML outputFormat:TidyFormat_XHTML diagnostics:NULL error:error];
+    }
+    else if (mask & DDXMLDocumentTidyXML)
+    {
+        data = [[CTidy tidy] tidyData:data inputFormat:TidyFormat_XML outputFormat:TidyFormat_XML diagnostics:NULL error:error];
+    }
+    if(!data) {
+        return nil;
+    }
 #endif
 
 	// Even though xmlKeepBlanksDefault(0) is called in DDXMLNode's initialize method,

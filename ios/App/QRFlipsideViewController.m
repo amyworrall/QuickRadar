@@ -7,6 +7,7 @@
 //
 
 #import "QRFlipsideViewController.h"
+#import "PasswordStoring.h"
 
 @interface QRFlipsideViewController ()
 
@@ -26,28 +27,36 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    PasswordStoring *store = [[PasswordStoring alloc] init];
+    [store load];
+    self.radarUsernameField.text = store.username;
+    self.radarPasswordField.text = store.password;
+    
+    id u = [[NSBundle mainBundle] URLForResource:@"Credits" withExtension:@"html"];
+    id r = [NSURLRequest requestWithURL:u];
+    [self.aboutWebview loadRequest:r];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
+    return NO;
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+//        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+//    } else {
+//        return YES;
+//    }
 }
 
 #pragma mark - Actions
 
 - (IBAction)done:(id)sender
 {
+    PasswordStoring *store = [[PasswordStoring alloc] init];
+    store.username = self.radarUsernameField.text;
+    store.password = self.radarPasswordField.text;
+    [store save];
     [self.delegate flipsideViewControllerDidFinish:self];
 }
 
