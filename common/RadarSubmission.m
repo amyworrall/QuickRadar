@@ -9,6 +9,7 @@
 #import "RadarSubmission.h"
 #import "NSXMLNode+Additions.h"
 #import "SuperURLConnection.h"
+#import "PasswordStoring.h"
 #import <Security/Security.h>
 
 @interface RadarSubmission ()
@@ -60,7 +61,10 @@
 		if (!data)
 		{
 			NSLog(@"Connection error %@", error);
-			[NSApp presentError:error];
+#if TARGET_OS_IPHONE
+#else
+            [NSApp presentError:error];
+#endif
 			bail(); 
 			return;
 		}
@@ -82,40 +86,23 @@
 		NSString *loginAction = [form attributeForName:@"action"].stringValue;
 		NSURL *loginURL = [[NSURL URLWithString:@"https://bugreport.apple.com"] URLByAppendingPathComponent:loginAction];
 		
-//		NSLog(@"login URL = %@", loginURL);
-//		return;
-        NSString *serverName = @"bugreport.apple.com";
-        char *passwordBytes = NULL;
-        UInt32 passwordLength = 0;
-		NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        NSString *username = [prefs objectForKey: @"username"];
-		OSStatus keychainResult = SecKeychainFindInternetPassword(NULL,
-                                                                  (UInt32)[serverName lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
-                                                                  [serverName cStringUsingEncoding: NSUTF8StringEncoding],
-                                                                  0,
-                                                                  NULL,
-                                                                  (UInt32)[username lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
-                                                                  [username cStringUsingEncoding: NSUTF8StringEncoding],
-                                                                  0,
-                                                                  NULL,
-                                                                  443,
-                                                                  kSecProtocolTypeAny,
-                                                                  kSecAuthenticationTypeAny,
-                                                                  &passwordLength,
-                                                                  (void **)&passwordBytes,
-                                                                  NULL);
-        if (keychainResult) {
-            NSLog(@"Password not found");
+        PasswordStoring *store = [[PasswordStoring alloc] init];
+        [store load];
+        if(!store.username.length || !store.password.length)
+		{
+            NSError *error = [NSError errorWithDomain:@"QR" code:100 userInfo:[NSDictionary dictionaryWithObject:@"No User or password" forKey:NSLocalizedDescriptionKey]];
+			NSLog(@"Connection error %@", error);
+#if TARGET_OS_IPHONE
+#else
+            [NSApp presentError:error];
+#endif	
             bail();
-            return;
-        };
-		
-		NSString *password = [[NSString alloc] initWithBytes:passwordBytes length:passwordLength encoding:NSUTF8StringEncoding];
-						
-        SecKeychainItemFreeContent(NULL, passwordBytes);
+			return;
+		}
+
 		NSDictionary *loginFormParams = [NSDictionary dictionaryWithObjectsAndKeys:
-										 username, @"theAccountName",
-										 password, @"theAccountPW",
+										 store.username, @"theAccountName",
+										 store.password, @"theAccountPW",
 										 @"4", @"1.Continue.x",
 										 @"5", @"1.Continue.y",
 										 @"", @"theAuxValue",
@@ -144,8 +131,11 @@
 		if (!data)
 		{
 			NSLog(@"Connection error %@", error);
-			[NSApp presentError:error];
-			 bail(); 
+#if TARGET_OS_IPHONE
+#else
+            [NSApp presentError:error];
+#endif	
+            bail();
 			return;
 		}
 		
@@ -178,8 +168,11 @@
 		if (!data)
 		{
 			NSLog(@"Connection error %@", error);
-			[NSApp presentError:error];
-			bail(); 
+#if TARGET_OS_IPHONE
+#else
+            [NSApp presentError:error];
+#endif		
+            bail();
 			return;
 		}
 		
@@ -229,8 +222,11 @@
 		if (!data)
 		{
 			NSLog(@"Connection error %@", error);
-			[NSApp presentError:error];
-			bail(); 
+#if TARGET_OS_IPHONE
+#else
+            [NSApp presentError:error];
+#endif		
+            bail();
 			return;
 		}
 
@@ -424,8 +420,11 @@
 		if (!data)
 		{
 			NSLog(@"Connection error %@", error);
-			[NSApp presentError:error];
-			bail(); 
+#if TARGET_OS_IPHONE
+#else
+            [NSApp presentError:error];
+#endif		
+            bail();
 			return;
 		}
 		

@@ -8,28 +8,52 @@
 
 /* Begin PBXBuildFile section */
 		98EACACC158A86460078D06C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EACACB158A86460078D06C /* Security.framework */; };
-		98EACAD0158A89670078D06C /* PasswordStoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EACACF158A89670078D06C /* PasswordStoring.m */; };
-		B4688666158FF4D900C94B09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B4688665158FF4D900C94B09 /* README.md */; };
-		B4688669158FF91A00C94B09 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4688667158FF91A00C94B09 /* Appicon.icns */; };
-		B4EC27EC1591577000E79E8B /* libPTHotkey-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */; };
-		B4EC27EF1591577A00E79E8B /* PTKeyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */; };
-		B4EC27F01591577A00E79E8B /* PTKeyComboPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */; };
-		E1C10ACA158A7D02003A3C01 /* License in Resources */ = {isa = PBXBuildFile; fileRef = E1C10AC9158A7D02003A3C01 /* License */; };
+		B4BDF8AA1596341F00CA5338 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF8A81596341F00CA5338 /* Growl.framework */; };
+		B4BDF8AC1596342500CA5338 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B4BDF8A81596341F00CA5338 /* Growl.framework */; };
+		B4BDF8E41596352400CA5338 /* libPTHotkey-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF8DA1596352400CA5338 /* libPTHotkey-OSX.a */; };
+		B4BDF8E51596352400CA5338 /* PTKeyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8DF1596352400CA5338 /* PTKeyCodes.plist */; };
+		B4BDF8E61596352400CA5338 /* PTKeyComboPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8E31596352400CA5338 /* PTKeyComboPanel.xib */; };
+		B4BDF8F71596368500CA5338 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8E91596368500CA5338 /* AppDelegate.m */; };
+		B4BDF8F81596368500CA5338 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EA1596368500CA5338 /* AppIcon.icns */; };
+		B4BDF8F91596368500CA5338 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EB1596368500CA5338 /* Config.plist */; };
+		B4BDF8FA1596368500CA5338 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EC1596368500CA5338 /* Credits.rtf */; };
+		B4BDF8FB1596368500CA5338 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8ED1596368500CA5338 /* main.m */; };
+		B4BDF8FC1596368500CA5338 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EE1596368500CA5338 /* MainMenu.xib */; };
+		B4BDF8FD1596368500CA5338 /* MenubarTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EF1596368500CA5338 /* MenubarTemplate.png */; };
+		B4BDF8FE1596368500CA5338 /* PasswordStoringWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8F11596368500CA5338 /* PasswordStoringWindow.m */; };
+		B4BDF8FF1596368500CA5338 /* QuickRadar-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8F21596368500CA5338 /* QuickRadar-Info.plist */; };
+		B4BDF9001596368500CA5338 /* RadarWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8F41596368500CA5338 /* RadarWindow.xib */; };
+		B4BDF9011596368500CA5338 /* RadarWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8F61596368500CA5338 /* RadarWindowController.m */; };
+		B4BDF91F159636CD00CA5338 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF91E159636CD00CA5338 /* UIKit.framework */; };
+		B4BDF921159636CD00CA5338 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF920159636CD00CA5338 /* Foundation.framework */; };
+		B4BDF923159636CD00CA5338 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF922159636CD00CA5338 /* CoreGraphics.framework */; };
+		B4BDF9541596370200CA5338 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF9431596370200CA5338 /* InfoPlist.strings */; };
+		B4BDF9551596370200CA5338 /* QRFlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF9451596370200CA5338 /* QRFlipsideViewController.xib */; };
+		B4BDF9561596370200CA5338 /* QRMainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF9471596370200CA5338 /* QRMainViewController_iPad.xib */; };
+		B4BDF9571596370200CA5338 /* QRMainViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF9491596370200CA5338 /* QRMainViewController_iPhone.xib */; };
+		B4BDF9581596370200CA5338 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF94B1596370200CA5338 /* main.m */; };
+		B4BDF9591596370200CA5338 /* QRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF94D1596370200CA5338 /* QRAppDelegate.m */; };
+		B4BDF95A1596370200CA5338 /* QRFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF94F1596370200CA5338 /* QRFlipsideViewController.m */; };
+		B4BDF95B1596370200CA5338 /* QRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF9511596370200CA5338 /* QRMainViewController.m */; };
+		B4BDF9661596374000CA5338 /* NSXMLNode+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF95F1596374000CA5338 /* NSXMLNode+Additions.m */; };
+		B4BDF9671596374000CA5338 /* PasswordStoring.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF9611596374000CA5338 /* PasswordStoring.m */; };
+		B4BDF9681596374000CA5338 /* RadarSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF9631596374000CA5338 /* RadarSubmission.m */; };
+		B4BDF9691596374000CA5338 /* SuperURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF9651596374000CA5338 /* SuperURLConnection.m */; };
+		B4BDF96B1596383E00CA5338 /* NSXMLNode+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF95F1596374000CA5338 /* NSXMLNode+Additions.m */; };
+		B4BDF96C1596383E00CA5338 /* PasswordStoring.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF9611596374000CA5338 /* PasswordStoring.m */; };
+		B4BDF96D1596383E00CA5338 /* RadarSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF9631596374000CA5338 /* RadarSubmission.m */; };
+		B4BDF96E1596383E00CA5338 /* SuperURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF9651596374000CA5338 /* SuperURLConnection.m */; };
+		B4BDF97F1596458700CA5338 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF9721596458700CA5338 /* DDXMLElementAdditions.m */; };
+		B4BDF9801596458700CA5338 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF9751596458700CA5338 /* NSString+DDXML.m */; };
+		B4BDF9811596458700CA5338 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF9781596458700CA5338 /* DDXMLDocument.m */; };
+		B4BDF9821596458700CA5338 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF97A1596458700CA5338 /* DDXMLElement.m */; };
+		B4BDF9831596458700CA5338 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF97C1596458700CA5338 /* DDXMLNode.m */; };
+		B4BDF994159650ED00CA5338 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF993159650E700CA5338 /* PDKeychainBindingsController.m */; };
+		B4BDF995159650EE00CA5338 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF993159650E700CA5338 /* PDKeychainBindingsController.m */; };
+		B4BDF997159653CA00CA5338 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF996159653CA00CA5338 /* libxml2.dylib */; };
+		B4BDF999159653E100CA5338 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF998159653E100CA5338 /* Security.framework */; };
 		E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CC518D156257BF0027FB83 /* Cocoa.framework */; };
-		E1CC519A156257BF0027FB83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC5199156257BF0027FB83 /* main.m */; };
-		E1CC519E156257BF0027FB83 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E1CC519C156257BF0027FB83 /* Credits.rtf */; };
-		E1CC51A1156257BF0027FB83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51A0156257BF0027FB83 /* AppDelegate.m */; };
-		E1CC51A4156257BF0027FB83 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CC51A2156257BF0027FB83 /* MainMenu.xib */; };
 		E1CC51AE156259AC0027FB83 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CC51AD156259AC0027FB83 /* Carbon.framework */; };
-		E1CC51B115625A8D0027FB83 /* RadarWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51B015625A8D0027FB83 /* RadarWindowController.m */; };
-		E1CC51B315625AAD0027FB83 /* RadarWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CC51B215625AAD0027FB83 /* RadarWindow.xib */; };
-		E1CC51B515625C5B0027FB83 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1CC51B415625C5B0027FB83 /* Config.plist */; };
-		E1CC51BD156269CC0027FB83 /* RadarSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51BC156269CC0027FB83 /* RadarSubmission.m */; };
-		E1CC51ED1563BC1E0027FB83 /* NSXMLNode+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */; };
-		E1CC51F01563BF720027FB83 /* SuperURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51EF1563BF720027FB83 /* SuperURLConnection.m */; };
-		E1E909101590ABBA0019F189 /* MenubarTemplate.tif in Resources */ = {isa = PBXBuildFile; fileRef = E1E9090F1590ABBA0019F189 /* MenubarTemplate.tif */; };
-		E1F8590B158A2D2F005F77DA /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
-		E1F8590E158A2EEC005F77DA /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,7 +63,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E1F8590E158A2EEC005F77DA /* Growl.framework in CopyFiles */,
+				B4BDF8AC1596342500CA5338 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,42 +71,91 @@
 
 /* Begin PBXFileReference section */
 		98EACACB158A86460078D06C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		98EACACE158A89670078D06C /* PasswordStoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStoring.h; sourceTree = "<group>"; };
-		98EACACF158A89670078D06C /* PasswordStoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStoring.m; sourceTree = "<group>"; };
-		B4688665158FF4D900C94B09 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
-		B4688667158FF91A00C94B09 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
-		B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPTHotkey-OSX.a"; path = "PTHotkey/libPTHotkey-OSX.a"; sourceTree = "<group>"; };
-		B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = PTKeyCodes.plist; path = PTHotkey/PTKeyCodes.plist; sourceTree = SOURCE_ROOT; };
-		B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PTKeyComboPanel.xib; path = PTHotkey/PTKeyComboPanel.xib; sourceTree = SOURCE_ROOT; };
-		E1C10AC9158A7D02003A3C01 /* License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License; path = ../License; sourceTree = "<group>"; };
+		B4BDF8A81596341F00CA5338 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = osx/Growl.framework; sourceTree = "<group>"; };
+		B4BDF8DA1596352400CA5338 /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPTHotkey-OSX.a"; sourceTree = "<group>"; };
+		B4BDF8DB1596352400CA5338 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKey.h; sourceTree = "<group>"; };
+		B4BDF8DC1596352400CA5338 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKeyCenter.h; sourceTree = "<group>"; };
+		B4BDF8DD1596352400CA5338 /* PTHotKeyLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKeyLib.h; sourceTree = "<group>"; };
+		B4BDF8DE1596352400CA5338 /* PTKeyBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyBroadcaster.h; sourceTree = "<group>"; };
+		B4BDF8DF1596352400CA5338 /* PTKeyCodes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = PTKeyCodes.plist; sourceTree = "<group>"; };
+		B4BDF8E01596352400CA5338 /* PTKeyCodeTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyCodeTranslator.h; sourceTree = "<group>"; };
+		B4BDF8E11596352400CA5338 /* PTKeyCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyCombo.h; sourceTree = "<group>"; };
+		B4BDF8E21596352400CA5338 /* PTKeyComboPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyComboPanel.h; sourceTree = "<group>"; };
+		B4BDF8E31596352400CA5338 /* PTKeyComboPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTKeyComboPanel.xib; sourceTree = "<group>"; };
+		B4BDF8E81596368500CA5338 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B4BDF8E91596368500CA5338 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B4BDF8EA1596368500CA5338 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		B4BDF8EB1596368500CA5338 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		B4BDF8EC1596368500CA5338 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		B4BDF8ED1596368500CA5338 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B4BDF8EE1596368500CA5338 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		B4BDF8EF1596368500CA5338 /* MenubarTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenubarTemplate.png; sourceTree = "<group>"; };
+		B4BDF8F01596368500CA5338 /* PasswordStoringWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStoringWindow.h; sourceTree = "<group>"; };
+		B4BDF8F11596368500CA5338 /* PasswordStoringWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStoringWindow.m; sourceTree = "<group>"; };
+		B4BDF8F21596368500CA5338 /* QuickRadar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "QuickRadar-Info.plist"; sourceTree = "<group>"; };
+		B4BDF8F31596368500CA5338 /* QuickRadar-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickRadar-Prefix.pch"; sourceTree = "<group>"; };
+		B4BDF8F41596368500CA5338 /* RadarWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarWindow.xib; sourceTree = "<group>"; };
+		B4BDF8F51596368500CA5338 /* RadarWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarWindowController.h; sourceTree = "<group>"; };
+		B4BDF8F61596368500CA5338 /* RadarWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarWindowController.m; sourceTree = "<group>"; };
+		B4BDF91C159636CD00CA5338 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4BDF91E159636CD00CA5338 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		B4BDF920159636CD00CA5338 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B4BDF922159636CD00CA5338 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		B4BDF9441596370200CA5338 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B4BDF9461596370200CA5338 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/QRFlipsideViewController.xib; sourceTree = "<group>"; };
+		B4BDF9481596370200CA5338 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/QRMainViewController_iPad.xib; sourceTree = "<group>"; };
+		B4BDF94A1596370200CA5338 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/QRMainViewController_iPhone.xib; sourceTree = "<group>"; };
+		B4BDF94B1596370200CA5338 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B4BDF94C1596370200CA5338 /* QRAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRAppDelegate.h; sourceTree = "<group>"; };
+		B4BDF94D1596370200CA5338 /* QRAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRAppDelegate.m; sourceTree = "<group>"; };
+		B4BDF94E1596370200CA5338 /* QRFlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRFlipsideViewController.h; sourceTree = "<group>"; };
+		B4BDF94F1596370200CA5338 /* QRFlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRFlipsideViewController.m; sourceTree = "<group>"; };
+		B4BDF9501596370200CA5338 /* QRMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRMainViewController.h; sourceTree = "<group>"; };
+		B4BDF9511596370200CA5338 /* QRMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRMainViewController.m; sourceTree = "<group>"; };
+		B4BDF9521596370200CA5338 /* QuickRadar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "QuickRadar-Info.plist"; sourceTree = "<group>"; };
+		B4BDF9531596370200CA5338 /* QuickRadar-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickRadar-Prefix.pch"; sourceTree = "<group>"; };
+		B4BDF95E1596374000CA5338 /* NSXMLNode+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLNode+Additions.h"; sourceTree = "<group>"; };
+		B4BDF95F1596374000CA5338 /* NSXMLNode+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLNode+Additions.m"; sourceTree = "<group>"; };
+		B4BDF9601596374000CA5338 /* PasswordStoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStoring.h; sourceTree = "<group>"; };
+		B4BDF9611596374000CA5338 /* PasswordStoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStoring.m; sourceTree = "<group>"; };
+		B4BDF9621596374000CA5338 /* RadarSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarSubmission.h; sourceTree = "<group>"; };
+		B4BDF9631596374000CA5338 /* RadarSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarSubmission.m; sourceTree = "<group>"; };
+		B4BDF9641596374000CA5338 /* SuperURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperURLConnection.h; sourceTree = "<group>"; };
+		B4BDF9651596374000CA5338 /* SuperURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperURLConnection.m; sourceTree = "<group>"; };
+		B4BDF9711596458700CA5338 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
+		B4BDF9721596458700CA5338 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
+		B4BDF9741596458700CA5338 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
+		B4BDF9751596458700CA5338 /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DDXML.m"; sourceTree = "<group>"; };
+		B4BDF9761596458700CA5338 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
+		B4BDF9771596458700CA5338 /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLDocument.h; sourceTree = "<group>"; };
+		B4BDF9781596458700CA5338 /* DDXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLDocument.m; sourceTree = "<group>"; };
+		B4BDF9791596458700CA5338 /* DDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElement.h; sourceTree = "<group>"; };
+		B4BDF97A1596458700CA5338 /* DDXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElement.m; sourceTree = "<group>"; };
+		B4BDF97B1596458700CA5338 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
+		B4BDF97C1596458700CA5338 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
+		B4BDF97E1596458700CA5338 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
+		B4BDF992159650E700CA5338 /* PDKeychainBindingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDKeychainBindingsController.h; sourceTree = "<group>"; };
+		B4BDF993159650E700CA5338 /* PDKeychainBindingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindingsController.m; sourceTree = "<group>"; };
+		B4BDF996159653CA00CA5338 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
+		B4BDF998159653E100CA5338 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		E1CC5189156257BF0027FB83 /* QuickRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CC518D156257BF0027FB83 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		E1CC5190156257BF0027FB83 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		E1CC5191156257BF0027FB83 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		E1CC5192156257BF0027FB83 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E1CC5195156257BF0027FB83 /* QuickRadar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuickRadar-Info.plist"; sourceTree = "<group>"; };
-		E1CC5199156257BF0027FB83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E1CC519B156257BF0027FB83 /* QuickRadar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickRadar-Prefix.pch"; sourceTree = "<group>"; };
-		E1CC519D156257BF0027FB83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		E1CC519F156257BF0027FB83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		E1CC51A0156257BF0027FB83 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E1CC51A3156257BF0027FB83 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E1CC51AD156259AC0027FB83 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		E1CC51AF15625A8D0027FB83 /* RadarWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarWindowController.h; sourceTree = "<group>"; };
-		E1CC51B015625A8D0027FB83 /* RadarWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarWindowController.m; sourceTree = "<group>"; };
-		E1CC51B215625AAD0027FB83 /* RadarWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarWindow.xib; sourceTree = "<group>"; };
-		E1CC51B415625C5B0027FB83 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
-		E1CC51BB156269CC0027FB83 /* RadarSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarSubmission.h; sourceTree = "<group>"; };
-		E1CC51BC156269CC0027FB83 /* RadarSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarSubmission.m; sourceTree = "<group>"; };
-		E1CC51EB1563BC1D0027FB83 /* NSXMLNode+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLNode+Additions.h"; sourceTree = "<group>"; };
-		E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLNode+Additions.m"; sourceTree = "<group>"; };
-		E1CC51EE1563BF720027FB83 /* SuperURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperURLConnection.h; sourceTree = "<group>"; };
-		E1CC51EF1563BF720027FB83 /* SuperURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperURLConnection.m; sourceTree = "<group>"; };
-		E1E9090F1590ABBA0019F189 /* MenubarTemplate.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = MenubarTemplate.tif; sourceTree = "<group>"; };
-		E1F8590A158A2D2F005F77DA /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B4BDF919159636CD00CA5338 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4BDF999159653E100CA5338 /* Security.framework in Frameworks */,
+				B4BDF997159653CA00CA5338 /* libxml2.dylib in Frameworks */,
+				B4BDF91F159636CD00CA5338 /* UIKit.framework in Frameworks */,
+				B4BDF921159636CD00CA5338 /* Foundation.framework in Frameworks */,
+				B4BDF923159636CD00CA5338 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1CC5186156257BF0027FB83 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,19 +163,177 @@
 				98EACACC158A86460078D06C /* Security.framework in Frameworks */,
 				E1CC51AE156259AC0027FB83 /* Carbon.framework in Frameworks */,
 				E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */,
-				E1F8590B158A2D2F005F77DA /* Growl.framework in Frameworks */,
-				B4EC27EC1591577000E79E8B /* libPTHotkey-OSX.a in Frameworks */,
+				B4BDF8AA1596341F00CA5338 /* Growl.framework in Frameworks */,
+				B4BDF8E41596352400CA5338 /* libPTHotkey-OSX.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B4BDF8A7159633F700CA5338 /* OSX */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF8D91596352400CA5338 /* PTHotkey */,
+				B4BDF8A81596341F00CA5338 /* Growl.framework */,
+				E1CC51AD156259AC0027FB83 /* Carbon.framework */,
+				98EACACB158A86460078D06C /* Security.framework */,
+				E1CC518D156257BF0027FB83 /* Cocoa.framework */,
+			);
+			name = OSX;
+			sourceTree = "<group>";
+		};
+		B4BDF8D91596352400CA5338 /* PTHotkey */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF8DA1596352400CA5338 /* libPTHotkey-OSX.a */,
+				B4BDF8DB1596352400CA5338 /* PTHotKey.h */,
+				B4BDF8DC1596352400CA5338 /* PTHotKeyCenter.h */,
+				B4BDF8DD1596352400CA5338 /* PTHotKeyLib.h */,
+				B4BDF8DE1596352400CA5338 /* PTKeyBroadcaster.h */,
+				B4BDF8DF1596352400CA5338 /* PTKeyCodes.plist */,
+				B4BDF8E01596352400CA5338 /* PTKeyCodeTranslator.h */,
+				B4BDF8E11596352400CA5338 /* PTKeyCombo.h */,
+				B4BDF8E21596352400CA5338 /* PTKeyComboPanel.h */,
+				B4BDF8E31596352400CA5338 /* PTKeyComboPanel.xib */,
+			);
+			name = PTHotkey;
+			path = osx/PTHotkey;
+			sourceTree = "<group>";
+		};
+		B4BDF8E71596368500CA5338 /* OSX-App */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF8E81596368500CA5338 /* AppDelegate.h */,
+				B4BDF8E91596368500CA5338 /* AppDelegate.m */,
+				B4BDF8EA1596368500CA5338 /* AppIcon.icns */,
+				B4BDF8EB1596368500CA5338 /* Config.plist */,
+				B4BDF8EC1596368500CA5338 /* Credits.rtf */,
+				B4BDF8ED1596368500CA5338 /* main.m */,
+				B4BDF8EE1596368500CA5338 /* MainMenu.xib */,
+				B4BDF8EF1596368500CA5338 /* MenubarTemplate.png */,
+				B4BDF8F01596368500CA5338 /* PasswordStoringWindow.h */,
+				B4BDF8F11596368500CA5338 /* PasswordStoringWindow.m */,
+				B4BDF8F21596368500CA5338 /* QuickRadar-Info.plist */,
+				B4BDF8F31596368500CA5338 /* QuickRadar-Prefix.pch */,
+				B4BDF8F41596368500CA5338 /* RadarWindow.xib */,
+				B4BDF8F51596368500CA5338 /* RadarWindowController.h */,
+				B4BDF8F61596368500CA5338 /* RadarWindowController.m */,
+			);
+			name = "OSX-App";
+			path = osx/App;
+			sourceTree = "<group>";
+		};
+		B4BDF9021596369A00CA5338 /* IOS */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF96F1596458700CA5338 /* KissXML */,
+				B4BDF91E159636CD00CA5338 /* UIKit.framework */,
+				B4BDF920159636CD00CA5338 /* Foundation.framework */,
+				B4BDF922159636CD00CA5338 /* CoreGraphics.framework */,
+				B4BDF998159653E100CA5338 /* Security.framework */,
+				B4BDF996159653CA00CA5338 /* libxml2.dylib */,
+			);
+			name = IOS;
+			sourceTree = "<group>";
+		};
+		B4BDF9421596370200CA5338 /* IOS-App */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF9431596370200CA5338 /* InfoPlist.strings */,
+				B4BDF9451596370200CA5338 /* QRFlipsideViewController.xib */,
+				B4BDF9471596370200CA5338 /* QRMainViewController_iPad.xib */,
+				B4BDF9491596370200CA5338 /* QRMainViewController_iPhone.xib */,
+				B4BDF94B1596370200CA5338 /* main.m */,
+				B4BDF94C1596370200CA5338 /* QRAppDelegate.h */,
+				B4BDF94D1596370200CA5338 /* QRAppDelegate.m */,
+				B4BDF94E1596370200CA5338 /* QRFlipsideViewController.h */,
+				B4BDF94F1596370200CA5338 /* QRFlipsideViewController.m */,
+				B4BDF9501596370200CA5338 /* QRMainViewController.h */,
+				B4BDF9511596370200CA5338 /* QRMainViewController.m */,
+				B4BDF9521596370200CA5338 /* QuickRadar-Info.plist */,
+				B4BDF9531596370200CA5338 /* QuickRadar-Prefix.pch */,
+			);
+			name = "IOS-App";
+			path = ios/App;
+			sourceTree = "<group>";
+		};
+		B4BDF95D1596374000CA5338 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF992159650E700CA5338 /* PDKeychainBindingsController.h */,
+				B4BDF993159650E700CA5338 /* PDKeychainBindingsController.m */,
+				B4BDF95E1596374000CA5338 /* NSXMLNode+Additions.h */,
+				B4BDF95F1596374000CA5338 /* NSXMLNode+Additions.m */,
+				B4BDF9601596374000CA5338 /* PasswordStoring.h */,
+				B4BDF9611596374000CA5338 /* PasswordStoring.m */,
+				B4BDF9621596374000CA5338 /* RadarSubmission.h */,
+				B4BDF9631596374000CA5338 /* RadarSubmission.m */,
+				B4BDF9641596374000CA5338 /* SuperURLConnection.h */,
+				B4BDF9651596374000CA5338 /* SuperURLConnection.m */,
+			);
+			name = Common;
+			path = common;
+			sourceTree = "<group>";
+		};
+		B4BDF96A1596374F00CA5338 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF95D1596374000CA5338 /* Common */,
+				B4BDF9421596370200CA5338 /* IOS-App */,
+				B4BDF8E71596368500CA5338 /* OSX-App */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		B4BDF96F1596458700CA5338 /* KissXML */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF9701596458700CA5338 /* Additions */,
+				B4BDF9731596458700CA5338 /* Categories */,
+				B4BDF9761596458700CA5338 /* DDXML.h */,
+				B4BDF9771596458700CA5338 /* DDXMLDocument.h */,
+				B4BDF9781596458700CA5338 /* DDXMLDocument.m */,
+				B4BDF9791596458700CA5338 /* DDXMLElement.h */,
+				B4BDF97A1596458700CA5338 /* DDXMLElement.m */,
+				B4BDF97B1596458700CA5338 /* DDXMLNode.h */,
+				B4BDF97C1596458700CA5338 /* DDXMLNode.m */,
+				B4BDF97D1596458700CA5338 /* Private */,
+			);
+			name = KissXML;
+			path = ios/KissXML;
+			sourceTree = "<group>";
+		};
+		B4BDF9701596458700CA5338 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF9711596458700CA5338 /* DDXMLElementAdditions.h */,
+				B4BDF9721596458700CA5338 /* DDXMLElementAdditions.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		B4BDF9731596458700CA5338 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF9741596458700CA5338 /* NSString+DDXML.h */,
+				B4BDF9751596458700CA5338 /* NSString+DDXML.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		B4BDF97D1596458700CA5338 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				B4BDF97E1596458700CA5338 /* DDXMLPrivate.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		E1CC517E156257BF0027FB83 = {
 			isa = PBXGroup;
 			children = (
-				E1CC5193156257BF0027FB83 /* QuickRadar */,
-				E1CC5194156257BF0027FB83 /* Supporting Files */,
+				B4BDF96A1596374F00CA5338 /* Sources */,
 				E1CC518C156257BF0027FB83 /* Frameworks */,
 				E1CC518A156257BF0027FB83 /* Products */,
 			);
@@ -112,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				E1CC5189156257BF0027FB83 /* QuickRadar.app */,
+				B4BDF91C159636CD00CA5338 /* ios.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,72 +351,35 @@
 		E1CC518C156257BF0027FB83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */,
-				E1CC51AD156259AC0027FB83 /* Carbon.framework */,
-				98EACACB158A86460078D06C /* Security.framework */,
-				E1F8590A158A2D2F005F77DA /* Growl.framework */,
-				E1CC518D156257BF0027FB83 /* Cocoa.framework */,
-				E1CC518F156257BF0027FB83 /* Other Frameworks */,
+				B4BDF9021596369A00CA5338 /* IOS */,
+				B4BDF8A7159633F700CA5338 /* OSX */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E1CC518F156257BF0027FB83 /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E1CC5190156257BF0027FB83 /* AppKit.framework */,
-				E1CC5191156257BF0027FB83 /* CoreData.framework */,
-				E1CC5192156257BF0027FB83 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		E1CC5193156257BF0027FB83 /* QuickRadar */ = {
-			isa = PBXGroup;
-			children = (
-				E1CC519F156257BF0027FB83 /* AppDelegate.h */,
-				E1CC51A0156257BF0027FB83 /* AppDelegate.m */,
-				E1CC51A2156257BF0027FB83 /* MainMenu.xib */,
-				E1CC51AF15625A8D0027FB83 /* RadarWindowController.h */,
-				E1CC51B015625A8D0027FB83 /* RadarWindowController.m */,
-				E1CC51B215625AAD0027FB83 /* RadarWindow.xib */,
-				E1CC51B415625C5B0027FB83 /* Config.plist */,
-				E1CC51BB156269CC0027FB83 /* RadarSubmission.h */,
-				E1CC51BC156269CC0027FB83 /* RadarSubmission.m */,
-				E1CC51EE1563BF720027FB83 /* SuperURLConnection.h */,
-				E1CC51EF1563BF720027FB83 /* SuperURLConnection.m */,
-				E1CC51EB1563BC1D0027FB83 /* NSXMLNode+Additions.h */,
-				E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */,
-				98EACACE158A89670078D06C /* PasswordStoring.h */,
-				98EACACF158A89670078D06C /* PasswordStoring.m */,
-			);
-			path = QuickRadar;
-			sourceTree = "<group>";
-		};
-		E1CC5194156257BF0027FB83 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */,
-				B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */,
-				B4688667158FF91A00C94B09 /* Appicon.icns */,
-				E1E9090F1590ABBA0019F189 /* MenubarTemplate.tif */,
-				B4688665158FF4D900C94B09 /* README.md */,
-				E1CC5195156257BF0027FB83 /* QuickRadar-Info.plist */,
-				E1CC5199156257BF0027FB83 /* main.m */,
-				E1CC519B156257BF0027FB83 /* QuickRadar-Prefix.pch */,
-				E1CC519C156257BF0027FB83 /* Credits.rtf */,
-				E1C10AC9158A7D02003A3C01 /* License */,
-			);
-			name = "Supporting Files";
-			path = QuickRadar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E1CC5188156257BF0027FB83 /* QuickRadar */ = {
+		B4BDF91B159636CD00CA5338 /* ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1CC51A7156257BF0027FB83 /* Build configuration list for PBXNativeTarget "QuickRadar" */;
+			buildConfigurationList = B4BDF93F159636CD00CA5338 /* Build configuration list for PBXNativeTarget "ios" */;
+			buildPhases = (
+				B4BDF918159636CD00CA5338 /* Sources */,
+				B4BDF919159636CD00CA5338 /* Frameworks */,
+				B4BDF91A159636CD00CA5338 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ios;
+			productName = QuickRadar;
+			productReference = B4BDF91C159636CD00CA5338 /* ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E1CC5188156257BF0027FB83 /* osx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1CC51A7156257BF0027FB83 /* Build configuration list for PBXNativeTarget "osx" */;
 			buildPhases = (
 				E1CC5185156257BF0027FB83 /* Sources */,
 				E1CC5186156257BF0027FB83 /* Frameworks */,
@@ -195,7 +390,7 @@
 			);
 			dependencies = (
 			);
-			name = QuickRadar;
+			name = osx;
 			productName = QuickRadar;
 			productReference = E1CC5189156257BF0027FB83 /* QuickRadar.app */;
 			productType = "com.apple.product-type.application";
@@ -220,68 +415,166 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E1CC5188156257BF0027FB83 /* QuickRadar */,
+				E1CC5188156257BF0027FB83 /* osx */,
+				B4BDF91B159636CD00CA5338 /* ios */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B4BDF91A159636CD00CA5338 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4BDF9541596370200CA5338 /* InfoPlist.strings in Resources */,
+				B4BDF9551596370200CA5338 /* QRFlipsideViewController.xib in Resources */,
+				B4BDF9561596370200CA5338 /* QRMainViewController_iPad.xib in Resources */,
+				B4BDF9571596370200CA5338 /* QRMainViewController_iPhone.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1CC5187156257BF0027FB83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1CC519E156257BF0027FB83 /* Credits.rtf in Resources */,
-				E1CC51A4156257BF0027FB83 /* MainMenu.xib in Resources */,
-				E1CC51B315625AAD0027FB83 /* RadarWindow.xib in Resources */,
-				E1CC51B515625C5B0027FB83 /* Config.plist in Resources */,
-				E1C10ACA158A7D02003A3C01 /* License in Resources */,
-				B4688666158FF4D900C94B09 /* README.md in Resources */,
-				B4688669158FF91A00C94B09 /* Appicon.icns in Resources */,
-				E1E909101590ABBA0019F189 /* MenubarTemplate.tif in Resources */,
-				B4EC27EF1591577A00E79E8B /* PTKeyCodes.plist in Resources */,
-				B4EC27F01591577A00E79E8B /* PTKeyComboPanel.xib in Resources */,
+				B4BDF8E51596352400CA5338 /* PTKeyCodes.plist in Resources */,
+				B4BDF8E61596352400CA5338 /* PTKeyComboPanel.xib in Resources */,
+				B4BDF8F81596368500CA5338 /* AppIcon.icns in Resources */,
+				B4BDF8F91596368500CA5338 /* Config.plist in Resources */,
+				B4BDF8FA1596368500CA5338 /* Credits.rtf in Resources */,
+				B4BDF8FC1596368500CA5338 /* MainMenu.xib in Resources */,
+				B4BDF8FD1596368500CA5338 /* MenubarTemplate.png in Resources */,
+				B4BDF8FF1596368500CA5338 /* QuickRadar-Info.plist in Resources */,
+				B4BDF9001596368500CA5338 /* RadarWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B4BDF918159636CD00CA5338 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4BDF9581596370200CA5338 /* main.m in Sources */,
+				B4BDF9591596370200CA5338 /* QRAppDelegate.m in Sources */,
+				B4BDF95A1596370200CA5338 /* QRFlipsideViewController.m in Sources */,
+				B4BDF95B1596370200CA5338 /* QRMainViewController.m in Sources */,
+				B4BDF9661596374000CA5338 /* NSXMLNode+Additions.m in Sources */,
+				B4BDF9671596374000CA5338 /* PasswordStoring.m in Sources */,
+				B4BDF9681596374000CA5338 /* RadarSubmission.m in Sources */,
+				B4BDF9691596374000CA5338 /* SuperURLConnection.m in Sources */,
+				B4BDF97F1596458700CA5338 /* DDXMLElementAdditions.m in Sources */,
+				B4BDF9801596458700CA5338 /* NSString+DDXML.m in Sources */,
+				B4BDF9811596458700CA5338 /* DDXMLDocument.m in Sources */,
+				B4BDF9821596458700CA5338 /* DDXMLElement.m in Sources */,
+				B4BDF9831596458700CA5338 /* DDXMLNode.m in Sources */,
+				B4BDF995159650EE00CA5338 /* PDKeychainBindingsController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1CC5185156257BF0027FB83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1CC519A156257BF0027FB83 /* main.m in Sources */,
-				E1CC51A1156257BF0027FB83 /* AppDelegate.m in Sources */,
-				E1CC51B115625A8D0027FB83 /* RadarWindowController.m in Sources */,
-				E1CC51BD156269CC0027FB83 /* RadarSubmission.m in Sources */,
-				E1CC51ED1563BC1E0027FB83 /* NSXMLNode+Additions.m in Sources */,
-				E1CC51F01563BF720027FB83 /* SuperURLConnection.m in Sources */,
-				98EACAD0158A89670078D06C /* PasswordStoring.m in Sources */,
+				B4BDF8F71596368500CA5338 /* AppDelegate.m in Sources */,
+				B4BDF8FB1596368500CA5338 /* main.m in Sources */,
+				B4BDF8FE1596368500CA5338 /* PasswordStoringWindow.m in Sources */,
+				B4BDF9011596368500CA5338 /* RadarWindowController.m in Sources */,
+				B4BDF96B1596383E00CA5338 /* NSXMLNode+Additions.m in Sources */,
+				B4BDF96C1596383E00CA5338 /* PasswordStoring.m in Sources */,
+				B4BDF96D1596383E00CA5338 /* RadarSubmission.m in Sources */,
+				B4BDF96E1596383E00CA5338 /* SuperURLConnection.m in Sources */,
+				B4BDF994159650ED00CA5338 /* PDKeychainBindingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E1CC519C156257BF0027FB83 /* Credits.rtf */ = {
+		B4BDF9431596370200CA5338 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E1CC519D156257BF0027FB83 /* en */,
+				B4BDF9441596370200CA5338 /* en */,
 			);
-			name = Credits.rtf;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		E1CC51A2156257BF0027FB83 /* MainMenu.xib */ = {
+		B4BDF9451596370200CA5338 /* QRFlipsideViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E1CC51A3156257BF0027FB83 /* en */,
+				B4BDF9461596370200CA5338 /* en */,
 			);
-			name = MainMenu.xib;
+			name = QRFlipsideViewController.xib;
+			sourceTree = "<group>";
+		};
+		B4BDF9471596370200CA5338 /* QRMainViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4BDF9481596370200CA5338 /* en */,
+			);
+			name = QRMainViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		B4BDF9491596370200CA5338 /* QRMainViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4BDF94A1596370200CA5338 /* en */,
+			);
+			name = QRMainViewController_iPhone.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B4BDF940159636CD00CA5338 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode45-DP1.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ios/App/QuickRadar-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_FILE = "ios/App/QuickRadar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B4BDF941159636CD00CA5338 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode45-DP1.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ios/App/QuickRadar-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_FILE = "ios/App/QuickRadar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		E1CC51A5156257BF0027FB83 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -304,6 +597,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -326,6 +620,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
@@ -337,16 +632,18 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/osx\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "QuickRadar/QuickRadar-Prefix.pch";
+				GCC_PREFIX_HEADER = "osx/App/QuickRadar-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/PTHotKey/\"";
-				INFOPLIST_FILE = "QuickRadar/QuickRadar-Info.plist";
+				INFOPLIST_FILE = "osx/App/QuickRadar-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/PTHotkey\"",
+					"\"$(SRCROOT)/osx/PTHotkey\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = QuickRadar;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -357,16 +654,18 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/osx\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "QuickRadar/QuickRadar-Prefix.pch";
+				GCC_PREFIX_HEADER = "osx/App/QuickRadar-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/PTHotKey/\"";
-				INFOPLIST_FILE = "QuickRadar/QuickRadar-Info.plist";
+				INFOPLIST_FILE = "osx/App/QuickRadar-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/PTHotkey\"",
+					"\"$(SRCROOT)/osx/PTHotkey\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = QuickRadar;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -374,6 +673,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B4BDF93F159636CD00CA5338 /* Build configuration list for PBXNativeTarget "ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4BDF940159636CD00CA5338 /* Debug */,
+				B4BDF941159636CD00CA5338 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E1CC5183156257BF0027FB83 /* Build configuration list for PBXProject "QuickRadar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -383,7 +691,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1CC51A7156257BF0027FB83 /* Build configuration list for PBXNativeTarget "QuickRadar" */ = {
+		E1CC51A7156257BF0027FB83 /* Build configuration list for PBXNativeTarget "osx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1CC51A8156257BF0027FB83 /* Debug */,

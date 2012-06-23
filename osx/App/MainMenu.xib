@@ -20,7 +20,6 @@
 			<string>NSSecureTextFieldCell</string>
 			<string>NSTextField</string>
 			<string>NSTextFieldCell</string>
-			<string>NSUserDefaultsController</string>
 			<string>NSView</string>
 			<string>NSWindowTemplate</string>
 		</array>
@@ -1362,7 +1361,7 @@
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="439893737">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSBox" id="466953155">
@@ -1378,6 +1377,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{87, 14}, {417, 22}}</string>
 											<reference key="NSSuperview" ref="771531481"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="484631973"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSecureTextFieldCell" key="NSCell" id="613571182">
@@ -1420,6 +1420,7 @@
 											<int key="NSvFlags">270</int>
 											<string key="NSFrame">{{87, 51}, {417, 22}}</string>
 											<reference key="NSSuperview" ref="771531481"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="923063931"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="215522304">
@@ -1439,6 +1440,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{15, 53}, {67, 17}}</string>
 											<reference key="NSSuperview" ref="771531481"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="68150641"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="571082274">
@@ -1470,6 +1472,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{15, 19}, {67, 17}}</string>
 											<reference key="NSSuperview" ref="771531481"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="549571251"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="855286769">
@@ -1486,12 +1489,14 @@
 									</array>
 									<string key="NSFrame">{{1, 1}, {522, 83}}</string>
 									<reference key="NSSuperview" ref="466953155"/>
+									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="140570826"/>
 									<string key="NSReuseIdentifierKey">_NS:11</string>
 								</object>
 							</array>
 							<string key="NSFrame">{{17, 125}, {524, 99}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="771531481"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSOffsets">{0, 0}</string>
@@ -1529,6 +1534,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{87, 14}, {417, 22}}</string>
 											<reference key="NSSuperview" ref="950777169"/>
+											<reference key="NSWindow"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSecureTextFieldCell" key="NSCell" id="743390409">
 												<int key="NSCellFlags">342884416</int>
@@ -1550,6 +1556,7 @@
 											<int key="NSvFlags">270</int>
 											<string key="NSFrame">{{87, 51}, {417, 22}}</string>
 											<reference key="NSSuperview" ref="950777169"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="116214122"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="1039386062">
@@ -1569,6 +1576,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{15, 53}, {67, 17}}</string>
 											<reference key="NSSuperview" ref="950777169"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="878635220"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="35597699">
@@ -1587,6 +1595,7 @@
 											<int key="NSvFlags">268</int>
 											<string key="NSFrame">{{15, 19}, {67, 17}}</string>
 											<reference key="NSSuperview" ref="950777169"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="985249775"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="548281806">
@@ -1603,12 +1612,14 @@
 									</array>
 									<string key="NSFrame">{{1, 1}, {522, 83}}</string>
 									<reference key="NSSuperview" ref="484631973"/>
+									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="51288578"/>
 									<string key="NSReuseIdentifierKey">_NS:11</string>
 								</object>
 							</array>
 							<string key="NSFrame">{{17, 16}, {524, 99}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="950777169"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSOffsets">{0, 0}</string>
@@ -1631,6 +1642,8 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{558, 244}</string>
+					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="466953155"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
@@ -1644,10 +1657,7 @@
 				<string key="NSClassName">NSFontManager</string>
 			</object>
 			<object class="NSCustomObject" id="142029637">
-				<string key="NSClassName">PasswordStoring</string>
-			</object>
-			<object class="NSUserDefaultsController" id="1009318317">
-				<bool key="NSSharedInstance">YES</bool>
+				<string key="NSClassName">PasswordStoringWindow</string>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -2397,24 +2407,12 @@
 					<int key="connectionID">950</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: values.username</string>
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
 						<reference key="source" ref="68150641"/>
-						<reference key="destination" ref="1009318317"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="68150641"/>
-							<reference key="NSDestination" ref="1009318317"/>
-							<string key="NSLabel">value: values.username</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">values.username</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSContinuouslyUpdatesValue</string>
-								<boolean value="YES" key="NS.object.0"/>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
+						<reference key="destination" ref="142029637"/>
 					</object>
-					<int key="connectionID">819</int>
+					<int key="connectionID">952</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2425,52 +2423,20 @@
 					<int key="connectionID">931</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: values.openPassword</string>
-						<reference key="source" ref="985249775"/>
-						<reference key="destination" ref="1009318317"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="985249775"/>
-							<reference key="NSDestination" ref="1009318317"/>
-							<string key="NSLabel">value: values.openPassword</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">values.openPassword</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSContinuouslyUpdatesValue</string>
-								<boolean value="YES" key="NS.object.0"/>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">822</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: values.openUsername</string>
-						<reference key="source" ref="878635220"/>
-						<reference key="destination" ref="1009318317"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="878635220"/>
-							<reference key="NSDestination" ref="1009318317"/>
-							<string key="NSLabel">value: values.openUsername</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">values.openUsername</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSContinuouslyUpdatesValue</string>
-								<boolean value="YES" key="NS.object.0"/>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">821</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">radarPasswordField</string>
 						<reference key="source" ref="142029637"/>
 						<reference key="destination" ref="549571251"/>
 					</object>
 					<int key="connectionID">932</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">radarUsernameField</string>
+						<reference key="source" ref="142029637"/>
+						<reference key="destination" ref="68150641"/>
+					</object>
+					<int key="connectionID">951</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2620,11 +2586,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">494</int>
 						<reference key="object" ref="976324537"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">652</int>
-						<reference key="object" ref="1009318317"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -4496,7 +4457,6 @@
 				<string key="57.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="58.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="622.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="652.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<array key="683.IBNSViewMetadataConstraints">
 					<reference ref="465495396"/>
 					<reference ref="921518327"/>
@@ -4599,7 +4559,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">950</int>
+			<int key="maxID">952</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4655,71 +4615,25 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">NSDocument</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="printDocument:">id</string>
-						<string key="revertDocumentToSaved:">id</string>
-						<string key="runPageLayout:">id</string>
-						<string key="saveDocument:">id</string>
-						<string key="saveDocumentAs:">id</string>
-						<string key="saveDocumentTo:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="printDocument:">
-							<string key="name">printDocument:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="revertDocumentToSaved:">
-							<string key="name">revertDocumentToSaved:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="runPageLayout:">
-							<string key="name">runPageLayout:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocument:">
-							<string key="name">saveDocument:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocumentAs:">
-							<string key="name">saveDocumentAs:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocumentTo:">
-							<string key="name">saveDocumentTo:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSDocument.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSLayoutConstraint</string>
+					<string key="className">PasswordStoringWindow</string>
 					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSLayoutConstraint.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PasswordStoring</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">radarPasswordField</string>
-						<string key="NS.object.0">NSSecureTextField</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">radarPasswordField</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="radarPasswordField">NSSecureTextField</string>
+						<string key="radarUsernameField">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="radarPasswordField">
 							<string key="name">radarPasswordField</string>
 							<string key="candidateClassName">NSSecureTextField</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="radarUsernameField">
+							<string key="name">radarUsernameField</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PasswordStoring.h</string>
+						<string key="minorKey">./Classes/PasswordStoringWindow.h</string>
 					</object>
 				</object>
 			</array>
