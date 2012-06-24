@@ -106,8 +106,7 @@
     }
     
     //parse login page data as xml
-    NSError *error = nil;
-    NSXMLDocument *loginDoc = [[NSXMLDocument alloc] initWithData: loginData options:NSXMLDocumentTidyHTML error:&error];
+    NSXMLDocument *loginDoc = [[NSXMLDocument alloc] initWithData: loginData options:NSXMLDocumentTidyHTML error:pError];
     if (!loginDoc) {
         if(!*pError)
             *pError = [NSError errorWithDomain:@"QR" code:3 userInfo:@{NSLocalizedDescriptionKey: @"Cant parse html data of login page"}];
@@ -334,7 +333,8 @@
     NSArray *fontTags = [successOrFailPage nodesForXPath:@"//font" error:nil];
     if (aTags.count < 6 || fontTags.count < 6)
     {
-        *pError = [NSError errorWithDomain:@"QR" code:109 userInfo:@{NSLocalizedDescriptionKey: @"Verification of final page failed. Mark submission as failed"}];
+        if(!*pError)
+            *pError = [NSError errorWithDomain:@"QR" code:109 userInfo:@{NSLocalizedDescriptionKey: @"Verification of final page failed. Mark submission as failed"}];
         return nil;
     }
     
