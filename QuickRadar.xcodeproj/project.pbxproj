@@ -25,7 +25,6 @@
 		B4BDF8FC1596368500CA5338 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EE1596368500CA5338 /* MainMenu.xib */; };
 		B4BDF8FD1596368500CA5338 /* MenubarTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EF1596368500CA5338 /* MenubarTemplate.png */; };
 		B4BDF8FE1596368500CA5338 /* PasswordStoringWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8F11596368500CA5338 /* PasswordStoringWindow.m */; };
-		B4BDF8FF1596368500CA5338 /* QuickRadar-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8F21596368500CA5338 /* QuickRadar-Info.plist */; };
 		B4BDF9001596368500CA5338 /* RadarWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8F41596368500CA5338 /* RadarWindow.xib */; };
 		B4BDF9011596368500CA5338 /* RadarWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8F61596368500CA5338 /* RadarWindowController.m */; };
 		B4BDF91F159636CD00CA5338 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BDF91E159636CD00CA5338 /* UIKit.framework */; };
@@ -454,7 +453,6 @@
 				B4BDF8FA1596368500CA5338 /* Credits.rtf in Resources */,
 				B4BDF8FC1596368500CA5338 /* MainMenu.xib in Resources */,
 				B4BDF8FD1596368500CA5338 /* MenubarTemplate.png in Resources */,
-				B4BDF8FF1596368500CA5338 /* QuickRadar-Info.plist in Resources */,
 				B4BDF9001596368500CA5338 /* RadarWindow.xib in Resources */,
 				B482F7DA1596641D00E1A642 /* Config.plist in Resources */,
 			);
@@ -646,11 +644,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "osx/App/QuickRadar-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/PTHotKey/\"";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "osx/App/QuickRadar-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/PTHotkey\"",
 					"\"$(SRCROOT)/osx/PTHotkey\"",
 				);
 				PRODUCT_NAME = QuickRadar;
@@ -668,11 +665,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "osx/App/QuickRadar-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/PTHotKey/\"";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "osx/App/QuickRadar-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/PTHotkey\"",
 					"\"$(SRCROOT)/osx/PTHotkey\"",
 				);
 				PRODUCT_NAME = QuickRadar;

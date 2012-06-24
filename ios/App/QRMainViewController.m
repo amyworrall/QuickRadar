@@ -46,12 +46,12 @@
 	}
 
 	/*dummy msg*/
-    self.productMenu.titleLabel.text = @"Bug Reporter";
-    self.classificationMenu.titleLabel.text = @"Feature (New)";
-    self.reproducibleMenu.titleLabel.text = @"z";
-    self.versionField.text = @"";
-    self.titleField.text = @"";
-    self.bodyTextView.text = @"";
+    [self.productMenu setTitle:@"Bug Reporter" forState:UIControlStateNormal];
+    [self.classificationMenu setTitle:@"Feature (New)" forState:UIControlStateNormal];
+    [self.reproducibleMenu setTitle:@"Not Applicable" forState:UIControlStateNormal];
+    self.versionField.text = @"latest";
+    self.titleField.text = @"It would be awesome if you added a REST-API";
+    self.bodyTextView.text = @"So that a user's radar can more easily be viewed/added/modified.";
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -91,7 +91,7 @@
     
     NSUInteger row = [menuItems indexOfObject:[menuButton titleForState:UIControlStateNormal]];
     if(row<menuItems.count)
-        [self.menuPicker selectRow:row inComponent:1 animated:NO];
+        [self.menuPicker selectRow:row inComponent:0 animated:NO];
     
     [self.menuPicker setHidden:NO];
     [self.menuToolbar setHidden:NO];

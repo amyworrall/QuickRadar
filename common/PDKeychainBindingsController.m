@@ -44,7 +44,7 @@ static PDKeychainBindingsController *sharedInstance = nil;
     NSString *string = [[NSString alloc] initWithData:(__bridge id)stringData encoding:NSUTF8StringEncoding];
     CFRelease(stringData);
 #else //OSX
-    NSString *string = [[[NSString alloc] initWithBytes:stringBuffer length:stringLength encoding:NSUTF8StringEncoding] autorelease];
+    NSString *string = [[NSString alloc] initWithBytes:stringBuffer length:stringLength encoding:NSUTF8StringEncoding];
     SecKeychainItemFreeAttributesAndData (NULL, stringBuffer);
 #endif
 	return string;	
