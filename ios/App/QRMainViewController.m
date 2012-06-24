@@ -45,13 +45,13 @@
 		[reproducibleMenuItems addObject:str];
 	}
 
-	/*dummy msg for testing*/
-    [self.productMenu setTitle:@"Bug Reporter" forState:UIControlStateNormal];
-    [self.classificationMenu setTitle:@"Feature (New)" forState:UIControlStateNormal];
-    [self.reproducibleMenu setTitle:@"Not Applicable" forState:UIControlStateNormal];
-    self.versionField.text = @"latest";
-    self.titleField.text = @"It would be awesome if you added a REST-API";
-    self.bodyTextView.text = @"So that a user's radar can more easily be viewed/added/modified.";
+//	/*dummy msg for testing*/
+//    [self.productMenu setTitle:@"Bug Reporter" forState:UIControlStateNormal];
+//    [self.classificationMenu setTitle:@"Feature (New)" forState:UIControlStateNormal];
+//    [self.reproducibleMenu setTitle:@"Not Applicable" forState:UIControlStateNormal];
+//    self.versionField.text = @"latest";
+//    self.titleField.text = @"It would be awesome if you added a REST-API";
+//    self.bodyTextView.text = @"So that a user's radar can more easily be viewed/added/modified.";
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

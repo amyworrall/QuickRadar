@@ -39,13 +39,13 @@
 	
 	[self.titleField becomeFirstResponder];
     
-	/*dummy msg for testing*/
-    [self.productMenu selectItemWithTitle:@"Bug Reporter"];
-    [self.classificationMenu selectItemWithTitle:@"Feature (New)"];
-    [self.reproducibleMenu selectItemWithTitle:@"Not Applicable"];
-    self.versionField.stringValue = @"latest";
-    self.titleField.stringValue = @"It would be awesome if you added the ability to edit ones bugs.";
-    self.bodyTextView.string = @"So that I can remove my typos :D (I mean the problem description).";
+//	/*dummy msg for testing*/
+//    [self.productMenu selectItemWithTitle:@"Bug Reporter"];
+//    [self.classificationMenu selectItemWithTitle:@"Feature (New)"];
+//    [self.reproducibleMenu selectItemWithTitle:@"Not Applicable"];
+//    self.versionField.stringValue = @"latest";
+//    self.titleField.stringValue = @"It would be awesome if you added the ability to edit ones bugs.";
+//    self.bodyTextView.string = @"So that I can remove my typos :D (I mean the problem description).";
 }
 
 
