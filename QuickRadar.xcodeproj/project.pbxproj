@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		98EACACC158A86460078D06C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EACACB158A86460078D06C /* Security.framework */; };
+		B46637E615975341001D64F7 /* MenubarTemplate.tif in Resources */ = {isa = PBXBuildFile; fileRef = B46637E515975341001D64F7 /* MenubarTemplate.tif */; };
 		B482F7D515965B2200E1A642 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = B482F7D415965B2100E1A642 /* Credits.html */; };
 		B482F7DA1596641D00E1A642 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B482F7D91596641D00E1A642 /* Config.plist */; };
 		B482F7DB1596641D00E1A642 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B482F7D91596641D00E1A642 /* Config.plist */; };
@@ -23,7 +24,6 @@
 		B4BDF8FA1596368500CA5338 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EC1596368500CA5338 /* Credits.rtf */; };
 		B4BDF8FB1596368500CA5338 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8ED1596368500CA5338 /* main.m */; };
 		B4BDF8FC1596368500CA5338 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EE1596368500CA5338 /* MainMenu.xib */; };
-		B4BDF8FD1596368500CA5338 /* MenubarTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8EF1596368500CA5338 /* MenubarTemplate.png */; };
 		B4BDF8FE1596368500CA5338 /* PasswordStoringWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8F11596368500CA5338 /* PasswordStoringWindow.m */; };
 		B4BDF9001596368500CA5338 /* RadarWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BDF8F41596368500CA5338 /* RadarWindow.xib */; };
 		B4BDF9011596368500CA5338 /* RadarWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BDF8F61596368500CA5338 /* RadarWindowController.m */; };
@@ -73,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		98EACACB158A86460078D06C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B46637E515975341001D64F7 /* MenubarTemplate.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = MenubarTemplate.tif; sourceTree = "<group>"; };
 		B482F7D415965B2100E1A642 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		B482F7D91596641D00E1A642 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		B482F7DC15967CE000E1A642 /* libtidy.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtidy.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/libtidy.dylib; sourceTree = DEVELOPER_DIR; };
@@ -95,7 +96,6 @@
 		B4BDF8EC1596368500CA5338 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		B4BDF8ED1596368500CA5338 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B4BDF8EE1596368500CA5338 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
-		B4BDF8EF1596368500CA5338 /* MenubarTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenubarTemplate.png; sourceTree = "<group>"; };
 		B4BDF8F01596368500CA5338 /* PasswordStoringWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStoringWindow.h; sourceTree = "<group>"; };
 		B4BDF8F11596368500CA5338 /* PasswordStoringWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStoringWindow.m; sourceTree = "<group>"; };
 		B4BDF8F21596368500CA5338 /* QuickRadar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "QuickRadar-Info.plist"; sourceTree = "<group>"; };
@@ -210,13 +210,13 @@
 		B4BDF8E71596368500CA5338 /* OSX-App */ = {
 			isa = PBXGroup;
 			children = (
+				B46637E515975341001D64F7 /* MenubarTemplate.tif */,
 				B4BDF8E81596368500CA5338 /* AppDelegate.h */,
 				B4BDF8E91596368500CA5338 /* AppDelegate.m */,
 				B4BDF8EA1596368500CA5338 /* AppIcon.icns */,
 				B4BDF8EC1596368500CA5338 /* Credits.rtf */,
 				B4BDF8ED1596368500CA5338 /* main.m */,
 				B4BDF8EE1596368500CA5338 /* MainMenu.xib */,
-				B4BDF8EF1596368500CA5338 /* MenubarTemplate.png */,
 				B4BDF8F01596368500CA5338 /* PasswordStoringWindow.h */,
 				B4BDF8F11596368500CA5338 /* PasswordStoringWindow.m */,
 				B4BDF8F21596368500CA5338 /* QuickRadar-Info.plist */,
@@ -452,9 +452,9 @@
 				B4BDF8F81596368500CA5338 /* AppIcon.icns in Resources */,
 				B4BDF8FA1596368500CA5338 /* Credits.rtf in Resources */,
 				B4BDF8FC1596368500CA5338 /* MainMenu.xib in Resources */,
-				B4BDF8FD1596368500CA5338 /* MenubarTemplate.png in Resources */,
 				B4BDF9001596368500CA5338 /* RadarWindow.xib in Resources */,
 				B482F7DA1596641D00E1A642 /* Config.plist in Resources */,
+				B46637E615975341001D64F7 /* MenubarTemplate.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
