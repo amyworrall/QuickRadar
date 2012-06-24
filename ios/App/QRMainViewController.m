@@ -45,7 +45,7 @@
 		[reproducibleMenuItems addObject:str];
 	}
 
-	/*dummy msg*/
+	/*dummy msg for testing*/
     [self.productMenu setTitle:@"Bug Reporter" forState:UIControlStateNormal];
     [self.classificationMenu setTitle:@"Feature (New)" forState:UIControlStateNormal];
     [self.reproducibleMenu setTitle:@"Not Applicable" forState:UIControlStateNormal];

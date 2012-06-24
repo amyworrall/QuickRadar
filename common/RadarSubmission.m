@@ -40,21 +40,27 @@
     
     //login and get main url or error out
     NSMutableURLRequest *mainRequest = [self doLoginAndProcceedToMainWithError:&error];
-    if(mainRequest && !error) {
+    if(mainRequest) {
+        error = nil;
         NSURLRequest *newTicketRequest = [self loadMainPageAndNewTicketPage:mainRequest withError:&error];
-        if(newTicketRequest && !error) {
+        if(newTicketRequest) {
+            error = nil;
             NSXMLDocument *finalPage = [self doSubmitWithRequest:newTicketRequest withError:&error];
             
-            if(finalPage && !error) {
+            if(finalPage) {
+                error = nil;
+                
                 //interpret success page
-                NSArray *aTags = [finalPage nodesForXPath:@"//a" error:&error];
-                NSArray *fontTags = [finalPage nodesForXPath:@"//font" error:&error];
+                NSArray *aTags = [finalPage nodesForXPath:@"//a" error:nil];
+                NSArray *fontTags = [finalPage nodesForXPath:@"//font" error:nil];
                 self.radarNumber = ((NSXMLElement*)[fontTags objectAtIndex:5]).stringValue;
                 self.radarURL = [@"https://bugreport.apple.com" stringByAppendingPathComponent: [((NSXMLElement*)[aTags objectAtIndex:5]) attributeForName:@"href"].stringValue ];
             }
         }
     }
     
+    if(error)
+        NSLog(@"%@", error);
     return error;
 }
 
@@ -101,7 +107,7 @@
     
     //parse login page data as xml
     NSError *error = nil;
-    NSXMLDocument *loginDoc = [[NSXMLDocument alloc] initWithData: loginData options:NSXMLDocumentTidyXML error:&error];
+    NSXMLDocument *loginDoc = [[NSXMLDocument alloc] initWithData: loginData options:NSXMLDocumentTidyHTML error:&error];
     if (!loginDoc) {
         if(!*pError)
             *pError = [NSError errorWithDomain:@"QR" code:3 userInfo:@{NSLocalizedDescriptionKey: @"Cant parse html data of login page"}];
@@ -154,7 +160,7 @@
     NSData *signInData = [conn fetchSyncWithError:pError];
         
     //verify data
-    if (!signInData.length || *pError)
+    if (!signInData.length)
     {
         if(!*pError)
             *pError = [NSError errorWithDomain:@"QR" code:7 userInfo:@{NSLocalizedDescriptionKey: @"Sign In resulted in 0 data"}];
@@ -162,7 +168,7 @@
     }
     
     //get xml
-    NSXMLDocument *loginResponseDoc = [[NSXMLDocument alloc] initWithData:signInData options:NSXMLDocumentTidyXML error:pError];
+    NSXMLDocument *loginResponseDoc = [[NSXMLDocument alloc] initWithData:signInData options:NSXMLDocumentTidyHTML error:pError];
     if (!loginResponseDoc) {
         if(!*pError)
             *pError = [NSError errorWithDomain:@"QR" code:8 userInfo:@{NSLocalizedDescriptionKey: @"Couldn't parse data to xml doc after sign in"}];
@@ -200,14 +206,14 @@
     NSData *mainPageData = [mainConn fetchSyncWithError:pError];
     
     //verify data
-    if (!mainPageData.length || *pError) {
+    if (!mainPageData.length) {
         if(!*pError)
             *pError = [NSError errorWithDomain:@"QR" code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fetching main page resulted in 0 data"}];
         return nil;
     }
 
     //parse to xml
-    NSXMLDocument *jmResponseDoc = [[NSXMLDocument alloc] initWithData:mainPageData options:NSXMLDocumentTidyXML error:pError];
+    NSXMLDocument *jmResponseDoc = [[NSXMLDocument alloc] initWithData:mainPageData options:NSXMLDocumentTidyHTML error:pError];
     if (!jmResponseDoc)
     {
         *pError = [NSError errorWithDomain:@"QR" code:101 userInfo:@{NSLocalizedDescriptionKey: @"Couldn't parse main page data to xml"}];
@@ -240,7 +246,7 @@
     NSData *newTicketRequestData = [conn fetchSyncWithError:pError];
     
     //verify
-    if (!newTicketRequestData.length || *pError)
+    if (!newTicketRequestData.length)
     {
         if(!*pError)
             *pError = [NSError errorWithDomain:@"QR" code:102 userInfo:@{NSLocalizedDescriptionKey: @"No Data for the new ticket page"}];
@@ -249,7 +255,7 @@
     
     //parse as xml
     NSXMLDocument *newBugPageDoc = [[NSXMLDocument alloc] initWithData:newTicketRequestData
-                                                               options:NSXMLDocumentTidyXML
+                                                               options:NSXMLDocumentTidyHTML
                                                                  error:pError];
     if(!newBugPageDoc) {
         if(!*pError)
@@ -307,7 +313,7 @@
     NSData *bugSubmittedData = [submitBugConnection fetchSyncWithError:pError];
 
     //verify
-    if (!bugSubmittedData.length || *pError)
+    if (!bugSubmittedData.length)
     {
         if(!*pError)
             *pError = [NSError errorWithDomain:@"QR" code:107 userInfo:@{NSLocalizedDescriptionKey: @"No data from final page"}];
@@ -316,8 +322,8 @@
     
     //parse to xml
     NSXMLDocument *successOrFailPage = [[NSXMLDocument alloc] initWithData:bugSubmittedData
-                                                                   options:NSXMLDocumentTidyXML error:pError];
-    if(!successOrFailPage || *pError) {
+                                                                   options:NSXMLDocumentTidyHTML error:pError];
+    if(!successOrFailPage) {
         if(!*pError)
             *pError = [NSError errorWithDomain:@"QR" code:108 userInfo:@{NSLocalizedDescriptionKey: @"No parse XML from final page data"}];
         return nil;
