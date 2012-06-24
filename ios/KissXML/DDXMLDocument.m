@@ -112,9 +112,19 @@
 	xmlDocPtr doc = xmlParseMemory([data bytes], [data length]);
 	if (doc == NULL)
 	{
-		if (error) *error = [NSError errorWithDomain:@"DDXMLErrorDomain" code:1 userInfo:nil];
-		
-		return nil;
+#if DDXML_FALLBACK_ON_HTML
+        htmlParserCtxtPtr ctx = htmlCreateMemoryParserCtxt([data bytes], [data length]);
+        int err = htmlParseDocument(ctx);
+        if(err==0) {
+            doc = ctx->myDoc;
+        }
+        htmlFreeParserCtxt(ctx);
+#endif
+		if(!doc) {
+            if (error) *error = [NSError errorWithDomain:@"DDXMLErrorDomain" code:1 userInfo:nil];
+
+            return nil;
+        }
 	}
 	
 	return [self initWithDocPrimitive:doc owner:nil];
