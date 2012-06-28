@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface RadarWindowController : NSWindowController
+@interface QRRadarWindowController : NSWindowController
 
 @property (nonatomic, strong) IBOutlet NSPopUpButton *productMenu;
 @property (nonatomic, strong) IBOutlet NSPopUpButton *classificationMenu;
@@ -19,6 +19,7 @@
 @property (nonatomic, strong) IBOutlet NSButton *openRadarCheckbox;
 @property (nonatomic, strong) IBOutlet NSButton *submitButton;
 @property (nonatomic, strong) IBOutlet NSProgressIndicator *spinner;
+@property (nonatomic, strong) IBOutlet NSProgressIndicator *progressBar;
 
 
 - (IBAction)submitRadar:(id)sender;

@@ -6,15 +6,23 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "RadarWindowController.h"
-#import "RadarSubmission.h"
-
+#import "QRRadarWindowController.h"
+#import "QRSubmissionController.h"
+#import "QRRadar.h"
 #import <Growl/Growl.h>
 
-@implementation RadarWindowController
+@interface QRRadarWindowController ()
+
+@property (nonatomic, strong) QRSubmissionController *submissionController;
+
+@end
+
+
+@implementation QRRadarWindowController
 
 @synthesize spinner, openRadarCheckbox, titleField, bodyTextView, classificationMenu, versionField, productMenu, reproducibleMenu, submitButton;
-
+@synthesize submissionController = _submissionController;
+@synthesize progressBar = _progressBar;
 
 - (void)windowDidLoad
 {
@@ -52,33 +60,39 @@
         return;
     }
         
-	RadarSubmission *s = [[RadarSubmission alloc] init];
-	s.product = self.productMenu.selectedItem.title;
-	s.classification = self.classificationMenu.selectedItem.title;
-	s.reproducible = self.reproducibleMenu.selectedItem.title;
-	s.version = self.versionField.stringValue;
-	s.title = self.titleField.stringValue;
-	s.body = self.bodyTextView.string;
+	QRRadar *radar = [[QRRadar alloc] init];
+	radar.product = self.productMenu.selectedItem.title;
+	radar.classification = self.classificationMenu.selectedItem.title;
+	radar.reproducible = self.reproducibleMenu.selectedItem.title;
+	radar.version = self.versionField.stringValue;
+	radar.title = self.titleField.stringValue;
+	radar.body = self.bodyTextView.string;
 	
 	[self.submitButton setEnabled:NO];
 	[self.spinner startAnimation:self];
 	
-	[s submitWithCompletionBlock:^(BOOL success) 
-	{
-		if (success && s.radarNumber.intValue > 0)
+	self.submissionController = [[QRSubmissionController alloc] init];
+	self.submissionController.radar = radar;
+	
+	[self.submissionController startWithProgressBlock:^{
+		self.progressBar.doubleValue = self.submissionController.progress;
+	} completionBlock:^(BOOL success, NSError *error) {
+		if (success && radar.radarNumber > 0)
 		{
 			[GrowlApplicationBridge notifyWithTitle:@"Submission Complete" 
-										description:[NSString stringWithFormat:@"Bug submitted as number %@.", s.radarNumber] 
+										description:[NSString stringWithFormat:@"Bug submitted as number %i.", radar.radarNumber] 
 								   notificationName:@"Submission Complete" 
 										   iconData:nil
 										   priority:0 
 										   isSticky:NO 
-									   clickContext:[NSDictionary dictionaryWithObject:s.radarURL forKey:@"URL"]];
-
+									   clickContext:nil];
+			
 			[self.window close];
 		}
 		else 
 		{
+			NSLog(@"Error %@", error);
+			
 			[GrowlApplicationBridge notifyWithTitle:@"Submission Failed" 
 										description:@"Submission failed" 
 								   notificationName:@"Submission Failed" 
@@ -88,10 +102,12 @@
 									   clickContext:nil];
 			[self.submitButton setEnabled:YES];
 			[self.spinner stopAnimation:self];
-
+			
 		}
-		
+
 	}];
+	
+	
 }
 
 @end

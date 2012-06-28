@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SuperURLConnection : NSObject
+@interface QRURLConnection : NSObject
 
 @property (strong) NSURLRequest *request;
 @property (strong) NSDictionary *postParameters;
-@property (strong) NSDictionary *fileParameters;
 @property (strong) NSArray *fieldOrdering;
 @property (strong) NSString *HTTPUsername;
 @property (strong) NSString *HTTPPassword;

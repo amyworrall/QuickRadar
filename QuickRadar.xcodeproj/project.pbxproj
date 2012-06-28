@@ -14,19 +14,23 @@
 		B4EC27EC1591577000E79E8B /* libPTHotkey-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */; };
 		B4EC27EF1591577A00E79E8B /* PTKeyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */; };
 		B4EC27F01591577A00E79E8B /* PTKeyComboPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */; };
+		E19CFC6E159A002E00879280 /* QRRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC6D159A002E00879280 /* QRRadar.m */; };
+		E19CFC71159A010600879280 /* QRSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC70159A010600879280 /* QRSubmissionService.m */; };
+		E19CFC75159A037300879280 /* QRRadarSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC74159A037300879280 /* QRRadarSubmissionService.m */; };
 		E1C10ACA158A7D02003A3C01 /* License in Resources */ = {isa = PBXBuildFile; fileRef = E1C10AC9158A7D02003A3C01 /* License */; };
+		E1C10AE71593B4C8003A3C01 /* QRWebScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C10AE61593B4C8003A3C01 /* QRWebScraper.m */; };
 		E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CC518D156257BF0027FB83 /* Cocoa.framework */; };
 		E1CC519A156257BF0027FB83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC5199156257BF0027FB83 /* main.m */; };
 		E1CC519E156257BF0027FB83 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E1CC519C156257BF0027FB83 /* Credits.rtf */; };
 		E1CC51A1156257BF0027FB83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51A0156257BF0027FB83 /* AppDelegate.m */; };
 		E1CC51A4156257BF0027FB83 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CC51A2156257BF0027FB83 /* MainMenu.xib */; };
 		E1CC51AE156259AC0027FB83 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CC51AD156259AC0027FB83 /* Carbon.framework */; };
-		E1CC51B115625A8D0027FB83 /* RadarWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51B015625A8D0027FB83 /* RadarWindowController.m */; };
+		E1CC51B115625A8D0027FB83 /* QRRadarWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51B015625A8D0027FB83 /* QRRadarWindowController.m */; };
 		E1CC51B315625AAD0027FB83 /* RadarWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CC51B215625AAD0027FB83 /* RadarWindow.xib */; };
 		E1CC51B515625C5B0027FB83 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1CC51B415625C5B0027FB83 /* Config.plist */; };
-		E1CC51BD156269CC0027FB83 /* RadarSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51BC156269CC0027FB83 /* RadarSubmission.m */; };
+		E1CC51BD156269CC0027FB83 /* QRSubmissionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51BC156269CC0027FB83 /* QRSubmissionController.m */; };
 		E1CC51ED1563BC1E0027FB83 /* NSXMLNode+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */; };
-		E1CC51F01563BF720027FB83 /* SuperURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51EF1563BF720027FB83 /* SuperURLConnection.m */; };
+		E1CC51F01563BF720027FB83 /* QRURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51EF1563BF720027FB83 /* QRURLConnection.m */; };
 		E1E909101590ABBA0019F189 /* MenubarTemplate.tif in Resources */ = {isa = PBXBuildFile; fileRef = E1E9090F1590ABBA0019F189 /* MenubarTemplate.tif */; };
 		E1F8590B158A2D2F005F77DA /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
 		E1F8590E158A2EEC005F77DA /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
@@ -54,7 +58,15 @@
 		B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPTHotkey-OSX.a"; path = "PTHotkey/libPTHotkey-OSX.a"; sourceTree = "<group>"; };
 		B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = PTKeyCodes.plist; path = PTHotkey/PTKeyCodes.plist; sourceTree = SOURCE_ROOT; };
 		B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PTKeyComboPanel.xib; path = PTHotkey/PTKeyComboPanel.xib; sourceTree = SOURCE_ROOT; };
+		E19CFC6C159A002E00879280 /* QRRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadar.h; sourceTree = "<group>"; };
+		E19CFC6D159A002E00879280 /* QRRadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRRadar.m; sourceTree = "<group>"; };
+		E19CFC6F159A010600879280 /* QRSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRSubmissionService.h; sourceTree = "<group>"; };
+		E19CFC70159A010600879280 /* QRSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRSubmissionService.m; sourceTree = "<group>"; };
+		E19CFC73159A037300879280 /* QRRadarSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadarSubmissionService.h; sourceTree = "<group>"; };
+		E19CFC74159A037300879280 /* QRRadarSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRRadarSubmissionService.m; sourceTree = "<group>"; };
 		E1C10AC9158A7D02003A3C01 /* License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License; path = ../License; sourceTree = "<group>"; };
+		E1C10AE51593B4C8003A3C01 /* QRWebScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRWebScraper.h; sourceTree = "<group>"; };
+		E1C10AE61593B4C8003A3C01 /* QRWebScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRWebScraper.m; sourceTree = "<group>"; };
 		E1CC5189156257BF0027FB83 /* QuickRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CC518D156257BF0027FB83 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E1CC5190156257BF0027FB83 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -68,16 +80,16 @@
 		E1CC51A0156257BF0027FB83 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E1CC51A3156257BF0027FB83 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E1CC51AD156259AC0027FB83 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		E1CC51AF15625A8D0027FB83 /* RadarWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarWindowController.h; sourceTree = "<group>"; };
-		E1CC51B015625A8D0027FB83 /* RadarWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarWindowController.m; sourceTree = "<group>"; };
+		E1CC51AF15625A8D0027FB83 /* QRRadarWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadarWindowController.h; sourceTree = "<group>"; };
+		E1CC51B015625A8D0027FB83 /* QRRadarWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRRadarWindowController.m; sourceTree = "<group>"; };
 		E1CC51B215625AAD0027FB83 /* RadarWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarWindow.xib; sourceTree = "<group>"; };
 		E1CC51B415625C5B0027FB83 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
-		E1CC51BB156269CC0027FB83 /* RadarSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarSubmission.h; sourceTree = "<group>"; };
-		E1CC51BC156269CC0027FB83 /* RadarSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarSubmission.m; sourceTree = "<group>"; };
+		E1CC51BB156269CC0027FB83 /* QRSubmissionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRSubmissionController.h; sourceTree = "<group>"; };
+		E1CC51BC156269CC0027FB83 /* QRSubmissionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRSubmissionController.m; sourceTree = "<group>"; };
 		E1CC51EB1563BC1D0027FB83 /* NSXMLNode+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLNode+Additions.h"; sourceTree = "<group>"; };
 		E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLNode+Additions.m"; sourceTree = "<group>"; };
-		E1CC51EE1563BF720027FB83 /* SuperURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperURLConnection.h; sourceTree = "<group>"; };
-		E1CC51EF1563BF720027FB83 /* SuperURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperURLConnection.m; sourceTree = "<group>"; };
+		E1CC51EE1563BF720027FB83 /* QRURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRURLConnection.h; sourceTree = "<group>"; };
+		E1CC51EF1563BF720027FB83 /* QRURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRURLConnection.m; sourceTree = "<group>"; };
 		E1E9090F1590ABBA0019F189 /* MenubarTemplate.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = MenubarTemplate.tif; sourceTree = "<group>"; };
 		E1F8590A158A2D2F005F77DA /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +110,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E19CFC681599FF1800879280 /* New Radar Window */ = {
+			isa = PBXGroup;
+			children = (
+				E1CC51AF15625A8D0027FB83 /* QRRadarWindowController.h */,
+				E1CC51B015625A8D0027FB83 /* QRRadarWindowController.m */,
+				E1CC51B215625AAD0027FB83 /* RadarWindow.xib */,
+			);
+			name = "New Radar Window";
+			sourceTree = "<group>";
+		};
+		E19CFC691599FF7000879280 /* Submission Process */ = {
+			isa = PBXGroup;
+			children = (
+				E1CC51BB156269CC0027FB83 /* QRSubmissionController.h */,
+				E1CC51BC156269CC0027FB83 /* QRSubmissionController.m */,
+				E19CFC6F159A010600879280 /* QRSubmissionService.h */,
+				E19CFC70159A010600879280 /* QRSubmissionService.m */,
+			);
+			name = "Submission Process";
+			sourceTree = "<group>";
+		};
+		E19CFC6A1599FFFE00879280 /* Submission Services */ = {
+			isa = PBXGroup;
+			children = (
+				E19CFC72159A035E00879280 /* Radar */,
+			);
+			name = "Submission Services";
+			sourceTree = "<group>";
+		};
+		E19CFC6B159A001400879280 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E19CFC6C159A002E00879280 /* QRRadar.h */,
+				E19CFC6D159A002E00879280 /* QRRadar.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E19CFC72159A035E00879280 /* Radar */ = {
+			isa = PBXGroup;
+			children = (
+				E19CFC73159A037300879280 /* QRRadarSubmissionService.h */,
+				E19CFC74159A037300879280 /* QRRadarSubmissionService.m */,
+			);
+			name = Radar;
+			sourceTree = "<group>";
+		};
+		E1C10AE31593B49E003A3C01 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E1CC51EE1563BF720027FB83 /* QRURLConnection.h */,
+				E1CC51EF1563BF720027FB83 /* QRURLConnection.m */,
+				E1CC51EB1563BC1D0027FB83 /* NSXMLNode+Additions.h */,
+				E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */,
+				E1C10AE51593B4C8003A3C01 /* QRWebScraper.h */,
+				E1C10AE61593B4C8003A3C01 /* QRWebScraper.m */,
+				98EACACE158A89670078D06C /* PasswordStoring.h */,
+				98EACACF158A89670078D06C /* PasswordStoring.m */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
 		E1CC517E156257BF0027FB83 = {
 			isa = PBXGroup;
 			children = (
@@ -145,18 +219,12 @@
 				E1CC519F156257BF0027FB83 /* AppDelegate.h */,
 				E1CC51A0156257BF0027FB83 /* AppDelegate.m */,
 				E1CC51A2156257BF0027FB83 /* MainMenu.xib */,
-				E1CC51AF15625A8D0027FB83 /* RadarWindowController.h */,
-				E1CC51B015625A8D0027FB83 /* RadarWindowController.m */,
-				E1CC51B215625AAD0027FB83 /* RadarWindow.xib */,
 				E1CC51B415625C5B0027FB83 /* Config.plist */,
-				E1CC51BB156269CC0027FB83 /* RadarSubmission.h */,
-				E1CC51BC156269CC0027FB83 /* RadarSubmission.m */,
-				E1CC51EE1563BF720027FB83 /* SuperURLConnection.h */,
-				E1CC51EF1563BF720027FB83 /* SuperURLConnection.m */,
-				E1CC51EB1563BC1D0027FB83 /* NSXMLNode+Additions.h */,
-				E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */,
-				98EACACE158A89670078D06C /* PasswordStoring.h */,
-				98EACACF158A89670078D06C /* PasswordStoring.m */,
+				E19CFC681599FF1800879280 /* New Radar Window */,
+				E19CFC6B159A001400879280 /* Model */,
+				E19CFC691599FF7000879280 /* Submission Process */,
+				E19CFC6A1599FFFE00879280 /* Submission Services */,
+				E1C10AE31593B49E003A3C01 /* Helper Classes */,
 			);
 			path = QuickRadar;
 			sourceTree = "<group>";
@@ -252,11 +320,15 @@
 			files = (
 				E1CC519A156257BF0027FB83 /* main.m in Sources */,
 				E1CC51A1156257BF0027FB83 /* AppDelegate.m in Sources */,
-				E1CC51B115625A8D0027FB83 /* RadarWindowController.m in Sources */,
-				E1CC51BD156269CC0027FB83 /* RadarSubmission.m in Sources */,
+				E1CC51B115625A8D0027FB83 /* QRRadarWindowController.m in Sources */,
+				E1CC51BD156269CC0027FB83 /* QRSubmissionController.m in Sources */,
 				E1CC51ED1563BC1E0027FB83 /* NSXMLNode+Additions.m in Sources */,
-				E1CC51F01563BF720027FB83 /* SuperURLConnection.m in Sources */,
+				E1CC51F01563BF720027FB83 /* QRURLConnection.m in Sources */,
 				98EACAD0158A89670078D06C /* PasswordStoring.m in Sources */,
+				E1C10AE71593B4C8003A3C01 /* QRWebScraper.m in Sources */,
+				E19CFC6E159A002E00879280 /* QRRadar.m in Sources */,
+				E19CFC71159A010600879280 /* QRSubmissionService.m in Sources */,
+				E19CFC75159A037300879280 /* QRRadarSubmissionService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

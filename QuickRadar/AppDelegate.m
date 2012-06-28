@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PTHotKeyLib.h"
-#import "RadarWindowController.h"
+#import "QRRadarWindowController.h"
 #import <Growl/Growl.h>
 
 @interface AppDelegate () <GrowlApplicationBridgeDelegate>
@@ -98,7 +98,7 @@
 {
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	
-    RadarWindowController *b = [[RadarWindowController alloc] initWithWindowNibName:@"RadarWindow"];
+    QRRadarWindowController *b = [[QRRadarWindowController alloc] initWithWindowNibName:@"RadarWindow"];
     [windowControllerStore addObject:b];
     [b showWindow:nil];
 }

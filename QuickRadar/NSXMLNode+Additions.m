@@ -40,4 +40,44 @@
 	return nil;
 }
 
+
+- (NSXMLNode*)firstNodeForXPath:(NSString*)xpath error:(NSError **)retError;
+{
+	NSError *error;
+	
+	NSArray *nodes = [self nodesForXPath:xpath error:&error];
+	
+	if (!nodes || error)
+	{
+		*retError = error;
+		return nil;
+	}
+	
+	if (nodes.count == 0)
+	{
+		return nil;
+	}
+	
+	return [nodes objectAtIndex:0];
+}
+
+- (NSXMLElement*)firstElementForXPath:(NSString *)xpath error:(NSError **)retError
+{
+	NSError *error = nil;
+	NSXMLNode *n = [self firstNodeForXPath:xpath error:&error];
+	
+	if (error)
+	{
+		*retError = error;
+		return nil;
+	}
+	
+	if ([n isKindOfClass:[NSXMLElement class]])
+	{
+		return (NSXMLElement*)n;
+	}
+	NSLog(@"It's a %@", NSStringFromClass([n class]));
+	return nil;
+}
+
 @end

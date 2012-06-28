@@ -13,4 +13,7 @@
 - (NSXMLNode*)firstNodeForXPath:(NSString*)xpath;
 - (NSXMLElement*)firstElementForXPath:(NSString*)xpath;
 
+- (NSXMLNode*)firstNodeForXPath:(NSString*)xpath error:(NSError**)error;
+- (NSXMLElement*)firstElementForXPath:(NSString*)xpath error:(NSError**)error;
+
 @end

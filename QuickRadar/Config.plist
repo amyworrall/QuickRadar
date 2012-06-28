@@ -52,10 +52,10 @@
 	<key>reproducible</key>
 	<array>
 		<string>Always</string>
-		<string>Sometimes </string>
-		<string>Rarely </string>
-		<string>Unable </string>
-		<string>I Didn&apos;t Try </string>
+		<string>Sometimes</string>
+		<string>Rarely</string>
+		<string>Unable</string>
+		<string>I Didn&apos;t Try</string>
 		<string>Not Applicable</string>
 	</array>
 </dict>

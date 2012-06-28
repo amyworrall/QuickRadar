@@ -6,16 +6,16 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SuperURLConnection.h"
+#import "QRURLConnection.h"
 
-@interface SuperURLConnection()
+@interface QRURLConnection()
 
 
 @end
 
-@implementation SuperURLConnection
+@implementation QRURLConnection
 
-@synthesize request = _request, postParameters, HTTPPassword, HTTPUsername, useMultipartRatherThanURLEncoded, fileParameters, cookiesReturned, fieldOrdering;
+@synthesize request = _request, postParameters, HTTPPassword, HTTPUsername, useMultipartRatherThanURLEncoded,  cookiesReturned, fieldOrdering;
 
 - (NSData*)fetchSyncWithError:(NSError**)error;
 {
@@ -34,11 +34,7 @@
 		[postBody appendData:[[NSString stringWithFormat:@"--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 			
 		
-		if (!self.fieldOrdering && self.fileParameters)
-		{
-			self.fieldOrdering = [[self.postParameters allKeys] arrayByAddingObjectsFromArray:[self.fileParameters allKeys]];
-		}
-		else if (!self.fieldOrdering && !self.fileParameters)
+		if (!self.fieldOrdering)
 		{
 			self.fieldOrdering = [self.postParameters allKeys];
 		}
@@ -47,7 +43,8 @@
 		
 		for (NSString *key in self.fieldOrdering)
 		{
-			if ([self.postParameters.allKeys containsObject:key])
+			id object = [self.postParameters objectForKey:key];
+			if ([object isKindOfClass:[NSString class]])
 			{
 				[postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 				
@@ -55,13 +52,13 @@
 				[postBody appendData:[[self.postParameters objectForKey:key] dataUsingEncoding:NSUTF8StringEncoding]];
 				[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 			}
-			else if ([self.fileParameters.allKeys containsObject:key])
+			else if ([object isKindOfClass:[NSData class]])
 			{
 				[postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 				
 				[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"\"\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
 				[postBody appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-				[postBody appendData:[self.fileParameters objectForKey:key]];
+				[postBody appendData:[self.postParameters objectForKey:key]];
 				[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 			}
 		}
@@ -108,9 +105,6 @@
 	[request addValue:@"gzip, deflate" forHTTPHeaderField:@"Accept-Encoding"];
 	[request addValue:@"en-gb" forHTTPHeaderField:@"Accept-Language"];
 
-//	NSLog(@"Headers %@", request.allHTTPHeaderFields);
-//	NSLog(@"Body %@", [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
-	
 	NSHTTPURLResponse *resp;
 	NSData *d =  [NSURLConnection sendSynchronousRequest:request returningResponse:&resp error:error];
 	
