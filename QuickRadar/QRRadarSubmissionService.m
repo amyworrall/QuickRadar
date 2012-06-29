@@ -86,6 +86,13 @@
 {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 		
+//		NSLog(@"Starting radar");
+//		sleep(5);
+//		NSLog(@"Stopping radar");
+//		completionBlock(YES, nil);
+//		return;
+		
+		
 		self.submissionStatusValue = submissionStatusInProgress;
 		
 		NSError *error = nil;

@@ -17,7 +17,7 @@
 
 @property (nonatomic, copy) void (^progressBlock)() ;
 @property (nonatomic, copy) void (^completionBlock)(BOOL, NSError *) ;
-
+@property (assign) BOOL hasFiredCompletionBlock;
 
 @end
 
@@ -27,6 +27,7 @@
 @synthesize radar = _radar;
 @synthesize completed = _completed, inProgress = _inProgress, waiting = _waiting;
 @synthesize progressBlock = _progressBlock, completionBlock = _completionBlock;
+@synthesize hasFiredCompletionBlock = _hasFiredCompletionBlock;
 
 
 - (void)startWithProgressBlock:(void (^)())progressBlock completionBlock:(void (^)(BOOL, NSError *))completionBlock
@@ -66,6 +67,51 @@
 {
 	for (QRSubmissionService *service in self.waiting)
 	{
+		NSSet *hardDeps = [[service class] hardDependencies];
+		NSSet *softDeps = [[service class] softDependencies];
+		
+		BOOL hasFailedDeps = NO;
+		
+		/* Check hard deps */
+		// For a hard dep, if the service in question is NOT completed, it fails.
+		for (NSString *serviceID in hardDeps)
+		{
+			BOOL metThisDep = NO;
+			for (QRSubmissionService *testService in [self.completed copy])
+			{
+				if ([[[testService class] identifier] isEqualToString:serviceID])
+				{
+					metThisDep = YES;
+				}
+			}
+			if (!metThisDep)
+			{
+				hasFailedDeps = YES;
+			}
+		}
+		
+		// TODO: decide what you're doing about serviceStatus -- either use it here, or remove it everywhere.
+		
+		/* Check soft deps */
+		// For a soft dep, if the service in question is present and not finished, it fails. 
+		for (NSString *serviceID in softDeps)
+		{
+			for (QRSubmissionService *testService in [self.waiting setByAddingObjectsFromSet:self.inProgress])
+			{
+				if ([[[testService class] identifier] isEqualToString:serviceID])
+				{
+					hasFailedDeps = YES;
+				}
+			}
+		}
+		
+		if (hasFailedDeps)
+		{
+			continue;
+		}
+		
+		/* Get on with it */
+		
 		[self.inProgress addObject:service];
 		[self.waiting removeObject:service];
 		
@@ -74,13 +120,15 @@
 			self.progressBlock();
 		} completionBlock:^(BOOL success, NSError *error) {
 			[self.inProgress removeObject:service];
-			[self.completed removeObject:service];
+			[self.completed addObject:service];
 			[self startNextAvailableServices];
 		}];
 	}
 	
-	if (self.inProgress.count == 0 && self.completed.count == 0)
+	if (self.inProgress.count == 0 && self.waiting.count == 0 && !self.hasFiredCompletionBlock)
 	{
+		NSLog(@"Finished");
+		self.hasFiredCompletionBlock = YES;
 		self.completionBlock(YES, nil);
 	}
 }
