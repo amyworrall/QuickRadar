@@ -25,7 +25,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 @synthesize menu = _menu;
 @synthesize preferencesWindowController = _preferencesWindowController;
 
@@ -102,11 +101,6 @@
 	[NSApp orderFrontStandardAboutPanel:self];
 }
 
-- (IBAction)activateAndShowLoginDetails:(id)sender;
-{
-	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-	[self.window makeKeyAndOrderFront:self];
-}
 
 
 - (IBAction)newBug:(id)sender;
@@ -124,18 +118,6 @@
 	[windowControllerStore removeObject:sender];
 }
 
-- (IBAction)activateAndShowHotkeySettings:(id)sender 
-{
-	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-	
-	if (!self.window.isVisible)
-	{
-		[self activateAndShowLoginDetails:self];
-	}
-	
-	id hotkey = [[PTHotKeyCenter sharedCenter] hotKeyForName:GlobalHotkeyName];
-	[[PTKeyComboPanel sharedPanel] showSheetForHotkey:hotkey forWindow:_window modalDelegate:self];
-}
 
 #pragma mark keyComboPanelDelegate
 

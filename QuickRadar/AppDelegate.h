@@ -17,13 +17,10 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate, PTKeyComboPanelDelegate>
 
 @property (assign) IBOutlet NSMenu *menu;
-@property (assign) IBOutlet NSWindow *window;
 
 - (IBAction)showPreferencesWindow:(id)sender;
 
 - (IBAction)newBug:(id)sender;
 - (IBAction)bugWindowControllerSubmissionComplete:(id)sender;
 - (IBAction)activateAndShowAbout:(id)sender;
-- (IBAction)activateAndShowLoginDetails:(id)sender;
-- (IBAction)activateAndShowHotkeySettings:(id)sender;
 @end
