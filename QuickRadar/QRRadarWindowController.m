@@ -32,18 +32,33 @@
 	[self.classificationMenu removeAllItems];
 	[self.reproducibleMenu removeAllItems];
 	
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	
 	for (NSString *str in [config objectForKey:@"products"])
 	{
 		[self.productMenu addItemWithTitle:str];
+		if ([str isEqualToString:[prefs objectForKey:@"RadarWindowSelectedProduct"]])
+		{
+			[self.productMenu selectItemWithTitle:str];
+		}		
 	}
 	for (NSString *str in [config objectForKey:@"classifications"])
 	{
 		[self.classificationMenu addItemWithTitle:str];
+		if ([str isEqualToString:[prefs objectForKey:@"RadarWindowSelectedClassification"]])
+		{
+			[self.classificationMenu selectItemWithTitle:str];
+		}
 	}
 	for (NSString *str in [config objectForKey:@"reproducible"])
 	{
 		[self.reproducibleMenu addItemWithTitle:str];
+		if ([str isEqualToString:[prefs objectForKey:@"RadarWindowSelectedReproducible"]])
+		{
+			[self.reproducibleMenu selectItemWithTitle:str];
+		}
 	}
+	
 	
 	[self.titleField becomeFirstResponder];
 }
@@ -59,6 +74,14 @@
         [[[NSApp delegate] window] makeKeyAndOrderFront:nil];
         return;
     }
+	
+	/* Save UI state */
+	
+	[prefs setObject:self.productMenu.selectedItem.title forKey:@"RadarWindowSelectedProduct"];
+	[prefs setObject:self.classificationMenu.selectedItem.title forKey:@"RadarWindowSelectedClassification"];
+	[prefs setObject:self.reproducibleMenu.selectedItem.title forKey:@"RadarWindowSelectedReproducible"];
+	
+	/* Make a radar */
         
 	QRRadar *radar = [[QRRadar alloc] init];
 	radar.product = self.productMenu.selectedItem.title;
@@ -67,6 +90,8 @@
 	radar.version = self.versionField.stringValue;
 	radar.title = self.titleField.stringValue;
 	radar.body = self.bodyTextView.string;
+	
+	/* Submit it */
 	
 	[self.submitButton setEnabled:NO];
 	[self.spinner startAnimation:self];
