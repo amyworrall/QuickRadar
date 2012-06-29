@@ -10,21 +10,24 @@
 #import "PTHotKeyLib.h"
 #import "QRRadarWindowController.h"
 #import <Growl/Growl.h>
+#import "QRPreferencesWindowController.h"
 
 @interface AppDelegate () <GrowlApplicationBridgeDelegate>
 {
 	NSMutableSet *windowControllerStore;
     NSStatusItem *statusItem;
 }
+
+@property (strong) QRPreferencesWindowController *preferencesWindowController;
+
 @end
 
-#define GlobalHotkeyName @"hotkey"
-#define GlobalHotkeyKeyPath @"values.hotkey"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize menu = _menu;
+@synthesize preferencesWindowController = _preferencesWindowController;
 
 #pragma mark NSApplicationDelegate
 
@@ -46,7 +49,18 @@
 	windowControllerStore = [NSMutableSet set];
 	
 	[GrowlApplicationBridge setGrowlDelegate:self];
+	
+	self.preferencesWindowController = [[QRPreferencesWindowController alloc] initWithWindowNibName:@"QRPreferencesWindowController"];
 
+}
+
+#pragma mark - Prefs
+
+- (IBAction)showPreferencesWindow:(id)sender;
+{
+	NSLog(@"Pref");
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	[self.preferencesWindowController showWindow:self];
 }
 
 #pragma mark growl support
@@ -93,6 +107,7 @@
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	[self.window makeKeyAndOrderFront:self];
 }
+
 
 - (IBAction)newBug:(id)sender;
 {

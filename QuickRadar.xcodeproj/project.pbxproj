@@ -14,6 +14,10 @@
 		B4EC27EC1591577000E79E8B /* libPTHotkey-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */; };
 		B4EC27EF1591577A00E79E8B /* PTKeyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */; };
 		B4EC27F01591577A00E79E8B /* PTKeyComboPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */; };
+		E1643539159DFAD00063096B /* QRMainAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1643537159DFAD00063096B /* QRMainAppSettingsViewController.m */; };
+		E164353A159DFAD00063096B /* QRMainAppSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1643538159DFAD00063096B /* QRMainAppSettingsViewController.xib */; };
+		E1643540159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E164353E159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m */; };
+		E1643541159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E164353F159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.xib */; };
 		E19CFC6E159A002E00879280 /* QRRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC6D159A002E00879280 /* QRRadar.m */; };
 		E19CFC71159A010600879280 /* QRSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC70159A010600879280 /* QRSubmissionService.m */; };
 		E19CFC75159A037300879280 /* QRRadarSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC74159A037300879280 /* QRRadarSubmissionService.m */; };
@@ -32,6 +36,8 @@
 		E1CC51ED1563BC1E0027FB83 /* NSXMLNode+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51EC1563BC1D0027FB83 /* NSXMLNode+Additions.m */; };
 		E1CC51F01563BF720027FB83 /* QRURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CC51EF1563BF720027FB83 /* QRURLConnection.m */; };
 		E1E909101590ABBA0019F189 /* MenubarTemplate.tif in Resources */ = {isa = PBXBuildFile; fileRef = E1E9090F1590ABBA0019F189 /* MenubarTemplate.tif */; };
+		E1ED7E45159DE17B0033D7C0 /* QRPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1ED7E43159DE17B0033D7C0 /* QRPreferencesWindowController.m */; };
+		E1ED7E46159DE17B0033D7C0 /* QRPreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1ED7E44159DE17B0033D7C0 /* QRPreferencesWindowController.xib */; };
 		E1F8590B158A2D2F005F77DA /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
 		E1F8590E158A2EEC005F77DA /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +64,12 @@
 		B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPTHotkey-OSX.a"; path = "PTHotkey/libPTHotkey-OSX.a"; sourceTree = "<group>"; };
 		B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = PTKeyCodes.plist; path = PTHotkey/PTKeyCodes.plist; sourceTree = SOURCE_ROOT; };
 		B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PTKeyComboPanel.xib; path = PTHotkey/PTKeyComboPanel.xib; sourceTree = SOURCE_ROOT; };
+		E1643536159DFAD00063096B /* QRMainAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRMainAppSettingsViewController.h; sourceTree = "<group>"; };
+		E1643537159DFAD00063096B /* QRMainAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRMainAppSettingsViewController.m; sourceTree = "<group>"; };
+		E1643538159DFAD00063096B /* QRMainAppSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRMainAppSettingsViewController.xib; sourceTree = "<group>"; };
+		E164353D159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadarSubmissionServicePreferencesViewController.h; sourceTree = "<group>"; };
+		E164353E159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRRadarSubmissionServicePreferencesViewController.m; sourceTree = "<group>"; };
+		E164353F159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRRadarSubmissionServicePreferencesViewController.xib; sourceTree = "<group>"; };
 		E19CFC6C159A002E00879280 /* QRRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadar.h; sourceTree = "<group>"; };
 		E19CFC6D159A002E00879280 /* QRRadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRRadar.m; sourceTree = "<group>"; };
 		E19CFC6F159A010600879280 /* QRSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRSubmissionService.h; sourceTree = "<group>"; };
@@ -91,6 +103,9 @@
 		E1CC51EE1563BF720027FB83 /* QRURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRURLConnection.h; sourceTree = "<group>"; };
 		E1CC51EF1563BF720027FB83 /* QRURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRURLConnection.m; sourceTree = "<group>"; };
 		E1E9090F1590ABBA0019F189 /* MenubarTemplate.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = MenubarTemplate.tif; sourceTree = "<group>"; };
+		E1ED7E42159DE17B0033D7C0 /* QRPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRPreferencesWindowController.h; sourceTree = "<group>"; };
+		E1ED7E43159DE17B0033D7C0 /* QRPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRPreferencesWindowController.m; sourceTree = "<group>"; };
+		E1ED7E44159DE17B0033D7C0 /* QRPreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRPreferencesWindowController.xib; sourceTree = "<group>"; };
 		E1F8590A158A2D2F005F77DA /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +125,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E164353C159DFAEA0063096B /* Main Pane */ = {
+			isa = PBXGroup;
+			children = (
+				E1643536159DFAD00063096B /* QRMainAppSettingsViewController.h */,
+				E1643537159DFAD00063096B /* QRMainAppSettingsViewController.m */,
+				E1643538159DFAD00063096B /* QRMainAppSettingsViewController.xib */,
+			);
+			name = "Main Pane";
+			sourceTree = "<group>";
+		};
 		E19CFC681599FF1800879280 /* New Radar Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +178,9 @@
 			children = (
 				E19CFC73159A037300879280 /* QRRadarSubmissionService.h */,
 				E19CFC74159A037300879280 /* QRRadarSubmissionService.m */,
+				E164353D159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.h */,
+				E164353E159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m */,
+				E164353F159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.xib */,
 			);
 			name = Radar;
 			sourceTree = "<group>";
@@ -221,6 +249,7 @@
 				E1CC51A2156257BF0027FB83 /* MainMenu.xib */,
 				E1CC51B415625C5B0027FB83 /* Config.plist */,
 				E19CFC681599FF1800879280 /* New Radar Window */,
+				E1ED7E40159DE15F0033D7C0 /* Preferences Window */,
 				E19CFC6B159A001400879280 /* Model */,
 				E19CFC691599FF7000879280 /* Submission Process */,
 				E19CFC6A1599FFFE00879280 /* Submission Services */,
@@ -245,6 +274,17 @@
 			);
 			name = "Supporting Files";
 			path = QuickRadar;
+			sourceTree = "<group>";
+		};
+		E1ED7E40159DE15F0033D7C0 /* Preferences Window */ = {
+			isa = PBXGroup;
+			children = (
+				E1ED7E42159DE17B0033D7C0 /* QRPreferencesWindowController.h */,
+				E1ED7E43159DE17B0033D7C0 /* QRPreferencesWindowController.m */,
+				E1ED7E44159DE17B0033D7C0 /* QRPreferencesWindowController.xib */,
+				E164353C159DFAEA0063096B /* Main Pane */,
+			);
+			name = "Preferences Window";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +348,9 @@
 				E1E909101590ABBA0019F189 /* MenubarTemplate.tif in Resources */,
 				B4EC27EF1591577A00E79E8B /* PTKeyCodes.plist in Resources */,
 				B4EC27F01591577A00E79E8B /* PTKeyComboPanel.xib in Resources */,
+				E1ED7E46159DE17B0033D7C0 /* QRPreferencesWindowController.xib in Resources */,
+				E164353A159DFAD00063096B /* QRMainAppSettingsViewController.xib in Resources */,
+				E1643541159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +372,9 @@
 				E19CFC6E159A002E00879280 /* QRRadar.m in Sources */,
 				E19CFC71159A010600879280 /* QRSubmissionService.m in Sources */,
 				E19CFC75159A037300879280 /* QRRadarSubmissionService.m in Sources */,
+				E1ED7E45159DE17B0033D7C0 /* QRPreferencesWindowController.m in Sources */,
+				E1643539159DFAD00063096B /* QRMainAppSettingsViewController.m in Sources */,
+				E1643540159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

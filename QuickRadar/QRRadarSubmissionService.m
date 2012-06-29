@@ -52,7 +52,7 @@
 
 + (NSString*)macSettingsViewControllerClassName;
 {
-	return nil;
+	return @"QRRadarSubmissionServicePreferencesViewController";
 }
 
 + (NSString*)iosSettingsViewControllerClassName;
