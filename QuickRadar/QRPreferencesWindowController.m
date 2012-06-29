@@ -29,6 +29,7 @@
 		
 		QRMainAppSettingsViewController *mainPrefsVC = [[QRMainAppSettingsViewController alloc] init];
 		mainPrefsVC.title = @"App Settings";
+		mainPrefsVC.representedObject = [NSImage imageNamed:NSImageNameActionTemplate];
 		[prefPanes addObject:mainPrefsVC];
 		
 		NSDictionary *services = [QRSubmissionService services];
@@ -44,6 +45,7 @@
 				NSViewController *viewController = [[viewControllerClass alloc] initWithNibName:viewControllerClassName bundle:nil];
 				
 				viewController.title = [serviceClass name];
+				viewController.representedObject = [serviceClass settingsIconPlatformAppropriateImage];
 				
 				[prefPanes addObject:viewController];
 			}

@@ -239,6 +239,7 @@
 											<string key="NSFrameSize">{434, 444}</string>
 											<reference key="NSSuperview" ref="193285854"/>
 											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView"/>
 											<string key="NSReuseIdentifierKey">_NS:11</string>
 										</object>
 									</array>
@@ -448,6 +449,22 @@
 						<reference key="destination" ref="264817457"/>
 					</object>
 					<int key="connectionID">40</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: objectValue.representedObject</string>
+						<reference key="source" ref="306355705"/>
+						<reference key="destination" ref="819699796"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="306355705"/>
+							<reference key="NSDestination" ref="819699796"/>
+							<string key="NSLabel">value: objectValue.representedObject</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">objectValue.representedObject</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">67</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -917,7 +934,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">64</int>
+			<int key="maxID">67</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

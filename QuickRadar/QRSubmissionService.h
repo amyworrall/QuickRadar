@@ -47,6 +47,7 @@ NSString * const QROpenRadarSubmissionServiceIdentifier;
 
 + (NSString*)macSettingsViewControllerClassName;
 + (NSString*)iosSettingsViewControllerClassName;
++ (id)settingsIconPlatformAppropriateImage;
 
 - (SubmissionStatus)submissionStatus;
 

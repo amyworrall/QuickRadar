@@ -60,6 +60,15 @@
 	return nil;
 }
 
++ (id)settingsIconPlatformAppropriateImage;
+{
+	if (NSClassFromString(@"NSImage"))
+	{
+		return [NSImage imageNamed:@"MenubarTemplate"];
+	}
+	return nil;
+}
+
 - (CGFloat)progress
 {
 	return self.progressValue;
