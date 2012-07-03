@@ -11,6 +11,7 @@
 #import "QRRadarWindowController.h"
 #import <Growl/Growl.h>
 #import "QRPreferencesWindowController.h"
+#import "QRUserDefaultsKeys.h"
 
 @interface AppDelegate () <GrowlApplicationBridgeDelegate>
 {
@@ -19,6 +20,7 @@
 }
 
 @property (strong) QRPreferencesWindowController *preferencesWindowController;
+@property (assign, nonatomic) BOOL applicationHasStarted;
 
 @end
 
@@ -27,6 +29,7 @@
 
 @synthesize menu = _menu;
 @synthesize preferencesWindowController = _preferencesWindowController;
+@synthesize applicationHasStarted = _applicationHasStarted;
 
 #pragma mark NSApplicationDelegate
 
@@ -51,7 +54,29 @@
 	
 	self.preferencesWindowController = [[QRPreferencesWindowController alloc] initWithWindowNibName:@"QRPreferencesWindowController"];
 
+	BOOL shouldShowDockIcon = [[NSUserDefaults standardUserDefaults] boolForKey:QRShowInDockKey];
+	
+	if (shouldShowDockIcon)
+	{
+		ProcessSerialNumber psn = {0, kCurrentProcess};
+		verify_noerr(TransformProcessType(&psn, 
+										  kProcessTransformToForegroundApplication));
+	}
+	
+	self.applicationHasStarted = YES;
 }
+
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender;
+{
+	return (self.applicationHasStarted);
+}
+
+- (BOOL)applicationOpenUntitledFile:(NSApplication *)theApplication;
+{
+	[self newBug:self];
+	return YES;
+}
+
 
 #pragma mark - Prefs
 
