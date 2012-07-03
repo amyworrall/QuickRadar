@@ -8,6 +8,7 @@
 
 #import "QRRadarSubmissionService.h"
 #import "QRWebScraper.h"
+#import "NSError+Additions.h"
 
 
 @interface QRRadarSubmissionService ()
@@ -179,9 +180,9 @@
 		
 		// ------- Parsing --------
 		
-		
 		NSDictionary *bouncePageXpaths = [NSDictionary dictionaryWithObjectsAndKeys:
 										  @"//form[@name='frmLinkMyOriginated']/@action", @"action",
+										  @"//img[@alt='Alert']", @"alertIcon",
 										  nil];
 		
 		NSDictionary *bouncePageValues = [bouncePage stringValuesForXPathsDictionary:bouncePageXpaths error:&error];
@@ -191,6 +192,18 @@
 			dispatch_sync(dispatch_get_main_queue(), ^{ 
 				self.submissionStatusValue = submissionStatusFailed;
 				completionBlock(NO, error);
+			});
+			return;
+		}
+		
+		if ([bouncePageValues objectForKey:@"alertIcon"])
+		{
+			dispatch_sync(dispatch_get_main_queue(), ^{ 
+				NSError *authError = [NSError authenticationErrorWithServiceIdentifier:self.class.identifier underlyingError:error];
+				
+				self.submissionStatusValue = submissionStatusFailed;
+				self.progressValue = 0; // set this to 0 because it would be safe to retry the whole operation.
+				completionBlock(NO, authError);
 			});
 			return;
 		}

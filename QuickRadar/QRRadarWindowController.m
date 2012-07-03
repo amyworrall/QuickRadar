@@ -116,15 +116,9 @@
 		}
 		else 
 		{
-			NSLog(@"Error %@", error);
+			[NSApp presentError:error];
 			
-			[GrowlApplicationBridge notifyWithTitle:@"Submission Failed" 
-										description:@"Submission failed" 
-								   notificationName:@"Submission Failed" 
-										   iconData:nil 
-										   priority:0 
-										   isSticky:YES 
-									   clickContext:nil];
+
 			[self.submitButton setEnabled:YES];
 			[self.spinner stopAnimation:self];
 			

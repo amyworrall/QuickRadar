@@ -65,7 +65,7 @@
 
 - (void)startNextAvailableServices;
 {
-	for (QRSubmissionService *service in self.waiting)
+	for (QRSubmissionService *service in [self.waiting copy])
 	{
 		NSSet *hardDeps = [[service class] hardDependencies];
 		NSSet *softDeps = [[service class] softDependencies];
@@ -116,18 +116,26 @@
 		[self.waiting removeObject:service];
 		
 		[service submitAsyncWithProgressBlock:^{
-			NSLog(@"Progress %f", service.progress);
 			self.progressBlock();
 		} completionBlock:^(BOOL success, NSError *error) {
 			[self.inProgress removeObject:service];
 			[self.completed addObject:service];
-			[self startNextAvailableServices];
+			
+			if (!success)
+			{
+				self.hasFiredCompletionBlock = YES;
+				self.completionBlock(NO, error);
+			}
+			else 
+			{
+				[self startNextAvailableServices];
+			}
+			
 		}];
 	}
 	
 	if (self.inProgress.count == 0 && self.waiting.count == 0 && !self.hasFiredCompletionBlock)
 	{
-		NSLog(@"Finished");
 		self.hasFiredCompletionBlock = YES;
 		self.completionBlock(YES, nil);
 	}
