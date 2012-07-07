@@ -71,9 +71,12 @@
 		[postBody appendData:[@"--\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 		
 			
-			
-			NSString* postLength = [NSString stringWithFormat:@"%lu", [postBody length]];
-			[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+#if TARGET_OS_IPHONE
+        NSString* postLength = [NSString stringWithFormat:@"%u", [postBody length]];
+#else
+		NSString* postLength = [NSString stringWithFormat:@"%lu", [postBody length]];
+#endif
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
 			
 			[request setHTTPBody: postBody];
 
@@ -90,8 +93,12 @@
 		}
 		
 		NSData* postVariables = [ps dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-		NSString* postLength = [NSString stringWithFormat:@"%lu", [postVariables length]];
-		
+#if TARGET_OS_IPHONE
+		NSString* postLength = [NSString stringWithFormat:@"%u", [postVariables length]];
+#else
+        NSString* postLength = [NSString stringWithFormat:@"%lu", [postVariables length]];
+#endif
+        
 		[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
 		[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
 		[request setHTTPBody: postVariables];

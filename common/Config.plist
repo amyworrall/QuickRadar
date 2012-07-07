@@ -46,7 +46,7 @@
 		<string>UI/Usability </string>
 		<string>Serious Bug </string>
 		<string>Other Bug </string>
-		<string>Feature (New) </string>
+		<string>Feature (New)</string>
 		<string>Enhancement</string>
 	</array>
 	<key>reproducible</key>
