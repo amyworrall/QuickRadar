@@ -196,7 +196,7 @@
 			return;
 		}
 		
-		if ([bouncePageValues objectForKey:@"alertIcon"])
+		if ([[bouncePageValues objectForKey:@"alertIcon"] length] > 0)
 		{
 			dispatch_sync(dispatch_get_main_queue(), ^{ 
 				NSError *authError = [NSError authenticationErrorWithServiceIdentifier:self.class.identifier underlyingError:error];
