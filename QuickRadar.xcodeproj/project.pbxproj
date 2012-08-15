@@ -44,6 +44,7 @@
 		E1ED7E46159DE17B0033D7C0 /* QRPreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1ED7E44159DE17B0033D7C0 /* QRPreferencesWindowController.xib */; };
 		E1F8590B158A2D2F005F77DA /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
 		E1F8590E158A2EEC005F77DA /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
+		EC9FC49B15DC3F0800635DEB /* QRRadarWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9FC49A15DC3F0800635DEB /* QRRadarWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,6 +118,8 @@
 		E1ED7E43159DE17B0033D7C0 /* QRPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRPreferencesWindowController.m; sourceTree = "<group>"; };
 		E1ED7E44159DE17B0033D7C0 /* QRPreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRPreferencesWindowController.xib; sourceTree = "<group>"; };
 		E1F8590A158A2D2F005F77DA /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		EC9FC49915DC3F0800635DEB /* QRRadarWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadarWindow.h; sourceTree = "<group>"; };
+		EC9FC49A15DC3F0800635DEB /* QRRadarWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRRadarWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 			children = (
 				E1CC51AF15625A8D0027FB83 /* QRRadarWindowController.h */,
 				E1CC51B015625A8D0027FB83 /* QRRadarWindowController.m */,
+				EC9FC49915DC3F0800635DEB /* QRRadarWindow.h */,
+				EC9FC49A15DC3F0800635DEB /* QRRadarWindow.m */,
 				E1CC51B215625AAD0027FB83 /* RadarWindow.xib */,
 			);
 			name = "New Radar Window";
@@ -393,6 +398,7 @@
 				E1643539159DFAD00063096B /* QRMainAppSettingsViewController.m in Sources */,
 				E1643540159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m in Sources */,
 				E164357B15A2FC770063096B /* NSError+Additions.m in Sources */,
+				EC9FC49B15DC3F0800635DEB /* QRRadarWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

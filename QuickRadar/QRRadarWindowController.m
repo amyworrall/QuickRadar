@@ -40,7 +40,7 @@
 		if ([str isEqualToString:[prefs objectForKey:@"RadarWindowSelectedProduct"]])
 		{
 			[self.productMenu selectItemWithTitle:str];
-		}		
+		}
 	}
 	for (NSString *str in [config objectForKey:@"classifications"])
 	{
@@ -82,7 +82,7 @@
 	[prefs setObject:self.reproducibleMenu.selectedItem.title forKey:@"RadarWindowSelectedReproducible"];
 	
 	/* Make a radar */
-        
+	
 	QRRadar *radar = [[QRRadar alloc] init];
 	radar.product = self.productMenu.selectedItem.title;
 	radar.classification = self.classificationMenu.selectedItem.title;
@@ -99,31 +99,43 @@
 	self.submissionController = [[QRSubmissionController alloc] init];
 	self.submissionController.radar = radar;
 	
+	
 	[self.submissionController startWithProgressBlock:^{
 		self.progressBar.doubleValue = self.submissionController.progress;
 	} completionBlock:^(BOOL success, NSError *error) {
 		if (success && radar.radarNumber > 0)
 		{
-			[GrowlApplicationBridge notifyWithTitle:@"Submission Complete" 
-										description:[NSString stringWithFormat:@"Bug submitted as number %i.", radar.radarNumber] 
-								   notificationName:@"Submission Complete" 
+			[GrowlApplicationBridge notifyWithTitle:@"Submission Complete"
+										description:[NSString stringWithFormat:@"Bug submitted as number %i.", radar.radarNumber]
+								   notificationName:@"Submission Complete"
 										   iconData:nil
-										   priority:0 
-										   isSticky:NO 
+										   priority:0
+										   isSticky:NO
 									   clickContext:nil];
 			
-			[self.window close];
+			// Move the window off screen, like Mail.app
+			CGFloat highestScreenHeight = 0.0f;
+			for (NSScreen *screen in [NSScreen screens]) {
+				highestScreenHeight = MAX(highestScreenHeight, screen.frame.size.height);
+			}
+			CGRect rect = CGRectMake(self.window.frame.origin.x, highestScreenHeight + 200,
+									 self.window.frame.size.width, self.window.frame.size.height);
+			[self.window setFrame:rect display:YES animate:YES];
+			
+			// Close when animation is done.
+			[self.window performSelector:@selector(close) withObject:nil afterDelay:[self.window animationResizeTime:rect]];
+//			[self.window close];
 		}
-		else 
+		else
 		{
 			[NSApp presentError:error];
 			
-
+			
 			[self.submitButton setEnabled:YES];
 			[self.spinner stopAnimation:self];
 			
 		}
-
+		
 	}];
 	
 	
