@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "QRAppListPopover.h"
 
-@interface QRRadarWindowController : NSWindowController
+@interface QRRadarWindowController : NSWindowController <QRAppListPopoverDelegate>
 
 @property (nonatomic, strong) IBOutlet NSPopUpButton *productMenu;
 @property (nonatomic, strong) IBOutlet NSPopUpButton *classificationMenu;
@@ -20,8 +21,11 @@
 @property (nonatomic, strong) IBOutlet NSButton *submitButton;
 @property (nonatomic, strong) IBOutlet NSProgressIndicator *spinner;
 @property (nonatomic, strong) IBOutlet NSProgressIndicator *progressBar;
+@property (nonatomic, strong) IBOutlet NSButton *appListButton;
+@property (nonatomic, strong) IBOutlet QRAppListPopover *appListPopover;
 
 
+- (IBAction)showAppList:(id)sender;
 - (IBAction)submitRadar:(id)sender;
 
 @end

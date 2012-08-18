@@ -12,6 +12,7 @@
 #import <Growl/Growl.h>
 #import "QRPreferencesWindowController.h"
 #import "QRUserDefaultsKeys.h"
+#import "QRAppListManager.h"
 
 @interface AppDelegate () <GrowlApplicationBridgeDelegate>
 {
@@ -63,6 +64,9 @@
 										  kProcessTransformToForegroundApplication));
 	}
 	
+	// Start tracking apps.
+	[QRAppListManager sharedManager];
+	
 	self.applicationHasStarted = YES;
 }
 
@@ -77,6 +81,9 @@
 	return YES;
 }
 
+- (void)applicationWillTerminate:(NSNotification *)notification {
+	[[QRAppListManager sharedManager] saveList];
+}
 
 #pragma mark - Prefs
 

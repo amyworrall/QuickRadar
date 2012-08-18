@@ -10,6 +10,9 @@
 #import "QRSubmissionController.h"
 #import "QRRadar.h"
 #import <Growl/Growl.h>
+#import "QRAppListPopover.h"
+#import "QRCachedRunningApplication.h"
+#import "NSButton+QuickRadar.h"
 
 @interface QRRadarWindowController ()
 
@@ -23,6 +26,8 @@
 @synthesize spinner, openRadarCheckbox, titleField, bodyTextView, classificationMenu, versionField, productMenu, reproducibleMenu, submitButton;
 @synthesize submissionController = _submissionController;
 @synthesize progressBar = _progressBar;
+@synthesize appListButton;
+@synthesize appListPopover;
 
 - (void)windowDidLoad
 {
@@ -61,9 +66,41 @@
 	
 	
 	[self.titleField becomeFirstResponder];
+	
 }
 
+- (IBAction)showAppList:(id)sender {
+	[self.appListPopover showRelativeToRect:self.appListButton.frame ofView:self.appListButton.superview preferredEdge:NSMaxXEdge];
+}
 
+- (void)appListPopover:(QRAppListPopover *)popover selectedApp:(QRCachedRunningApplication *)app {
+	// Fill out the versions text field using the selected app.
+	NSString *text = app.unlocalizedName;
+	NSString *version = app.versionAndBuild;
+	if (version) text = [text stringByAppendingFormat:@" %@", version];
+	versionField.stringValue = text;
+	
+	// Try to guess the category for the selected app (Xcode -> Developer Tools, Pages -> iWork, etc.)
+	NSString *guess = [app guessCategory];
+	NSMenuItem *item = [self.productMenu itemWithTitle:guess];
+	if (item) {
+		[self.productMenu selectItem:item];
+		[self.productMenu blinkTwice];
+	}
+	
+	// If the selected app crashed recently, choose Crash from the Classification list.
+	if ([app didCrashRecently]) {
+		for (NSString *title in self.classificationMenu.itemTitles) {
+			if ([title rangeOfString:@"Crash"].location != NSNotFound) {
+				[self.classificationMenu selectItemWithTitle:title];
+				[self.classificationMenu blinkTwice];
+			}
+		}
+	}
+	
+	[self.titleField becomeFirstResponder];
+	[self.appListPopover close];
+}
 
 - (IBAction)submitRadar:(id)sender;
 {
@@ -99,7 +136,7 @@
 	self.submissionController = [[QRSubmissionController alloc] init];
 	self.submissionController.radar = radar;
 	
-	
+	return;
 	[self.submissionController startWithProgressBlock:^{
 		self.progressBar.doubleValue = self.submissionController.progress;
 	} completionBlock:^(BOOL success, NSError *error) {

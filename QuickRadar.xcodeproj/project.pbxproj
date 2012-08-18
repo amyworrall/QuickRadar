@@ -45,6 +45,16 @@
 		E1F8590B158A2D2F005F77DA /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
 		E1F8590E158A2EEC005F77DA /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1F8590A158A2D2F005F77DA /* Growl.framework */; };
 		EC9FC49B15DC3F0800635DEB /* QRRadarWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9FC49A15DC3F0800635DEB /* QRRadarWindow.m */; };
+		ECBC724D15E02E6E00198D27 /* QRAppListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC724315E02E6E00198D27 /* QRAppListManager.m */; };
+		ECBC724E15E02E6E00198D27 /* QRAppListPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC724515E02E6E00198D27 /* QRAppListPopover.m */; };
+		ECBC724F15E02E6E00198D27 /* QRAppListTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC724715E02E6E00198D27 /* QRAppListTableCellView.m */; };
+		ECBC725015E02E6E00198D27 /* QRAppListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC724915E02E6E00198D27 /* QRAppListViewController.m */; };
+		ECBC725115E02E6E00198D27 /* QRAppListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBC724A15E02E6E00198D27 /* QRAppListViewController.xib */; };
+		ECBC725215E02E6E00198D27 /* QRCachedRunningApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC724C15E02E6E00198D27 /* QRCachedRunningApplication.m */; };
+		ECBC725A15E02EE300198D27 /* ProductCategories.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECBC725715E02EE300198D27 /* ProductCategories.plist */; };
+		ECBC725B15E02EE300198D27 /* WarningIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = ECBC725815E02EE300198D27 /* WarningIcon.png */; };
+		ECBC725E15E03AD400198D27 /* AppIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = ECBC725D15E03AD400198D27 /* AppIconSmall.png */; };
+		ECBC726115E03E4500198D27 /* NSButton+QuickRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC726015E03E4500198D27 /* NSButton+QuickRadar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -120,6 +130,22 @@
 		E1F8590A158A2D2F005F77DA /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		EC9FC49915DC3F0800635DEB /* QRRadarWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadarWindow.h; sourceTree = "<group>"; };
 		EC9FC49A15DC3F0800635DEB /* QRRadarWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRRadarWindow.m; sourceTree = "<group>"; };
+		ECBC724215E02E6E00198D27 /* QRAppListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRAppListManager.h; sourceTree = "<group>"; };
+		ECBC724315E02E6E00198D27 /* QRAppListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRAppListManager.m; sourceTree = "<group>"; };
+		ECBC724415E02E6E00198D27 /* QRAppListPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRAppListPopover.h; sourceTree = "<group>"; };
+		ECBC724515E02E6E00198D27 /* QRAppListPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRAppListPopover.m; sourceTree = "<group>"; };
+		ECBC724615E02E6E00198D27 /* QRAppListTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRAppListTableCellView.h; sourceTree = "<group>"; };
+		ECBC724715E02E6E00198D27 /* QRAppListTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRAppListTableCellView.m; sourceTree = "<group>"; };
+		ECBC724815E02E6E00198D27 /* QRAppListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRAppListViewController.h; sourceTree = "<group>"; };
+		ECBC724915E02E6E00198D27 /* QRAppListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRAppListViewController.m; sourceTree = "<group>"; };
+		ECBC724A15E02E6E00198D27 /* QRAppListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRAppListViewController.xib; sourceTree = "<group>"; };
+		ECBC724B15E02E6E00198D27 /* QRCachedRunningApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCachedRunningApplication.h; sourceTree = "<group>"; };
+		ECBC724C15E02E6E00198D27 /* QRCachedRunningApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCachedRunningApplication.m; sourceTree = "<group>"; };
+		ECBC725715E02EE300198D27 /* ProductCategories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProductCategories.plist; sourceTree = "<group>"; };
+		ECBC725815E02EE300198D27 /* WarningIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WarningIcon.png; sourceTree = "<group>"; };
+		ECBC725D15E03AD400198D27 /* AppIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconSmall.png; sourceTree = "<group>"; };
+		ECBC725F15E03E4500198D27 /* NSButton+QuickRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSButton+QuickRadar.h"; sourceTree = "<group>"; };
+		ECBC726015E03E4500198D27 /* NSButton+QuickRadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSButton+QuickRadar.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +178,7 @@
 		E19CFC681599FF1800879280 /* New Radar Window */ = {
 			isa = PBXGroup;
 			children = (
+				ECBC725415E02E7300198D27 /* App List Popover */,
 				E1CC51AF15625A8D0027FB83 /* QRRadarWindowController.h */,
 				E1CC51B015625A8D0027FB83 /* QRRadarWindowController.m */,
 				EC9FC49915DC3F0800635DEB /* QRRadarWindow.h */,
@@ -308,6 +335,45 @@
 			name = "Preferences Window";
 			sourceTree = "<group>";
 		};
+		ECBC725415E02E7300198D27 /* App List Popover */ = {
+			isa = PBXGroup;
+			children = (
+				ECBC725515E02E8D00198D27 /* Helper Classes */,
+				ECBC725C15E02F0300198D27 /* Resources */,
+				ECBC724415E02E6E00198D27 /* QRAppListPopover.h */,
+				ECBC724515E02E6E00198D27 /* QRAppListPopover.m */,
+				ECBC724B15E02E6E00198D27 /* QRCachedRunningApplication.h */,
+				ECBC724C15E02E6E00198D27 /* QRCachedRunningApplication.m */,
+			);
+			name = "App List Popover";
+			sourceTree = "<group>";
+		};
+		ECBC725515E02E8D00198D27 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				ECBC725F15E03E4500198D27 /* NSButton+QuickRadar.h */,
+				ECBC726015E03E4500198D27 /* NSButton+QuickRadar.m */,
+				ECBC724215E02E6E00198D27 /* QRAppListManager.h */,
+				ECBC724315E02E6E00198D27 /* QRAppListManager.m */,
+				ECBC724615E02E6E00198D27 /* QRAppListTableCellView.h */,
+				ECBC724715E02E6E00198D27 /* QRAppListTableCellView.m */,
+				ECBC724815E02E6E00198D27 /* QRAppListViewController.h */,
+				ECBC724915E02E6E00198D27 /* QRAppListViewController.m */,
+				ECBC724A15E02E6E00198D27 /* QRAppListViewController.xib */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
+		ECBC725C15E02F0300198D27 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ECBC725D15E03AD400198D27 /* AppIconSmall.png */,
+				ECBC725715E02EE300198D27 /* ProductCategories.plist */,
+				ECBC725815E02EE300198D27 /* WarningIcon.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -373,6 +439,10 @@
 				E164353A159DFAD00063096B /* QRMainAppSettingsViewController.xib in Resources */,
 				E1643541159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.xib in Resources */,
 				E164358A15A351A40063096B /* dsa_pub.pem in Resources */,
+				ECBC725115E02E6E00198D27 /* QRAppListViewController.xib in Resources */,
+				ECBC725A15E02EE300198D27 /* ProductCategories.plist in Resources */,
+				ECBC725B15E02EE300198D27 /* WarningIcon.png in Resources */,
+				ECBC725E15E03AD400198D27 /* AppIconSmall.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +469,12 @@
 				E1643540159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m in Sources */,
 				E164357B15A2FC770063096B /* NSError+Additions.m in Sources */,
 				EC9FC49B15DC3F0800635DEB /* QRRadarWindow.m in Sources */,
+				ECBC724D15E02E6E00198D27 /* QRAppListManager.m in Sources */,
+				ECBC724E15E02E6E00198D27 /* QRAppListPopover.m in Sources */,
+				ECBC724F15E02E6E00198D27 /* QRAppListTableCellView.m in Sources */,
+				ECBC725015E02E6E00198D27 /* QRAppListViewController.m in Sources */,
+				ECBC725215E02E6E00198D27 /* QRCachedRunningApplication.m in Sources */,
+				ECBC726115E03E4500198D27 /* NSButton+QuickRadar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
