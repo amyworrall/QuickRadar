@@ -73,12 +73,19 @@
 	[self.appListPopover showRelativeToRect:self.appListButton.frame ofView:self.appListButton.superview preferredEdge:NSMaxXEdge];
 }
 
-- (void)appListPopover:(QRAppListPopover *)popover selectedApp:(QRCachedRunningApplication *)app {
+- (void)prepopulateWithApp:(QRCachedRunningApplication *)app {
 	// Fill out the versions text field using the selected app.
 	NSString *text = app.unlocalizedName;
 	NSString *version = app.versionAndBuild;
 	if (version) text = [text stringByAppendingFormat:@" %@", version];
 	versionField.stringValue = text;
+	
+	// Apple alre recommends to include the version in the title.
+	// https://developer.apple.com/bugreporter/bugbestpractices.html#BugBody
+	NSString *trimmedTitle = [titleField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" \t"]];
+	if (!trimmedTitle || [trimmedTitle isEqualToString:@""]) {
+		titleField.stringValue = [text stringByAppendingString:@": "];
+	}
 	
 	// Try to guess the category for the selected app (Xcode -> Developer Tools, Pages -> iWork, etc.)
 	NSString *guess = [app guessCategory];
@@ -99,6 +106,10 @@
 	}
 	
 	[self.titleField becomeFirstResponder];
+}
+
+- (void)appListPopover:(QRAppListPopover *)popover selectedApp:(QRCachedRunningApplication *)app {
+	[self prepopulateWithApp:app];
 	[self.appListPopover close];
 }
 

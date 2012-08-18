@@ -27,5 +27,6 @@
 
 - (IBAction)showAppList:(id)sender;
 - (IBAction)submitRadar:(id)sender;
+- (void)prepopulateWithApp:(QRCachedRunningApplication *)app;
 
 @end

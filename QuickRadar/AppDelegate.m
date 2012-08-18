@@ -142,6 +142,7 @@
     QRRadarWindowController *b = [[QRRadarWindowController alloc] initWithWindowNibName:@"RadarWindow"];
     [windowControllerStore addObject:b];
     [b showWindow:nil];
+	
 }
 
 
