@@ -22,9 +22,13 @@
 		E164358815A34FBB0063096B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E164358715A34FBB0063096B /* Sparkle.framework */; };
 		E164358A15A351A40063096B /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = E164358915A351A40063096B /* dsa_pub.pem */; };
 		E164358B15A352130063096B /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E164358715A34FBB0063096B /* Sparkle.framework */; };
+		E17F4CF815E3EBB000FE8A33 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E17F4CF715E3EBB000FE8A33 /* NSString+URLEncoding.m */; };
 		E19CFC6E159A002E00879280 /* QRRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC6D159A002E00879280 /* QRRadar.m */; };
 		E19CFC71159A010600879280 /* QRSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC70159A010600879280 /* QRSubmissionService.m */; };
 		E19CFC75159A037300879280 /* QRRadarSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC74159A037300879280 /* QRRadarSubmissionService.m */; };
+		E1B6F9DC15E3E268004F37F7 /* QROpenRadarSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B6F9DB15E3E268004F37F7 /* QROpenRadarSubmissionService.m */; };
+		E1B6F9E015E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B6F9DE15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m */; };
+		E1B6F9E115E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B6F9DF15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib */; };
 		E1C10ACA158A7D02003A3C01 /* License in Resources */ = {isa = PBXBuildFile; fileRef = E1C10AC9158A7D02003A3C01 /* License */; };
 		E1C10AE71593B4C8003A3C01 /* QRWebScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C10AE61593B4C8003A3C01 /* QRWebScraper.m */; };
 		E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CC518D156257BF0027FB83 /* Cocoa.framework */; };
@@ -80,12 +84,19 @@
 		E164358215A346910063096B /* QRUserDefaultsKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRUserDefaultsKeys.h; sourceTree = "<group>"; };
 		E164358715A34FBB0063096B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		E164358915A351A40063096B /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		E17F4CF615E3EBB000FE8A33 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		E17F4CF715E3EBB000FE8A33 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		E19CFC6C159A002E00879280 /* QRRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadar.h; sourceTree = "<group>"; };
 		E19CFC6D159A002E00879280 /* QRRadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRRadar.m; sourceTree = "<group>"; };
 		E19CFC6F159A010600879280 /* QRSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRSubmissionService.h; sourceTree = "<group>"; };
 		E19CFC70159A010600879280 /* QRSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRSubmissionService.m; sourceTree = "<group>"; };
 		E19CFC73159A037300879280 /* QRRadarSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadarSubmissionService.h; sourceTree = "<group>"; };
 		E19CFC74159A037300879280 /* QRRadarSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRRadarSubmissionService.m; sourceTree = "<group>"; };
+		E1B6F9DA15E3E268004F37F7 /* QROpenRadarSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QROpenRadarSubmissionService.h; sourceTree = "<group>"; };
+		E1B6F9DB15E3E268004F37F7 /* QROpenRadarSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QROpenRadarSubmissionService.m; sourceTree = "<group>"; };
+		E1B6F9DD15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QROpenRadarSubmissionServicePreferencesViewController.h; sourceTree = "<group>"; };
+		E1B6F9DE15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QROpenRadarSubmissionServicePreferencesViewController.m; sourceTree = "<group>"; };
+		E1B6F9DF15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QROpenRadarSubmissionServicePreferencesViewController.xib; sourceTree = "<group>"; };
 		E1C10AC9158A7D02003A3C01 /* License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License; path = ../License; sourceTree = "<group>"; };
 		E1C10AE51593B4C8003A3C01 /* QRWebScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRWebScraper.h; sourceTree = "<group>"; };
 		E1C10AE61593B4C8003A3C01 /* QRWebScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRWebScraper.m; sourceTree = "<group>"; };
@@ -171,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				E19CFC72159A035E00879280 /* Radar */,
+				E1B6F9D815E3E22C004F37F7 /* Open Radar */,
 			);
 			name = "Submission Services";
 			sourceTree = "<group>";
@@ -196,6 +208,18 @@
 			name = Radar;
 			sourceTree = "<group>";
 		};
+		E1B6F9D815E3E22C004F37F7 /* Open Radar */ = {
+			isa = PBXGroup;
+			children = (
+				E1B6F9DA15E3E268004F37F7 /* QROpenRadarSubmissionService.h */,
+				E1B6F9DB15E3E268004F37F7 /* QROpenRadarSubmissionService.m */,
+				E1B6F9DD15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.h */,
+				E1B6F9DE15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m */,
+				E1B6F9DF15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib */,
+			);
+			name = "Open Radar";
+			sourceTree = "<group>";
+		};
 		E1C10AE31593B49E003A3C01 /* Helper Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +233,8 @@
 				98EACACF158A89670078D06C /* PasswordStoring.m */,
 				E164357915A2FC770063096B /* NSError+Additions.h */,
 				E164357A15A2FC770063096B /* NSError+Additions.m */,
+				E17F4CF615E3EBB000FE8A33 /* NSString+URLEncoding.h */,
+				E17F4CF715E3EBB000FE8A33 /* NSString+URLEncoding.m */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -368,6 +394,7 @@
 				E164353A159DFAD00063096B /* QRMainAppSettingsViewController.xib in Resources */,
 				E1643541159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.xib in Resources */,
 				E164358A15A351A40063096B /* dsa_pub.pem in Resources */,
+				E1B6F9E115E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +420,9 @@
 				E1643539159DFAD00063096B /* QRMainAppSettingsViewController.m in Sources */,
 				E1643540159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m in Sources */,
 				E164357B15A2FC770063096B /* NSError+Additions.m in Sources */,
+				E1B6F9DC15E3E268004F37F7 /* QROpenRadarSubmissionService.m in Sources */,
+				E1B6F9E015E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m in Sources */,
+				E17F4CF815E3EBB000FE8A33 /* NSString+URLEncoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -98,6 +98,24 @@
 		
 		NSError *error = nil;
 		
+		
+		
+		// TEST
+		/*
+		self.radar.radarNumber = 27;
+		
+		self.progressValue = 1.0;
+		self.submissionStatusValue = submissionStatusCompleted;
+		
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			progressBlock();
+			completionBlock(YES, nil);
+		});
+		return;
+		*/
+
+		
+		
 		/**********************
 		 * Page 1: login page *
 		 **********************/
