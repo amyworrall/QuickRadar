@@ -16,7 +16,7 @@
 
 #define kQRCachedAppCrashReportSearchPaths	@[@"~/Library/Logs/DiagnosticReports", @"/Library/Logs/DiagnosticReports"]
 #define kQRCachedAppCrashReportExtension	@"crash"
-#define kQRCachedAppCrashReportMaxAge		(60*60)	// seconds
+#define kQRCachedAppCrashReportMaxAge		(60*15)	// seconds
 
 #define kQRCachedAppXcodeIdentifier			@"com.apple.dt.Xcode"
 #define kQRCachedAppXcodeVersionPlist		@"Contents/version.plist"
@@ -87,7 +87,7 @@
 		BOOL dpVersion = [[[self.bundle.bundlePath lastPathComponent] stringByDeletingPathExtension]
 						  caseInsensitiveCompare:@"xcode"] != NSOrderedSame;
 		if (dpVersion) {
-			return @"";
+			return nil;
 		}
 	}
 	return self.bundle.infoDictionary[kQRCachedAppShortVersionString];
@@ -110,7 +110,7 @@
 	NSString *versionAndBuild = @"";
 	if (version) versionAndBuild = version;
 	if (build && ![build isEqualToString:version]) versionAndBuild = [versionAndBuild stringByAppendingFormat:@" (%@)", build];
-	return versionAndBuild;
+	return [versionAndBuild stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
 }
 
 - (NSImage *)icon {

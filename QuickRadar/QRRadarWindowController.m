@@ -77,17 +77,22 @@
 - (void)prepopulateWithApp:(QRCachedRunningApplication *)app {
 	// Fill out the versions text field using the selected app.
 	NSString *text = app.unlocalizedName;
-	NSString *version = app.versionAndBuild;
-	if (version) text = [text stringByAppendingFormat:@" %@", version];
+	NSString *versionAndBuild = app.versionAndBuild;
+	if (versionAndBuild) text = [text stringByAppendingFormat:@" %@", versionAndBuild];
 	versionField.stringValue = text;
 	
-	// Apple alre recommends to include the version in the title.
+	// Apple also recommends to include the version in the title.
 	// https://developer.apple.com/bugreporter/bugbestpractices.html#BugBody
 	// We have to make sure, we don't override the title, if the user already typed in something.
 	// But we want to override it, if it's just an other app's version. self.userTypedTitle will be YES, if the user already typed something.
 	NSString *trimmedTitle = [titleField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" \t"]];
 	if (!trimmedTitle || [trimmedTitle isEqualToString:@""] || self.userTypedTitle == NO) {
-		titleField.stringValue = [text stringByAppendingString:@": "];
+		NSString *title = app.unlocalizedName;
+		NSString *version = app.version;
+		NSString *build = app.build;
+		if (version) title = [title stringByAppendingFormat:@" %@: ", version];
+		else if (build) title = [title stringByAppendingFormat:@" (%@): ", build];
+		titleField.stringValue = title;
 	}
 	
 	// Try to guess the category for the selected app (Xcode -> Developer Tools, Pages -> iWork, etc.)
