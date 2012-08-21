@@ -17,6 +17,7 @@
 @interface QRRadarWindowController ()
 
 @property (nonatomic, strong) QRSubmissionController *submissionController;
+@property (nonatomic) BOOL userTypedTitle;	// Don't override his title when selecting an app.
 
 @end
 
@@ -64,7 +65,7 @@
 		}
 	}
 	
-	
+	self.userTypedTitle = NO;
 	[self.titleField becomeFirstResponder];
 	
 }
@@ -82,8 +83,10 @@
 	
 	// Apple alre recommends to include the version in the title.
 	// https://developer.apple.com/bugreporter/bugbestpractices.html#BugBody
+	// We have to make sure, we don't override the title, if the user already typed in something.
+	// But we want to override it, if it's just an other app's version. self.userTypedTitle will be YES, if the user already typed something.
 	NSString *trimmedTitle = [titleField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" \t"]];
-	if (!trimmedTitle || [trimmedTitle isEqualToString:@""]) {
+	if (!trimmedTitle || [trimmedTitle isEqualToString:@""] || self.userTypedTitle == NO) {
 		titleField.stringValue = [text stringByAppendingString:@": "];
 	}
 	
@@ -186,7 +189,10 @@
 		
 	}];
 	
-	
+}
+
+- (void)controlTextDidChange:(NSNotification *)aNotification {
+	self.userTypedTitle = YES;
 }
 
 @end

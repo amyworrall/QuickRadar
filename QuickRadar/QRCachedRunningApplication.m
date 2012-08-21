@@ -68,6 +68,9 @@
 
 // We have to tell Apple the unlocalized name, but NSRunningApplication doesn't have such a method.
 - (NSString *)unlocalizedName {
+	if ([self.bundle.bundleIdentifier hasPrefix:@"com.apple.dt.Xcode"]) {
+		return [[self.bundle.bundlePath lastPathComponent] stringByDeletingPathExtension];
+	}
 	NSDictionary *info = self.bundle.infoDictionary;
 	if (info) {
 		NSString *name = info[kQRCachedAppBundleDisplayName];
@@ -79,6 +82,14 @@
 }
 
 - (NSString *)version {
+	// If it's a dev preview version of Xcode, don't return a version, because the name already contains the version.
+	if ([self.bundle.bundleIdentifier hasPrefix:@"com.apple.dt.Xcode"]) {
+		BOOL dpVersion = [[[self.bundle.bundlePath lastPathComponent] stringByDeletingPathExtension]
+						  caseInsensitiveCompare:@"xcode"] != NSOrderedSame;
+		if (dpVersion) {
+			return @"";
+		}
+	}
 	return self.bundle.infoDictionary[kQRCachedAppShortVersionString];
 }
 
