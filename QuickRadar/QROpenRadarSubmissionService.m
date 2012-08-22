@@ -35,6 +35,22 @@
 	return @"Open Radar";
 }
 
++ (NSString*)checkBoxString
+{
+	return @"Send to Open Radar";
+}
+
++ (BOOL)isAvailable
+{
+	NSString *apiKey = [[NSUserDefaults standardUserDefaults] stringForKey:@"openRadarAPIKey"];
+	
+	if (apiKey.length > 0)
+	{
+		return YES;
+	}
+	return NO;
+}
+
 + (BOOL)supportedOnMac;
 {
 	return YES;

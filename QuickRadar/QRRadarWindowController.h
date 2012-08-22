@@ -23,7 +23,7 @@
 @property (nonatomic, strong) IBOutlet NSProgressIndicator *progressBar;
 @property (nonatomic, strong) IBOutlet NSButton *appListButton;
 @property (nonatomic, strong) IBOutlet QRAppListPopover *appListPopover;
-
+@property (nonatomic, strong) IBOutlet NSMatrix *checkboxMatrix;
 
 - (IBAction)showAppList:(id)sender;
 - (IBAction)submitRadar:(id)sender;

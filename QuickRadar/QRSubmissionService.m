@@ -22,6 +22,32 @@ static NSMutableDictionary *_services;
 	return [NSDictionary dictionaryWithDictionary:_services];
 }
 
++ (NSDictionary *)checkBoxNames;
+{
+	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+	
+	NSDictionary *services = [QRSubmissionService services];
+	
+	for (NSString *serviceID in services)
+	{
+		Class serviceClass = [services objectForKey:serviceID];
+		
+		if (![serviceClass isAvailable])
+		{
+			continue;
+		}
+		
+		if ([serviceClass checkBoxString].length == 0)
+		{
+			continue;
+		}
+		
+		[dict setObject:[serviceClass checkBoxString] forKey:serviceID];
+	}
+	
+	return [NSDictionary dictionaryWithDictionary:dict];
+}
+
 + (void)registerService:(Class)service
 {
 	@autoreleasepool 
@@ -48,6 +74,16 @@ static NSMutableDictionary *_services;
 + (NSSet*)softDependencies;
 {
 	return [NSSet set];
+}
+
++ (NSString *)checkBoxString
+{
+	return nil;
+}
+
++ (BOOL)isAvailable
+{
+	return YES;
 }
 
 

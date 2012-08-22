@@ -26,6 +26,9 @@ NSString * const QROpenRadarSubmissionServiceIdentifier;
 // A dictionary of service classes, keyed by service identifier
 + (NSDictionary *)services;
 
+// A dictionary of service identifiers (keys) to check box strings (values)
++ (NSDictionary *)checkBoxNames;
+
 // Should be called by all subclasses in +initialize.
 + (void)registerService:(Class)service;
 

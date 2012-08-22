@@ -41,6 +41,11 @@
 	return @"Radar";
 }
 
++ (BOOL)isAvailable
+{
+	return YES;
+}
+
 + (BOOL)supportedOnMac;
 {
 	return YES;

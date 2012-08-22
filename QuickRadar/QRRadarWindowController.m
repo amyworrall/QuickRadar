@@ -8,6 +8,7 @@
 
 #import "QRRadarWindowController.h"
 #import "QRSubmissionController.h"
+#import "QRSubmissionService.h"
 #import "QRRadar.h"
 #import <Growl/Growl.h>
 #import "QRAppListPopover.h"
@@ -65,9 +66,27 @@
 		}
 	}
 	
+	[self setUpCheckboxes];
+	
 	self.userTypedTitle = NO;
 	[self.titleField becomeFirstResponder];
 	
+}
+
+- (void)setUpCheckboxes
+{
+	NSDictionary *checkboxDict = [QRSubmissionService checkBoxNames];
+	[self.checkboxMatrix renewRows:checkboxDict.count columns:1];
+	NSArray *orderedServiceIDs = [checkboxDict.allKeys sortedArrayUsingSelector:@selector(compare:)];
+	
+	for (int i=0; i<orderedServiceIDs.count; i++)
+	{
+		NSString *serviceID = [orderedServiceIDs objectAtIndex:i];
+		NSString *checkboxText = [checkboxDict objectForKey:serviceID];
+		
+		NSCell *cell = [self.checkboxMatrix cellAtRow:i column:0];
+		cell.title = checkboxText;
+	}
 }
 
 - (IBAction)showAppList:(id)sender {

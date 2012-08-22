@@ -54,6 +54,11 @@
 	{
 		Class serviceClass = [services objectForKey:serviceID];
 		
+		if (![serviceClass isAvailable])
+		{
+			continue;
+		}
+		
 		QRSubmissionService *service = [[serviceClass alloc] init];
 		service.radar = self.radar;
 		
