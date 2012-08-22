@@ -68,6 +68,16 @@
 	[QRAppListManager sharedManager];
 	
 	self.applicationHasStarted = YES;
+
+	NSAppleEventManager *em = [NSAppleEventManager sharedAppleEventManager];
+	[em
+	 setEventHandler:self
+	 andSelector:@selector(getUrl:withReplyEvent:)
+	 forEventClass:kInternetEventClass
+	 andEventID:kAEGetURL];
+	
+	NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+	LSSetDefaultHandlerForURLScheme((CFStringRef)@"rdar", (__bridge CFStringRef)bundleID);
 }
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender;
@@ -206,5 +216,21 @@
 		[self applyHotkey];
 	}
 }
+
+#pragma mark URL handling
+- (void)getUrl:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
+	// Get the URL
+	NSString *urlStr = [[event paramDescriptorForKeyword:keyDirectObject]
+						stringValue];
+	NSURL *url = [NSURL URLWithString:urlStr];
+	NSString *rdarId = url.host;
+	if ([rdarId isEqualToString:@"problem"]) {
+		rdarId = url.lastPathComponent;
+	}
+	
+	NSURL *openRadarURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://openradar.appspot.com/%@", rdarId]];
+	[[NSWorkspace sharedWorkspace] openURL:openRadarURL];
+}
+
 
 @end
