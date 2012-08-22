@@ -59,6 +59,8 @@ NSString * const QROpenRadarSubmissionServiceIdentifier;
 // Don't block this method, so don't go and check the username/pass are valid, just return YES if they're present.
 + (BOOL) isAvailable;
 
+// return YES to only activate this service if the user requests it.
++ (BOOL)requireCheckBox;
 // A string to display next to the check box in the user interface.
 + (NSString*)checkBoxString;
 

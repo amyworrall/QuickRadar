@@ -86,6 +86,7 @@
 		
 		NSCell *cell = [self.checkboxMatrix cellAtRow:i column:0];
 		cell.title = checkboxText;
+		cell.representedObject = serviceID;
 	}
 }
 
@@ -174,7 +175,18 @@
 	self.submissionController = [[QRSubmissionController alloc] init];
 	self.submissionController.radar = radar;
 	
-	return;
+	// Get checkbox statuses
+	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+	NSArray *selectedCells = [self.checkboxMatrix selectedCells];
+	for (int i=0; i<self.checkboxMatrix.numberOfRows; i++)
+	{
+		NSCell *cell = [self.checkboxMatrix cellAtRow:i column:0];
+		BOOL selected = [selectedCells containsObject:cell];
+		
+		[dict setObject:@(selected) forKey:cell.representedObject];
+	}
+	self.submissionController.requestedOptionalServices = [NSDictionary dictionaryWithDictionary:dict];
+	
 	[self.submissionController startWithProgressBlock:^{
 		self.progressBar.doubleValue = self.submissionController.progress;
 	} completionBlock:^(BOOL success, NSError *error) {

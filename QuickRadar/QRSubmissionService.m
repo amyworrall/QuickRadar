@@ -22,6 +22,11 @@ static NSMutableDictionary *_services;
 	return [NSDictionary dictionaryWithDictionary:_services];
 }
 
++ (BOOL)requireCheckBox;
+{
+	return YES;
+}
+
 + (NSDictionary *)checkBoxNames;
 {
 	NSMutableDictionary *dict = [NSMutableDictionary dictionary];

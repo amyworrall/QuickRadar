@@ -46,6 +46,11 @@
 	return YES;
 }
 
++ (BOOL)requireCheckBox;
+{
+	return NO;
+}
+
 + (BOOL)supportedOnMac;
 {
 	return YES;

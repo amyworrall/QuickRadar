@@ -48,8 +48,6 @@
 	
 	NSDictionary *services = [QRSubmissionService services];
 	
-	NSLog(@"Services: %@", services);
-	
 	for (NSString *serviceID in services)
 	{
 		Class serviceClass = [services objectForKey:serviceID];
@@ -59,12 +57,20 @@
 			continue;
 		}
 		
+		if ([serviceClass requireCheckBox])
+		{
+			if ([[self.requestedOptionalServices objectForKey:serviceID] boolValue] == NO)
+			{
+				continue;
+			}
+		}
+		
 		QRSubmissionService *service = [[serviceClass alloc] init];
 		service.radar = self.radar;
 		
 		[self.waiting addObject:service];
 	}
-	
+
 	[self startNextAvailableServices];
 }
 
