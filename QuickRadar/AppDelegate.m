@@ -78,6 +78,7 @@
 	
 	NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
 	LSSetDefaultHandlerForURLScheme((CFStringRef)@"rdar", (__bridge CFStringRef)bundleID);
+	LSSetDefaultHandlerForURLScheme((CFStringRef)@"quickradar", (__bridge CFStringRef)bundleID);
 }
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender;
@@ -223,13 +224,42 @@
 	NSString *urlStr = [[event paramDescriptorForKeyword:keyDirectObject]
 						stringValue];
 	NSURL *url = [NSURL URLWithString:urlStr];
-	NSString *rdarId = url.host;
-	if ([rdarId isEqualToString:@"problem"]) {
-		rdarId = url.lastPathComponent;
+	
+	if ([url.scheme isEqualToString:@"rdar"])
+	{
+		NSString *rdarId = url.host;
+		if ([rdarId isEqualToString:@"problem"]) {
+			rdarId = url.lastPathComponent;
+		}
+		
+		NSURL *openRadarURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://openradar.appspot.com/%@", rdarId]];
+		[[NSWorkspace sharedWorkspace] openURL:openRadarURL];
+
+	}
+	else if ([url.scheme isEqualToString:@"quickradar"])
+	{
+		// TODO: some way of having the service class register a block for its URL handler. This is a quick-and-dirty method in the mean time.
+		
+		NSString *urlStr = [url.absoluteString stringByReplacingOccurrencesOfString:@"quickradar://" withString:@""];
+		
+		if ([urlStr hasPrefix:@"appdotnetauth"])
+		{
+			NSArray *parts = [url.absoluteString componentsSeparatedByString:@"#"];
+			NSString *token = parts[1];
+			
+			if ([token hasPrefix:@"access_token="])
+			{
+				token = [token stringByReplacingOccurrencesOfString:@"access_token=" withString:@""];
+				[[NSUserDefaults standardUserDefaults] setObject:token forKey:@"appDotNetUserToken"];
+			}
+			else
+			{
+				[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"appDotNetUserToken"];
+			}
+			
+		}
 	}
 	
-	NSURL *openRadarURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://openradar.appspot.com/%@", rdarId]];
-	[[NSWorkspace sharedWorkspace] openURL:openRadarURL];
 }
 
 

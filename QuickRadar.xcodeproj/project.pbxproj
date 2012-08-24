@@ -22,6 +22,10 @@
 		E164358815A34FBB0063096B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E164358715A34FBB0063096B /* Sparkle.framework */; };
 		E164358A15A351A40063096B /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = E164358915A351A40063096B /* dsa_pub.pem */; };
 		E164358B15A352130063096B /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E164358715A34FBB0063096B /* Sparkle.framework */; };
+		E169F3BD15E50D760019383F /* QRAppDotNetSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E169F3BC15E50D760019383F /* QRAppDotNetSubmissionService.m */; };
+		E169F3C115E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E169F3BF15E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.m */; };
+		E169F3C215E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E169F3C015E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.xib */; };
+		E169F3C615E510080019383F /* AppDotNetConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = E169F3C515E510080019383F /* AppDotNetConfig.plist */; };
 		E17F4CF815E3EBB000FE8A33 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E17F4CF715E3EBB000FE8A33 /* NSString+URLEncoding.m */; };
 		E19CFC6E159A002E00879280 /* QRRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC6D159A002E00879280 /* QRRadar.m */; };
 		E19CFC71159A010600879280 /* QRSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC70159A010600879280 /* QRSubmissionService.m */; };
@@ -95,6 +99,12 @@
 		E164358215A346910063096B /* QRUserDefaultsKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRUserDefaultsKeys.h; sourceTree = "<group>"; };
 		E164358715A34FBB0063096B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		E164358915A351A40063096B /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		E169F3BB15E50D760019383F /* QRAppDotNetSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRAppDotNetSubmissionService.h; sourceTree = "<group>"; };
+		E169F3BC15E50D760019383F /* QRAppDotNetSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRAppDotNetSubmissionService.m; sourceTree = "<group>"; };
+		E169F3BE15E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRAppDotNetSubmissionServicePreferencesViewController.h; sourceTree = "<group>"; };
+		E169F3BF15E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRAppDotNetSubmissionServicePreferencesViewController.m; sourceTree = "<group>"; };
+		E169F3C015E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRAppDotNetSubmissionServicePreferencesViewController.xib; sourceTree = "<group>"; };
+		E169F3C515E510080019383F /* AppDotNetConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppDotNetConfig.plist; sourceTree = "<group>"; };
 		E17F4CF615E3EBB000FE8A33 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		E17F4CF715E3EBB000FE8A33 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		E19CFC6C159A002E00879280 /* QRRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadar.h; sourceTree = "<group>"; };
@@ -186,6 +196,19 @@
 			name = "Main Pane";
 			sourceTree = "<group>";
 		};
+		E169F3B915E50D580019383F /* App.net */ = {
+			isa = PBXGroup;
+			children = (
+				E169F3BB15E50D760019383F /* QRAppDotNetSubmissionService.h */,
+				E169F3BC15E50D760019383F /* QRAppDotNetSubmissionService.m */,
+				E169F3BE15E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.h */,
+				E169F3BF15E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.m */,
+				E169F3C015E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.xib */,
+				E169F3C515E510080019383F /* AppDotNetConfig.plist */,
+			);
+			name = App.net;
+			sourceTree = "<group>";
+		};
 		E19CFC681599FF1800879280 /* New Radar Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +238,7 @@
 			children = (
 				E19CFC72159A035E00879280 /* Radar */,
 				E1B6F9D815E3E22C004F37F7 /* Open Radar */,
+				E169F3B915E50D580019383F /* App.net */,
 			);
 			name = "Submission Services";
 			sourceTree = "<group>";
@@ -470,6 +494,8 @@
 				ECBC725B15E02EE300198D27 /* WarningIcon.png in Resources */,
 				ECBC725E15E03AD400198D27 /* AppIconSmall.png in Resources */,
 				E1B6F9E115E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib in Resources */,
+				E169F3C215E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.xib in Resources */,
+				E169F3C615E510080019383F /* AppDotNetConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +531,8 @@
 				E1B6F9DC15E3E268004F37F7 /* QROpenRadarSubmissionService.m in Sources */,
 				E1B6F9E015E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m in Sources */,
 				E17F4CF815E3EBB000FE8A33 /* NSString+URLEncoding.m in Sources */,
+				E169F3BD15E50D760019383F /* QRAppDotNetSubmissionService.m in Sources */,
+				E169F3C115E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

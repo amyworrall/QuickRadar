@@ -1,24 +1,24 @@
 //
-//  QROpenRadarSubmissionService.m
+//  QRAppDotNetSubmissionService.m
 //  QuickRadar
 //
-//  Created by Amy Worrall on 21/08/2012.
+//  Created by Amy Worrall on 22/08/2012.
 //
 //
 
-#import "QROpenRadarSubmissionService.h"
+#import "QRAppDotNetSubmissionService.h"
 #import "QRURLConnection.h"
 
-
-@interface QROpenRadarSubmissionService ()
+@interface QRAppDotNetSubmissionService ()
 
 @property (atomic, assign) CGFloat progressValue;
 @property (atomic, assign) SubmissionStatus submissionStatusValue;
 
 @end
 
+@implementation QRAppDotNetSubmissionService
 
-@implementation QROpenRadarSubmissionService
+
 
 + (void)load
 {
@@ -27,22 +27,22 @@
 
 + (NSString *)identifier
 {
-	return QROpenRadarSubmissionServiceIdentifier;
+	return @"QRAppDotNetSubmissionServiceIdentifier";
 }
 
 + (NSString *)name
 {
-	return @"Open Radar";
+	return @"App.net";
 }
 
 + (NSString*)checkBoxString
 {
-	return @"Send to Open Radar";
+	return @"Send to App.net";
 }
 
 + (BOOL)isAvailable
 {
-	NSString *apiKey = [[NSUserDefaults standardUserDefaults] stringForKey:@"openRadarAPIKey"];
+	NSString *apiKey = [[NSUserDefaults standardUserDefaults] stringForKey:@"appDotNetUserToken"];
 	
 	if (apiKey.length > 0)
 	{
@@ -63,7 +63,7 @@
 
 + (NSString*)macSettingsViewControllerClassName;
 {
-	return @"QROpenRadarSubmissionServicePreferencesViewController";
+	return @"QRAppDotNetSubmissionServicePreferencesViewController";
 }
 
 + (NSString*)iosSettingsViewControllerClassName;
@@ -90,9 +90,15 @@
 	return self.submissionStatusValue;
 }
 
+
 +(NSSet *)hardDependencies
 {
 	return [NSSet setWithObject:QRRadarSubmissionServiceIdentifier];
+}
+
++(NSSet *)softDependencies
+{
+	return [NSSet setWithObject:QROpenRadarSubmissionServiceIdentifier];
 }
 
 - (void)submitAsyncWithProgressBlock:(void (^)())progressBlock completionBlock:(void (^)(BOOL, NSError *))completionBlock
@@ -102,9 +108,7 @@
 		
 		NSError *error = nil;
 		
-		NSString *apiKey = [[NSUserDefaults standardUserDefaults] stringForKey:@"openRadarAPIKey"];
-		
-		NSLog(@"API Key %@", apiKey);
+		NSString *apiKey = [[NSUserDefaults standardUserDefaults] stringForKey:@"appDotNetUserToken"];
 		
 		if (apiKey.length == 0 || self.radar.radarNumber == 0)
 		{
@@ -115,20 +119,16 @@
 			return;
 		}
 		
-		NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://openradar.appspot.com/api/radars/add"]];
-		[req addValue:apiKey forHTTPHeaderField:@"Authorization"];
+		
+		NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://alpha-api.app.net/stream/0/posts"]];
+		[req addValue:[NSString stringWithFormat:@"Bearer %@", apiKey] forHTTPHeaderField:@"Authorization"];
 		req.HTTPMethod = @"POST";
 		
+		NSString *post = [NSString stringWithFormat:@"%@ http://openradar.me/%ld", self.radar.title, self.radar.radarNumber];
+		
+		
 		NSDictionary *postParams =
-							@{
-								@"number" : @(self.radar.radarNumber),
-								@"classification" : self.radar.classification,
-								@"description" : self.radar.body,
-								@"product" : self.radar.product,
-								@"product_version" : self.radar.version,
-								@"reproducible" : self.radar.reproducible,
-								@"title" : self.radar.title
-							};
+		@{ @"text" : post };
 		
 		QRURLConnection *conn = [[QRURLConnection alloc] init];
 		conn.request = req;
@@ -137,7 +137,7 @@
 		NSData *data = [conn fetchSyncWithError:&error];
 		
 		NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSLog(@"OR: Result: %@ %@", result, error);
+		NSLog(@"Result: %@ %@", result, error);
 		
 		self.progressValue = 1.0;
 		self.submissionStatusValue = submissionStatusCompleted;
@@ -146,10 +146,9 @@
 			progressBlock();
 			completionBlock(YES, nil);
 		});
+
 		
 	});
 }
-
-
 
 @end

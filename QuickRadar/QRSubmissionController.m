@@ -45,6 +45,7 @@
 	self.inProgress = [NSMutableSet set];
 	self.waiting = [NSMutableSet set];
 	
+	NSLog(@"Dict %@", self.requestedOptionalServices);
 	
 	NSDictionary *services = [QRSubmissionService services];
 	
@@ -54,6 +55,7 @@
 		
 		if (![serviceClass isAvailable])
 		{
+			NSLog(@"%@ not available", serviceID);
 			continue;
 		}
 		
@@ -61,6 +63,7 @@
 		{
 			if ([[self.requestedOptionalServices objectForKey:serviceID] boolValue] == NO)
 			{
+				NSLog(@"%@ not requested", serviceID);
 				continue;
 			}
 		}
@@ -134,6 +137,7 @@
 			
 			if (!success)
 			{
+				NSLog(@"Failure by %@", [[service class] identifier]);
 				self.hasFiredCompletionBlock = YES;
 				self.completionBlock(NO, error);
 			}

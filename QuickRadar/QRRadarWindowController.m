@@ -177,11 +177,11 @@
 	
 	// Get checkbox statuses
 	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-	NSArray *selectedCells = [self.checkboxMatrix selectedCells];
+	
 	for (int i=0; i<self.checkboxMatrix.numberOfRows; i++)
 	{
 		NSCell *cell = [self.checkboxMatrix cellAtRow:i column:0];
-		BOOL selected = [selectedCells containsObject:cell];
+		BOOL selected = [cell integerValue];
 		
 		[dict setObject:@(selected) forKey:cell.representedObject];
 	}
