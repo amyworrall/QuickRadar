@@ -59,6 +59,24 @@
 		}
 	}
 	
+    self.bodyTextView.string =
+        @"Summary:\n"
+        @"Provide a descriptive summary of the issue.\n"
+        @"\n"
+        @"Steps to Reproduce:\n"
+        @"In numbered format, detail the exact steps taken to produce the bug.\n"
+        @"\n"
+        @"Expected Results:\n"
+        @"Describe what you expected to happen when you executed the steps above.\n"
+        @"\n"
+        @"Actual Results:\n"
+        @"Explain what actually occurred when steps above were executed.\n"
+        @"\n"
+        @"Regression:\n"
+        @"Describe circumstances where the problem occurs or does not occur, such as software versions and/or hardware configurations.\n"
+        @"\n"
+        @"Notes:\n"
+        @"Provide additional information, such as references to related problems, workarounds and relevant attachments.\n\n\n";
 	
 	[self.titleField becomeFirstResponder];
 }
