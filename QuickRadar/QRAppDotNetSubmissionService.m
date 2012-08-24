@@ -124,7 +124,17 @@
 		[req addValue:[NSString stringWithFormat:@"Bearer %@", apiKey] forHTTPHeaderField:@"Authorization"];
 		req.HTTPMethod = @"POST";
 		
-		NSString *post = [NSString stringWithFormat:@"%@ http://openradar.me/%ld", self.radar.title, self.radar.radarNumber];
+		NSString *radarLink;
+		if (self.radar.submittedToOpenRadar)
+		{
+			radarLink = [NSString stringWithFormat:@"http://openradar.me/%ld", self.radar.radarNumber];
+		}
+		else
+		{
+			radarLink = [NSString stringWithFormat:@"rdar://%ld", self.radar.radarNumber];
+		}
+		
+		NSString *post = [NSString stringWithFormat:@"%@ – %@", self.radar.title, radarLink];
 		
 		
 		NSDictionary *postParams =

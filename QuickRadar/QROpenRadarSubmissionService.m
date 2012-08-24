@@ -141,6 +141,7 @@
 		
 		self.progressValue = 1.0;
 		self.submissionStatusValue = submissionStatusCompleted;
+		self.radar.submittedToOpenRadar = YES;
 		
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			progressBlock();

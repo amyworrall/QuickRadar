@@ -192,13 +192,20 @@
 	} completionBlock:^(BOOL success, NSError *error) {
 		if (success && radar.radarNumber > 0)
 		{
+			NSDictionary *clickContext = nil;
+			if (radar.submittedToOpenRadar)
+			{
+				clickContext = @{ @"URL" : [NSString stringWithFormat:@"http://openradar.me/%ld", radar.radarNumber] };
+			}
+			
 			[GrowlApplicationBridge notifyWithTitle:@"Submission Complete"
-										description:[NSString stringWithFormat:@"Bug submitted as number %i.", radar.radarNumber]
+										description:[NSString stringWithFormat:@"Bug submitted as number %ld.", radar.radarNumber]
 								   notificationName:@"Submission Complete"
 										   iconData:nil
 										   priority:0
 										   isSticky:NO
-									   clickContext:nil];
+									   clickContext:clickContext];
+			
 			
 			// Move the window off screen, like Mail.app
 			CGFloat highestScreenHeight = 0.0f;
