@@ -14,7 +14,7 @@
 
 @interface QRAppListPopover : NSPopover <NSPopoverDelegate>
 
-@property (nonatomic, weak) IBOutlet NSObject<QRAppListPopoverDelegate> *appListDelegate;
+@property (nonatomic, unsafe_unretained) IBOutlet NSObject<QRAppListPopoverDelegate> *appListDelegate;
 
 @end
 
