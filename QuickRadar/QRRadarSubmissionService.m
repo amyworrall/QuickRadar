@@ -319,7 +319,7 @@
 											 @"//input[@id='probTitleNewProb']/@name", @"newProbName",
 											 @"//input[@id='initialPopulateFlag']/@name", @"initialPopulateFlagName",
 											 @"//select[@id='reproducibleNewProb']/@name", @"isItReproducibleName",
-											 [NSString stringWithFormat:@"//select[@id='reproducibleNewProb'][1]/option[text()='%@']/@value", self.radar.reproducible], @"reproducibleNumber",
+											 [NSString stringWithFormat:@"//select[@id='reproducibleNewProb'][1]/option[text()=\"%@\"]/@value", self.radar.reproducible], @"reproducibleNumber",
 											 @"//input[@id='refreshCount']/@name", @"refreshCountName",
 											 @"//input[@id='refreshCount']/@value", @"refreshCountValue",
 											 @"//input[@id='configEmptyFlag']/@name", @"configEmptyFlagName",
