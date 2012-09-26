@@ -15,6 +15,7 @@
 
 
 @property (nonatomic, strong) QRRadar *radar;
+@property (nonatomic, strong) NSDictionary *requestedOptionalServices;
 @property (readonly) CGFloat progress;
 
 

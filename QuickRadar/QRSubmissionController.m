@@ -45,21 +45,35 @@
 	self.inProgress = [NSMutableSet set];
 	self.waiting = [NSMutableSet set];
 	
+	NSLog(@"Dict %@", self.requestedOptionalServices);
 	
 	NSDictionary *services = [QRSubmissionService services];
-	
-	NSLog(@"Services: %@", services);
 	
 	for (NSString *serviceID in services)
 	{
 		Class serviceClass = [services objectForKey:serviceID];
+		
+		if (![serviceClass isAvailable])
+		{
+			NSLog(@"%@ not available", serviceID);
+			continue;
+		}
+		
+		if ([serviceClass requireCheckBox])
+		{
+			if ([[self.requestedOptionalServices objectForKey:serviceID] boolValue] == NO)
+			{
+				NSLog(@"%@ not requested", serviceID);
+				continue;
+			}
+		}
 		
 		QRSubmissionService *service = [[serviceClass alloc] init];
 		service.radar = self.radar;
 		
 		[self.waiting addObject:service];
 	}
-	
+
 	[self startNextAvailableServices];
 }
 
@@ -123,6 +137,7 @@
 			
 			if (!success)
 			{
+				NSLog(@"Failure by %@", [[service class] identifier]);
 				self.hasFiredCompletionBlock = YES;
 				self.completionBlock(NO, error);
 			}
@@ -149,7 +164,6 @@
 	for (QRSubmissionService *service in self.waiting)
 	{
 		number++;
-		accumulator += service.progress;
 	}
 	for (QRSubmissionService *service in self.inProgress)
 	{
@@ -159,7 +173,7 @@
 	for (QRSubmissionService *service in self.completed)
 	{
 		number++;
-		accumulator += service.progress;
+		accumulator += 1.0;
 	}
 	
 	return accumulator/number;

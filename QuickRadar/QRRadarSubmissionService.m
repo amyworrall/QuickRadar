@@ -41,6 +41,16 @@
 	return @"Radar";
 }
 
++ (BOOL)isAvailable
+{
+	return YES;
+}
+
++ (BOOL)requireCheckBox;
+{
+	return NO;
+}
+
 + (BOOL)supportedOnMac;
 {
 	return YES;
@@ -97,6 +107,24 @@
 		self.submissionStatusValue = submissionStatusInProgress;
 		
 		NSError *error = nil;
+		
+		
+		
+		// TEST
+		/*
+		self.radar.radarNumber = 27;
+		
+		self.progressValue = 1.0;
+		self.submissionStatusValue = submissionStatusCompleted;
+		
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			progressBlock();
+			completionBlock(YES, nil);
+		});
+		return;
+		*/
+
+		
 		
 		/**********************
 		 * Page 1: login page *

@@ -84,7 +84,8 @@
 	conn.postParameters = self.postParamsKeyValues;
 	conn.fieldOrdering = self.postParamsOrder;
 	conn.useMultipartRatherThanURLEncoded = self.sendMultipartFormData;
-
+	conn.addRadarSpoofingHeaders = YES;
+	
 	NSData *data = [conn fetchSyncWithError:&error];
 	
 	if (!data)

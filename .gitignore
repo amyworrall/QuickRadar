@@ -5,3 +5,7 @@ QuickRadar.xcodeproj/project.xcworkspace/xcuserdata/amy.xcuserdatad/WorkspaceSet
 QuickRadar.xcodeproj/xcuserdata/amy.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
 QuickRadar.xcodeproj/xcuserdata/amy.xcuserdatad/xcschemes/QuickRadar.xcscheme
 QuickRadar.xcodeproj/xcuserdata/amy.xcuserdatad/xcschemes/xcschememanagement.plist
+.xcworkspace
+xcuserdata
+/QuickRadar/AppDotNetConfig.plist
+/QuickRadar/Config/AppDotNetConfig.plist

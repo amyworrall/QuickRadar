@@ -7,6 +7,7 @@
 //
 
 #import "QRURLConnection.h"
+#import "NSString+URLEncoding.h"
 
 @interface QRURLConnection()
 
@@ -82,7 +83,7 @@
 		BOOL first = YES;
 		for (NSString *key in self.postParameters)
 		{
-			[ps appendFormat:@"%@%@=%@", (first==YES) ? @"" : @"&", key, [[self.postParameters objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+			[ps appendFormat:@"%@%@=%@", (first==YES) ? @"" : @"&", key, [[[self.postParameters objectForKey:key] description] urlEncodeUsingEncoding:NSUTF8StringEncoding]];
 			first=NO;
 		}
 		
@@ -98,12 +99,16 @@
 //		
 //		NSLog(@"Req %@", request);
 	}
-	[request addValue:@"https://bugreport.apple.com" forHTTPHeaderField:@"Origin"];
-	[request addValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
-	[request addValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534.55.3 (KHTML, like Gecko) Version/5.1.5 Safari/534.55.3" forHTTPHeaderField:@"User-Agent"];
-	[request addValue:@"bugreport.apple.com" forHTTPHeaderField:@"Host"];
-	[request addValue:@"gzip, deflate" forHTTPHeaderField:@"Accept-Encoding"];
-	[request addValue:@"en-gb" forHTTPHeaderField:@"Accept-Language"];
+	
+	if (self.addRadarSpoofingHeaders)
+	{
+		[request addValue:@"https://bugreport.apple.com" forHTTPHeaderField:@"Origin"];
+		[request addValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
+		[request addValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534.55.3 (KHTML, like Gecko) Version/5.1.5 Safari/534.55.3" forHTTPHeaderField:@"User-Agent"];
+		[request addValue:@"bugreport.apple.com" forHTTPHeaderField:@"Host"];
+		[request addValue:@"gzip, deflate" forHTTPHeaderField:@"Accept-Encoding"];
+		[request addValue:@"en-gb" forHTTPHeaderField:@"Accept-Language"];
+	}
 
 	NSHTTPURLResponse *resp;
 	NSData *d =  [NSURLConnection sendSynchronousRequest:request returningResponse:&resp error:error];

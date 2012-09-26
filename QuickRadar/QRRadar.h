@@ -18,8 +18,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *body;
 
-// This is the only service-returned property that should be an actual property: this is because it's so commonly used. 
-// Others should be set using setValue:forKey:.
 @property (nonatomic, assign) NSInteger radarNumber;
+@property (nonatomic, assign) BOOL submittedToOpenRadar;
 
 @end
