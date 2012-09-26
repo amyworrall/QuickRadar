@@ -164,7 +164,6 @@
 	for (QRSubmissionService *service in self.waiting)
 	{
 		number++;
-		accumulator += service.progress;
 	}
 	for (QRSubmissionService *service in self.inProgress)
 	{
@@ -174,7 +173,7 @@
 	for (QRSubmissionService *service in self.completed)
 	{
 		number++;
-		accumulator += service.progress;
+		accumulator += 1.0;
 	}
 	
 	return accumulator/number;
