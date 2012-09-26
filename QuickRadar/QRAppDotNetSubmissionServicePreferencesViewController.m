@@ -26,10 +26,14 @@
 
 - (void)authorise:(id)sender
 {
-	NSDictionary *config = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"AppDotNetConfig" ofType:@"plist"]];
+	NSDictionary *config = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"AppDotNetConfig" ofType:@"plist" inDirectory:@"Config"]];
 	
 	if (!config)
+	{
+		NSRunAlertPanel(@"Config not available", @"App.net config file not found. If you compiled QuickRadar from source, see the file QuickRadar/Config/Readme.md for how to create this file.", @"OK", nil, nil);
+		NSLog(@"App.net config file not found. If you compiled QuickRadar from source, see the file QuickRadar/Config/Readme.md for how to create this file.");
 		return;
+	}
 	
 	NSString *clientID = config[@"clientID"];
 	NSString *requestURI = [config[@"redirectURI"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
