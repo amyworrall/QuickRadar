@@ -89,6 +89,8 @@
 	[[NSPasteboard generalPasteboard] writeObjects:@[radarNumString]];
 	
 	self.completed = YES;
+	
+	completionBlock(YES, nil);
 }
 
 
