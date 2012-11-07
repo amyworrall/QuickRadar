@@ -49,13 +49,17 @@
     if (self) {
 		// Load saved bundle URL, get the bundle.
 		NSURL *bundleURL = [coder decodeObjectForKey:@"BundleURL"];
-		self.bundle = [NSBundle bundleWithURL:bundleURL];
+		NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
+        self.bundle = bundle;
 		
 		// Try to get the the app instance if it's running.
-		NSArray *possibleApps = [NSRunningApplication runningApplicationsWithBundleIdentifier:self.bundle.bundleIdentifier];
-		if (possibleApps.count == 1) {	// If there are more then 1 apps running with the same ID, don't guess, but rather ignore them all.
-			self.runningApplication = possibleApps[0];
-		}
+        if (bundle)
+        {
+            NSArray *possibleApps = [NSRunningApplication runningApplicationsWithBundleIdentifier:self.bundle.bundleIdentifier];
+            if (possibleApps.count == 1) {	// If there are more then 1 apps running with the same ID, don't guess, but rather ignore them all.
+                self.runningApplication = possibleApps[0];
+            }
+        }
     }
     return self;
 }
