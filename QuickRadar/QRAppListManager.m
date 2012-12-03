@@ -106,7 +106,14 @@
 
 - (NSArray *)loadList {
 	NSString *plistPath = [[self cacheFolder] stringByAppendingPathComponent:@"AppList.plist"];
-	return [NSKeyedUnarchiver unarchiveObjectWithFile:plistPath];
+	NSArray *list = nil;
+	@try {
+		list = [NSKeyedUnarchiver unarchiveObjectWithFile:plistPath];
+	}
+	@catch (NSException *exception) {
+		NSLog(@"Corrupted app list cache file at %@", plistPath);
+	}
+	return list;
 }
 
 #pragma mark -
