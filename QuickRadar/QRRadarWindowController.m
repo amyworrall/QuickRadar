@@ -14,6 +14,7 @@
 #import "QRAppListPopover.h"
 #import "QRCachedRunningApplication.h"
 #import "NSButton+QuickRadar.h"
+#import "AppDelegate.h"
 
 @interface QRRadarWindowController ()
 
@@ -165,7 +166,7 @@
     NSUserDefaults *    prefs = [NSUserDefaults standardUserDefaults];
     NSString *username = [prefs objectForKey: @"username"];
     if (!username) {
-        [[[NSApp delegate] window] makeKeyAndOrderFront:nil];
+        [((AppDelegate*)[NSApp delegate]) showPreferencesWindow:self];
         return;
     }
 	
