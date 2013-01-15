@@ -69,16 +69,51 @@ static NSMutableDictionary *_services;
 	}
 }
 
+/** The following are all things subclasses should override **/
 
-+ (NSSet*)hardDependencies;
++ (NSString*)identifier
+{
+    return nil;
+}
+
++ (NSString*)name
+{
+    return nil;
+}
+
++ (NSSet*)hardDependencies
 {
 	return [NSSet set];
 }
 
-
-+ (NSSet*)softDependencies;
++ (NSSet*)softDependencies
 {
 	return [NSSet set];
+}
+
++ (BOOL)supportedOnMac
+{
+    return NO;
+}
+
++ (BOOL)supportedOniOS
+{
+    return NO;
+}
+
++ (NSString*)macSettingsViewControllerClassName
+{
+    return nil;
+}
+
++ (NSString*)iosSettingsViewControllerClassName
+{
+    return nil;
+}
+
++ (id)settingsIconPlatformAppropriateImage
+{
+    return nil;
 }
 
 + (NSString *)checkBoxString
@@ -91,5 +126,19 @@ static NSMutableDictionary *_services;
 	return YES;
 }
 
+- (SubmissionStatus)submissionStatus
+{
+    return submissionStatusNotStarted;
+}
+
+- (CGFloat)progress
+{
+    return 0.0f;
+}
+
+- (void)submitAsyncWithProgressBlock:(void(^)())progressBlock completionBlock:(void(^)(BOOL success, NSError *error))completionBlock
+{
+    
+}
 
 @end
