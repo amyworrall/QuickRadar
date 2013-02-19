@@ -68,7 +68,7 @@
 		radar.version = [radarDict objectForKey:@"product_version"];
 		radar.reproducible = [radarDict objectForKey:@"reproducible"];
 		radar.product = [radarDict objectForKey:@"product"];
-		radar.radarNumber = radarNum;
+		radar.radarNumber = [radarNum integerValue];
 		
 		NSString *body = [radarDict objectForKey:@"description"];
 		radar.body = [NSString stringWithFormat:@"This is a duplicate of rdar://%li\n\n%@", (long)radar.radarNumber, (body!=nil)?body:@""];
