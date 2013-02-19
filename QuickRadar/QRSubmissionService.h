@@ -19,6 +19,7 @@ typedef enum {
 
 NSString * const QRRadarSubmissionServiceIdentifier;
 NSString * const QROpenRadarSubmissionServiceIdentifier;
+NSString * const QRTwitterSubmissionServiceIdentifier;
 
 
 @interface QRSubmissionService : NSObject
@@ -69,6 +70,7 @@ NSString * const QROpenRadarSubmissionServiceIdentifier;
 - (CGFloat)progress;
 
 @property (nonatomic, strong) QRRadar *radar;
+@property (nonatomic, strong) NSWindow *submissionWindow;
 
 // The method that does the work. Call progressBlock whenever progress has changed. Call completion block on success or failure.
 - (void)submitAsyncWithProgressBlock:(void(^)())progressBlock completionBlock:(void(^)(BOOL success, NSError *error))completionBlock;

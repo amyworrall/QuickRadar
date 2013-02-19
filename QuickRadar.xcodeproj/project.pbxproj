@@ -21,6 +21,7 @@
 		E157B1A516D3853D0026EC3B /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B1A016D3853D0026EC3B /* SRValidator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E157B1A916D388FB0026EC3B /* QRFileDuplicateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E157B1A816D388FB0026EC3B /* QRFileDuplicateWindow.xib */; };
 		E157B1AC16D38A450026EC3B /* QRFileDuplicateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B1AB16D38A450026EC3B /* QRFileDuplicateWindowController.m */; };
+		E157B1EA16D3B9B00026EC3B /* QRTwitterSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B1E916D3B9B00026EC3B /* QRTwitterSubmissionService.m */; };
 		E1643539159DFAD00063096B /* QRMainAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1643537159DFAD00063096B /* QRMainAppSettingsViewController.m */; };
 		E164353A159DFAD00063096B /* QRMainAppSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1643538159DFAD00063096B /* QRMainAppSettingsViewController.xib */; };
 		E1643540159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E164353E159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m */; };
@@ -111,6 +112,8 @@
 		E157B1A816D388FB0026EC3B /* QRFileDuplicateWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRFileDuplicateWindow.xib; sourceTree = "<group>"; };
 		E157B1AA16D38A450026EC3B /* QRFileDuplicateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRFileDuplicateWindowController.h; sourceTree = "<group>"; };
 		E157B1AB16D38A450026EC3B /* QRFileDuplicateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRFileDuplicateWindowController.m; sourceTree = "<group>"; };
+		E157B1E816D3B9B00026EC3B /* QRTwitterSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRTwitterSubmissionService.h; sourceTree = "<group>"; };
+		E157B1E916D3B9B00026EC3B /* QRTwitterSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRTwitterSubmissionService.m; sourceTree = "<group>"; };
 		E1643536159DFAD00063096B /* QRMainAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRMainAppSettingsViewController.h; sourceTree = "<group>"; };
 		E1643537159DFAD00063096B /* QRMainAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRMainAppSettingsViewController.m; sourceTree = "<group>"; };
 		E1643538159DFAD00063096B /* QRMainAppSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRMainAppSettingsViewController.xib; sourceTree = "<group>"; };
@@ -240,6 +243,15 @@
 			name = "File a Duplicate";
 			sourceTree = "<group>";
 		};
+		E157B1E716D3B9940026EC3B /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				E157B1E816D3B9B00026EC3B /* QRTwitterSubmissionService.h */,
+				E157B1E916D3B9B00026EC3B /* QRTwitterSubmissionService.m */,
+			);
+			name = Twitter;
+			sourceTree = "<group>";
+		};
 		E164353C159DFAEA0063096B /* Main Pane */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +301,7 @@
 		E19CFC6A1599FFFE00879280 /* Submission Services */ = {
 			isa = PBXGroup;
 			children = (
+				E157B1E716D3B9940026EC3B /* Twitter */,
 				E19CFC72159A035E00879280 /* Radar */,
 				E1B6F9D815E3E22C004F37F7 /* Open Radar */,
 				E169F3B915E50D580019383F /* App.net */,
@@ -611,6 +624,7 @@
 				E157B1A416D3853D0026EC3B /* SRRecorderControl.m in Sources */,
 				E157B1A516D3853D0026EC3B /* SRValidator.m in Sources */,
 				E157B1AC16D38A450026EC3B /* QRFileDuplicateWindowController.m in Sources */,
+				E157B1EA16D3B9B00026EC3B /* QRTwitterSubmissionService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

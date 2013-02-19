@@ -10,6 +10,7 @@
 
 NSString * const QRRadarSubmissionServiceIdentifier = @"QRRadarSubmissionServiceIdentifier";
 NSString * const QROpenRadarSubmissionServiceIdentifier = @"QROpenRadarSubmissionServiceIdentifier";
+NSString * const QRTwitterSubmissionServiceIdentifier = @"QRTwitterSubmissionServiceIdentifier";
 
 static NSMutableDictionary *_services;
 

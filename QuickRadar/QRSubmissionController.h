@@ -17,6 +17,7 @@
 @property (nonatomic, strong) QRRadar *radar;
 @property (nonatomic, strong) NSDictionary *requestedOptionalServices;
 @property (readonly) CGFloat progress;
+@property (nonatomic, strong) NSWindow *submissionWindow;
 
 
 - (void)startWithProgressBlock:(void (^)())progressBlock completionBlock:(void (^)(BOOL, NSError *))completionBlock;

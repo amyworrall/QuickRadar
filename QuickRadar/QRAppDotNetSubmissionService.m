@@ -134,7 +134,7 @@
 			radarLink = [NSString stringWithFormat:@"rdar://%ld", self.radar.radarNumber];
 		}
 		
-		NSString *post = [NSString stringWithFormat:@"%@ – %@", self.radar.title, radarLink];
+		NSString *post = [NSString stringWithFormat:@"Radar: %@ – %@", self.radar.title, radarLink];
 		
 		
 		NSDictionary *postParams =
