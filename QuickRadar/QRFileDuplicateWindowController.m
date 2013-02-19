@@ -38,6 +38,11 @@
 	[self close];
 }
 
+- (void)setRadarNumber:(NSString*)number;
+{
+	self.textField.stringValue = number;
+}
+
 
 - (void)OK:(id)sender
 {
