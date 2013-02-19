@@ -18,6 +18,9 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *body;
 
+@property (nonatomic, copy) NSString *status;
+@property (nonatomic, copy) NSDate *dateOriginated;
+
 @property (nonatomic, assign) NSInteger radarNumber;
 @property (nonatomic, assign) BOOL submittedToOpenRadar;
 

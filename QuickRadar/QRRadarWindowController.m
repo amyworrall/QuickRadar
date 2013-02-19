@@ -227,6 +227,9 @@
 	radar.version = self.versionField.stringValue;
 	radar.title = self.titleField.stringValue;
 	radar.body = self.bodyTextView.string;
+	radar.dateOriginated = [NSDate date];
+	radar.status = @"Open";
+
 	
 	/* Submit it */
 	
