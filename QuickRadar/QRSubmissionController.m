@@ -70,6 +70,7 @@
 		
 		QRSubmissionService *service = [[serviceClass alloc] init];
 		service.radar = self.radar;
+		service.submissionWindow = self.submissionWindow;
 		
 		[self.waiting addObject:service];
 	}

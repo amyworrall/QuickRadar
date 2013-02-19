@@ -252,6 +252,7 @@
 	
 	self.submissionController = [[QRSubmissionController alloc] init];
 	self.submissionController.radar = radar;
+	self.submissionController.submissionWindow = self.window;
 	
 	// Get checkbox statuses
 	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
