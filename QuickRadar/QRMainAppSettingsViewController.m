@@ -40,4 +40,9 @@
 	[[PTKeyComboPanel sharedPanel] showSheetForHotkey:hotkey forWindow:self.view.window modalDelegate:self];
 }
 
+- (void)keyComboPanelEnded:(PTKeyComboPanel*)panel {
+	[[NSUserDefaults standardUserDefaults] setObject:[[panel keyCombo] plistRepresentation] forKey:GlobalHotkeyName];
+}
+
+
 @end

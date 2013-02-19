@@ -14,6 +14,11 @@
 		B4EC27EC1591577000E79E8B /* libPTHotkey-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */; };
 		B4EC27EF1591577A00E79E8B /* PTKeyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */; };
 		B4EC27F01591577A00E79E8B /* PTKeyComboPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */; };
+		E157B1A116D3853D0026EC3B /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B19816D3853D0026EC3B /* SRCommon.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E157B1A216D3853D0026EC3B /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B19A16D3853D0026EC3B /* SRKeyCodeTransformer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E157B1A316D3853D0026EC3B /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B19C16D3853D0026EC3B /* SRRecorderCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E157B1A416D3853D0026EC3B /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B19E16D3853D0026EC3B /* SRRecorderControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E157B1A516D3853D0026EC3B /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B1A016D3853D0026EC3B /* SRValidator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E1643539159DFAD00063096B /* QRMainAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1643537159DFAD00063096B /* QRMainAppSettingsViewController.m */; };
 		E164353A159DFAD00063096B /* QRMainAppSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1643538159DFAD00063096B /* QRMainAppSettingsViewController.xib */; };
 		E1643540159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E164353E159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m */; };
@@ -91,6 +96,16 @@
 		B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPTHotkey-OSX.a"; path = "PTHotkey/libPTHotkey-OSX.a"; sourceTree = "<group>"; };
 		B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = PTKeyCodes.plist; path = PTHotkey/PTKeyCodes.plist; sourceTree = SOURCE_ROOT; };
 		B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PTKeyComboPanel.xib; path = PTHotkey/PTKeyComboPanel.xib; sourceTree = SOURCE_ROOT; };
+		E157B19716D3853D0026EC3B /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCommon.h; sourceTree = "<group>"; };
+		E157B19816D3853D0026EC3B /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCommon.m; sourceTree = "<group>"; };
+		E157B19916D3853D0026EC3B /* SRKeyCodeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRKeyCodeTransformer.h; sourceTree = "<group>"; };
+		E157B19A16D3853D0026EC3B /* SRKeyCodeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRKeyCodeTransformer.m; sourceTree = "<group>"; };
+		E157B19B16D3853D0026EC3B /* SRRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderCell.h; sourceTree = "<group>"; };
+		E157B19C16D3853D0026EC3B /* SRRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderCell.m; sourceTree = "<group>"; };
+		E157B19D16D3853D0026EC3B /* SRRecorderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderControl.h; sourceTree = "<group>"; };
+		E157B19E16D3853D0026EC3B /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControl.m; sourceTree = "<group>"; };
+		E157B19F16D3853D0026EC3B /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRValidator.h; sourceTree = "<group>"; };
+		E157B1A016D3853D0026EC3B /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRValidator.m; sourceTree = "<group>"; };
 		E1643536159DFAD00063096B /* QRMainAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRMainAppSettingsViewController.h; sourceTree = "<group>"; };
 		E1643537159DFAD00063096B /* QRMainAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRMainAppSettingsViewController.m; sourceTree = "<group>"; };
 		E1643538159DFAD00063096B /* QRMainAppSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRMainAppSettingsViewController.xib; sourceTree = "<group>"; };
@@ -193,6 +208,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E157B19616D385290026EC3B /* ShortcutRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				E157B19716D3853D0026EC3B /* SRCommon.h */,
+				E157B19816D3853D0026EC3B /* SRCommon.m */,
+				E157B19916D3853D0026EC3B /* SRKeyCodeTransformer.h */,
+				E157B19A16D3853D0026EC3B /* SRKeyCodeTransformer.m */,
+				E157B19B16D3853D0026EC3B /* SRRecorderCell.h */,
+				E157B19C16D3853D0026EC3B /* SRRecorderCell.m */,
+				E157B19D16D3853D0026EC3B /* SRRecorderControl.h */,
+				E157B19E16D3853D0026EC3B /* SRRecorderControl.m */,
+				E157B19F16D3853D0026EC3B /* SRValidator.h */,
+				E157B1A016D3853D0026EC3B /* SRValidator.m */,
+			);
+			name = ShortcutRecorder;
+			sourceTree = "<group>";
+		};
 		E164353C159DFAEA0063096B /* Main Pane */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,6 +383,7 @@
 				E164358215A346910063096B /* QRUserDefaultsKeys.h */,
 				E1CC519F156257BF0027FB83 /* AppDelegate.h */,
 				E1CC51A0156257BF0027FB83 /* AppDelegate.m */,
+				E157B19616D385290026EC3B /* ShortcutRecorder */,
 				E1CC51A2156257BF0027FB83 /* MainMenu.xib */,
 				E1CC51B415625C5B0027FB83 /* Config.plist */,
 				E1F53052161359AA000FCAC3 /* Config */,
@@ -555,6 +588,11 @@
 				E169F3BD15E50D760019383F /* QRAppDotNetSubmissionService.m in Sources */,
 				E169F3C115E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.m in Sources */,
 				E1F5305A16135C36000FCAC3 /* QRCopyToClipboardSubmissionService.m in Sources */,
+				E157B1A116D3853D0026EC3B /* SRCommon.m in Sources */,
+				E157B1A216D3853D0026EC3B /* SRKeyCodeTransformer.m in Sources */,
+				E157B1A316D3853D0026EC3B /* SRRecorderCell.m in Sources */,
+				E157B1A416D3853D0026EC3B /* SRRecorderControl.m in Sources */,
+				E157B1A516D3853D0026EC3B /* SRValidator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

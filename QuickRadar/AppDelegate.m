@@ -13,6 +13,7 @@
 #import "QRPreferencesWindowController.h"
 #import "QRUserDefaultsKeys.h"
 #import "QRAppListManager.h"
+#import "SRCommon.h"
 
 @interface AppDelegate () <GrowlApplicationBridgeDelegate>
 {
@@ -24,6 +25,7 @@
 @property (assign, nonatomic) BOOL applicationHasStarted;
 
 @end
+
 
 
 @implementation AppDelegate
@@ -165,9 +167,6 @@
 
 #pragma mark keyComboPanelDelegate
 
-- (void)keyComboPanelEnded:(PTKeyComboPanel*)panel {
-	[[NSUserDefaults standardUserDefaults] setObject:[[panel keyCombo] plistRepresentation] forKey:GlobalHotkeyName];
-}
 
 #pragma mark hotkey
 
@@ -201,8 +200,16 @@
     hotKey.action = @selector(hitHotKey:);
     [[PTHotKeyCenter sharedCenter] registerHotKey:hotKey];
     
-    //update menu to show it (HACKISH)
-    [_menu itemWithTag:10].title = [NSString stringWithFormat:@"Post new Bug... (%@)", kc];
+	
+	NSMenuItem *item = [_menu itemWithTag:10];
+	NSString *equiv = SRStringForKeyCode(kc.keyCode);
+	if ([equiv isEqualToString:@"Space"])
+	{
+		equiv = @" ";
+	}
+	item.keyEquivalent = equiv;
+	item.keyEquivalentModifierMask = SRCarbonToCocoaFlags(kc.modifiers);
+	
 }
 
 - (void)hitHotKey:(id)sender {
