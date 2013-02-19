@@ -101,28 +101,14 @@
 		self.titleField.stringValue = self.radarToPrepopulate.title;
 	}
 	
-	if (self.radarToPrepopulate.product.length>0)
-	{
-		NSMenuItem *item = [self.productMenu itemWithTitle:self.radarToPrepopulate.product];
-		[self.productMenu selectItem:item];
-	}
-	
 	if (self.radarToPrepopulate.version.length>0)
 	{
 		self.versionField.stringValue = self.radarToPrepopulate.version;
 	}
 	
-	if (self.radarToPrepopulate.classification.length>0)
-	{
-		NSMenuItem *item = [self.classificationMenu itemWithTitle:self.radarToPrepopulate.classification];
-		[self.classificationMenu selectItem:item];
-	}
-	
-	if (self.radarToPrepopulate.reproducible.length>0)
-	{
-		NSMenuItem *item = [self.reproducibleMenu itemWithTitle:self.radarToPrepopulate.reproducible];
-		[self.reproducibleMenu selectItem:item];
-	}
+	[self menuButton:self.classificationMenu selectItemTitle:self.radarToPrepopulate.classification];
+	[self menuButton:self.productMenu selectItemTitle:self.radarToPrepopulate.product];
+	[self menuButton:self.reproducibleMenu selectItemTitle:self.radarToPrepopulate.reproducible];
 	
 	self.userTypedTitle = NO;
 	[self.titleField becomeFirstResponder];
@@ -132,6 +118,34 @@
 - (void)prepopulateWithRadar:(QRRadar *)radar;
 {
 	self.radarToPrepopulate = radar;
+}
+
+- (void)menuButton:(NSPopUpButton*)button selectItemTitle:(NSString*)itemTitle
+{
+	if (itemTitle.length==0)
+	{
+		return;
+	}
+	
+	NSMenuItem *item = [button itemWithTitle:itemTitle];
+	if (item)
+	{
+		[self.reproducibleMenu selectItem:item];
+		return;
+	}
+	
+	NSString *trimmedNeedle = [itemTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	for (NSString *aTitle in button.itemTitles)
+	{
+		NSString *trimmedHaystack = [aTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		
+		if ([trimmedNeedle compare:trimmedHaystack options:NSCaseInsensitiveSearch]==NSOrderedSame)
+		{
+			item = [button itemWithTitle:aTitle];
+			[self.reproducibleMenu selectItem:item];
+			return;
+		}
+	}
 }
 
 - (void)setUpCheckboxes
