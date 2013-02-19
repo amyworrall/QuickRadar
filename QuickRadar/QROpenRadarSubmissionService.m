@@ -100,11 +100,16 @@
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 		self.submissionStatusValue = submissionStatusInProgress;
 		
+		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+		formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+		formatter.dateFormat = @"dd-MMM-yyyy hh:mm a";
+		NSString *dateString = [formatter stringFromDate:self.radar.dateOriginated];
+		
+		NSLog(@"Date originated: %@, formatted %@", self.radar.dateOriginated, dateString);
+		
 		NSError *error = nil;
 		
 		NSString *apiKey = [[NSUserDefaults standardUserDefaults] stringForKey:@"openRadarAPIKey"];
-		
-		NSLog(@"API Key %@", apiKey);
 		
 		if (apiKey.length == 0 || self.radar.radarNumber == 0)
 		{
@@ -127,7 +132,9 @@
 								@"product" : self.radar.product,
 								@"product_version" : self.radar.version,
 								@"reproducible" : self.radar.reproducible,
-								@"title" : self.radar.title
+								@"title" : self.radar.title,
+		@"originated" : dateString,
+		@"status" : self.radar.status,
 							};
 		
 		QRURLConnection *conn = [[QRURLConnection alloc] init];

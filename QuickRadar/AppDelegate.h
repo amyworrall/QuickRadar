@@ -15,7 +15,7 @@
 
 @class QRRadar;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, PTKeyComboPanelDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSMenu *menu;
 
