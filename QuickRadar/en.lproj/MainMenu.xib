@@ -715,6 +715,14 @@
 						<reference key="NSMixedImage" ref="502551668"/>
 						<int key="NSTag">10</int>
 					</object>
+					<object class="NSMenuItem" id="989269865">
+						<reference key="NSMenu" ref="211140365"/>
+						<string key="NSTitle">File a Duplicate…</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
 					<object class="NSMenuItem" id="274396695">
 						<reference key="NSMenu" ref="211140365"/>
 						<bool key="NSIsDisabled">YES</bool>
@@ -1173,6 +1181,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
+						<string key="label">showDuplicateWindow:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="989269865"/>
+					</object>
+					<int key="connectionID">997</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
 						<string key="label">checkForUpdates:</string>
 						<reference key="source" ref="888959238"/>
 						<reference key="destination" ref="504653287"/>
@@ -1245,6 +1261,7 @@
 							<reference ref="274396695"/>
 							<reference ref="796928745"/>
 							<reference ref="939136887"/>
+							<reference ref="989269865"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1787,6 +1804,11 @@
 						<reference key="object" ref="183071232"/>
 						<reference key="parent" ref="720053764"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">996</int>
+						<reference key="object" ref="989269865"/>
+						<reference key="parent" ref="211140365"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1882,12 +1904,13 @@
 				<string key="959.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="985.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="987.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="996.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">995</int>
+			<int key="maxID">997</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1898,6 +1921,7 @@
 						<string key="activateAndShowAbout:">id</string>
 						<string key="bugWindowControllerSubmissionComplete:">id</string>
 						<string key="newBug:">id</string>
+						<string key="showDuplicateWindow:">id</string>
 						<string key="showPreferencesWindow:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -1911,6 +1935,10 @@
 						</object>
 						<object class="IBActionInfo" key="newBug:">
 							<string key="name">newBug:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showDuplicateWindow:">
+							<string key="name">showDuplicateWindow:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="showPreferencesWindow:">

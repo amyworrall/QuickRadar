@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) QRSubmissionController *submissionController;
 @property (nonatomic) BOOL userTypedTitle;	// Don't override his title when selecting an app.
+@property (nonatomic, strong) QRRadar *radarToPrepopulate;
 
 @end
 
@@ -68,7 +69,14 @@
 	}
 	
 	[self setUpCheckboxes];
-    self.bodyTextView.string =
+	
+	if (self.radarToPrepopulate.body.length>0)
+	{
+		self.bodyTextView.string = self.radarToPrepopulate.body;
+	}
+	else
+	{
+		self.bodyTextView.string =
         @"Summary:\n"
         @"Provide a descriptive summary of the issue.\n"
         @"\n"
@@ -86,10 +94,44 @@
         @"\n"
         @"Notes:\n"
         @"Provide additional information, such as references to related problems, workarounds and relevant attachments.\n\n\n";
+	}
+	
+	if (self.radarToPrepopulate.title.length>0)
+	{
+		self.titleField.stringValue = self.radarToPrepopulate.title;
+	}
+	
+	if (self.radarToPrepopulate.product.length>0)
+	{
+		NSMenuItem *item = [self.productMenu itemWithTitle:self.radarToPrepopulate.product];
+		[self.productMenu selectItem:item];
+	}
+	
+	if (self.radarToPrepopulate.version.length>0)
+	{
+		self.versionField.stringValue = self.radarToPrepopulate.version;
+	}
+	
+	if (self.radarToPrepopulate.classification.length>0)
+	{
+		NSMenuItem *item = [self.classificationMenu itemWithTitle:self.radarToPrepopulate.classification];
+		[self.classificationMenu selectItem:item];
+	}
+	
+	if (self.radarToPrepopulate.reproducible.length>0)
+	{
+		NSMenuItem *item = [self.reproducibleMenu itemWithTitle:self.radarToPrepopulate.reproducible];
+		[self.reproducibleMenu selectItem:item];
+	}
 	
 	self.userTypedTitle = NO;
 	[self.titleField becomeFirstResponder];
 	
+}
+
+- (void)prepopulateWithRadar:(QRRadar *)radar;
+{
+	self.radarToPrepopulate = radar;
 }
 
 - (void)setUpCheckboxes
