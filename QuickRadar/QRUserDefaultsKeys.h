@@ -9,3 +9,10 @@
 
 #define QRShowInDockKey @"QRShowInDock"
 
+#define QRHandleRdarURLsKey @"QRHandleRdarURLs"
+
+typedef enum {
+	rdarURLsMethodDoNothing = 1,
+	rdarURLsMethodOpenRadar = 2,
+	rdarURLsMethodFileDuplicate = 0,
+} rdarURLsMethod;

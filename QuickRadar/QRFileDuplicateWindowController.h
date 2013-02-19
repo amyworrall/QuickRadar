@@ -19,4 +19,6 @@
 @property (nonatomic, strong) IBOutlet NSButton *cancelButton;
 @property (nonatomic, strong) IBOutlet NSButton *okButton;
 
+- (void)setRadarNumber:(NSString*)number;
+
 @end

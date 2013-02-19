@@ -69,6 +69,8 @@
 										  kProcessTransformToForegroundApplication));
 	}
 	
+	[[NSUserDefaults standardUserDefaults] registerDefaults:@{QRHandleRdarURLsKey : @(rdarURLsMethodFileDuplicate)}];
+	
 	// Start tracking apps.
 	[QRAppListManager sharedManager];
 	
@@ -84,6 +86,8 @@
 	NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
 	LSSetDefaultHandlerForURLScheme((CFStringRef)@"rdar", (__bridge CFStringRef)bundleID);
 	LSSetDefaultHandlerForURLScheme((CFStringRef)@"quickradar", (__bridge CFStringRef)bundleID);
+	
+	
 }
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender;
@@ -253,13 +257,7 @@
 	
 	if ([url.scheme isEqualToString:@"rdar"])
 	{
-		NSString *rdarId = url.host;
-		if ([rdarId isEqualToString:@"problem"]) {
-			rdarId = url.lastPathComponent;
-		}
-		
-		NSURL *openRadarURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://openradar.appspot.com/%@", rdarId]];
-		[[NSWorkspace sharedWorkspace] openURL:openRadarURL];
+		[self handleRdarURL:url];
 
 	}
 	else if ([url.scheme isEqualToString:@"quickradar"])
@@ -288,5 +286,38 @@
 	
 }
 
+
+- (void)handleRdarURL:(NSURL *)url
+{
+	// Work out what to do
+	
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	NSInteger method = [prefs integerForKey:QRHandleRdarURLsKey];
+	
+	if (method == rdarURLsMethodDoNothing)
+	{
+		return;
+	}
+	
+	NSString *rdarId = url.host;
+	if ([rdarId isEqualToString:@"problem"]) {
+		rdarId = url.lastPathComponent;
+	}
+
+	
+	if (method == rdarURLsMethodFileDuplicate)
+	{
+		[self.duplicatesWindowController setRadarNumber:rdarId];
+		[self showDuplicateWindow:self];
+		[self.duplicatesWindowController OK:self];
+	}
+	
+	if (method == rdarURLsMethodOpenRadar)
+	{
+		NSURL *openRadarURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://openradar.appspot.com/%@", rdarId]];
+		[[NSWorkspace sharedWorkspace] openURL:openRadarURL];
+	}
+	
+}
 
 @end
