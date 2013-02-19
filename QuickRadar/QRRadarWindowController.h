@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "QRAppListPopover.h"
+#import "QRRadar.h"
 
 @interface QRRadarWindowController : NSWindowController <QRAppListPopoverDelegate>
 
@@ -28,5 +29,7 @@
 - (IBAction)showAppList:(id)sender;
 - (IBAction)submitRadar:(id)sender;
 - (void)prepopulateWithApp:(QRCachedRunningApplication *)app;
+
+- (void)prepopulateWithRadar:(QRRadar *)radar;
 
 @end

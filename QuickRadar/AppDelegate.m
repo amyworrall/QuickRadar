@@ -14,6 +14,7 @@
 #import "QRUserDefaultsKeys.h"
 #import "QRAppListManager.h"
 #import "SRCommon.h"
+#import "QRFileDuplicateWindowController.h"
 
 @interface AppDelegate () <GrowlApplicationBridgeDelegate>
 {
@@ -22,6 +23,7 @@
 }
 
 @property (strong) QRPreferencesWindowController *preferencesWindowController;
+@property (strong) QRFileDuplicateWindowController *duplicatesWindowController;
 @property (assign, nonatomic) BOOL applicationHasStarted;
 
 @end
@@ -56,6 +58,7 @@
 	[GrowlApplicationBridge setGrowlDelegate:self];
 	
 	self.preferencesWindowController = [[QRPreferencesWindowController alloc] initWithWindowNibName:@"QRPreferencesWindowController"];
+	self.duplicatesWindowController = [[QRFileDuplicateWindowController alloc] initWithWindowNibName:@"QRFileDuplicateWindow"];
 
 	BOOL shouldShowDockIcon = [[NSUserDefaults standardUserDefaults] boolForKey:QRShowInDockKey];
 	
@@ -98,13 +101,18 @@
 	[[QRAppListManager sharedManager] saveList];
 }
 
-#pragma mark - Prefs
+#pragma mark - Auxillary windows
 
 - (IBAction)showPreferencesWindow:(id)sender;
 {
-	NSLog(@"Pref");
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	[self.preferencesWindowController showWindow:self];
+}
+
+- (IBAction)showDuplicateWindow:(id)sender;
+{
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	[self.duplicatesWindowController showWindow:self];
 }
 
 #pragma mark growl support
@@ -153,6 +161,17 @@
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	
     QRRadarWindowController *b = [[QRRadarWindowController alloc] initWithWindowNibName:@"RadarWindow"];
+    [windowControllerStore addObject:b];
+    [b showWindow:nil];
+	
+}
+
+- (void)newBugWithRadar:(QRRadar*)radar;
+{
+	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+	
+    QRRadarWindowController *b = [[QRRadarWindowController alloc] initWithWindowNibName:@"RadarWindow"];
+	[b prepopulateWithRadar:radar];
     [windowControllerStore addObject:b];
     [b showWindow:nil];
 	

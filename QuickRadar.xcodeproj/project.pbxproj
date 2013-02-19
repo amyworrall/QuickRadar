@@ -19,6 +19,8 @@
 		E157B1A316D3853D0026EC3B /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B19C16D3853D0026EC3B /* SRRecorderCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E157B1A416D3853D0026EC3B /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B19E16D3853D0026EC3B /* SRRecorderControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E157B1A516D3853D0026EC3B /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B1A016D3853D0026EC3B /* SRValidator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E157B1A916D388FB0026EC3B /* QRFileDuplicateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E157B1A816D388FB0026EC3B /* QRFileDuplicateWindow.xib */; };
+		E157B1AC16D38A450026EC3B /* QRFileDuplicateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B1AB16D38A450026EC3B /* QRFileDuplicateWindowController.m */; };
 		E1643539159DFAD00063096B /* QRMainAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1643537159DFAD00063096B /* QRMainAppSettingsViewController.m */; };
 		E164353A159DFAD00063096B /* QRMainAppSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1643538159DFAD00063096B /* QRMainAppSettingsViewController.xib */; };
 		E1643540159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E164353E159DFCE50063096B /* QRRadarSubmissionServicePreferencesViewController.m */; };
@@ -106,6 +108,9 @@
 		E157B19E16D3853D0026EC3B /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControl.m; sourceTree = "<group>"; };
 		E157B19F16D3853D0026EC3B /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRValidator.h; sourceTree = "<group>"; };
 		E157B1A016D3853D0026EC3B /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRValidator.m; sourceTree = "<group>"; };
+		E157B1A816D388FB0026EC3B /* QRFileDuplicateWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRFileDuplicateWindow.xib; sourceTree = "<group>"; };
+		E157B1AA16D38A450026EC3B /* QRFileDuplicateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRFileDuplicateWindowController.h; sourceTree = "<group>"; };
+		E157B1AB16D38A450026EC3B /* QRFileDuplicateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRFileDuplicateWindowController.m; sourceTree = "<group>"; };
 		E1643536159DFAD00063096B /* QRMainAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRMainAppSettingsViewController.h; sourceTree = "<group>"; };
 		E1643537159DFAD00063096B /* QRMainAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRMainAppSettingsViewController.m; sourceTree = "<group>"; };
 		E1643538159DFAD00063096B /* QRMainAppSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRMainAppSettingsViewController.xib; sourceTree = "<group>"; };
@@ -223,6 +228,16 @@
 				E157B1A016D3853D0026EC3B /* SRValidator.m */,
 			);
 			name = ShortcutRecorder;
+			sourceTree = "<group>";
+		};
+		E157B1A716D3888F0026EC3B /* File a Duplicate */ = {
+			isa = PBXGroup;
+			children = (
+				E157B1AA16D38A450026EC3B /* QRFileDuplicateWindowController.h */,
+				E157B1AB16D38A450026EC3B /* QRFileDuplicateWindowController.m */,
+				E157B1A816D388FB0026EC3B /* QRFileDuplicateWindow.xib */,
+			);
+			name = "File a Duplicate";
 			sourceTree = "<group>";
 		};
 		E164353C159DFAEA0063096B /* Main Pane */ = {
@@ -389,6 +404,7 @@
 				E1F53052161359AA000FCAC3 /* Config */,
 				E19CFC681599FF1800879280 /* New Radar Window */,
 				E1ED7E40159DE15F0033D7C0 /* Preferences Window */,
+				E157B1A716D3888F0026EC3B /* File a Duplicate */,
 				E19CFC6B159A001400879280 /* Model */,
 				E19CFC691599FF7000879280 /* Submission Process */,
 				E19CFC6A1599FFFE00879280 /* Submission Services */,
@@ -550,6 +566,7 @@
 				E1F53053161359AA000FCAC3 /* Config in Resources */,
 				E1F53056161359CA000FCAC3 /* Readme.md in Resources */,
 				E1C99998168B42C70049C7CD /* MenubarTemplate@2x.tif in Resources */,
+				E157B1A916D388FB0026EC3B /* QRFileDuplicateWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +610,7 @@
 				E157B1A316D3853D0026EC3B /* SRRecorderCell.m in Sources */,
 				E157B1A416D3853D0026EC3B /* SRRecorderControl.m in Sources */,
 				E157B1A516D3853D0026EC3B /* SRValidator.m in Sources */,
+				E157B1AC16D38A450026EC3B /* QRFileDuplicateWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
