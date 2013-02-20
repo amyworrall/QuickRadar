@@ -38,7 +38,7 @@
 
 + (NSString *)name
 {
-	return @"Radar";
+	return @"Apple Radar";
 }
 
 + (BOOL)isAvailable
