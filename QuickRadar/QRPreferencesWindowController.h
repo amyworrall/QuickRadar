@@ -10,10 +10,8 @@
 
 @interface QRPreferencesWindowController : NSWindowController
 
-@property (strong) IBOutlet NSBox *contentBox;
+@property (strong, nonatomic, readonly) IBOutlet NSToolbar *toolbar;
 
-@property (strong) NSArray *panes;
-@property (strong) IBOutlet NSArrayController *panesArrayController;
-
+- (void)selectItemAtIndex:(NSUInteger)index;
 
 @end
