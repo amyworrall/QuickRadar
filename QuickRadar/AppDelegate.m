@@ -57,7 +57,7 @@
 	
 	[GrowlApplicationBridge setGrowlDelegate:self];
 	
-	self.preferencesWindowController = [[QRPreferencesWindowController alloc] initWithWindowNibName:@"QRPreferencesWindowController"];
+	self.preferencesWindowController = [[QRPreferencesWindowController alloc] init];
 	self.duplicatesWindowController = [[QRFileDuplicateWindowController alloc] initWithWindowNibName:@"QRFileDuplicateWindow"];
 
 	BOOL shouldShowDockIcon = [[NSUserDefaults standardUserDefaults] boolForKey:QRShowInDockKey];

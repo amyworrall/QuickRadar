@@ -32,7 +32,7 @@
 
 + (NSString *)name
 {
-	return @"App.net";
+	return @"AppDotNet";
 }
 
 + (NSString*)checkBoxString

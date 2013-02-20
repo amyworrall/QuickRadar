@@ -10,91 +10,144 @@
 #import "QRMainAppSettingsViewController.h"
 #import "QRSubmissionService.h"
 
-@interface QRPreferencesWindowController ()
-
+@interface QRPreferencesWindowController () <NSToolbarDelegate>
+@property (strong, nonatomic) IBOutlet NSToolbar *toolbar;
+@property (strong, nonatomic) NSMutableArray *panes;
+@property (assign, nonatomic) NSUInteger index;
 @end
 
 @implementation QRPreferencesWindowController
-@synthesize contentBox = _contentBox;
+@synthesize toolbar = _toolbar;
 @synthesize panes = _panes;
-@synthesize panesArrayController = _panesArrayController;
+@synthesize index = _index;
 
-- (id)initWithWindow:(NSWindow *)window
+- (instancetype)init
 {
-    self = [super initWithWindow:window];
-    if (self) 
+	self = [super initWithWindowNibName:NSStringFromClass([self class])];
+	if (self)
 	{
-        
-		NSMutableArray *prefPanes = [NSMutableArray array];
-		
-		QRMainAppSettingsViewController *mainPrefsVC = [[QRMainAppSettingsViewController alloc] init];
-		mainPrefsVC.title = @"App Settings";
-		mainPrefsVC.representedObject = [NSImage imageNamed:NSImageNameActionTemplate];
-		[prefPanes addObject:mainPrefsVC];
-		
-		NSDictionary *services = [QRSubmissionService services];
-
-		for (NSString *serviceID in services)
-		{
-			Class serviceClass = [services objectForKey:serviceID];
-			
-			NSString *viewControllerClassName = [serviceClass macSettingsViewControllerClassName];
-			if (viewControllerClassName.length>0)
-			{
-				Class viewControllerClass = NSClassFromString(viewControllerClassName);
-				NSViewController *viewController = [[viewControllerClass alloc] initWithNibName:viewControllerClassName bundle:nil];
-				
-				viewController.title = [serviceClass name];
-				viewController.representedObject = [serviceClass settingsIconPlatformAppropriateImage];
-				
-				[prefPanes addObject:viewController];
-			}
-		}
-		
-		
-		self.panes = [NSArray arrayWithArray:prefPanes];
-		
-    }
-    
-    return self;
-}
-
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if (object == self.panesArrayController)
-	{
-		[self updateActiveView];
+		_panes = [NSMutableArray new];
 	}
+	return self;
 }
 
-- (void)updateActiveView
+- (void)awakeFromNib
 {
-	if (self.panesArrayController.selectedObjects.count == 0)
+	[super awakeFromNib];
+	
+	self.window.title = NSLocalizedString(@"Preferences", @"Preferences Window Title");
+	self.toolbar.delegate = self;
+	self.toolbar.allowsUserCustomization = NO;
+	
+	QRMainAppSettingsViewController *mainPrefsVC = [[QRMainAppSettingsViewController alloc] init];
+	mainPrefsVC.title = @"Settings";
+	mainPrefsVC.representedObject = [NSImage imageNamed:NSImageNameActionTemplate];
+	[self qr_addViewController:mainPrefsVC];
+	
+	NSDictionary *services = [QRSubmissionService services];
+	for (Class ServiceClass in [services allValues])
+	{
+		NSString *viewControllerClassName = [ServiceClass macSettingsViewControllerClassName];
+		if (viewControllerClassName.length>0)
+		{
+			Class viewControllerClass = NSClassFromString(viewControllerClassName);
+			NSViewController *viewController = [[viewControllerClass alloc] initWithNibName:viewControllerClassName bundle:nil];
+			
+			viewController.title = [ServiceClass name];
+			viewController.representedObject = [ServiceClass settingsIconPlatformAppropriateImage];
+			
+			[self qr_addViewController:viewController];
+		}
+	}
+	
+	[self qr_updateUI];
+}
+
+- (void)qr_addViewController:(NSViewController *)viewController
+{
+	[self.panes addObject:viewController];
+	[self.toolbar insertItemWithItemIdentifier:viewController.title atIndex:[self.toolbar.items count]];
+}
+
+- (void)selectItemAtIndex:(NSUInteger)index
+{
+	self.index = index;
+	NSString *selectedIdentifier = [self.toolbar.items[index] itemIdentifier];
+	[self.toolbar setSelectedItemIdentifier:selectedIdentifier];
+	[self qr_updateUI];
+}
+
+- (void)selectItemWithIdentifier:(NSString *)identifier
+{
+	NSUInteger index = [[self toolbarAllowedItemIdentifiers:self.toolbar] indexOfObject:identifier];
+	if (index == NSNotFound)
 	{
 		return;
 	}
-	
-	NSViewController *vc = [[self.panesArrayController selectedObjects] objectAtIndex:0];
-	
-	[self.contentBox setContentView:vc.view];
+	[self selectItemAtIndex:index];
 }
 
-- (void)windowDidLoad
+- (void)qr_updateUI
 {
-    [super windowDidLoad];
-    
-	[self.panesArrayController addObserver:self
-								forKeyPath:@"selectedObjects"
-								   options:0
-								   context:NULL];
-
-	[self updateActiveView];
+	NSViewController *controller = self.panes[self.index];
+	self.toolbar.selectedItemIdentifier = controller.title;
+	self.window.contentView = controller.view;
 }
 
-- (void)dealloc
+- (NSViewController *)qr_preferenceViewControllerForIdentifier:(NSString *)identifier
 {
-	[self.panesArrayController removeObserver:self forKeyPath:@"selectedObjects"];
+	NSViewController *preferenceViewController = nil;
+	for (NSViewController *viewController in self.panes)
+	{
+		if ([viewController.title isEqualToString:identifier])
+		{
+			preferenceViewController = viewController;
+			break;
+		}
+	}
+	return preferenceViewController;
+}
+
+#pragma mark - NSToolbarDelegate
+
+- (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag
+{
+	NSToolbarItem *toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier:itemIdentifier];
+	NSViewController *viewController = [self qr_preferenceViewControllerForIdentifier:itemIdentifier];
+	
+	[toolbarItem setImage:[viewController representedObject]];
+	[toolbarItem setLabel:[viewController title]];
+	[toolbarItem setTarget:self];
+	[toolbarItem setAction:@selector(qr_toolbarItemSelected:)];
+	
+	return toolbarItem;
+}
+
+- (NSArray *)qr_identifiers
+{
+	return [self.panes valueForKey:@"title"];
+}
+
+- (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar
+{
+	return [self qr_identifiers];
+}
+
+- (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar
+{
+	return [self qr_identifiers];
+}
+
+- (NSArray *)toolbarSelectableItemIdentifiers:(NSToolbar *)toolbar
+{
+	return [self qr_identifiers];
+}
+
+#pragma mark - Toolbar Action
+
+- (void)qr_toolbarItemSelected:(NSToolbarItem *)toolbarItem
+{
+	[self selectItemWithIdentifier:toolbarItem.itemIdentifier];
 }
 
 @end
