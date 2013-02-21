@@ -37,7 +37,7 @@
 			<object class="NSWindowTemplate" id="1005">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{196, 240}, {628, 444}}</string>
+				<string key="NSWindowRect">{{196, 240}, {560, 444}}</string>
 				<int key="NSWTFlags">544735232</int>
 				<string key="NSWindowTitle">QuickRadar Preferences</string>
 				<string key="NSWindowClass">NSWindow</string>
@@ -54,23 +54,24 @@
 					<int key="NSToolbarSizeMode">1</int>
 					<dictionary class="NSMutableDictionary" key="NSToolbarIBIdentifiedItems"/>
 					<array key="NSToolbarIBAllowedItems" id="0"/>
-					<array class="NSMutableArray" key="NSToolbarIBDefaultItems"/>
+					<reference key="NSToolbarIBDefaultItems" ref="0"/>
 					<reference key="NSToolbarIBSelectableItems" ref="0"/>
 				</object>
 				<nil key="NSUserInterfaceItemIdentifier"/>
-				<string key="NSWindowContentMaxSize">{628, 444}</string>
-				<string key="NSWindowContentMinSize">{628, 444}</string>
+				<string key="NSWindowContentMaxSize">{560, 444}</string>
+				<string key="NSWindowContentMinSize">{560, 444}</string>
 				<object class="NSView" key="NSWindowView" id="1006">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews"/>
-					<string key="NSFrameSize">{628, 444}</string>
+					<string key="NSFrameSize">{560, 444}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
+					<reference key="NSNextKeyView"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
-				<string key="NSMinSize">{628, 485}</string>
-				<string key="NSMaxSize">{628, 485}</string>
+				<string key="NSMinSize">{560, 485}</string>
+				<string key="NSMaxSize">{560, 485}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
 			<object class="NSArrayController" id="116449275">
