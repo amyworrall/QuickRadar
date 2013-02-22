@@ -130,11 +130,13 @@
 	NSMenuItem *item = [button itemWithTitle:itemTitle];
 	if (item)
 	{
-		[self.reproducibleMenu selectItem:item];
+		[button selectItem:item];
 		return;
 	}
 	
 	NSString *trimmedNeedle = [itemTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	
+	/* Try for an exact but non case/whitespace sensitive match */
 	for (NSString *aTitle in button.itemTitles)
 	{
 		NSString *trimmedHaystack = [aTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -142,7 +144,20 @@
 		if ([trimmedNeedle compare:trimmedHaystack options:NSCaseInsensitiveSearch]==NSOrderedSame)
 		{
 			item = [button itemWithTitle:aTitle];
-			[self.reproducibleMenu selectItem:item];
+			[button selectItem:item];
+			return;
+		}
+	}
+
+	/* Try for a prefix match */
+	for (NSString *aTitle in button.itemTitles)
+	{
+		NSString *trimmedHaystack = [aTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		
+		if ([trimmedHaystack.lowercaseString hasPrefix:trimmedNeedle.lowercaseString])
+		{
+			item = [button itemWithTitle:aTitle];
+			[button selectItem:item];
 			return;
 		}
 	}
