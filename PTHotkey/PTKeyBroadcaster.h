@@ -17,4 +17,4 @@
 
 @end
 
-__private_extern__ NSString* PTKeyBroadcasterKeyEvent; //keys: keyCombo as PTKeyCombo
+__attribute__((visibility("hidden"))) NSString* PTKeyBroadcasterKeyEvent; //keys: keyCombo as PTKeyCombo
