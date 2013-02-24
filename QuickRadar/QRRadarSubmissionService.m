@@ -467,7 +467,9 @@
 															  (void **)&passwordBytes,
 															  NULL);
 	NSString *password = [[NSString alloc] initWithBytes:passwordBytes length:passwordLength encoding:NSUTF8StringEncoding];
-	SecKeychainItemFreeContent(NULL, passwordBytes);
+    if (passwordBytes != NULL) {
+        SecKeychainItemFreeContent(NULL, passwordBytes);
+    }
 	
 	return password;
 
