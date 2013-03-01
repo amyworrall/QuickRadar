@@ -13,6 +13,8 @@
 #import <Growl/Growl.h>
 #import "QRAppListPopover.h"
 #import "QRCachedRunningApplication.h"
+#import "QRConfigListViewController.h"
+#import "QRConfigListManager.h"
 #import "NSButton+QuickRadar.h"
 #import "AppDelegate.h"
 
@@ -20,6 +22,7 @@
 
 @property (nonatomic, strong) QRSubmissionController *submissionController;
 @property (nonatomic) BOOL userTypedTitle;	// Don't override his title when selecting an app.
+@property (nonatomic) QRCachedRadarConfiguration *userSelectedConfig; // contains the full config text
 @property (nonatomic, strong) QRRadar *radarToPrepopulate;
 
 @end
@@ -113,6 +116,8 @@
 	self.userTypedTitle = NO;
 	[self.titleField becomeFirstResponder];
 	
+    //this will enqueue an update operation regardless of whether one is already taking place. 
+    [[QRConfigListManager sharedManager] attemptToUpdateConfigurations];
 }
 
 - (void)prepopulateWithRadar:(QRRadar *)radar;
@@ -184,6 +189,10 @@
 	[self.appListPopover showRelativeToRect:self.appListButton.frame ofView:self.appListButton.superview preferredEdge:NSMaxXEdge];
 }
 
+- (IBAction)showConfigList:(id)sender {
+    [self.configListPopover showRelativeToRect:self.configListButton.frame ofView:self.configListButton.superview preferredEdge:NSMaxXEdge];
+}
+
 - (void)prepopulateWithApp:(QRCachedRunningApplication *)app {
 	// Fill out the versions text field using the selected app.
 	NSString *text = app.unlocalizedName;
@@ -226,9 +235,23 @@
 	[self.titleField becomeFirstResponder];
 }
 
+- (void)prepopulateWithConfig:(QRCachedRadarConfiguration *)config {
+    NSString *configName = config.name;
+    [self.configurationField.cell setPlaceholderString:configName];
+    [self.configurationField setStringValue:@""];
+    self.configurationField.toolTip = NSLocalizedString(@"This is a saved configuration; click to manually enter one.", @"Instructions on how to override the saved configuration, and type a new one.");
+    [self.configurationField setNeedsDisplay];
+    self.userSelectedConfig = config;
+}
+
 - (void)appListPopover:(QRAppListPopover *)popover selectedApp:(QRCachedRunningApplication *)app {
 	[self prepopulateWithApp:app];
 	[self.appListPopover close];
+}
+
+- (void)configListPopover:(QRConfigListPopover *)popover selectedConfig:(QRCachedRadarConfiguration*)config {
+    [self prepopulateWithConfig:config];
+    [self.configListPopover close];
 }
 
 - (IBAction)submitRadar:(id)sender;
@@ -254,6 +277,12 @@
 	radar.classification = self.classificationMenu.selectedItem.title;
 	radar.reproducible = self.reproducibleMenu.selectedItem.title;
 	radar.version = self.versionField.stringValue;
+    if (self.userSelectedConfig != nil) {
+        radar.configuration = self.userSelectedConfig.content;
+    }
+    else {
+        radar.configuration = [self.configurationField stringValue];
+    }
 	radar.title = self.titleField.stringValue;
 	radar.body = self.bodyTextView.string;
 	radar.dateOriginated = [NSDate date];
@@ -329,7 +358,14 @@
 }
 
 - (void)controlTextDidChange:(NSNotification *)aNotification {
-	self.userTypedTitle = YES;
+    if (aNotification.object == self.titleField) {
+        self.userTypedTitle = YES;
+    }
+    else if(aNotification.object == self.configurationField) {
+        [self setUserSelectedConfig:nil];
+        [(NSTextFieldCell*)self.configurationField.cell setPlaceholderString:@""];
+        [self.configListPopover clearConfigurationSelection];
+    }
 }
 
 @end

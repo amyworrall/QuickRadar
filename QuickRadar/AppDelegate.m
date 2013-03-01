@@ -13,6 +13,7 @@
 #import "QRPreferencesWindowController.h"
 #import "QRUserDefaultsKeys.h"
 #import "QRAppListManager.h"
+#import "QRConfigListManager.h"
 #import "SRCommon.h"
 #import "QRFileDuplicateWindowController.h"
 
@@ -71,8 +72,9 @@
 	
 	[[NSUserDefaults standardUserDefaults] registerDefaults:@{QRHandleRdarURLsKey : @(rdarURLsMethodFileDuplicate)}];
 	
-	// Start tracking apps.
+	// Start tracking apps and configurations.
 	[QRAppListManager sharedManager];
+    [QRConfigListManager sharedManager];
 	
 	self.applicationHasStarted = YES;
 

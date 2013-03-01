@@ -139,5 +139,24 @@
 	return returnDict;
 }
 
+- (NSDictionary*)arrayValuesForXPathsDictionary:(NSDictionary*)dict error:(NSError**)retError;
+{
+    NSMutableDictionary *returnDict = [NSMutableDictionary dictionary];
+    for (NSString *key in dict) {
+        NSString *xpath = [dict objectForKey:key];
+        
+        NSError *err = nil;
+        NSArray *array = [self.xmlDocument nodesForXPath:xpath error:&err];
+        if (!array) {
+            NSLog(@"Found no results for %@", xpath);
+            [returnDict setObject:@[] forKey:key];
+        }
+        else {
+            [returnDict setObject:[array copy] forKey:key];
+        }
+    }
+    return returnDict;
+}
+
 
 @end

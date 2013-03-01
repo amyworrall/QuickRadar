@@ -24,5 +24,6 @@
 - (BOOL)fetch:(NSError**)error;
 
 - (NSDictionary*)stringValuesForXPathsDictionary:(NSDictionary*)dict error:(NSError**)error;
+- (NSDictionary*)arrayValuesForXPathsDictionary:(NSDictionary*)dict error:(NSError**)error;
 
 @end

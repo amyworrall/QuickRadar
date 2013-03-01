@@ -328,6 +328,7 @@
 											 @"//textarea[@id='ConfigInfo']/@name", @"configInfoTextareaName",
 											 [NSString stringWithFormat:@"//select[@id='prodList'][1]/option[text()='%@']/@value", self.radar.product], @"productListNumber",
 											 [NSString stringWithFormat:@"//select[@id='classList']/option[text()='%@']/@value", trimmedClassification], @"classificationNumber",
+                                             @"//div[@id='divtableNew']//select/@name",@"appendNewConfigName",
 											 nil];
 		
 		
@@ -342,9 +343,12 @@
 			return;
 		}
 		
-		// This is a fudge until I write an Xpath that'll get this.
-		NSString *appendNewConfigName =  @"61.103.49"; 
-		
+        NSString *configurationSelectionName =  [newTicketPageValues valueForKey:@"appendNewConfigName"];
+
+		//the "selected" category on RadarWeb doesn't actually do anything.
+        //Only the textarea matters, so we use this for the dropdown's value, then grab the
+        //selected/typed Configuration and put that into the appropriate field.
+        NSString *selectedConfigurationName = @"WONoSelectionString";
 		
 		/*******************************
 		 * Page 5: Bug Submission Page *
@@ -373,8 +377,8 @@
 		[bugSubmissionPage addPostParameter:self.radar.body forKey:@"probDesc"];
 		[bugSubmissionPage addPostParameter:@"" forKey:[newTicketPageValues objectForKey:@"configInformationName"]];
 		[bugSubmissionPage addPostParameter:[NSData data] forKey:[newTicketPageValues objectForKey:@"configIDName"]];
-		[bugSubmissionPage addPostParameter:@"WONoSelectionString" forKey:appendNewConfigName];
-		[bugSubmissionPage addPostParameter:@"" forKey:[newTicketPageValues objectForKey:@"configInfoTextareaName"]];
+		[bugSubmissionPage addPostParameter:selectedConfigurationName forKey:configurationSelectionName];
+		[bugSubmissionPage addPostParameter:self.radar.configuration forKey:[newTicketPageValues objectForKey:@"configInfoTextareaName"]];
 		[bugSubmissionPage addPostParameter:@"No" forKey:[newTicketPageValues objectForKey:@"initialPopulateFlagName"]];
 		[bugSubmissionPage addPostParameter:[NSData data] forKey:@"__DEFAULT__FILE__1__"];
 		[bugSubmissionPage addPostParameter:@"25" forKey:@"Save.x"];
