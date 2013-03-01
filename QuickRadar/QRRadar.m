@@ -25,7 +25,6 @@
 @synthesize radarNumber = _radarNumber;
 @synthesize serviceSpecificProperties = _serviceSpecificProperties;
 
-
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
 	if (!self.serviceSpecificProperties)

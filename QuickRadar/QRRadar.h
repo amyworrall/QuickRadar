@@ -18,6 +18,8 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *body;
 
+@property (nonatomic, copy) NSString *configuration;
+
 @property (nonatomic, copy) NSString *status;
 @property (nonatomic, copy) NSDate *dateOriginated;
 
