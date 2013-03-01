@@ -10,4 +10,5 @@
 
 @interface QRRadarSubmissionServicePreferencesViewController : NSViewController
 
+- (IBAction)getAnAccount:(id)sender;
 @end

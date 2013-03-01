@@ -75,7 +75,7 @@
 {
 	if (NSClassFromString(@"NSImage"))
 	{
-		return [NSImage imageNamed:@"MenubarTemplate"];
+		return [NSImage imageNamed:@"ADNLogoTemplate"];
 	}
 	return nil;
 }

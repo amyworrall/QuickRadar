@@ -44,23 +44,45 @@
 	mainPrefsVC.representedObject = [NSImage imageNamed:NSImageNameActionTemplate];
 	[self qr_addViewController:mainPrefsVC];
 	
+	// Start the toolbar with a flexible space
+	[self.toolbar insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier atIndex:0];
+	
+	// Now add all the services
 	NSDictionary *services = [QRSubmissionService services];
-	for (Class ServiceClass in [services allValues])
+	
+	// Special case Apple Radar, so it comes first
+	Class radarPrefsVC = [services objectForKey:QRRadarSubmissionServiceIdentifier];
+	[self addViewControllerForClass:radarPrefsVC];
+	
+	// Now do the others
+	NSMutableDictionary *nonRadarServices = [services mutableCopy];
+	[nonRadarServices removeObjectForKey:QRRadarSubmissionServiceIdentifier];
+	
+	for (Class ServiceClass in [nonRadarServices allValues])
 	{
-		NSString *viewControllerClassName = [ServiceClass macSettingsViewControllerClassName];
-		if (viewControllerClassName.length>0)
-		{
-			Class viewControllerClass = NSClassFromString(viewControllerClassName);
-			NSViewController *viewController = [[viewControllerClass alloc] initWithNibName:viewControllerClassName bundle:nil];
-			
-			viewController.title = [ServiceClass name];
-			viewController.representedObject = [ServiceClass settingsIconPlatformAppropriateImage];
-			
-			[self qr_addViewController:viewController];
-		}
+		[self addViewControllerForClass:ServiceClass];
 	}
 	
+	// And another flexible space at the end
+	[self.toolbar insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier atIndex:self.toolbar.items.count];
+	
 	[self qr_updateUI];
+}
+
+
+- (void)addViewControllerForClass:(Class)ServiceClass
+{
+	NSString *viewControllerClassName = [ServiceClass macSettingsViewControllerClassName];
+	if (viewControllerClassName.length>0)
+	{
+		Class viewControllerClass = NSClassFromString(viewControllerClassName);
+		NSViewController *viewController = [[viewControllerClass alloc] initWithNibName:viewControllerClassName bundle:nil];
+		
+		viewController.title = [ServiceClass name];
+		viewController.representedObject = [ServiceClass settingsIconPlatformAppropriateImage];
+		
+		[self qr_addViewController:viewController];
+	}
 }
 
 - (void)qr_addViewController:(NSViewController *)viewController

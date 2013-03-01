@@ -11,6 +11,9 @@
 @interface QRAppDotNetSubmissionServicePreferencesViewController : NSViewController
 
 - (IBAction)authorise:(id)sender;
-- (IBAction)forgetAuth:(id)sender;
+- (IBAction)obtainAccount:(id)sender;
+
+@property (strong) IBOutlet NSButton *authButton;
+@property (strong) IBOutlet NSTextField *statusLabel;
 
 @end

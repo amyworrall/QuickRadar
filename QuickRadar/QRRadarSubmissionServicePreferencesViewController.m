@@ -24,4 +24,11 @@
     return self;
 }
 
+- (IBAction)getAnAccount:(id)sender
+{
+	NSString *stringURL = @"https://developer.apple.com/programs/register/";
+	NSURL *url = [NSURL URLWithString:stringURL];
+	[[NSWorkspace sharedWorkspace] openURL:url];
+}
+
 @end
