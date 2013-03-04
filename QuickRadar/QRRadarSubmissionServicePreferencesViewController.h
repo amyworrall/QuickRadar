@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface QRRadarSubmissionServicePreferencesViewController : NSViewController
+@interface QRRadarSubmissionServicePreferencesViewController : NSViewController <NSTextFieldDelegate>
+
+@property (nonatomic, weak) IBOutlet NSSecureTextField *radarPasswordField;
 
 @end
