@@ -8,6 +8,7 @@
 
 #import "QRRadarSubmissionService.h"
 #import "QRWebScraper.h"
+#import "PasswordStoring.h"
 #import "NSError+Additions.h"
 
 
@@ -173,7 +174,7 @@
 		
 		NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 		NSString *username = [prefs objectForKey: @"username"];
-		NSString *password = [self radarPassword];
+		NSString *password = [PasswordStoring radarPasswordForAccount:username error:nil];
 		
 		NSURL *bouncePageURL = [[NSURL URLWithString:@"https://bugreport.apple.com"] URLByAppendingPathComponent:[loginPageValues objectForKey:@"action"]];
 		
@@ -441,36 +442,6 @@
 		});
 		
 	});
-}
-
-
-- (NSString *)radarPassword
-{
-	NSString *serverName = @"bugreport.apple.com";
-	char *passwordBytes = NULL;
-	UInt32 passwordLength = 0;
-	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	NSString *username = [prefs objectForKey: @"username"];
-	/*OSStatus keychainResult =*/ SecKeychainFindInternetPassword(NULL,
-															  (UInt32)[serverName lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
-															  [serverName cStringUsingEncoding: NSUTF8StringEncoding],
-															  0,
-															  NULL,
-															  (UInt32)[username lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
-															  [username cStringUsingEncoding: NSUTF8StringEncoding],
-															  0,
-															  NULL,
-															  443,
-															  kSecProtocolTypeAny,
-															  kSecAuthenticationTypeAny,
-															  &passwordLength,
-															  (void **)&passwordBytes,
-															  NULL);
-	NSString *password = [[NSString alloc] initWithBytes:passwordBytes length:passwordLength encoding:NSUTF8StringEncoding];
-	SecKeychainItemFreeContent(NULL, passwordBytes);
-	
-	return password;
-
 }
 
 @end
