@@ -17,6 +17,7 @@ typedef enum {
 	submissionStatusFailed
 } SubmissionStatus;
 
+NSString * const QRWordpressSubmissionServiceIdentifier;
 NSString * const QRRadarSubmissionServiceIdentifier;
 NSString * const QROpenRadarSubmissionServiceIdentifier;
 NSString * const QRTwitterSubmissionServiceIdentifier;

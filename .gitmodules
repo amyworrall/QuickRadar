@@ -1,0 +1,3 @@
+[submodule "Externals/DTXMLRPC"]
+	path = Externals/DTXMLRPC
+	url = https://github.com/Cocoanetics/DTXMLRPC.git
