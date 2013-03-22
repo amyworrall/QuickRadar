@@ -80,6 +80,23 @@
 		ECBC726115E03E4500198D27 /* NSButton+QuickRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC726015E03E4500198D27 /* NSButton+QuickRadar.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A7B09EB416FCCEC0006C32AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7E7390116FCC0F4009097ED /* DTXMLRPC.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7E7384016FC44A1009097ED;
+			remoteInfo = "Wordpress Demo";
+		};
+		A7B09EB616FCCEC0006C32AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7E7390116FCC0F4009097ED /* DTXMLRPC.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7E738CB16FCBB81009097ED;
+			remoteInfo = DTXMLRPC;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		E1F8590D158A2EE5005F77DA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -104,7 +121,7 @@
 		A7E7388F16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRWordpressSubmissionServicePreferencesViewController.m; sourceTree = "<group>"; };
 		A7E7389016FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRWordpressSubmissionServicePreferencesViewController.xib; sourceTree = "<group>"; };
 		A7E7390116FCC0F4009097ED /* DTXMLRPC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DTXMLRPC.xcodeproj; path = DTXMLRPC/DTXMLRPC.xcodeproj; sourceTree = "<group>"; };
-		A7E7391E16FCC106009097ED /* libDTXMLRPC.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libDTXMLRPC.a; path = Externals/DTXMLRPC/build/Release/libDTXMLRPC.a; sourceTree = "<group>"; };
+		A7E7391E16FCC106009097ED /* libDTXMLRPC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTXMLRPC.a; path = Externals/DTXMLRPC/build/Release/libDTXMLRPC.a; sourceTree = "<group>"; };
 		B4688665158FF4D900C94B09 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		B4688667158FF91A00C94B09 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
 		B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPTHotkey-OSX.a"; path = "PTHotkey/libPTHotkey-OSX.a"; sourceTree = "<group>"; };
@@ -228,6 +245,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7B09EB016FCCEC0006C32AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A7B09EB516FCCEC0006C32AA /* DTXMLRPC.app */,
+				A7B09EB716FCCEC0006C32AA /* libDTXMLRPC.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A7E7388A16FCB308009097ED /* Wordpress */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,12 +605,35 @@
 			mainGroup = E1CC517E156257BF0027FB83;
 			productRefGroup = E1CC518A156257BF0027FB83 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A7B09EB016FCCEC0006C32AA /* Products */;
+					ProjectRef = A7E7390116FCC0F4009097ED /* DTXMLRPC.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E1CC5188156257BF0027FB83 /* QuickRadar */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A7B09EB516FCCEC0006C32AA /* DTXMLRPC.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = DTXMLRPC.app;
+			remoteRef = A7B09EB416FCCEC0006C32AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A7B09EB716FCCEC0006C32AA /* libDTXMLRPC.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libDTXMLRPC.a;
+			remoteRef = A7B09EB616FCCEC0006C32AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E1CC5187156257BF0027FB83 /* Resources */ = {
