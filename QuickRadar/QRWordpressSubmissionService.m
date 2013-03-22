@@ -101,13 +101,11 @@
 
 +(NSSet *)hardDependencies
 {
-    return nil;
 	return [NSSet setWithObject:QRRadarSubmissionServiceIdentifier];
 }
 
 +(NSSet *)softDependencies
 {
-    return nil;
 	return [NSSet setWithObject:QROpenRadarSubmissionServiceIdentifier];
 }
 
