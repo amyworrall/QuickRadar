@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		98EACACC158A86460078D06C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EACACB158A86460078D06C /* Security.framework */; };
 		98EACAD0158A89670078D06C /* PasswordStoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EACACF158A89670078D06C /* PasswordStoring.m */; };
+		A7E7388D16FCB367009097ED /* QRWordpressSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7388C16FCB367009097ED /* QRWordpressSubmissionService.m */; };
+		A7E7389116FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7388F16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m */; };
+		A7E7389216FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E7389016FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib */; };
 		B4688666158FF4D900C94B09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B4688665158FF4D900C94B09 /* README.md */; };
 		B4688669158FF91A00C94B09 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4688667158FF91A00C94B09 /* Appicon.icns */; };
 		B4EC27EC1591577000E79E8B /* libPTHotkey-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */; };
@@ -94,6 +97,11 @@
 		98EACACB158A86460078D06C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		98EACACE158A89670078D06C /* PasswordStoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStoring.h; sourceTree = "<group>"; };
 		98EACACF158A89670078D06C /* PasswordStoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStoring.m; sourceTree = "<group>"; };
+		A7E7388B16FCB367009097ED /* QRWordpressSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRWordpressSubmissionService.h; sourceTree = "<group>"; };
+		A7E7388C16FCB367009097ED /* QRWordpressSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRWordpressSubmissionService.m; sourceTree = "<group>"; };
+		A7E7388E16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRWordpressSubmissionServicePreferencesViewController.h; sourceTree = "<group>"; };
+		A7E7388F16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRWordpressSubmissionServicePreferencesViewController.m; sourceTree = "<group>"; };
+		A7E7389016FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRWordpressSubmissionServicePreferencesViewController.xib; sourceTree = "<group>"; };
 		B4688665158FF4D900C94B09 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		B4688667158FF91A00C94B09 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
 		B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPTHotkey-OSX.a"; path = "PTHotkey/libPTHotkey-OSX.a"; sourceTree = "<group>"; };
@@ -216,6 +224,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7E7388A16FCB308009097ED /* Wordpress */ = {
+			isa = PBXGroup;
+			children = (
+				A7E7388B16FCB367009097ED /* QRWordpressSubmissionService.h */,
+				A7E7388C16FCB367009097ED /* QRWordpressSubmissionService.m */,
+				A7E7388E16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.h */,
+				A7E7388F16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m */,
+				A7E7389016FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib */,
+			);
+			name = Wordpress;
+			sourceTree = "<group>";
+		};
 		E157B19616D385290026EC3B /* ShortcutRecorder */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +321,7 @@
 		E19CFC6A1599FFFE00879280 /* Submission Services */ = {
 			isa = PBXGroup;
 			children = (
+				A7E7388A16FCB308009097ED /* Wordpress */,
 				E157B1E716D3B9940026EC3B /* Twitter */,
 				E19CFC72159A035E00879280 /* Radar */,
 				E1B6F9D815E3E22C004F37F7 /* Open Radar */,
@@ -580,6 +601,7 @@
 				E1F53056161359CA000FCAC3 /* Readme.md in Resources */,
 				E1C99998168B42C70049C7CD /* MenubarTemplate@2x.tif in Resources */,
 				E157B1A916D388FB0026EC3B /* QRFileDuplicateWindow.xib in Resources */,
+				A7E7389216FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +647,8 @@
 				E157B1A516D3853D0026EC3B /* SRValidator.m in Sources */,
 				E157B1AC16D38A450026EC3B /* QRFileDuplicateWindowController.m in Sources */,
 				E157B1EA16D3B9B00026EC3B /* QRTwitterSubmissionService.m in Sources */,
+				A7E7388D16FCB367009097ED /* QRWordpressSubmissionService.m in Sources */,
+				A7E7389116FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
