@@ -186,8 +186,8 @@
 		
 		[bouncePage addPostParameter:username forKey:@"theAccountName"];
 		[bouncePage addPostParameter:password forKey:@"theAccountPW"];
-		[bouncePage addPostParameter:@"4" forKey:@"1.Continue.x"];
-		[bouncePage addPostParameter:@"5" forKey:@"1.Continue.y"];
+		[bouncePage addPostParameter:@"6" forKey:@"1.Continue.x"];
+		[bouncePage addPostParameter:@"7" forKey:@"1.Continue.y"];
 		[bouncePage addPostParameter:@"" forKey:@"theAuxValue"];
 		
 		if (![bouncePage fetch:&error])
