@@ -189,6 +189,8 @@
 - (void)prepopulateWithApp:(QRCachedRunningApplication *)app {
 	// Fill out the versions text field using the selected app.
 	NSString *text = app.unlocalizedName;
+    if (text == nil)
+        text = @"";
 	NSString *versionAndBuild = app.versionAndBuild;
 	if (versionAndBuild) text = [text stringByAppendingFormat:@" %@", versionAndBuild];
 	versionField.stringValue = text;
@@ -200,6 +202,8 @@
 	NSString *trimmedTitle = [titleField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" \t"]];
 	if (!trimmedTitle || [trimmedTitle isEqualToString:@""] || self.userTypedTitle == NO) {
 		NSString *title = app.unlocalizedName;
+        if (title == nil)
+            title = @"";
 		NSString *version = app.version;
 		NSString *build = app.build;
 		if (version) title = [title stringByAppendingFormat:@" %@: ", version];
@@ -209,12 +213,14 @@
 	
 	// Try to guess the category for the selected app (Xcode -> Developer Tools, Pages -> iWork, etc.)
 	NSString *guess = [app guessCategory];
-	NSMenuItem *item = [self.productMenu itemWithTitle:guess];
-	if (item) {
-		[self.productMenu selectItem:item];
-		[self.productMenu blinkTwice];
-	}
-	
+    if (guess) {
+        NSMenuItem *item = [self.productMenu itemWithTitle:guess];
+        if (item) {
+            [self.productMenu selectItem:item];
+            [self.productMenu blinkTwice];
+        }
+    }
+
 	// If the selected app crashed recently, choose Crash from the Classification list.
 	if ([app didCrashRecently]) {
 		for (NSString *title in self.classificationMenu.itemTitles) {
@@ -226,6 +232,7 @@
 	}
 	
 	[self.titleField becomeFirstResponder];
+    [[self.window fieldEditor:NO forObject:self.titleField] moveToEndOfDocument:nil];
 }
 
 - (void)appListPopover:(QRAppListPopover *)popover selectedApp:(QRCachedRunningApplication *)app {

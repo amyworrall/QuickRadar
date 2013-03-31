@@ -43,6 +43,7 @@
 		E1B6F9DC15E3E268004F37F7 /* QROpenRadarSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B6F9DB15E3E268004F37F7 /* QROpenRadarSubmissionService.m */; };
 		E1B6F9E015E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B6F9DE15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m */; };
 		E1B6F9E115E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B6F9DF15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib */; };
+		E1BE144F1708A46B00F7A853 /* QRAppListOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE144E1708A46B00F7A853 /* QRAppListOutlineView.m */; };
 		E1C10ACA158A7D02003A3C01 /* License in Resources */ = {isa = PBXBuildFile; fileRef = E1C10AC9158A7D02003A3C01 /* License */; };
 		E1C10AE71593B4C8003A3C01 /* QRWebScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C10AE61593B4C8003A3C01 /* QRWebScraper.m */; };
 		E1C99998168B42C70049C7CD /* MenubarTemplate@2x.tif in Resources */ = {isa = PBXBuildFile; fileRef = E1C99997168B42C70049C7CD /* MenubarTemplate@2x.tif */; };
@@ -149,6 +150,8 @@
 		E1B6F9DD15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QROpenRadarSubmissionServicePreferencesViewController.h; sourceTree = "<group>"; };
 		E1B6F9DE15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QROpenRadarSubmissionServicePreferencesViewController.m; sourceTree = "<group>"; };
 		E1B6F9DF15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QROpenRadarSubmissionServicePreferencesViewController.xib; sourceTree = "<group>"; };
+		E1BE144D1708A46B00F7A853 /* QRAppListOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRAppListOutlineView.h; sourceTree = "<group>"; };
+		E1BE144E1708A46B00F7A853 /* QRAppListOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRAppListOutlineView.m; sourceTree = "<group>"; };
 		E1C10AC9158A7D02003A3C01 /* License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License; path = ../License; sourceTree = "<group>"; };
 		E1C10AE51593B4C8003A3C01 /* QRWebScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRWebScraper.h; sourceTree = "<group>"; };
 		E1C10AE61593B4C8003A3C01 /* QRWebScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRWebScraper.m; sourceTree = "<group>"; };
@@ -497,6 +500,8 @@
 				ECBC724315E02E6E00198D27 /* QRAppListManager.m */,
 				ECBC724615E02E6E00198D27 /* QRAppListTableCellView.h */,
 				ECBC724715E02E6E00198D27 /* QRAppListTableCellView.m */,
+				E1BE144D1708A46B00F7A853 /* QRAppListOutlineView.h */,
+				E1BE144E1708A46B00F7A853 /* QRAppListOutlineView.m */,
 				ECBC724815E02E6E00198D27 /* QRAppListViewController.h */,
 				ECBC724915E02E6E00198D27 /* QRAppListViewController.m */,
 				ECBC724A15E02E6E00198D27 /* QRAppListViewController.xib */,
@@ -637,6 +642,7 @@
 				E157B1A516D3853D0026EC3B /* SRValidator.m in Sources */,
 				E157B1AC16D38A450026EC3B /* QRFileDuplicateWindowController.m in Sources */,
 				E157B1EA16D3B9B00026EC3B /* QRTwitterSubmissionService.m in Sources */,
+				E1BE144F1708A46B00F7A853 /* QRAppListOutlineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
