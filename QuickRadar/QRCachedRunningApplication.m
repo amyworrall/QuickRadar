@@ -81,6 +81,8 @@
 		if (name) {return name;}
 		name = info[kQRCachedAppBundleName];
 		if (name) {return name;}
+        name = info[(NSString *)kCFBundleExecutableKey];
+        if (name) {return name;}
 	}
 	return nil;
 }
