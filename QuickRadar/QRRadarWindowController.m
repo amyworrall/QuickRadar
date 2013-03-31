@@ -70,6 +70,7 @@
 	
 	[self setUpCheckboxes];
 	
+    self.bodyTextView.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
 	if (self.radarToPrepopulate.body.length>0)
 	{
 		self.bodyTextView.string = self.radarToPrepopulate.body;
@@ -93,7 +94,8 @@
         @"Describe circumstances where the problem occurs or does not occur, such as software versions and/or hardware configurations.\n"
         @"\n"
         @"Notes:\n"
-        @"Provide additional information, such as references to related problems, workarounds and relevant attachments.\n\n\n";
+        @"Provide additional information, such as references to related problems, workarounds and relevant attachments.\n";
+        [self.bodyTextView moveToBeginningOfDocument:nil];
 	}
 	
 	if (self.radarToPrepopulate.title.length>0)
