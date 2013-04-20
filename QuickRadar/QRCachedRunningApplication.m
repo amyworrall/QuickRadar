@@ -48,9 +48,13 @@
     self = [super init];
     if (self) {
 		// Load saved bundle URL, get the bundle.
+        NSBundle *bundle = nil;
+        
 		NSURL *bundleURL = [coder decodeObjectForKey:@"BundleURL"];
-		NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
-        self.bundle = bundle;
+        if (bundleURL != nil) {
+            bundle = [NSBundle bundleWithURL:bundleURL];
+            self.bundle = bundle;
+        }
 		
 		// Try to get the the app instance if it's running.
         if (bundle)
@@ -123,7 +127,10 @@
 	NSImage *image = self.runningApplication.icon;
 	if (!image) {
 		// If the app couldn't specify an icon (not running anymore probably), try loading it from disk.
-		image = [[NSWorkspace sharedWorkspace] iconForFile:self.bundle.bundlePath];
+        NSString *bundlePath = self.bundle.bundlePath;
+        if (bundlePath == nil)
+            return nil;
+		image = [[NSWorkspace sharedWorkspace] iconForFile:bundlePath];
 	}
 	return image;	// Can be nil, if app is not running and no cache available!
 }
@@ -134,6 +141,9 @@
 // Eumerate through the crash reports since the reference date and filter them for this app.
 // If findAll is NO, it returns as soon as at least one report is found, otherwise it will return all reports since the refDate.
 - (NSArray *)crashReportsSince:(NSDate *)referenceDate findAll:(BOOL)findAll {
+    if (self.bundle == nil)
+        return nil;
+
 	NSMutableArray *reports = [NSMutableArray arrayWithCapacity:3];
 	for (NSString *aPath in kQRCachedAppCrashReportSearchPaths) {
 		NSString *searchPath = [aPath stringByExpandingTildeInPath];
