@@ -289,9 +289,13 @@
 		[dict setObject:@(selected) forKey:cell.representedObject];
 	}
 	self.submissionController.requestedOptionalServices = [NSDictionary dictionaryWithDictionary:dict];
-	
+
 	[self.submissionController startWithProgressBlock:^{
 		self.progressBar.doubleValue = self.submissionController.progress;
+        NSString *statusText = self.submissionController.statusText;
+        if (statusText == nil)
+            statusText = @"Submitting";
+        self.submitStatusField.stringValue = [NSString stringWithFormat:@"%@...", statusText];
 	} completionBlock:^(BOOL success, NSError *error) {
 		if (success && radar.radarNumber > 0)
 		{
@@ -325,16 +329,18 @@
 		}
 		else
 		{
-			[NSApp presentError:error];
-			
-			
+            [NSApp presentError:error modalForWindow:self.window delegate:nil didPresentSelector:NULL contextInfo:NULL];
+            if (error.domain == NSURLErrorDomain)
+                NSLog(@"%@ - %@", [error.userInfo objectForKey:NSLocalizedDescriptionKey],
+                      [error.userInfo objectForKey:NSURLErrorFailingURLStringErrorKey]);
+
 			[self.submitButton setEnabled:YES];
 			[self.spinner stopAnimation:self];
-			
+            self.submitStatusField.stringValue = @"";
 		}
-		
+
 	}];
-	
+
 }
 
 - (void)controlTextDidChange:(NSNotification *)aNotification {

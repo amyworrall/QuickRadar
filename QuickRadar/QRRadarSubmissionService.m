@@ -15,6 +15,7 @@
 
 @property (atomic, assign) CGFloat progressValue;
 @property (atomic, assign) SubmissionStatus submissionStatusValue;
+@property (atomic, assign) NSString *submissionStatusText;
 
 @end
 
@@ -90,6 +91,11 @@
 	return self.submissionStatusValue;
 }
 
+- (NSString *)statusText
+{
+    return self.submissionStatusText;
+}
+
 
 #define NUM_PAGES 5.0
 
@@ -130,6 +136,7 @@
 		 * Page 1: login page *
 		 **********************/
 		
+        self.submissionStatusText = @"Fetching RadarWeb signin page";
 		QRWebScraper *loginPage = [[QRWebScraper alloc] init];
 		loginPage.URL = [NSURL URLWithString:@"https://bugreport.apple.com/cgi-bin/WebObjects/RadarWeb.woa/wa/signIn"];
 		
@@ -170,7 +177,7 @@
 		 * Page 2: JS bounce page *
 		 **************************/
 		
-		
+        self.submissionStatusText = @"Signing into RadarWeb";
 		NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 		NSString *username = [prefs objectForKey: @"username"];
 		NSString *password = [self radarPassword];
@@ -241,6 +248,7 @@
 		 ***************************/
 		
 		
+        self.submissionStatusText = @"Fetching RadarWeb main page";
 		NSURL *mainPageURL = [[NSURL URLWithString:@"https://bugreport.apple.com"] URLByAppendingPathComponent:[bouncePageValues objectForKey:@"action"]];
 		
 		QRWebScraper *mainPage = [[QRWebScraper alloc] init];
@@ -286,6 +294,7 @@
 		 * Page 4: New Ticket Page *
 		 ***************************/
 		
+        self.submissionStatusText = @"Fetching RadarWeb new ticket page";
 		NSURL *newTicketURL =  [[NSURL URLWithString:@"https://bugreport.apple.com"] URLByAppendingPathComponent:[mainPageValues objectForKey:@"URL"]];
 		
 		QRWebScraper *newTicketPage = [[QRWebScraper alloc] init];
@@ -350,6 +359,7 @@
 		 * Page 5: Bug Submission Page *
 		 *******************************/
 		
+        self.submissionStatusText = @"Submitting bug to RadarWeb";
 		NSURL *bugSubmissionURL =  [[NSURL URLWithString:@"https://bugreport.apple.com"] URLByAppendingPathComponent:[newTicketPageValues objectForKey:@"action"]];
 		
 		QRWebScraper *bugSubmissionPage = [[QRWebScraper alloc] init];
