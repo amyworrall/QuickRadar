@@ -36,15 +36,26 @@
 @synthesize preferencesWindowController = _preferencesWindowController;
 @synthesize applicationHasStarted = _applicationHasStarted;
 
++ (void)initialize
+{
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{
+     QRShowInStatusBarKey: @YES,
+     }];
+}
+
 #pragma mark NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    //setup statusItem
-    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-    statusItem.image = [NSImage imageNamed:@"MenubarTemplate"];
-	statusItem.highlightMode = YES;
-    statusItem.menu = self.menu;
+    BOOL shouldShowStatusBarItem = [[NSUserDefaults standardUserDefaults] boolForKey:QRShowInStatusBarKey];
+    
+    if (shouldShowStatusBarItem) {
+        //setup statusItem
+        statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+        statusItem.image = [NSImage imageNamed:@"MenubarTemplate"];
+        statusItem.highlightMode = YES;
+        statusItem.menu = self.menu;
+    }
 
     //apply hotkey
     [self applyHotkey];
