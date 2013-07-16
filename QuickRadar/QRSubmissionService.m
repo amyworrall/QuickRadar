@@ -137,6 +137,11 @@ static NSMutableDictionary *_services;
     return 0.0f;
 }
 
+- (NSString *)statusText
+{
+    return nil;
+}
+
 - (void)submitAsyncWithProgressBlock:(void(^)())progressBlock completionBlock:(void(^)(BOOL success, NSError *error))completionBlock
 {
     
