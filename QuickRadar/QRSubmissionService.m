@@ -8,6 +8,7 @@
 
 #import "QRSubmissionService.h"
 
+NSString * const QRWordpressSubmissionServiceIdentifier = @"QRWordpressSubmissionServiceIdentifier";
 NSString * const QRRadarSubmissionServiceIdentifier = @"QRRadarSubmissionServiceIdentifier";
 NSString * const QROpenRadarSubmissionServiceIdentifier = @"QROpenRadarSubmissionServiceIdentifier";
 NSString * const QRTwitterSubmissionServiceIdentifier = @"QRTwitterSubmissionServiceIdentifier";

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		98EACACC158A86460078D06C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EACACB158A86460078D06C /* Security.framework */; };
 		98EACAD0158A89670078D06C /* PasswordStoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EACACF158A89670078D06C /* PasswordStoring.m */; };
+		A7E7388D16FCB367009097ED /* QRWordpressSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7388C16FCB367009097ED /* QRWordpressSubmissionService.m */; };
+		A7E7389116FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7388F16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m */; };
+		A7E7389216FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7E7389016FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib */; };
+		A7E7391F16FCC106009097ED /* libDTXMLRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E7391E16FCC106009097ED /* libDTXMLRPC.a */; };
 		B4688666158FF4D900C94B09 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B4688665158FF4D900C94B09 /* README.md */; };
 		B4688669158FF91A00C94B09 /* Appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4688667158FF91A00C94B09 /* Appicon.icns */; };
 		B4EC27EC1591577000E79E8B /* libPTHotkey-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */; };
@@ -80,6 +84,23 @@
 		ECBC726115E03E4500198D27 /* NSButton+QuickRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC726015E03E4500198D27 /* NSButton+QuickRadar.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A7B09EB416FCCEC0006C32AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7E7390116FCC0F4009097ED /* DTXMLRPC.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7E7384016FC44A1009097ED;
+			remoteInfo = "Wordpress Demo";
+		};
+		A7B09EB616FCCEC0006C32AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7E7390116FCC0F4009097ED /* DTXMLRPC.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A7E738CB16FCBB81009097ED;
+			remoteInfo = DTXMLRPC;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		E1F8590D158A2EE5005F77DA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -98,6 +119,13 @@
 		98EACACB158A86460078D06C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		98EACACE158A89670078D06C /* PasswordStoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordStoring.h; sourceTree = "<group>"; };
 		98EACACF158A89670078D06C /* PasswordStoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordStoring.m; sourceTree = "<group>"; };
+		A7E7388B16FCB367009097ED /* QRWordpressSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRWordpressSubmissionService.h; sourceTree = "<group>"; };
+		A7E7388C16FCB367009097ED /* QRWordpressSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRWordpressSubmissionService.m; sourceTree = "<group>"; };
+		A7E7388E16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRWordpressSubmissionServicePreferencesViewController.h; sourceTree = "<group>"; };
+		A7E7388F16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRWordpressSubmissionServicePreferencesViewController.m; sourceTree = "<group>"; };
+		A7E7389016FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRWordpressSubmissionServicePreferencesViewController.xib; sourceTree = "<group>"; };
+		A7E7390116FCC0F4009097ED /* DTXMLRPC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DTXMLRPC.xcodeproj; path = DTXMLRPC/DTXMLRPC.xcodeproj; sourceTree = "<group>"; };
+		A7E7391E16FCC106009097ED /* libDTXMLRPC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTXMLRPC.a; path = Externals/DTXMLRPC/build/Release/libDTXMLRPC.a; sourceTree = "<group>"; };
 		B4688665158FF4D900C94B09 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		B4688667158FF91A00C94B09 /* Appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Appicon.icns; sourceTree = "<group>"; };
 		B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPTHotkey-OSX.a"; path = "PTHotkey/libPTHotkey-OSX.a"; sourceTree = "<group>"; };
@@ -213,6 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E7391F16FCC106009097ED /* libDTXMLRPC.a in Frameworks */,
 				98EACACC158A86460078D06C /* Security.framework in Frameworks */,
 				E1CC51AE156259AC0027FB83 /* Carbon.framework in Frameworks */,
 				E1CC518E156257BF0027FB83 /* Cocoa.framework in Frameworks */,
@@ -225,6 +254,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7B09EB016FCCEC0006C32AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A7B09EB516FCCEC0006C32AA /* DTXMLRPC.app */,
+				A7B09EB716FCCEC0006C32AA /* libDTXMLRPC.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7E7388A16FCB308009097ED /* Wordpress */ = {
+			isa = PBXGroup;
+			children = (
+				A7E7388B16FCB367009097ED /* QRWordpressSubmissionService.h */,
+				A7E7388C16FCB367009097ED /* QRWordpressSubmissionService.m */,
+				A7E7388E16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.h */,
+				A7E7388F16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m */,
+				A7E7389016FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib */,
+			);
+			name = Wordpress;
+			sourceTree = "<group>";
+		};
+		A7E738DD16FCC0F4009097ED /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				A7E7390116FCC0F4009097ED /* DTXMLRPC.xcodeproj */,
+			);
+			path = Externals;
+			sourceTree = "<group>";
+		};
 		E157B19616D385290026EC3B /* ShortcutRecorder */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +369,7 @@
 		E19CFC6A1599FFFE00879280 /* Submission Services */ = {
 			isa = PBXGroup;
 			children = (
+				A7E7388A16FCB308009097ED /* Wordpress */,
 				E157B1E716D3B9940026EC3B /* Twitter */,
 				E19CFC72159A035E00879280 /* Radar */,
 				E1B6F9D815E3E22C004F37F7 /* Open Radar */,
@@ -377,6 +436,7 @@
 		E1CC517E156257BF0027FB83 = {
 			isa = PBXGroup;
 			children = (
+				A7E738DD16FCC0F4009097ED /* Externals */,
 				E1F53055161359CA000FCAC3 /* Readme.md */,
 				E1CC5193156257BF0027FB83 /* QuickRadar */,
 				E1CC5194156257BF0027FB83 /* Supporting Files */,
@@ -396,6 +456,7 @@
 		E1CC518C156257BF0027FB83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7E7391E16FCC106009097ED /* libDTXMLRPC.a */,
 				E164358715A34FBB0063096B /* Sparkle.framework */,
 				B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */,
 				E1CC51AD156259AC0027FB83 /* Carbon.framework */,
@@ -558,12 +619,35 @@
 			mainGroup = E1CC517E156257BF0027FB83;
 			productRefGroup = E1CC518A156257BF0027FB83 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A7B09EB016FCCEC0006C32AA /* Products */;
+					ProjectRef = A7E7390116FCC0F4009097ED /* DTXMLRPC.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E1CC5188156257BF0027FB83 /* QuickRadar */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A7B09EB516FCCEC0006C32AA /* DTXMLRPC.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = DTXMLRPC.app;
+			remoteRef = A7B09EB416FCCEC0006C32AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A7B09EB716FCCEC0006C32AA /* libDTXMLRPC.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libDTXMLRPC.a;
+			remoteRef = A7B09EB616FCCEC0006C32AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E1CC5187156257BF0027FB83 /* Resources */ = {
@@ -597,6 +681,7 @@
 				E18A7CA116E0F26300B4073F /* ADNLogoTemplate.png in Resources */,
 				E18A7CA316E0F78C00B4073F /* AppleLogoTemplate.png in Resources */,
 				E18A7CA516E0FB8300B4073F /* OpenRadarTemplate.tif in Resources */,
+				A7E7389216FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +728,8 @@
 				E157B1AC16D38A450026EC3B /* QRFileDuplicateWindowController.m in Sources */,
 				E157B1EA16D3B9B00026EC3B /* QRTwitterSubmissionService.m in Sources */,
 				E1BE144F1708A46B00F7A853 /* QRAppListOutlineView.m in Sources */,
+				A7E7388D16FCB367009097ED /* QRWordpressSubmissionService.m in Sources */,
+				A7E7389116FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,7 +825,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/PTHotkey\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "Externals/DTXMLRPC/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -758,7 +847,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/PTHotkey\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "Externals/DTXMLRPC/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
