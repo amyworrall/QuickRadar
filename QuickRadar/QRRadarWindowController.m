@@ -10,7 +10,6 @@
 #import "QRSubmissionController.h"
 #import "QRSubmissionService.h"
 #import "QRRadar.h"
-#import <Growl/Growl.h>
 #import "QRAppListPopover.h"
 #import "QRCachedRunningApplication.h"
 #import "NSButton+QuickRadar.h"
@@ -305,13 +304,16 @@
 				clickContext = @{ @"URL" : [NSString stringWithFormat:@"http://openradar.me/%ld", radar.radarNumber] };
 			}
 			
-			[GrowlApplicationBridge notifyWithTitle:@"Submission Complete"
-										description:[NSString stringWithFormat:@"Bug submitted as number %ld.", radar.radarNumber]
-								   notificationName:@"Submission Complete"
-										   iconData:nil
-										   priority:0
-										   isSticky:NO
-									   clickContext:clickContext];
+			if (NSClassFromString(@"NSUserNotification"))
+			{
+				NSUserNotification *notification = [[NSUserNotification alloc] init];
+				notification.title = @"Submission Complete";
+				notification.informativeText = [NSString stringWithFormat:@"Bug submitted as number %ld.", radar.radarNumber];
+				notification.userInfo = clickContext;
+				[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+			}
+			
+			
 			
 			
 			// Move the window off screen, like Mail.app
@@ -325,7 +327,6 @@
 			
 			// Close when animation is done.
 			[self.window performSelector:@selector(close) withObject:nil afterDelay:[self.window animationResizeTime:rect]];
-//			[self.window close];
 		}
 		else
 		{

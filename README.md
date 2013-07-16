@@ -23,7 +23,7 @@ First, choose "Login Details…" from the QuickBug menu. In there, fill in your 
 
 To invoke QuickRadar, press command-option-control-space (you can change the hotkey from the menu). A window will pop up for you to fill in the details of your radar. At the moment, don't choose any Classification that would make the bug reporter require a file upload (such as Crash/Hang/Data Loss), because QuickRadar doesn't support them yet, nor does it have any error handling worth speaking of.
 
-Once you've entered the details, hit Submit. Sadly this bit is anything but quick: in the background, QuickRadar has to log in to the bug reporter web page, fetch the New Problem page, fill it in, and submit the form. However, you can go and do something else while that's happening. Once it is done you'll get a growl notification.
+Once you've entered the details, hit Submit. Sadly this bit is anything but quick: in the background, QuickRadar has to log in to the bug reporter web page, fetch the New Problem page, fill it in, and submit the form. However, you can go and do something else while that's happening. Once it is done you'll get a notification.
 
 Roadmap
 =======

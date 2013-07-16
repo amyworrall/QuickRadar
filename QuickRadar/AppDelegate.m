@@ -9,14 +9,13 @@
 #import "AppDelegate.h"
 #import "PTHotKeyLib.h"
 #import "QRRadarWindowController.h"
-#import <Growl/Growl.h>
 #import "QRPreferencesWindowController.h"
 #import "QRUserDefaultsKeys.h"
 #import "QRAppListManager.h"
 #import "SRCommon.h"
 #import "QRFileDuplicateWindowController.h"
 
-@interface AppDelegate () <GrowlApplicationBridgeDelegate>
+@interface AppDelegate () <NSUserNotificationCenterDelegate> 
 {
 	NSMutableSet *windowControllerStore;
     NSStatusItem *statusItem;
@@ -77,7 +76,10 @@
     
 	windowControllerStore = [NSMutableSet set];
 	
-	[GrowlApplicationBridge setGrowlDelegate:self];
+	if (NSClassFromString(@"NSUserNotificationCenter"))
+	{
+		[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+	}
 	
 	self.preferencesWindowController = [[QRPreferencesWindowController alloc] init];
 	self.duplicatesWindowController = [[QRFileDuplicateWindowController alloc] initWithWindowNibName:@"QRFileDuplicateWindow"];
@@ -137,32 +139,25 @@
 	[self.duplicatesWindowController showWindow:self];
 }
 
-#pragma mark growl support
 
-- (NSDictionary *) registrationDictionaryForGrowl;
+#pragma mark - NSUserNotificationCenter
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
 {
-	NSArray *notifications = [NSArray arrayWithObjects:@"Submission Complete", @"Submission Failed", nil];
-	
-	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:notifications, GROWL_NOTIFICATIONS_ALL, notifications, GROWL_NOTIFICATIONS_DEFAULT, nil];
-	return dict;
+	return YES;
 }
 
-- (NSString *) applicationNameForGrowl;
+- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
 {
-	return @"QuickRadar";
-}
+	NSDictionary *dict = notification.userInfo;
 
-- (void) growlNotificationWasClicked:(id)clickContext;
-{
-	NSDictionary *dict = (NSDictionary*)clickContext;
-	
 	NSLog(@"Context %@", dict);
-	
+
 	NSString *stringURL = [dict objectForKey:@"URL"];
-	
+
 	if (!stringURL)
 		return;
-	
+
 	NSURL *url = [NSURL URLWithString:stringURL];
 	[[NSWorkspace sharedWorkspace] openURL:url];
 }
