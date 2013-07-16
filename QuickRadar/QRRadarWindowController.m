@@ -14,6 +14,7 @@
 #import "QRCachedRunningApplication.h"
 #import "NSButton+QuickRadar.h"
 #import "AppDelegate.h"
+#import <Growl/Growl.h>
 
 @interface QRRadarWindowController ()
 
@@ -312,7 +313,17 @@
 				notification.userInfo = clickContext;
 				[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 			}
-			
+			else
+			{
+				[GrowlApplicationBridge notifyWithTitle:@"Submission Complete"
+											description:[NSString stringWithFormat:@"Bug submitted as number %ld.", radar.radarNumber]
+									   notificationName:@"Submission Complete"
+											   iconData:nil
+											   priority:0
+											   isSticky:NO
+										   clickContext:clickContext];
+
+			}
 			
 			
 			
