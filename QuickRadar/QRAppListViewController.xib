@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1080</int>
-		<string key="IBDocument.SystemVersion">12A269</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2818</string>
-		<string key="IBDocument.AppKitVersion">1187</string>
-		<string key="IBDocument.HIToolboxVersion">624.00</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2818</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSCustomObject</string>
@@ -189,7 +189,7 @@
 								<string key="NSFrame">{{298, 0}, {16, 105}}</string>
 								<reference key="NSSuperview" ref="498576931"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="261498786"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:15</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<reference key="NSTarget" ref="498576931"/>
@@ -202,6 +202,7 @@
 								<string key="NSFrame">{{-100, -100}, {138, 16}}</string>
 								<reference key="NSSuperview" ref="498576931"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="800305543"/>
 								<string key="NSReuseIdentifierKey">_NS:60</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<int key="NSsFlags">1</int>
@@ -213,7 +214,7 @@
 						<string key="NSFrameSize">{314, 105}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="800305543"/>
+						<reference key="NSNextKeyView" ref="261498786"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="NSsFlags">157712</int>
 						<reference key="NSVScroller" ref="228464919"/>
@@ -342,7 +343,7 @@
 									</set>
 									<string key="NSFrame">{{3, 1}, {32, 32}}</string>
 									<reference key="NSSuperview" ref="1067101977"/>
-									<reference key="NSNextKeyView" ref="589247870"/>
+									<reference key="NSNextKeyView" ref="405629572"/>
 									<string key="NSReuseIdentifierKey">_NS:71</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSImageCell" key="NSCell" id="74632838">
@@ -366,7 +367,7 @@
 									<int key="NSvFlags">266</int>
 									<string key="NSFrame">{{39, 9}, {272, 17}}</string>
 									<reference key="NSSuperview" ref="1067101977"/>
-									<reference key="NSNextKeyView" ref="405629572"/>
+									<reference key="NSNextKeyView" ref="739410817"/>
 									<string key="NSReuseIdentifierKey">_NS:80</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSTextFieldCell" key="NSCell" id="190777772">
@@ -394,7 +395,7 @@
 									</set>
 									<string key="NSFrame">{{20, -1}, {20, 20}}</string>
 									<reference key="NSSuperview" ref="1067101977"/>
-									<reference key="NSNextKeyView" ref="739410817"/>
+									<reference key="NSNextKeyView" ref="589247870"/>
 									<string key="NSReuseIdentifierKey">_NS:9</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSImageCell" key="NSCell" id="453774842">
@@ -666,6 +667,7 @@
 				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="4.CustomClassName">QRAppListOutlineView</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="4.ibExternalAutomaticallyCalculatesRowSizeFromViewHeight"/>
 				<string key="46.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -694,8 +696,27 @@
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
+					<string key="className">QRAppListOutlineView</string>
+					<string key="superclassName">NSOutlineView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/QRAppListOutlineView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">QRAppListPopover</string>
 					<string key="superclassName">NSPopover</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">appListDelegate</string>
+						<string key="NS.object.0">NSObject</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">appListDelegate</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">appListDelegate</string>
+							<string key="candidateClassName">NSObject</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/QRAppListPopover.h</string>

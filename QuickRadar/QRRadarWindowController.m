@@ -70,6 +70,7 @@
 	
 	[self setUpCheckboxes];
 	
+    self.bodyTextView.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
 	if (self.radarToPrepopulate.body.length>0)
 	{
 		self.bodyTextView.string = self.radarToPrepopulate.body;
@@ -93,7 +94,8 @@
         @"Describe circumstances where the problem occurs or does not occur, such as software versions and/or hardware configurations.\n"
         @"\n"
         @"Notes:\n"
-        @"Provide additional information, such as references to related problems, workarounds and relevant attachments.\n\n\n";
+        @"Provide additional information, such as references to related problems, workarounds and relevant attachments.\n";
+        [self.bodyTextView moveToBeginningOfDocument:nil];
 	}
 	
 	if (self.radarToPrepopulate.title.length>0)
@@ -187,6 +189,8 @@
 - (void)prepopulateWithApp:(QRCachedRunningApplication *)app {
 	// Fill out the versions text field using the selected app.
 	NSString *text = app.unlocalizedName;
+    if (text == nil)
+        text = @"";
 	NSString *versionAndBuild = app.versionAndBuild;
 	if (versionAndBuild) text = [text stringByAppendingFormat:@" %@", versionAndBuild];
 	versionField.stringValue = text;
@@ -198,6 +202,8 @@
 	NSString *trimmedTitle = [titleField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" \t"]];
 	if (!trimmedTitle || [trimmedTitle isEqualToString:@""] || self.userTypedTitle == NO) {
 		NSString *title = app.unlocalizedName;
+        if (title == nil)
+            title = @"";
 		NSString *version = app.version;
 		NSString *build = app.build;
 		if (version) title = [title stringByAppendingFormat:@" %@: ", version];
@@ -207,12 +213,14 @@
 	
 	// Try to guess the category for the selected app (Xcode -> Developer Tools, Pages -> iWork, etc.)
 	NSString *guess = [app guessCategory];
-	NSMenuItem *item = [self.productMenu itemWithTitle:guess];
-	if (item) {
-		[self.productMenu selectItem:item];
-		[self.productMenu blinkTwice];
-	}
-	
+    if (guess) {
+        NSMenuItem *item = [self.productMenu itemWithTitle:guess];
+        if (item) {
+            [self.productMenu selectItem:item];
+            [self.productMenu blinkTwice];
+        }
+    }
+
 	// If the selected app crashed recently, choose Crash from the Classification list.
 	if ([app didCrashRecently]) {
 		for (NSString *title in self.classificationMenu.itemTitles) {
@@ -224,6 +232,7 @@
 	}
 	
 	[self.titleField becomeFirstResponder];
+    [[self.window fieldEditor:NO forObject:self.titleField] moveToEndOfDocument:nil];
 }
 
 - (void)appListPopover:(QRAppListPopover *)popover selectedApp:(QRCachedRunningApplication *)app {
@@ -280,9 +289,13 @@
 		[dict setObject:@(selected) forKey:cell.representedObject];
 	}
 	self.submissionController.requestedOptionalServices = [NSDictionary dictionaryWithDictionary:dict];
-	
+
 	[self.submissionController startWithProgressBlock:^{
 		self.progressBar.doubleValue = self.submissionController.progress;
+        NSString *statusText = self.submissionController.statusText;
+        if (statusText == nil)
+            statusText = @"Submitting";
+        self.submitStatusField.stringValue = [NSString stringWithFormat:@"%@...", statusText];
 	} completionBlock:^(BOOL success, NSError *error) {
 		if (success && radar.radarNumber > 0)
 		{
@@ -316,16 +329,18 @@
 		}
 		else
 		{
-			[NSApp presentError:error];
-			
-			
+            [NSApp presentError:error modalForWindow:self.window delegate:nil didPresentSelector:NULL contextInfo:NULL];
+            if (error.domain == NSURLErrorDomain)
+                NSLog(@"%@ - %@", [error.userInfo objectForKey:NSLocalizedDescriptionKey],
+                      [error.userInfo objectForKey:NSURLErrorFailingURLStringErrorKey]);
+
 			[self.submitButton setEnabled:YES];
 			[self.spinner stopAnimation:self];
-			
+            self.submitStatusField.stringValue = @"";
 		}
-		
+
 	}];
-	
+
 }
 
 - (void)controlTextDidChange:(NSNotification *)aNotification {

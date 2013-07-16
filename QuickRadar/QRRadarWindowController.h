@@ -22,6 +22,7 @@
 @property (nonatomic, strong) IBOutlet NSButton *submitButton;
 @property (nonatomic, strong) IBOutlet NSProgressIndicator *spinner;
 @property (nonatomic, strong) IBOutlet NSProgressIndicator *progressBar;
+@property (nonatomic, strong) IBOutlet NSTextField *submitStatusField;
 @property (nonatomic, strong) IBOutlet NSButton *appListButton;
 @property (nonatomic, strong) IBOutlet QRAppListPopover *appListPopover;
 @property (nonatomic, strong) IBOutlet NSMatrix *checkboxMatrix;

@@ -192,5 +192,22 @@
 	return accumulator/number;
 }
 
+- (NSString *)statusText
+{
+    NSMutableString *overallStatus = nil;
+    
+	for (QRSubmissionService *service in self.inProgress)
+	{
+        NSString *serviceStatus = service.statusText;
+        if (serviceStatus == nil)
+            continue;
+        if (overallStatus == nil)
+            overallStatus = [serviceStatus mutableCopy];
+        else
+            [overallStatus appendFormat:@"; %@", serviceStatus];
+	}
+    
+    return overallStatus;
+}
 
 @end
