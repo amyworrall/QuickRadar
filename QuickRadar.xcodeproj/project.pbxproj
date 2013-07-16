@@ -44,6 +44,7 @@
 		E19CFC6E159A002E00879280 /* QRRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC6D159A002E00879280 /* QRRadar.m */; };
 		E19CFC71159A010600879280 /* QRSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC70159A010600879280 /* QRSubmissionService.m */; };
 		E19CFC75159A037300879280 /* QRRadarSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E19CFC74159A037300879280 /* QRRadarSubmissionService.m */; };
+		E1A86644179594900087C806 /* WordpressLogoTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = E1A866431795948F0087C806 /* WordpressLogoTemplate.png */; };
 		E1B6F9DC15E3E268004F37F7 /* QROpenRadarSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B6F9DB15E3E268004F37F7 /* QROpenRadarSubmissionService.m */; };
 		E1B6F9E015E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B6F9DE15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.m */; };
 		E1B6F9E115E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B6F9DF15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.xib */; };
@@ -173,6 +174,7 @@
 		E19CFC70159A010600879280 /* QRSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRSubmissionService.m; sourceTree = "<group>"; };
 		E19CFC73159A037300879280 /* QRRadarSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRRadarSubmissionService.h; sourceTree = "<group>"; };
 		E19CFC74159A037300879280 /* QRRadarSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRRadarSubmissionService.m; sourceTree = "<group>"; };
+		E1A866431795948F0087C806 /* WordpressLogoTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WordpressLogoTemplate.png; sourceTree = "<group>"; };
 		E1B6F9DA15E3E268004F37F7 /* QROpenRadarSubmissionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QROpenRadarSubmissionService.h; sourceTree = "<group>"; };
 		E1B6F9DB15E3E268004F37F7 /* QROpenRadarSubmissionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QROpenRadarSubmissionService.m; sourceTree = "<group>"; };
 		E1B6F9DD15E3E284004F37F7 /* QROpenRadarSubmissionServicePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QROpenRadarSubmissionServicePreferencesViewController.h; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		A7E7388A16FCB308009097ED /* Wordpress */ = {
 			isa = PBXGroup;
 			children = (
+				E1A866431795948F0087C806 /* WordpressLogoTemplate.png */,
 				A7E7388B16FCB367009097ED /* QRWordpressSubmissionService.h */,
 				A7E7388C16FCB367009097ED /* QRWordpressSubmissionService.m */,
 				A7E7388E16FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.h */,
@@ -682,6 +685,7 @@
 				E18A7CA316E0F78C00B4073F /* AppleLogoTemplate.png in Resources */,
 				E18A7CA516E0FB8300B4073F /* OpenRadarTemplate.tif in Resources */,
 				A7E7389216FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib in Resources */,
+				E1A86644179594900087C806 /* WordpressLogoTemplate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

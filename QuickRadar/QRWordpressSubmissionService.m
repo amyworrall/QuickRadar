@@ -84,7 +84,7 @@
 {
 	if (NSClassFromString(@"NSImage"))
 	{
-		return [NSImage imageNamed:@"MenubarTemplate"];
+		return [NSImage imageNamed:@"WordpressLogoTemplate"];
 	}
 	return nil;
 }
