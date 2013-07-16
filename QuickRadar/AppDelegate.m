@@ -39,7 +39,9 @@
 + (void)initialize
 {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-     QRShowInStatusBarKey: @YES,
+	 QRShowInStatusBarKey: @YES,
+	 QRShowInDockKey : @NO,
+	 QRHandleRdarURLsKey : @(rdarURLsMethodFileDuplicate),
      }];
 }
 
@@ -48,7 +50,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     BOOL shouldShowStatusBarItem = [[NSUserDefaults standardUserDefaults] boolForKey:QRShowInStatusBarKey];
-    
+ 	BOOL shouldShowDockIcon = [[NSUserDefaults standardUserDefaults] boolForKey:QRShowInDockKey];
+		
     if (shouldShowStatusBarItem) {
         //setup statusItem
         statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
@@ -56,6 +59,14 @@
         statusItem.highlightMode = YES;
         statusItem.menu = self.menu;
     }
+	
+	if (shouldShowDockIcon)
+	{
+		ProcessSerialNumber psn = {0, kCurrentProcess};
+		verify_noerr(TransformProcessType(&psn,
+										  kProcessTransformToForegroundApplication));
+	}
+
 
     //apply hotkey
     [self applyHotkey];
@@ -71,16 +82,12 @@
 	self.preferencesWindowController = [[QRPreferencesWindowController alloc] init];
 	self.duplicatesWindowController = [[QRFileDuplicateWindowController alloc] initWithWindowNibName:@"QRFileDuplicateWindow"];
 
-	BOOL shouldShowDockIcon = [[NSUserDefaults standardUserDefaults] boolForKey:QRShowInDockKey];
-	
-	if (shouldShowDockIcon)
+	// Without either of these settings, the app would show no UI on startup. Show prefs window so that people can figure out how to change it back!
+	if (!shouldShowDockIcon && !shouldShowStatusBarItem)
 	{
-		ProcessSerialNumber psn = {0, kCurrentProcess};
-		verify_noerr(TransformProcessType(&psn, 
-										  kProcessTransformToForegroundApplication));
+		[self.preferencesWindowController showWindow:self];
 	}
-	
-	[[NSUserDefaults standardUserDefaults] registerDefaults:@{QRHandleRdarURLsKey : @(rdarURLsMethodFileDuplicate)}];
+
 	
 	// Start tracking apps.
 	[QRAppListManager sharedManager];
