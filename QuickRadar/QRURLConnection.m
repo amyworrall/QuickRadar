@@ -44,13 +44,13 @@
 		
 		for (NSString *key in self.fieldOrdering)
 		{
-			id object = [self.postParameters objectForKey:key];
+			id object = (self.postParameters)[key];
 			if ([object isKindOfClass:[NSString class]])
 			{
 				[postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 				
 				[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
-				[postBody appendData:[[self.postParameters objectForKey:key] dataUsingEncoding:NSUTF8StringEncoding]];
+				[postBody appendData:[(self.postParameters)[key] dataUsingEncoding:NSUTF8StringEncoding]];
 				[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 			}
 			else if ([object isKindOfClass:[NSData class]])
@@ -59,7 +59,7 @@
 				
 				[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"\"\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
 				[postBody appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-				[postBody appendData:[self.postParameters objectForKey:key]];
+				[postBody appendData:(self.postParameters)[key]];
 				[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 			}
 		}
@@ -83,7 +83,7 @@
 		BOOL first = YES;
 		for (NSString *key in self.postParameters)
 		{
-			[ps appendFormat:@"%@%@=%@", (first==YES) ? @"" : @"&", key, [[[self.postParameters objectForKey:key] description] urlEncodeUsingEncoding:NSUTF8StringEncoding]];
+			[ps appendFormat:@"%@%@=%@", (first==YES) ? @"" : @"&", key, [[(self.postParameters)[key] description] urlEncodeUsingEncoding:NSUTF8StringEncoding]];
 			first=NO;
 		}
 		

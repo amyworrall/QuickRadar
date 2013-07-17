@@ -53,7 +53,7 @@
 		return;
 	}
 	
-	[self.postParamsKeyValues setObject:param forKey:key];
+	(self.postParamsKeyValues)[key] = param;
 	[self.postParamsOrder addObject:key];
 }
 
@@ -118,7 +118,7 @@
 	
 	for (NSString *key in dict)
 	{
-		NSString *xpath = [dict objectForKey:key];
+		NSString *xpath = dict[key];
 		
 		NSError *error;
 		NSXMLNode *element = [self.xmlDocument firstNodeForXPath:xpath error:&error];
@@ -126,13 +126,13 @@
 		if (!element)
 		{
 			NSLog(@"Found no element %@", xpath);
-			[returnDict setObject:@"" forKey:key];
+			returnDict[key] = @"";
 		}
 		else
 		{
 			NSString *string = element.stringValue;
 			
-			[returnDict setObject:string forKey:key];
+			returnDict[key] = string;
 		}
 	}
 	

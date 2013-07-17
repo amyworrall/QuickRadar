@@ -43,7 +43,7 @@
 	
 	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 	
-	for (NSString *str in [config objectForKey:@"products"])
+	for (NSString *str in config[@"products"])
 	{
 		[self.productMenu addItemWithTitle:str];
 		if ([str isEqualToString:[prefs objectForKey:@"RadarWindowSelectedProduct"]])
@@ -51,7 +51,7 @@
 			[self.productMenu selectItemWithTitle:str];
 		}
 	}
-	for (NSString *str in [config objectForKey:@"classifications"])
+	for (NSString *str in config[@"classifications"])
 	{
 		[self.classificationMenu addItemWithTitle:str];
 		if ([str isEqualToString:[prefs objectForKey:@"RadarWindowSelectedClassification"]])
@@ -59,7 +59,7 @@
 			[self.classificationMenu selectItemWithTitle:str];
 		}
 	}
-	for (NSString *str in [config objectForKey:@"reproducible"])
+	for (NSString *str in config[@"reproducible"])
 	{
 		[self.reproducibleMenu addItemWithTitle:str];
 		if ([str isEqualToString:[prefs objectForKey:@"RadarWindowSelectedReproducible"]])
@@ -173,8 +173,8 @@
 	
 	for (int i=0; i<orderedServiceIDs.count; i++)
 	{
-		NSString *serviceID = [orderedServiceIDs objectAtIndex:i];
-		NSString *checkboxText = [checkboxDict objectForKey:serviceID];
+		NSString *serviceID = orderedServiceIDs[i];
+		NSString *checkboxText = checkboxDict[serviceID];
 		
 		NSCell *cell = [self.checkboxMatrix cellAtRow:i column:0];
 		cell.title = checkboxText;
@@ -286,7 +286,7 @@
 		NSCell *cell = [self.checkboxMatrix cellAtRow:i column:0];
 		BOOL selected = [cell integerValue];
 		
-		[dict setObject:@(selected) forKey:cell.representedObject];
+		dict[cell.representedObject] = @(selected);
 	}
 	self.submissionController.requestedOptionalServices = [NSDictionary dictionaryWithDictionary:dict];
 
@@ -343,8 +343,8 @@
 		{
             [NSApp presentError:error modalForWindow:self.window delegate:nil didPresentSelector:NULL contextInfo:NULL];
             if (error.domain == NSURLErrorDomain)
-                NSLog(@"%@ - %@", [error.userInfo objectForKey:NSLocalizedDescriptionKey],
-                      [error.userInfo objectForKey:NSURLErrorFailingURLStringErrorKey]);
+                NSLog(@"%@ - %@", (error.userInfo)[NSLocalizedDescriptionKey],
+                      (error.userInfo)[NSURLErrorFailingURLStringErrorKey]);
 
 			[self.submitButton setEnabled:YES];
 			[self.spinner stopAnimation:self];

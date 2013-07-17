@@ -51,7 +51,7 @@
 	
 	for (NSString *serviceID in services)
 	{
-		Class serviceClass = [services objectForKey:serviceID];
+		Class serviceClass = services[serviceID];
 		
 		if (![serviceClass isAvailable])
 		{
@@ -61,7 +61,7 @@
 		
 		if ([serviceClass requireCheckBox])
 		{
-			if ([[self.requestedOptionalServices objectForKey:serviceID] boolValue] == NO)
+			if ([(self.requestedOptionalServices)[serviceID] boolValue] == NO)
 			{
 				NSLog(@"%@ not requested", serviceID);
 				continue;

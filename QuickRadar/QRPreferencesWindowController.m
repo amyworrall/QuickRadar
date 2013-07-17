@@ -51,7 +51,7 @@
 	NSDictionary *services = [QRSubmissionService services];
 	
 	// Special case Apple Radar, so it comes first
-	Class radarPrefsVC = [services objectForKey:QRRadarSubmissionServiceIdentifier];
+	Class radarPrefsVC = services[QRRadarSubmissionServiceIdentifier];
 	[self addViewControllerForClass:radarPrefsVC];
 	
 	// Now do the others

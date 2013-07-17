@@ -60,17 +60,17 @@
 	
 	[NSURLConnection sendAsynchronousRequest:req queue:queue completionHandler:^(NSURLResponse *r, NSData *d, NSError *e) {
 		NSDictionary *mainDict = [NSJSONSerialization JSONObjectWithData:d options:0 error:nil];
-		NSDictionary *radarDict = [mainDict objectForKey:@"result"];
+		NSDictionary *radarDict = mainDict[@"result"];
 		
 		QRRadar *radar = [[QRRadar alloc] init];
-		radar.title = [radarDict objectForKey:@"title"];
-		radar.classification = [radarDict objectForKey:@"classification"];
-		radar.version = [radarDict objectForKey:@"product_version"];
-		radar.reproducible = [radarDict objectForKey:@"reproducible"];
-		radar.product = [radarDict objectForKey:@"product"];
+		radar.title = radarDict[@"title"];
+		radar.classification = radarDict[@"classification"];
+		radar.version = radarDict[@"product_version"];
+		radar.reproducible = radarDict[@"reproducible"];
+		radar.product = radarDict[@"product"];
 		radar.radarNumber = [radarNum integerValue];
 		
-		NSString *body = [radarDict objectForKey:@"description"];
+		NSString *body = radarDict[@"description"];
 		radar.body = [NSString stringWithFormat:@"This is a duplicate of rdar://%li\n\n%@", (long)radar.radarNumber, (body!=nil)?body:@""];
 		
 		dispatch_async(dispatch_get_main_queue(), ^{

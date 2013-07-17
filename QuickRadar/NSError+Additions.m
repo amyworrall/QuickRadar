@@ -15,18 +15,15 @@
 {
 	
 	NSDictionary *services = [QRSubmissionService services];
-	Class service = [services objectForKey:serviceIdentifier];
+	Class service = services[serviceIdentifier];
 	NSString *name = [service name];
 	
 	NSString *message = [NSString stringWithFormat:@"The \"%@\" service reported an authentication failure. Are your credentials correct?", name];
 	NSString *title = @"Authentication failure";
 	
-	NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-							  message, NSLocalizedRecoverySuggestionErrorKey,
-							  title, NSLocalizedDescriptionKey,
-							  error, NSUnderlyingErrorKey, // This one might be nil, so it's last
-							  
-							  nil];
+	NSDictionary *userInfo = @{NSLocalizedRecoverySuggestionErrorKey: message,
+							  NSLocalizedDescriptionKey: title,
+							  NSUnderlyingErrorKey: error};
 	
 	NSError *newError = [NSError errorWithDomain:QRErrorDomain code:QRErrorCodeAuthenticationError userInfo:userInfo];
 	return newError;

@@ -33,12 +33,12 @@
 		self.serviceSpecificProperties = [NSMutableDictionary dictionary];
 	}
 	
-	[self.serviceSpecificProperties setObject:value forKey:key];
+	(self.serviceSpecificProperties)[key] = value;
 }
 
 - (id)valueForUndefinedKey:(NSString *)key
 {
-	return [self.serviceSpecificProperties objectForKey:key];
+	return (self.serviceSpecificProperties)[key];
 }
 
 

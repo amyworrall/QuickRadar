@@ -37,7 +37,7 @@ static NSMutableDictionary *_services;
 	
 	for (NSString *serviceID in services)
 	{
-		Class serviceClass = [services objectForKey:serviceID];
+		Class serviceClass = services[serviceID];
 		
 		if (![serviceClass isAvailable])
 		{
@@ -49,7 +49,7 @@ static NSMutableDictionary *_services;
 			continue;
 		}
 		
-		[dict setObject:[serviceClass checkBoxString] forKey:serviceID];
+		dict[serviceID] = [serviceClass checkBoxString];
 	}
 	
 	return [NSDictionary dictionaryWithDictionary:dict];
@@ -66,7 +66,7 @@ static NSMutableDictionary *_services;
 		
 		NSString *identifier = [service identifier];
 		
-		[_services setObject:service forKey:identifier];
+		_services[identifier] = service;
 		
 	}
 }

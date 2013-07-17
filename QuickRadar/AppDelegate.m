@@ -148,9 +148,9 @@
 
 - (NSDictionary *) registrationDictionaryForGrowl;
 {
-	NSArray *notifications = [NSArray arrayWithObjects:@"Submission Complete", @"Submission Failed", nil];
+	NSArray *notifications = @[@"Submission Complete", @"Submission Failed"];
 	
-	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:notifications, GROWL_NOTIFICATIONS_ALL, notifications, GROWL_NOTIFICATIONS_DEFAULT, nil];
+	NSDictionary *dict = @{GROWL_NOTIFICATIONS_ALL: notifications, GROWL_NOTIFICATIONS_DEFAULT: notifications};
 	return dict;
 }
 
@@ -165,7 +165,7 @@
 	
 	NSLog(@"Context %@", dict);
 	
-	NSString *stringURL = [dict objectForKey:@"URL"];
+	NSString *stringURL = dict[@"URL"];
 	
 	if (!stringURL)
 		return;
@@ -188,7 +188,7 @@
 
 	NSLog(@"Context %@", dict);
 
-	NSString *stringURL = [dict objectForKey:@"URL"];
+	NSString *stringURL = dict[@"URL"];
 
 	if (!stringURL)
 		return;
@@ -252,10 +252,8 @@
     
     //make default
 	if(!plistTool) {
-        plistTool = [NSDictionary dictionaryWithObjectsAndKeys:
-                     [NSNumber numberWithInt:49], @"keyCode",
-                     [NSNumber numberWithInt:cmdKey+controlKey+optionKey], @"modifiers",
-                     nil];
+        plistTool = @{@"keyCode": @49,
+                     @"modifiers": @(cmdKey+controlKey+optionKey)};
         
         [[NSUserDefaults standardUserDefaults] setObject:plistTool forKey:GlobalHotkeyName];
 	}

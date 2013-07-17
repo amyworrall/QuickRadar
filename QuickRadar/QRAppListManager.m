@@ -60,10 +60,10 @@
 
 - (void)addApp:(QRCachedRunningApplication *)app {
 	NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] initWithCapacity:2];
-	[userInfo setObject:app forKey:kQRAppListNotificationAppKey];
+	userInfo[kQRAppListNotificationAppKey] = app;
 	if ([self.appList containsObject:app]) {
 		NSInteger oldIndex = [self.appList indexOfObject:app];
-		[userInfo setObject:@(oldIndex) forKey:kQRAppListNotificationOldIndexKey];
+		userInfo[kQRAppListNotificationOldIndexKey] = @(oldIndex);
 		QRCachedRunningApplication *existingApp = self.appList[oldIndex];
 		[self.appList removeObjectAtIndex:oldIndex];
 		[self.appList insertObject:existingApp atIndex:0];
@@ -90,7 +90,7 @@
 - (NSString *)cacheFolder {
 	NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
 	if (cachePath) {
-		NSString *bundleName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+		NSString *bundleName = [[NSBundle mainBundle] infoDictionary][@"CFBundleIdentifier"];
 		cachePath = [cachePath stringByAppendingPathComponent:bundleName];
 		cachePath = [cachePath stringByAppendingPathComponent:kQRAppListCacheFolder];
 		[[NSFileManager defaultManager] createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];

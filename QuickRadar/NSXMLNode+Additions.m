@@ -26,7 +26,7 @@
 		return nil;
 	}
 	
-	return [nodes objectAtIndex:0];
+	return nodes[0];
 }
 
 - (NSXMLElement*)firstElementForXPath:(NSString *)xpath
@@ -58,7 +58,7 @@
 		return nil;
 	}
 	
-	return [nodes objectAtIndex:0];
+	return nodes[0];
 }
 
 - (NSXMLElement*)firstElementForXPath:(NSString *)xpath error:(NSError **)retError
