@@ -22,7 +22,7 @@
 {
 	NSMutableURLRequest *request = [self.request mutableCopy];
 	
-	if (self.useMultipartRatherThanURLEncoded && self.postParameters)
+	if (self.useMultipartRatherThanURLEncoded && self.postParameters && !self.sendPostParamsAsJSON)
 	{
 		[request setHTTPMethod:@"POST"];
 		
@@ -76,7 +76,7 @@
 			[request setHTTPBody: postBody];
 
 	}
-	else if (self.postParameters && [request.HTTPMethod isEqualToString:@"POST"])
+	else if (self.postParameters && [request.HTTPMethod isEqualToString:@"POST"] && !self.sendPostParamsAsJSON)
 	{
 		NSMutableString *ps = [NSMutableString string];
 		
@@ -98,6 +98,17 @@
 //		NSLog(@"Body %@", ps);
 //		
 //		NSLog(@"Req %@", request);
+	}
+	else if (self.postParameters && self.sendPostParamsAsJSON)
+	{
+		NSData *data = [NSJSONSerialization dataWithJSONObject:self.postParameters options:0 error:error];
+		
+		if (data)
+		{
+			[request setValue:[NSString stringWithFormat:@"%lu", data.length] forHTTPHeaderField:@"Content-Length"];
+			[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+			request.HTTPBody = data;
+		}
 	}
 	
 	if (self.addRadarSpoofingHeaders)

@@ -8,6 +8,7 @@
 
 #import "QRAppDotNetSubmissionService.h"
 #import "QRURLConnection.h"
+#import "QRUserDefaultsKeys.h"
 
 @interface QRAppDotNetSubmissionService ()
 
@@ -103,6 +104,8 @@
 
 - (void)submitAsyncWithProgressBlock:(void (^)())progressBlock completionBlock:(void (^)(BOOL, NSError *))completionBlock
 {
+	BOOL postRdarURLs = [[NSUserDefaults standardUserDefaults] boolForKey:QRAppDotNetIncludeRdarLinksKey];
+	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 		self.submissionStatusValue = submissionStatusInProgress;
 		
@@ -131,18 +134,39 @@
 		}
 		else
 		{
-			radarLink = [NSString stringWithFormat:@"rdar://%ld", self.radar.radarNumber];
+			radarLink = [NSString stringWithFormat:@"rdar://problem/%ld", self.radar.radarNumber];
 		}
 		
-		NSString *post = [NSString stringWithFormat:@"Radar: %@ – %@", self.radar.title, radarLink];
+		NSString *afterwards = @"";
+		if (self.radar.submittedToOpenRadar && postRdarURLs)
+		{
+			afterwards = [NSString stringWithFormat:@" (rdar://problem/%ld)", self.radar.radarNumber];
+		}
 		
+		NSString *post = [NSString stringWithFormat:@"%@%@", self.radar.title, afterwards];
+		
+		
+		NSDictionary *entitiesDict = @{
+								 @"links" : @[
+				 @{
+		 @"pos": @0,
+	   @"len": @(self.radar.title.length),
+	   @"url": radarLink
+   }
+				 ],
+		 @"parse_links" : @(YES)
+		 };
 		
 		NSDictionary *postParams =
-		@{ @"text" : post };
+		@{ @"text" : post,
+	 @"entities" : entitiesDict
+	 };
+		NSLog(@"Sending %@", postParams);
 		
 		QRURLConnection *conn = [[QRURLConnection alloc] init];
 		conn.request = req;
 		conn.postParameters = postParams;
+		conn.sendPostParamsAsJSON = YES;
 		
 		NSData *data = [conn fetchSyncWithError:&error];
 		

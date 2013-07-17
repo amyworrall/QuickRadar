@@ -12,6 +12,8 @@
 
 #define QRHandleRdarURLsKey @"QRHandleRdarURLs"
 
+#define QRAppDotNetIncludeRdarLinksKey @"appDotNetIncludeRdarLinks"
+
 typedef enum {
 	rdarURLsMethodDoNothing = 1,
 	rdarURLsMethodOpenRadar = 2,

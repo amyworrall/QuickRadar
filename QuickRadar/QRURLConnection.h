@@ -17,6 +17,7 @@
 @property (strong) NSString *HTTPPassword;
 @property (nonatomic, strong) NSArray *cookiesReturned;
 @property (nonatomic, assign) BOOL addRadarSpoofingHeaders;
+@property (nonatomic, assign) BOOL sendPostParamsAsJSON;
 
 @property (assign) BOOL useMultipartRatherThanURLEncoded;
 
