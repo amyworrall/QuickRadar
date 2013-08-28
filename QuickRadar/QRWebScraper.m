@@ -132,7 +132,10 @@
 		{
 			NSString *string = element.stringValue;
 			
-			returnDict[key] = string;
+            if (string)
+            {
+                returnDict[key] = string;
+            }
 		}
 	}
 	

@@ -20,6 +20,11 @@
 	
 	NSString *message = [NSString stringWithFormat:@"The \"%@\" service reported an authentication failure. Are your credentials correct?", name];
 	NSString *title = @"Authentication failure";
+    
+    if (!error)
+    {
+        error = [[NSError alloc] init];
+    }
 	
 	NSDictionary *userInfo = @{NSLocalizedRecoverySuggestionErrorKey: message,
 							  NSLocalizedDescriptionKey: title,
