@@ -9,6 +9,7 @@
 #import "QRRadarSubmissionService.h"
 #import "QRWebScraper.h"
 #import "NSError+Additions.h"
+#import "OrderedDictionary.h"
 
 
 @interface QRRadarSubmissionService ()
@@ -138,7 +139,7 @@
 		
         self.submissionStatusText = @"Fetching RadarWeb signin page";
 		QRWebScraper *loginPage = [[QRWebScraper alloc] init];
-		loginPage.URL = [NSURL URLWithString:@"https://bugreport.apple.com/cgi-bin/WebObjects/RadarWeb.woa/wa/signIn"];
+		loginPage.URL = [NSURL URLWithString:@"https://idmsa.apple.com/IDMSWebAuth/classicLogin.html?appIdKey=77e2a60d4bdfa6b7311c854a56505800be3c24e3a27a670098ff61b69fc5214b&sslEnabled=true&rv=3"];
 		
 		if (![loginPage fetch:&error])
 		{
@@ -157,7 +158,7 @@
 		
 		// ------- Parsing --------
 		
-		NSDictionary *loginPageXpaths = @{@"action": @"//form[@name='appleConnectForm']/@action"};
+		NSDictionary *loginPageXpaths = @{@"action": @"//form[@name='form2']/@action"};
 		
 		NSDictionary *loginPageValues = [loginPage stringValuesForXPathsDictionary:loginPageXpaths error:&error];
 		
@@ -172,7 +173,7 @@
 		
 		
 		/**************************
-		 * Page 2: JS bounce page *
+		 * Page 2: Submitting the login *
 		 **************************/
 		
         self.submissionStatusText = @"Signing into RadarWeb";
@@ -180,7 +181,7 @@
 		NSString *username = [prefs objectForKey: @"username"];
 		NSString *password = [self radarPassword];
 		
-		NSURL *bouncePageURL = [[NSURL URLWithString:@"https://bugreport.apple.com"] URLByAppendingPathComponent:loginPageValues[@"action"]];
+		NSURL *bouncePageURL = [NSURL URLWithString:@"https://idmsa.apple.com/IDMSWebAuth/authenticate.html"];
 		
 		
 		QRWebScraper *bouncePage = [[QRWebScraper alloc] init];
@@ -189,11 +190,10 @@
 		bouncePage.referrer = loginPage;
 		bouncePage.HTTPMethod = @"POST";
 		
-		[bouncePage addPostParameter:username forKey:@"theAccountName"];
-		[bouncePage addPostParameter:password forKey:@"theAccountPW"];
-		[bouncePage addPostParameter:@"6" forKey:@"1.Continue.x"];
-		[bouncePage addPostParameter:@"7" forKey:@"1.Continue.y"];
-		[bouncePage addPostParameter:@"" forKey:@"theAuxValue"];
+		[bouncePage addPostParameter:username forKey:@"appleId"];
+		[bouncePage addPostParameter:password forKey:@"accountPassword"];
+        [bouncePage addPostParameter:@"{\"U\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/536.30.1 (KHTML, like Gecko) Version/6.0.5 Safari/536.30.1\",\"L\":\"en-us\",\"Z\":\"GMT+01:00\",\"V\":\"1.1\",\"F\":\"TF1;016;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2010_8_4%29%20AppleWebKit/536.30.1%20%28KHTML%2C%20like%20Gecko%29%20Version/6.0.5%20Safari/536.30.1;20030107;undefined;true;;true;MacIntel;undefined;Mozilla/5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2010_8_4%29%20AppleWebKit/536.30.1%20%28KHTML%2C%20like%20Gecko%29%20Version/6.0.5%20Safari/536.30.1;en-us;iso-8859-1;idmsa.apple.com;undefined;undefined;undefined;undefined;true;true;1378980528007;0;7%20June%202005%2021%3A33%3A44%20BST;2560;1440;undefined;undefined;undefined;;undefined;undefined;2;0;-60;12%20September%202013%2011%3A08%3A48%20BST;24;2560;1330;0;22;;;;;;Shockwave%20Flash%7CShockwave%20Flash%2011.8%20r800;;;;QuickTime%20Plug-in%207.7.1%7CThe%20QuickTime%20Plugin%20allows%20you%20to%20view%20a%20wide%20variety%20of%20multimedia%20content%20in%20web%20pages.%20For%20more%20information%2C%20visit%20the%20%3CA%20HREF%3Dhttp%3A//www.apple.com/quicktime%3EQuickTime%3C/A%3E%20Web%20site.;;;;;;;;;18;;;;;;;\"}" forKey:@"fdcBrowserData"];
+
 		
 		if (![bouncePage fetch:&error])
 		{
@@ -210,11 +210,12 @@
 				progressBlock();
 			});
 		}
-		
+        
+        
+       
 		// ------- Parsing --------
 		
-		NSDictionary *bouncePageXpaths = @{@"action": @"//form[@name='frmLinkMyOriginated']/@action",
-										  @"alertIcon": @"//img[@alt='Alert']"};
+		NSDictionary *bouncePageXpaths = @{  @"alertIcon": @"//img[@id='alert_icon']/@src"};
 		
 		NSDictionary *bouncePageValues = [bouncePage stringValuesForXPathsDictionary:bouncePageXpaths error:&error];
 		
@@ -235,17 +236,18 @@
 				self.submissionStatusValue = submissionStatusFailed;
 				self.progressValue = 0; // set this to 0 because it would be safe to retry the whole operation.
 				completionBlock(NO, authError);
-			});
+ 			});
 			return;
 		}
-		
+        
+        
 		/***************************
 		 * Page 3: Radar main page *
 		 ***************************/
 		
 		
         self.submissionStatusText = @"Fetching RadarWeb main page";
-		NSURL *mainPageURL = [[NSURL URLWithString:@"https://bugreport.apple.com"] URLByAppendingPathComponent:bouncePageValues[@"action"]];
+		NSURL *mainPageURL = [NSURL URLWithString:@"https://bugreport.apple.com"];
 		
 		QRWebScraper *mainPage = [[QRWebScraper alloc] init];
 		mainPage.URL = mainPageURL;
@@ -268,119 +270,80 @@
 				progressBlock();
 			});
 		}
+        
+        NSLog(@"Main page: %@", [[NSString alloc] initWithData:mainPage.returnedData encoding:NSUTF8StringEncoding]);
 		
 		// ------- Parsing --------
 		
-		NSDictionary *mainPageXpaths = @{@"URL": @"//td[@class='navlink'][1]/a[1]/@href"};
+		// Let's get the token.
+        
+        NSDictionary *mainPageXpaths = @{  @"csrfToken": @"//input[@id='csrftokenPage']/@value"};
 		
 		NSDictionary *mainPageValues = [mainPage stringValuesForXPathsDictionary:mainPageXpaths error:&error];
 		
 		if (!mainPageValues)
 		{
-			dispatch_sync(dispatch_get_main_queue(), ^{ 
+			dispatch_sync(dispatch_get_main_queue(), ^{
 				self.submissionStatusValue = submissionStatusFailed;
 				completionBlock(NO, error);
 			});
 			return;
 		}
 		
-		/***************************
-		 * Page 4: New Ticket Page *
+		NSString *csrfToken = mainPageValues[@"csrfToken"];
+        
+        /***************************
+		 * Create our ticket *
 		 ***************************/
 		
-        self.submissionStatusText = @"Fetching RadarWeb new ticket page";
-		NSURL *newTicketURL =  [[NSURL URLWithString:@"https://bugreport.apple.com"] URLByAppendingPathComponent:mainPageValues[@"URL"]];
-		
-		QRWebScraper *newTicketPage = [[QRWebScraper alloc] init];
-		newTicketPage.URL = newTicketURL;
-		newTicketPage.cookiesSource = mainPage;
-		newTicketPage.referrer = mainPage;
-		newTicketPage.HTTPMethod = @"POST";
-		
-		if (![newTicketPage fetch:&error])
-		{
-			dispatch_sync(dispatch_get_main_queue(), ^{ 
-				self.submissionStatusValue = submissionStatusFailed;
-				completionBlock(NO, error);
-			});
-			return;
-		}
-		else
-		{
-			self.progressValue = 4 * (1.0/NUM_PAGES);
-			dispatch_sync(dispatch_get_main_queue(), ^{ 
-				progressBlock();
-			});
-		}
-		
-		// ------- Parsing --------
-		
-		NSString *trimmedClassification = [self.radar.classification stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-		
-		NSDictionary *newTicketPageXpaths = @{@"action": @"//form[@name='BugReportDetail']/@action",
-											 @"newProbName": @"//input[@id='probTitleNewProb']/@name",
-											 @"initialPopulateFlagName": @"//input[@id='initialPopulateFlag']/@name",
-											 @"isItReproducibleName": @"//select[@id='reproducibleNewProb']/@name",
-											 @"reproducibleNumber": [NSString stringWithFormat:@"//select[@id='reproducibleNewProb'][1]/option[text()=\"%@\"]/@value", self.radar.reproducible],
-											 @"refreshCountName": @"//input[@id='refreshCount']/@name",
-											 @"refreshCountValue": @"//input[@id='refreshCount']/@value",
-											 @"configEmptyFlagName": @"//input[@id='configEmptyFlag']/@name",
-											 @"configInformationName": @"//input[@id='configInformation']/@name",
-											 @"configIDName": @"//input[@id='confgID']/@name",
-											 @"configInfoTextareaName": @"//textarea[@id='ConfigInfo']/@name",
-											 @"productListNumber": [NSString stringWithFormat:@"//select[@id='prodList'][1]/option[text()='%@']/@value", self.radar.product],
-											 @"classificationNumber": [NSString stringWithFormat:@"//select[@id='classList']/option[text()='%@']/@value", trimmedClassification]};
-		
-		
-		NSDictionary *newTicketPageValues = [newTicketPage stringValuesForXPathsDictionary:newTicketPageXpaths error:&error];
-		
-		if (!newTicketPageValues)
-		{
-			dispatch_sync(dispatch_get_main_queue(), ^{ 
-				self.submissionStatusValue = submissionStatusFailed;
-				completionBlock(NO, error);
-			});
-			return;
-		}
-		
-		// This is a fudge until I write an Xpath that'll get this.
-		NSString *appendNewConfigName =  @"61.103.49"; 
-		
+
+        OrderedDictionary *ticket = [OrderedDictionary new];
+        
+        ticket[@"problemTitle"] = self.radar.title;
+        ticket[@"configIDPop"] = @"";
+        ticket[@"configDescriptionPop"] = @"";
+        ticket[@"configurationText"] = @"";
+        ticket[@"hiddenFileSizeNew"] = @"";
+        ticket[@"notes"] = @"";
+        ticket[@"workAroundText"] = @"";
+        ticket[@"descriptionText"] = self.radar.body;
+        ticket[@"classificationCode"] = [NSString stringWithFormat:@"%ld", (long)self.radar.classificationCode];
+        ticket[@"reproducibilityCode"] = [NSString stringWithFormat:@"%ld", (long)self.radar.reproducibleCode];
+        
+        NSDictionary *component = @{@"ID" : [NSString stringWithFormat:@"%ld", (long)self.radar.productCode],
+                                    @"compName" : self.radar.product};
+        ticket[@"component"] = component;
+        
+        ticket[@"draftID"] = @"";
+        ticket[@"versionBuild"] = @"";
+        ticket[@"desctextvalidate"] = self.radar.body;
+        ticket[@"stepstoreprvalidate"] = @"";
+        ticket[@"experesultsvalidate"] = @"";
+        ticket[@"actresultsvalidate"] = @"";
+        ticket[@"addnotesvalidate"] = @"";
+        ticket[@"csrftokencheck"] = csrfToken;
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ticket options:0 error:&error];
+		NSString *jsonText = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 		
 		/*******************************
 		 * Page 5: Bug Submission Page *
 		 *******************************/
 		
         self.submissionStatusText = @"Submitting bug to RadarWeb";
-		NSURL *bugSubmissionURL =  [[NSURL URLWithString:@"https://bugreport.apple.com"] URLByAppendingPathComponent:newTicketPageValues[@"action"]];
+		NSURL *bugSubmissionURL =  [NSURL URLWithString:@"https://bugreport.apple.com/developer/problem/createNewDevUIProblem"];
 		
 		QRWebScraper *bugSubmissionPage = [[QRWebScraper alloc] init];
 		bugSubmissionPage.URL = bugSubmissionURL;
-		bugSubmissionPage.cookiesSource = newTicketPage;
-		bugSubmissionPage.referrer = newTicketPage;
+		bugSubmissionPage.cookiesSource = mainPage;
+		bugSubmissionPage.referrer = @"https://bugreport.apple.com/problem/viewproblem";
 		bugSubmissionPage.HTTPMethod = @"POST";
 		bugSubmissionPage.sendMultipartFormData = YES;
 		
-		/* Sets up all the fields necessary for submission.
-		 * Order is really important here: RadarWeb borks if it gets them in the wrong order. */
-		[bugSubmissionPage addPostParameter:newTicketPageValues[@"refreshCountValue"] forKey:newTicketPageValues[@"refreshCountName"]];
-		[bugSubmissionPage addPostParameter:@"No" forKey:@"formatAddFlag"];
-		[bugSubmissionPage addPostParameter:self.radar.version forKey:@"configSummary"];
-		[bugSubmissionPage addPostParameter:@"flag" forKey:newTicketPageValues[@"configEmptyFlagName"]];
-		[bugSubmissionPage addPostParameter:@"No" forKey:@"iPhoneFlag"];
-		[bugSubmissionPage addPostParameter:self.radar.title forKey:newTicketPageValues[@"newProbName"]];
-		[bugSubmissionPage addPostParameter:newTicketPageValues[@"productListNumber"] forKey:@"prodList"];
-		[bugSubmissionPage addPostParameter:newTicketPageValues[@"classificationNumber"] forKey:@"classList"];
-		[bugSubmissionPage addPostParameter:newTicketPageValues[@"reproducibleNumber"] forKey:newTicketPageValues[@"isItReproducibleName"]];
-		[bugSubmissionPage addPostParameter:self.radar.body forKey:@"probDesc"];
-		[bugSubmissionPage addPostParameter:@"" forKey:newTicketPageValues[@"configInformationName"]];
-		[bugSubmissionPage addPostParameter:[NSData data] forKey:newTicketPageValues[@"configIDName"]];
-		[bugSubmissionPage addPostParameter:@"WONoSelectionString" forKey:appendNewConfigName];
-		[bugSubmissionPage addPostParameter:@"" forKey:newTicketPageValues[@"configInfoTextareaName"]];
-		[bugSubmissionPage addPostParameter:@"No" forKey:newTicketPageValues[@"initialPopulateFlagName"]];
-		[bugSubmissionPage addPostParameter:[NSData data] forKey:@"__DEFAULT__FILE__1__"];
-		[bugSubmissionPage addPostParameter:@"25" forKey:@"Save.x"];
-		[bugSubmissionPage addPostParameter:@"16" forKey:@"Save.y"];
+		// Sets up all the fields necessary for submission.
+		[bugSubmissionPage addPostParameter:jsonText forKey:@"hJsonScreenVal"];
+		[bugSubmissionPage addPostParameter:jsonText forKey:@"hJsonScreenVal"];
+		
 		
 		if (![bugSubmissionPage fetch:&error])
 		{
@@ -400,20 +363,10 @@
 		
 		// ------- Parsing --------
 		
-		NSDictionary *bugSubmissionPageXpaths = @{@"radarNumber": @"(//font)[6]"};
+		NSData *resultData = bugSubmissionPage.returnedData;
+        NSString *radarNumberString = [[NSString alloc] initWithData:resultData encoding:NSUTF8StringEncoding];
 		
-		NSDictionary *bugSubmissionPageValues = [bugSubmissionPage stringValuesForXPathsDictionary:bugSubmissionPageXpaths error:&error];
-		
-		if (!bugSubmissionPageValues)
-		{
-			dispatch_sync(dispatch_get_main_queue(), ^{ 
-				self.submissionStatusValue = submissionStatusFailed;
-				completionBlock(NO, error);
-			});
-			return;
-		}
-		
-		NSInteger radarNumberResult = [bugSubmissionPageValues[@"radarNumber"] integerValue];
+		NSInteger radarNumberResult = [radarNumberString integerValue];
 		
 		// TODO: work out what error pages RadarWeb can display, and in this if statement make a new NSError filling in the text as appropriate.
 		if (radarNumberResult <= 0)

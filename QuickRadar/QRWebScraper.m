@@ -73,11 +73,14 @@
 		request.allHTTPHeaderFields = [NSHTTPCookie requestHeaderFieldsWithCookies:self.cookiesSource.cookiesReturned];
 	}
 	
-	if (self.referrer)
+	if (self.referrer && [self.referrer isKindOfClass:[QRWebScraper class]])
 	{
-		[request addValue:self.referrer.URL.absoluteString forHTTPHeaderField:@"Referer"];
-
+		[request addValue:((QRWebScraper*)self.referrer).URL.absoluteString forHTTPHeaderField:@"Referer"];
 	}
+    else if (self.referrer && [self.referrer isKindOfClass:[NSString class]])
+    {
+        [request addValue:(NSString*)self.referrer forHTTPHeaderField:@"Referer"];
+    }
 	
 	QRURLConnection *conn = [[QRURLConnection alloc] init];
 	conn.request = request;
@@ -97,7 +100,7 @@
 	self.cookiesReturned = conn.cookiesReturned;
 	self.returnedData = data;
 	
-	NSXMLDocument *newXMLDoc = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyXML error:&error];
+	NSXMLDocument *newXMLDoc = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyHTML error:&error];
 	
 	if (!newXMLDoc)
 	{

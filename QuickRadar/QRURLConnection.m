@@ -113,12 +113,15 @@
 	
 	if (self.addRadarSpoofingHeaders)
 	{
-		[request addValue:@"https://bugreport.apple.com" forHTTPHeaderField:@"Origin"];
+        
+        
+        
+		[request addValue:[NSString stringWithFormat:@"https://%@", request.URL.host] forHTTPHeaderField:@"Origin"];
 		[request addValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
 		[request addValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534.55.3 (KHTML, like Gecko) Version/5.1.5 Safari/534.55.3" forHTTPHeaderField:@"User-Agent"];
-		[request addValue:@"bugreport.apple.com" forHTTPHeaderField:@"Host"];
+		[request addValue:request.URL.host forHTTPHeaderField:@"Host"];
 		[request addValue:@"gzip, deflate" forHTTPHeaderField:@"Accept-Encoding"];
-		[request addValue:@"en-gb" forHTTPHeaderField:@"Accept-Language"];
+		[request addValue:@"en-us" forHTTPHeaderField:@"Accept-Language"];
 	}
 
 	NSHTTPURLResponse *resp;

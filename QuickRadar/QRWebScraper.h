@@ -17,7 +17,7 @@
 @property (nonatomic, copy) NSString *HTTPMethod;
 @property (nonatomic, assign) BOOL sendMultipartFormData;
 @property (nonatomic, strong) QRWebScraper *cookiesSource;
-@property (nonatomic, strong) QRWebScraper *referrer;
+@property (nonatomic, strong) id referrer; // can be a QRWebScaper or a string
 @property (nonatomic, strong) NSData *returnedData;
 
 /* A synchronous method */

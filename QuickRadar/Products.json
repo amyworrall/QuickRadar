@@ -1,0 +1,262 @@
+ [{
+  "categoryName": "OS and Development",
+  "productImage": "DeveloperTools",
+  "compNameForWeb": "Developer Tools",
+  "buildVersionRequired": 1,
+  "productToolTip": "For all Xcode issues (including Xcode tools - Interface Builder, Instruments, compilers, simulators, command line tools, etc.)",
+  "buildVersionLabel": "Xcode Version/Build & OS X Version/Build",
+  "componentID": 175326
+  }, {
+  "buildVersionText": "Please provide the document title and the hyperlink to the document.",
+  "categoryName": "OS and Development",
+  "productImage": "Documentation",
+  "compNameForWeb": "Documentation",
+  "buildVersionRequired": 0,
+  "productToolTip": "For documentation issues (misinformation, broken links, typos, etc.)",
+  "buildVersionLabel": "Documentation Title & URL",
+  "componentID": 183045
+  }, {
+  "categoryName": "OS and Development",
+  "productImage": "iTuneConn",
+  "compNameForWeb": "iTunes Connect",
+  "buildVersionRequired": 0,
+  "productToolTip": "For all issues regarding iTunes Connect (a tool that allows developers to submit and manage apps for distribution).",
+  "componentID": 500515
+  }, {
+  "categoryName": "OS and Development",
+  "productImage": "iOSSDK",
+  "compNameForWeb": "iOS SDK",
+  "buildVersionRequired": 1,
+  "buildVersionLabel": "iOS Version/Build",
+  "componentID": 501890
+  }, {
+  "categoryName": "OS and Development",
+  "productImage": "MacOSX",
+  "compNameForWeb": "OS X",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with OS X utilities and features (file system, graphics, networking, security, scripting, etc.)",
+  "buildVersionLabel": "OS X Version/Build",
+  "componentID": 137701
+  }, {
+  "categoryName": "OS and Development",
+  "productImage": "MacOSXSDK",
+  "compNameForWeb": "OS X SDK",
+  "buildVersionRequired": 1,
+  "productToolTip": "For all OS X SDK related issues",
+  "buildVersionLabel": "Xcode Version/Build & OS X Version/Build",
+  "componentID": 430026
+  }, {
+  "categoryName": "OS and Development",
+  "productImage": "MacOSXServer",
+  "compNameForWeb": "OS X Server",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with OS X Server administration and features (backups, calendaring, file sharing, user profiles, etc.)",
+  "buildVersionLabel": "OS X Server Version/Build",
+  "componentID": 84100
+  }, {
+  "buildVersionText": "Please provide the name of the sample code and the hyperlink to the sample code.",
+  "categoryName": "OS and Development",
+  "productImage": "SampleCode",
+  "compNameForWeb": "Sample Code",
+  "buildVersionRequired": 0,
+  "productToolTip": "For all Sample Code issues (broken links, missing images, misinformation, typos, etc.)",
+  "buildVersionLabel": "Sample Code Name & URL",
+  "componentID": 205728
+  }, {
+  "buildVersionText": "Please provide the name of the Technical Note/Q&A as well as the hyperlink to the documentation.",
+  "categoryName": "OS and Development",
+  "productImage": "TechNoteQA",
+  "compNameForWeb": "Tech Note/Q&A",
+  "buildVersionRequired": 0,
+  "productToolTip": "For all Technical Note & Technical Q&A issues (broken links, missing images, misinformation, typos, etc.)",
+  "buildVersionLabel": "Tech Note/Q&A Title & URL",
+  "componentID": 385563
+  }, {
+  "buildVersionText": "Please provide the iCloud Apple ID and indicate the operating system (include version/build).",
+  "categoryName": "Applications and Software",
+  "productImage": "iCloud",
+  "compNameForWeb": "iCloud",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with iCloud-related functionality (Find my iPhone, Find My Friends,  Documents, PhotoStream, etc.)",
+  "buildVersionLabel": "iCloud Apple ID & iOS Version/Build & OS X Version/Build",
+  "componentID": 458288
+  }, {
+  "buildVersionText": "Please provide the iLife version and/or iLife app name/version, and indicate the operating system (include version/build).",
+  "categoryName": "Applications and Software",
+  "productImage": "iLife",
+  "compNameForWeb": "iLife",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with GarageBand, iPhoto, iMovie, etc.",
+  "buildVersionLabel": "iLife Version & OS X Version/Build or iOS Version/Build",
+  "componentID": 445858
+  }, {
+  "buildVersionText": "Platform: iOS, OS X or Windows?",
+  "categoryName": "Applications and Software",
+  "productImage": "iTunes",
+  "compNameForWeb": "iTunes",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with the iTunes app or iTunes Match (iTunes Store issues should be submitted under the App Store product)",
+  "buildVersionLabel": "iTunes Version/Build & Platform (incl.Version/Build)",
+  "componentID": 430173
+  }, {
+  "buildVersionText": "Please provide the iWork version and/or iWork app name/version, and indicate the operating system (include version/build).",
+  "categoryName": "Applications and Software",
+  "productImage": "iWork",
+  "compNameForWeb": "iWork",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with Pages, Numbers, Keynote, etc.",
+  "buildVersionLabel": "iWork Version & OS X Version/Build or iOS Version/Build",
+  "componentID": 372025
+  }, {
+  "categoryName": "Applications and Software",
+  "productImage": "Mail",
+  "compNameForWeb": "Mail",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues related to Apple Mail",
+  "buildVersionLabel": "Mail Version/Build & OS X Version/Build",
+  "componentID": 372031
+  }, {
+  "buildVersionText": "Please provide the Pro App name/version in addition to the OS X version/build.",
+  "categoryName": "Applications and Software",
+  "productImage": "ProApps",
+  "compNameForWeb": "Pro Apps",
+  "buildVersionRequired": 1,
+  "productToolTip": "For Final Cut, Logic, Motion, Aperture, etc.",
+  "buildVersionLabel": "Pro App Name/Version & OS X Version/Build",
+  "componentID": 175412
+  }, {
+  "categoryName": "Applications and Software",
+  "productImage": "QuickTime",
+  "compNameForWeb": "QuickTime",
+  "buildVersionRequired": 1,
+  "productToolTip": "For QuickTime framework or QuickTime Player issues",
+  "buildVersionLabel": "QuickTime Version/Build & OS X Version/Build",
+  "componentID": 84201
+  }, {
+  "buildVersionText": "Platform: iOS, OS X or Windows?",
+  "categoryName": "Applications and Software",
+  "productImage": "Safari",
+  "compNameForWeb": "Safari",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with the Safari app and related programming tools (including Webkit).",
+  "buildVersionLabel": "Safari Version/Build & Platform (incl. Version/Build)",
+  "componentID": 175305
+  }, {
+  "buildVersionText": "Please provide the Apple TV model/version in addition to the iOS version/build.",
+  "categoryName": "Hardware",
+  "productImage": "AppleTV",
+  "compNameForWeb": "Apple TV",
+  "buildVersionRequired": 1,
+  "productToolTip": "For all issues with Apple TV",
+  "buildVersionLabel": "Apple TV Model/Version & iOS Version/Build",
+  "componentID": 430025
+  }, {
+  "buildVersionText": "Please provide the hardware make and model in addition to the OS X version/build.",
+  "categoryName": "Hardware",
+  "productImage": "Hardware",
+  "compNameForWeb": "Hardware",
+  "buildVersionRequired": 0,
+  "productToolTip": "For issues with OS X hardware (desktops, laptops, monitors, etc.) and accessories",
+  "buildVersionLabel": "Hardware Make and Model & OS X Version/Build",
+  "componentID": 213680
+  }, {
+  "buildVersionText": "Please indicate the iPad model in addition to the iOS version/build.",
+  "categoryName": "Hardware",
+  "productImage": "iPad",
+  "compNameForWeb": "iPad",
+  "buildVersionRequired": 1,
+  "productToolTip": "For iPad hardware issues",
+  "buildVersionLabel": "iPad Model & iOS Version/Build",
+  "componentID": 375383
+  }, {
+  "buildVersionText": "Please specify the device (iPhone or iPod touch) in addition to the iOS version/build.",
+  "categoryName": "Hardware",
+  "productImage": "iPhoneiPodtouch",
+  "compNameForWeb": "iPhone/iPod touch",
+  "buildVersionRequired": 1,
+  "productToolTip": "For iPhone hardware issues",
+  "buildVersionLabel": "Device Type/Model & iOS Version/Build",
+  "componentID": 262954
+  }, {
+  "buildVersionText": "Please indicate the iPod version or iPod generation.",
+  "categoryName": "Hardware",
+  "productImage": "iPod",
+  "compNameForWeb": "iPod",
+  "buildVersionRequired": 1,
+  "buildVersionLabel": "iPod Version or Generation",
+  "componentID": 185585
+  }, {
+  "buildVersionText": "Please provide the printer/fax make and model in addition to the operating system version/build.",
+  "categoryName": "Hardware",
+  "productImage": "PrintingFax",
+  "compNameForWeb": "Printing/Fax",
+  "buildVersionRequired": 0,
+  "productToolTip": "For AirPrint, Image Capture, general printing, scanning and fax issues",
+  "buildVersionLabel": "Printer/Fax Make and Model & OS X Version/Build or iOS Version/Build",
+  "componentID": 213679
+  }, {
+  "categoryName": "Other",
+  "productImage": "Accessibility",
+  "compNameForWeb": "Accessibility",
+  "buildVersionRequired": 1,
+  "productToolTip": "For all Accessibility / Universal Access related issues (Sticky Keys, Text-to-Speech, VoiceOver, etc.)",
+  "buildVersionLabel": "OS X Version/Build",
+  "componentID": 437784
+  }, {
+  "buildVersionText": "Platform: iOS, OS X or Windows?",
+  "categoryName": "Other",
+  "productImage": "iOSAppStore",
+  "compNameForWeb": "iOS App Store",
+  "buildVersionRequired": 0,
+  "productToolTip": "For issues with the iTunes Store (downloads, playlists, Genius, etc.)",
+  "buildVersionLabel": "iTunes Version/Build & Platform (incl.Version/Build)",
+  "componentID": 251822
+  }, {
+  "buildVersionText": "Please provide the OS X App Store version/build in addition to the OS X version/build.",
+  "categoryName": "Other",
+  "productImage": "AppStore",
+  "compNameForWeb": "OS X App Store",
+  "buildVersionRequired": 0,
+  "productToolTip": "For issues with the Mac App Store (downloads, redemption codes, purchase backups, etc.)",
+  "buildVersionLabel": "OS X App Store Version/Build & OS X Version/Build",
+  "componentID": 430023
+  }, {
+  "buildVersionText": "Platform: iOS, OS X or Windows?",
+  "categoryName": "Other",
+  "productImage": "BugReporter",
+  "compNameForWeb": "Bug Reporter",
+  "buildVersionRequired": 0,
+  "productToolTip": "For all Bug Reporter issues",
+  "buildVersionLabel": "Web Browser Name/Version/Build & Platform (incl. Version/Build)",
+  "componentID": 242322
+  }, {
+  "categoryName": "Other",
+  "productImage": "iAdNetwork",
+  "compNameForWeb": "iAd Network",
+  "buildVersionRequired": 0,
+  "productToolTip": "For all iAd Network related issues",
+  "componentID": 445860
+  }, {
+  "categoryName": "Other",
+  "productImage": "iAdProducer",
+  "compNameForWeb": "iAd Producer",
+  "buildVersionRequired": 0,
+  "productToolTip": "For all iAd Producer related issues",
+  "componentID": 446084
+  }, {
+  "buildVersionText": "The full Java version can be btained by running java -version in Terminal.",
+  "categoryName": "Other",
+  "productImage": "Java",
+  "compNameForWeb": "Java",
+  "buildVersionRequired": 1,
+  "productToolTip": "For all Java issues",
+  "buildVersionLabel": "Full Java Version & OS X Version/Build",
+  "componentID": 84060
+  }, {
+  "categoryName": "Other",
+  "compNameForWeb": "Other",
+  "buildVersionRequired": 0,
+  "productToolTip": "For issues against all other products not mentioned on this page (i.e, Apple Configurator, etc.)",
+  "buildVersionLabel": "Version/Build",
+  "componentID": 20206
+  }]

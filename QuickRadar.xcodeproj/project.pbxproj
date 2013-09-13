@@ -37,6 +37,8 @@
 		E169F3BD15E50D760019383F /* QRAppDotNetSubmissionService.m in Sources */ = {isa = PBXBuildFile; fileRef = E169F3BC15E50D760019383F /* QRAppDotNetSubmissionService.m */; };
 		E169F3C115E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E169F3BF15E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.m */; };
 		E169F3C215E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E169F3C015E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.xib */; };
+		E17B6D8517E1DB4D00026899 /* Products.json in Resources */ = {isa = PBXBuildFile; fileRef = E17B6D8417E1DB4D00026899 /* Products.json */; };
+		E17B6D8A17E1F73700026899 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = E17B6D8917E1F73700026899 /* OrderedDictionary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E17F4CF815E3EBB000FE8A33 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E17F4CF715E3EBB000FE8A33 /* NSString+URLEncoding.m */; };
 		E18A7CA116E0F26300B4073F /* ADNLogoTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = E18A7CA016E0F26300B4073F /* ADNLogoTemplate.png */; };
 		E18A7CA316E0F78C00B4073F /* AppleLogoTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = E18A7CA216E0F78C00B4073F /* AppleLogoTemplate.png */; };
@@ -163,6 +165,9 @@
 		E169F3BE15E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRAppDotNetSubmissionServicePreferencesViewController.h; sourceTree = "<group>"; };
 		E169F3BF15E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRAppDotNetSubmissionServicePreferencesViewController.m; sourceTree = "<group>"; };
 		E169F3C015E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRAppDotNetSubmissionServicePreferencesViewController.xib; sourceTree = "<group>"; };
+		E17B6D8417E1DB4D00026899 /* Products.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Products.json; sourceTree = "<group>"; };
+		E17B6D8817E1F73700026899 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
+		E17B6D8917E1F73700026899 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
 		E17F4CF615E3EBB000FE8A33 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		E17F4CF715E3EBB000FE8A33 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		E18A7CA016E0F26300B4073F /* ADNLogoTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ADNLogoTemplate.png; sourceTree = "<group>"; };
@@ -432,6 +437,8 @@
 				E164357A15A2FC770063096B /* NSError+Additions.m */,
 				E17F4CF615E3EBB000FE8A33 /* NSString+URLEncoding.h */,
 				E17F4CF715E3EBB000FE8A33 /* NSString+URLEncoding.m */,
+				E17B6D8817E1F73700026899 /* OrderedDictionary.h */,
+				E17B6D8917E1F73700026899 /* OrderedDictionary.m */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -490,6 +497,7 @@
 				E157B19616D385290026EC3B /* ShortcutRecorder */,
 				E1CC51A2156257BF0027FB83 /* MainMenu.xib */,
 				E1CC51B415625C5B0027FB83 /* Config.plist */,
+				E17B6D8417E1DB4D00026899 /* Products.json */,
 				E1F53052161359AA000FCAC3 /* Config */,
 				E19CFC681599FF1800879280 /* New Radar Window */,
 				E1ED7E40159DE15F0033D7C0 /* Preferences Window */,
@@ -686,6 +694,7 @@
 				E18A7CA516E0FB8300B4073F /* OpenRadarTemplate.tif in Resources */,
 				A7E7389216FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.xib in Resources */,
 				E1A86644179594900087C806 /* WordpressLogoTemplate.png in Resources */,
+				E17B6D8517E1DB4D00026899 /* Products.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,6 +743,7 @@
 				E1BE144F1708A46B00F7A853 /* QRAppListOutlineView.m in Sources */,
 				A7E7388D16FCB367009097ED /* QRWordpressSubmissionService.m in Sources */,
 				A7E7389116FCB4B4009097ED /* QRWordpressSubmissionServicePreferencesViewController.m in Sources */,
+				E17B6D8A17E1F73700026899 /* OrderedDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

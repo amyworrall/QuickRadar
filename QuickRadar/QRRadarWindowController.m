@@ -35,36 +35,72 @@
 
 - (void)windowDidLoad
 {
-	NSDictionary *config = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"]];
 	
 	[self.productMenu removeAllItems];
 	[self.classificationMenu removeAllItems];
 	[self.reproducibleMenu removeAllItems];
 	
 	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    NSError *error = nil;
+    NSArray *products = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Products" ofType:@"json"]] options:0 error:&error];
 	
-	for (NSString *str in config[@"products"])
+    [self.productMenu setAutoenablesItems:NO];
+    NSString *lastSectionTitle = nil;
+	for (NSDictionary *product in products)
 	{
-		[self.productMenu addItemWithTitle:str];
-		if ([str isEqualToString:[prefs objectForKey:@"RadarWindowSelectedProduct"]])
+        NSString *sectionTitle = product[@"categoryName"];
+        if (![sectionTitle isEqualToString:lastSectionTitle])
+        {
+            NSMenuItem *item = [[NSMenuItem alloc] init];
+            item.title = sectionTitle;
+            [item setEnabled:NO];
+            [self.productMenu.menu addItem:item];
+            
+            lastSectionTitle = sectionTitle;
+        }
+        
+        NSMenuItem *item = [[NSMenuItem alloc] init];
+        item.title = product[@"compNameForWeb"];
+        item.tag = [product[@"componentID"] integerValue];
+        item.indentationLevel = 1;
+        
+		[self.productMenu.menu addItem:item];
+        
+		if ([product[@"compNameForWeb"] isEqualToString:[prefs objectForKey:@"RadarWindowSelectedProduct"]])
 		{
-			[self.productMenu selectItemWithTitle:str];
+			[self.productMenu selectItemWithTitle:product[@"compNameForWeb"]];
 		}
 	}
-	for (NSString *str in config[@"classifications"])
+    
+    NSDictionary *config = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"]];
+
+    
+    
+	for (NSDictionary *classification in config[@"classifications"])
 	{
-		[self.classificationMenu addItemWithTitle:str];
-		if ([str isEqualToString:[prefs objectForKey:@"RadarWindowSelectedClassification"]])
+        NSMenuItem *item = [[NSMenuItem alloc] init];
+        item.title = classification[@"name"];
+        item.tag = [classification[@"code"] integerValue];
+        
+        [self.classificationMenu.menu addItem:item];
+        
+        if ([classification[@"name"] isEqualToString:[prefs objectForKey:@"RadarWindowSelectedClassification"]])
 		{
-			[self.classificationMenu selectItemWithTitle:str];
+			[self.classificationMenu selectItemWithTitle:classification[@"name"]];
 		}
 	}
-	for (NSString *str in config[@"reproducible"])
+	for (NSDictionary *reproducible in config[@"reproducible"])
 	{
-		[self.reproducibleMenu addItemWithTitle:str];
-		if ([str isEqualToString:[prefs objectForKey:@"RadarWindowSelectedReproducible"]])
+        NSMenuItem *item = [[NSMenuItem alloc] init];
+        item.title = reproducible[@"name"];
+        item.tag = [reproducible[@"code"] integerValue];
+        
+        [self.reproducibleMenu.menu addItem:item];
+        
+        if ([reproducible[@"name"] isEqualToString:[prefs objectForKey:@"RadarWindowSelectedReproducible"]])
 		{
-			[self.reproducibleMenu selectItemWithTitle:str];
+			[self.reproducibleMenu selectItemWithTitle:reproducible[@"name"]];
 		}
 	}
 	
@@ -260,8 +296,11 @@
 	
 	QRRadar *radar = [[QRRadar alloc] init];
 	radar.product = self.productMenu.selectedItem.title;
+    radar.productCode = self.productMenu.selectedItem.tag;
 	radar.classification = self.classificationMenu.selectedItem.title;
+	radar.classificationCode = self.classificationMenu.selectedItem.tag;
 	radar.reproducible = self.reproducibleMenu.selectedItem.title;
+	radar.reproducibleCode = self.reproducibleMenu.selectedItem.tag;
 	radar.version = self.versionField.stringValue;
 	radar.title = self.titleField.stringValue;
 	radar.body = self.bodyTextView.string;
