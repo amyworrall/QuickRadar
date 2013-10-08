@@ -19,6 +19,9 @@
 @property (nonatomic, strong) QRWebScraper *cookiesSource;
 @property (nonatomic, strong) id referrer; // can be a QRWebScaper or a string
 @property (nonatomic, strong) NSData *returnedData;
+@property (nonatomic, strong) NSDictionary *customHeaders;
+@property (nonatomic, strong) NSData *customBody;
+
 
 /* A synchronous method */
 - (BOOL)fetch:(NSError**)error;

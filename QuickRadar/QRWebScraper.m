@@ -66,12 +66,25 @@
 									   timeoutInterval:60];
 	request.HTTPMethod = self.HTTPMethod.length>0 ? self.HTTPMethod : @"GET";
 	
-	if (self.cookiesSource)
-	{
-		[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:self.cookiesSource.cookiesReturned forURL:self.cookiesSource.URL mainDocumentURL:nil];
+//	if (self.cookiesSource)
+//	{
+    
+//        NSMutableArray *cookies = [self.cookiesSource.cookiesReturned mutableCopy];
+        NSMutableArray *cookies = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:request.URL] mutableCopy];
+        if (!cookies) { cookies = [NSMutableArray new]; }
+        
+        NSHTTPCookie *timeOffset = [[NSHTTPCookie alloc] initWithProperties:@{NSHTTPCookieName : @"clientTimeOffsetCookie", NSHTTPCookieValue : @"3600000", NSHTTPCookieDomain : @"bugreporter.apple.com", NSHTTPCookiePath : @"/"}];
+        [cookies addObject:timeOffset];
+    
+    NSMutableArray *sortedCookies = [cookies mutableCopy];
+    [sortedCookies sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+        
+//		[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:cookies forURL:self.cookiesSource.URL mainDocumentURL:nil];
 		
-		request.allHTTPHeaderFields = [NSHTTPCookie requestHeaderFieldsWithCookies:self.cookiesSource.cookiesReturned];
-	}
+		request.allHTTPHeaderFields = [NSHTTPCookie requestHeaderFieldsWithCookies:sortedCookies];
+        
+//        NSLog(@"Request headers: %@", request.allHTTPHeaderFields);
+//	}
 	
 	if (self.referrer && [self.referrer isKindOfClass:[QRWebScraper class]])
 	{
@@ -81,6 +94,11 @@
     {
         [request addValue:(NSString*)self.referrer forHTTPHeaderField:@"Referer"];
     }
+    
+    for (NSString *key in self.customHeaders)
+    {
+        [request setValue:[self.customHeaders objectForKey:key] forHTTPHeaderField:key];
+    }
 	
 	QRURLConnection *conn = [[QRURLConnection alloc] init];
 	conn.request = request;
@@ -88,6 +106,7 @@
 	conn.fieldOrdering = self.postParamsOrder;
 	conn.useMultipartRatherThanURLEncoded = self.sendMultipartFormData;
 	conn.addRadarSpoofingHeaders = YES;
+    conn.customBody = self.customBody;
 	
 	NSData *data = [conn fetchSyncWithError:&error];
 	

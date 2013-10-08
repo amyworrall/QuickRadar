@@ -98,7 +98,7 @@
 }
 
 
-#define NUM_PAGES 5.0
+#define NUM_PAGES 5
 
 - (void)submitAsyncWithProgressBlock:(void (^)())progressBlock completionBlock:(void (^)(BOOL, NSError *))completionBlock
 {
@@ -293,6 +293,174 @@
 		NSString *csrfToken = mainPageValues[@"csrfToken"];
         
         /***************************
+		 * A bunch of pages in the hope one of them will work *
+		 ***************************/
+
+        NSTimeInterval ti1 = [[NSDate date] timeIntervalSince1970];
+        long milliseconds1 = ti1*1000;
+        
+        self.submissionStatusText = @"Product list";
+        NSURL *pageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://bugreport.apple.com/developer/problem/getProductFullList?_=%li", milliseconds1]];
+		
+        QRWebScraper *aPage = [[QRWebScraper alloc] init];
+		aPage.URL = pageURL;
+		aPage.cookiesSource = mainPage;
+		aPage.referrer = mainPage;
+		aPage.HTTPMethod = @"GET";
+        aPage.customHeaders = @{@"csrftokencheck" : csrfToken, @"X-Requested-With" : @"XMLHttpRequest", @"Accept" : @"application/json, text/javascript, */*; q=0.01"};
+		
+		if (![aPage fetch:&error])
+		{
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				self.submissionStatusValue = submissionStatusFailed;
+				completionBlock(NO, error);
+			});
+			return;
+		}
+		else
+		{
+			self.progressValue = 4 * (1.0/NUM_PAGES);
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				progressBlock();
+			});
+		}
+        
+
+        
+        ti1 = [[NSDate date] timeIntervalSince1970];
+         milliseconds1 = ti1*1000;
+        
+        self.submissionStatusText = @"All counts";
+        pageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://bugreport.apple.com/developer/problem/getAllCounts?_=%li", milliseconds1]];
+		
+        aPage = [[QRWebScraper alloc] init];
+		aPage.URL = pageURL;
+		aPage.cookiesSource = mainPage;
+		aPage.referrer = mainPage;
+		aPage.HTTPMethod = @"GET";
+        aPage.customHeaders = @{@"csrftokencheck" : csrfToken, @"X-Requested-With" : @"XMLHttpRequest", @"Accept" : @"application/json, text/javascript, */*; q=0.01"};
+		
+		if (![aPage fetch:&error])
+		{
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				self.submissionStatusValue = submissionStatusFailed;
+				completionBlock(NO, error);
+			});
+			return;
+		}
+		else
+		{
+			self.progressValue = 4 * (1.0/NUM_PAGES);
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				progressBlock();
+			});
+		}
+        
+        
+        
+        ti1 = [[NSDate date] timeIntervalSince1970];
+        milliseconds1 = ti1*1000;
+        
+        self.submissionStatusText = @"Section problems";
+        pageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://bugreport.apple.com/developer/problem/getSectionProblems"]];
+		
+        aPage = [[QRWebScraper alloc] init];
+		aPage.URL = pageURL;
+		aPage.cookiesSource = mainPage;
+		aPage.referrer = mainPage;
+		aPage.HTTPMethod = @"POST";
+        aPage.customBody = [@"{\"reportID\":\"Attention\",\"orderBy\":\"DateOriginated,Descending\",\"rowStartString\":\"1\"}" dataUsingEncoding:NSUTF8StringEncoding];
+        aPage.customHeaders = @{@"csrftokencheck" : csrfToken, @"X-Requested-With" : @"XMLHttpRequest", @"Accept" : @"application/json, text/javascript, */*; q=0.01"};
+		
+		if (![aPage fetch:&error])
+		{
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				self.submissionStatusValue = submissionStatusFailed;
+				completionBlock(NO, error);
+			});
+			return;
+		}
+		else
+		{
+			self.progressValue = 4 * (1.0/NUM_PAGES);
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				progressBlock();
+			});
+		}
+        
+        
+        ti1 = [[NSDate date] timeIntervalSince1970];
+        milliseconds1 = ti1*1000;
+        
+        self.submissionStatusText = @"Draft info";
+        pageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://bugreport.apple.com/developer/problem/fetchDraftInfo?_=%li", milliseconds1]];
+		
+        aPage = [[QRWebScraper alloc] init];
+		aPage.URL = pageURL;
+		aPage.cookiesSource = mainPage;
+		aPage.referrer = mainPage;
+		aPage.HTTPMethod = @"GET";
+        aPage.customHeaders = @{@"csrftokencheck" : csrfToken, @"X-Requested-With" : @"XMLHttpRequest", @"Accept" : @"application/json, text/javascript, */*; q=0.01"};
+		
+		if (![aPage fetch:&error])
+		{
+		}
+		else
+		{
+			self.progressValue = 4 * (1.0/NUM_PAGES);
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				progressBlock();
+			});
+		}
+        
+        /***************************
+		 * Keepalive *
+		 ***************************/
+        
+        NSTimeInterval ti = [[NSDate date] timeIntervalSince1970];
+        long milliseconds = ti*1000;
+        
+        self.submissionStatusText = @"Sending Keepalive Request";
+		NSURL *keepaliveURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://bugreport.apple.com/developer/problem/keepAliveSession?_=%li", milliseconds]];
+		
+		QRWebScraper *keepalivePage = [[QRWebScraper alloc] init];
+		keepalivePage.URL = keepaliveURL;
+		keepalivePage.cookiesSource = mainPage;
+		keepalivePage.referrer = mainPage;
+		keepalivePage.HTTPMethod = @"GET";
+        keepalivePage.customHeaders = @{@"csrftokencheck" : csrfToken};
+		
+		if (![keepalivePage fetch:&error])
+		{
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				self.submissionStatusValue = submissionStatusFailed;
+				completionBlock(NO, error);
+			});
+			return;
+		}
+		else
+		{
+			self.progressValue = 4 * (1.0/NUM_PAGES);
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				progressBlock();
+			});
+		}
+
+        
+        
+        /***************************
+		 * Preprocess radar body *
+		 ***************************/
+        
+        NSString *radarBody = self.radar.body;
+        
+        radarBody = [radarBody stringByReplacingOccurrencesOfString:@"\n" withString:@"\r\n"];
+        
+        
+        NSString *radarCompleteText = [radarBody stringByAppendingFormat:@"\r\n\r\nSteps to Reproduce:\r\n\r\n\r\nExpected Results:\r\n\r\n\r\nActual Results:\r\n\r\n\r\nVersion:\r\n\r\n\r\nNotes:\r\n\r\n\r\nConfiguration:\r\n\r\n\r\nAttachments:\r\n"];
+        
+        
+        /***************************
 		 * Create our ticket *
 		 ***************************/
 		
@@ -301,12 +469,13 @@
         
         ticket[@"problemTitle"] = self.radar.title;
         ticket[@"configIDPop"] = @"";
+        ticket[@"configTitlePop"] = @"";
         ticket[@"configDescriptionPop"] = @"";
         ticket[@"configurationText"] = @"";
         ticket[@"hiddenFileSizeNew"] = @"";
         ticket[@"notes"] = @"";
         ticket[@"workAroundText"] = @"";
-        ticket[@"descriptionText"] = self.radar.body;
+        ticket[@"descriptionText"] = radarCompleteText;
         ticket[@"classificationCode"] = [NSString stringWithFormat:@"%ld", (long)self.radar.classificationCode];
         ticket[@"reproducibilityCode"] = [NSString stringWithFormat:@"%ld", (long)self.radar.reproducibleCode];
         
@@ -315,8 +484,9 @@
         ticket[@"component"] = component;
         
         ticket[@"draftID"] = @"";
+        ticket[@"draftFlag"] = @"0";
         ticket[@"versionBuild"] = @"";
-        ticket[@"desctextvalidate"] = self.radar.body;
+        ticket[@"desctextvalidate"] = radarBody;
         ticket[@"stepstoreprvalidate"] = @"";
         ticket[@"experesultsvalidate"] = @"";
         ticket[@"actresultsvalidate"] = @"";
@@ -325,7 +495,8 @@
         
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ticket options:0 error:&error];
 		NSString *jsonText = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-		
+        
+ 		
 		/*******************************
 		 * Page 5: Bug Submission Page *
 		 *******************************/
@@ -335,7 +506,7 @@
 		
 		QRWebScraper *bugSubmissionPage = [[QRWebScraper alloc] init];
 		bugSubmissionPage.URL = bugSubmissionURL;
-		bugSubmissionPage.cookiesSource = mainPage;
+//		bugSubmissionPage.cookiesSource = mainPage;
 		bugSubmissionPage.referrer = @"https://bugreport.apple.com/problem/viewproblem";
 		bugSubmissionPage.HTTPMethod = @"POST";
 		bugSubmissionPage.sendMultipartFormData = YES;

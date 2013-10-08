@@ -8,6 +8,7 @@
 
 #import "QRURLConnection.h"
 #import "NSString+URLEncoding.h"
+#import "OrderedDictionary.h"
 
 @interface QRURLConnection()
 
@@ -22,11 +23,15 @@
 {
 	NSMutableURLRequest *request = [self.request mutableCopy];
 	
-	if (self.useMultipartRatherThanURLEncoded && self.postParameters && !self.sendPostParamsAsJSON)
+    if (self.customBody)
+    {
+        [request setHTTPBody:self.customBody];
+    }
+	else if (self.useMultipartRatherThanURLEncoded && self.postParameters && !self.sendPostParamsAsJSON)
 	{
 		[request setHTTPMethod:@"POST"];
 		
-		NSString *boundary = @"----FOO";
+		NSString *boundary = @"----WebKitFormBoundaryDjNJTz928CjLx8fQ";
 		NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
 		[request setValue:contentType forHTTPHeaderField:@"Content-type"];
 		
@@ -115,15 +120,48 @@
 	{
         
         
-        
+        if ([request valueForHTTPHeaderField:@"Accept"].length == 0)
+        {
+            [request addValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
+        }
 		[request addValue:[NSString stringWithFormat:@"https://%@", request.URL.host] forHTTPHeaderField:@"Origin"];
-		[request addValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
-		[request addValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534.55.3 (KHTML, like Gecko) Version/5.1.5 Safari/534.55.3" forHTTPHeaderField:@"User-Agent"];
+		[request addValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/536.30.1 (KHTML, like Gecko) Version/6.0.5 Safari/536.30.1" forHTTPHeaderField:@"User-Agent"];
 		[request addValue:request.URL.host forHTTPHeaderField:@"Host"];
 		[request addValue:@"gzip, deflate" forHTTPHeaderField:@"Accept-Encoding"];
 		[request addValue:@"en-us" forHTTPHeaderField:@"Accept-Language"];
 	}
+    
+    NSLog(@"Request headers: %@", request.allHTTPHeaderFields);
+    
+    NSDictionary *existingHeaders = request.allHTTPHeaderFields;
+    OrderedDictionary *orderedDict = [[OrderedDictionary alloc] init];
+    
+    if (existingHeaders[@"Host"]) [orderedDict setObject:existingHeaders[@"Host"] forKey:@"Host"];
+    if (existingHeaders[@"User-Agent"]) [orderedDict setObject:existingHeaders[@"User-Agent"] forKey:@"User-Agent"];
+    if (existingHeaders[@"Content-Length"]) [orderedDict setObject:existingHeaders[@"Content-Length"] forKey:@"Content-Length"];
+    if (existingHeaders[@"Accept"]) [orderedDict setObject:existingHeaders[@"Accept"] forKey:@"Accept"];
+    if (existingHeaders[@"Origin"]) [orderedDict setObject:existingHeaders[@"Origin"] forKey:@"Origin"];
+    if (existingHeaders[@"Content-Type"]) [orderedDict setObject:existingHeaders[@"Content-Type"] forKey:@"Content-Type"];
+    if (existingHeaders[@"Referer"]) [orderedDict setObject:existingHeaders[@"Referer"] forKey:@"Referer"];
+    if (existingHeaders[@"Accept-Language"]) [orderedDict setObject:existingHeaders[@"Accept-Language"] forKey:@"Accept-Language"];
+    if (existingHeaders[@"Accept-Encoding"]) [orderedDict setObject:existingHeaders[@"Accept-Encoding"] forKey:@"Accept-Encoding"];
+    if (existingHeaders[@"Cookie"]) [orderedDict setObject:existingHeaders[@"Cookie"] forKey:@"Cookie"];
+    if (existingHeaders[@"Connection"]) [orderedDict setObject:existingHeaders[@"Connection"] forKey:@"Connection"];
+    if (existingHeaders[@"Proxy-Connection"]) [orderedDict setObject:existingHeaders[@"Proxy-Connection"] forKey:@"Proxy-Connection"];
+    
+    NSArray *allKeys = [orderedDict allKeys];
+    for (NSString *key in existingHeaders)
+    {
+        if (![allKeys containsObject:key])
+        {
+            [orderedDict setObject:[existingHeaders objectForKey:key] forKey:key];
+        }
+    }
 
+    [request setAllHTTPHeaderFields:orderedDict];
+    
+    NSLog(@"Request headers2: %@", request.allHTTPHeaderFields);
+    
 	NSHTTPURLResponse *resp;
 	NSData *d =  [NSURLConnection sendSynchronousRequest:request returningResponse:&resp error:error];
 	
