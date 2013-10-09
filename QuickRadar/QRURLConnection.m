@@ -131,7 +131,7 @@
 		[request addValue:@"en-us" forHTTPHeaderField:@"Accept-Language"];
 	}
     
-    NSLog(@"Request headers: %@", request.allHTTPHeaderFields);
+//    NSLog(@"Request headers: %@", request.allHTTPHeaderFields);
     
     NSDictionary *existingHeaders = request.allHTTPHeaderFields;
     OrderedDictionary *orderedDict = [[OrderedDictionary alloc] init];
@@ -160,7 +160,7 @@
 
     [request setAllHTTPHeaderFields:orderedDict];
     
-    NSLog(@"Request headers2: %@", request.allHTTPHeaderFields);
+//    NSLog(@"Request headers2: %@", request.allHTTPHeaderFields);
     
 	NSHTTPURLResponse *resp;
 	NSData *d =  [NSURLConnection sendSynchronousRequest:request returningResponse:&resp error:error];

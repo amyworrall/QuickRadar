@@ -104,33 +104,11 @@
 {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 		
-//		NSLog(@"Starting radar");
-//		sleep(5);
-//		NSLog(@"Stopping radar");
-//		completionBlock(YES, nil);
-//		return;
 		
 		
 		self.submissionStatusValue = submissionStatusInProgress;
 		
 		NSError *error = nil;
-		
-		
-		
-		// TEST
-		/*
-		self.radar.radarNumber = 27;
-		
-		self.progressValue = 1.0;
-		self.submissionStatusValue = submissionStatusCompleted;
-		
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			progressBlock();
-			completionBlock(YES, nil);
-		});
-		return;
-		*/
-
 		
 		
 		/**********************
@@ -271,7 +249,7 @@
 			});
 		}
         
-        NSLog(@"Main page: %@", [[NSString alloc] initWithData:mainPage.returnedData encoding:NSUTF8StringEncoding]);
+//        NSLog(@"Main page: %@", [[NSString alloc] initWithData:mainPage.returnedData encoding:NSUTF8StringEncoding]);
 		
 		// ------- Parsing --------
 		
@@ -299,7 +277,7 @@
         NSTimeInterval ti1 = [[NSDate date] timeIntervalSince1970];
         long milliseconds1 = ti1*1000;
         
-        self.submissionStatusText = @"Product list";
+        self.submissionStatusText = @"Fetching product list";
         NSURL *pageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://bugreport.apple.com/developer/problem/getProductFullList?_=%li", milliseconds1]];
 		
         QRWebScraper *aPage = [[QRWebScraper alloc] init];
@@ -330,7 +308,7 @@
         ti1 = [[NSDate date] timeIntervalSince1970];
          milliseconds1 = ti1*1000;
         
-        self.submissionStatusText = @"All counts";
+        self.submissionStatusText = @"Getting counts";
         pageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://bugreport.apple.com/developer/problem/getAllCounts?_=%li", milliseconds1]];
 		
         aPage = [[QRWebScraper alloc] init];
@@ -361,7 +339,7 @@
         ti1 = [[NSDate date] timeIntervalSince1970];
         milliseconds1 = ti1*1000;
         
-        self.submissionStatusText = @"Section problems";
+        self.submissionStatusText = @"Requesting section";
         pageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://bugreport.apple.com/developer/problem/getSectionProblems"]];
 		
         aPage = [[QRWebScraper alloc] init];
@@ -392,7 +370,7 @@
         ti1 = [[NSDate date] timeIntervalSince1970];
         milliseconds1 = ti1*1000;
         
-        self.submissionStatusText = @"Draft info";
+        self.submissionStatusText = @"Requesting drafts";
         pageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://bugreport.apple.com/developer/problem/fetchDraftInfo?_=%li", milliseconds1]];
 		
         aPage = [[QRWebScraper alloc] init];
@@ -457,7 +435,7 @@
         radarBody = [radarBody stringByReplacingOccurrencesOfString:@"\n" withString:@"\r\n"];
         
         
-        NSString *radarCompleteText = [radarBody stringByAppendingFormat:@"\r\n\r\nSteps to Reproduce:\r\n\r\n\r\nExpected Results:\r\n\r\n\r\nActual Results:\r\n\r\n\r\nVersion:\r\n\r\n\r\nNotes:\r\n\r\n\r\nConfiguration:\r\n\r\n\r\nAttachments:\r\n"];
+        NSString *radarCompleteText = [radarBody copy];
         
         
         /***************************
@@ -506,10 +484,10 @@
 		
 		QRWebScraper *bugSubmissionPage = [[QRWebScraper alloc] init];
 		bugSubmissionPage.URL = bugSubmissionURL;
-//		bugSubmissionPage.cookiesSource = mainPage;
 		bugSubmissionPage.referrer = @"https://bugreport.apple.com/problem/viewproblem";
 		bugSubmissionPage.HTTPMethod = @"POST";
 		bugSubmissionPage.sendMultipartFormData = YES;
+        bugSubmissionPage.shouldParseXML = NO;
 		
 		// Sets up all the fields necessary for submission.
 		[bugSubmissionPage addPostParameter:jsonText forKey:@"hJsonScreenVal"];

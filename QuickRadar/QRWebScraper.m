@@ -35,6 +35,14 @@
 @synthesize cookiesReturned = _cookiesReturned;
 @synthesize xmlDocument = _xmlDocument;
 
+- (id)init
+{
+    if (self = [super init])
+    {
+        _shouldParseXML = YES;
+    }
+    return self;
+}
 
 - (void)addPostParameter:(id)param forKey:(NSString*)key;
 {
@@ -119,15 +127,20 @@
 	self.cookiesReturned = conn.cookiesReturned;
 	self.returnedData = data;
 	
-	NSXMLDocument *newXMLDoc = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyHTML error:&error];
-	
-	if (!newXMLDoc)
-	{
-		*returnError = error;
-		return NO;
-	}
-	
-	self.xmlDocument = newXMLDoc;
+    if (self.shouldParseXML)
+    {
+        NSXMLDocument *newXMLDoc = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyHTML error:&error];
+        
+        if (!newXMLDoc)
+        {
+            *returnError = error;
+            return NO;
+        }
+        
+        self.xmlDocument = newXMLDoc;
+
+    }
+    
 	return YES;
 }
 

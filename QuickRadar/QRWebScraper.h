@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSData *returnedData;
 @property (nonatomic, strong) NSDictionary *customHeaders;
 @property (nonatomic, strong) NSData *customBody;
-
+@property (nonatomic, assign) BOOL shouldParseXML; // defaults to YES
 
 /* A synchronous method */
 - (BOOL)fetch:(NSError**)error;
