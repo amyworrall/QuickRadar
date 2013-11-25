@@ -5,46 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E2283326-DC0B-4623-9430-B576525BED49</string>
+	<string>1258499B-E9EB-4624-9ED3-52ED8A4EB7A5</string>
 	<key>IDESourceControlProjectName</key>
 	<string>QuickRadar</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0D480BE3-FECB-40EE-AA72-CCA03A674B16</key>
-		<string>ssh://github.com/amyworrall/QuickRadar.git</string>
-		<key>B8EEC96B-D1A6-4E70-BB3C-ED56EB06E9C9</key>
-		<string>https://github.com/Cocoanetics/DTXMLRPC.git</string>
+		<key>4745B7EF-83BA-4F1E-B342-5DD067FFAF20</key>
+		<string>ssh://github.com/Daij-Djan/QuickRadar.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>QuickRadar.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0D480BE3-FECB-40EE-AA72-CCA03A674B16</key>
+		<key>4745B7EF-83BA-4F1E-B342-5DD067FFAF20</key>
 		<string>../..</string>
-		<key>B8EEC96B-D1A6-4E70-BB3C-ED56EB06E9C9</key>
-		<string>../../Externals/DTXMLRPC</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/amyworrall/QuickRadar.git</string>
+	<string>ssh://github.com/Daij-Djan/QuickRadar.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0D480BE3-FECB-40EE-AA72-CCA03A674B16</string>
+	<string>4745B7EF-83BA-4F1E-B342-5DD067FFAF20</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B8EEC96B-D1A6-4E70-BB3C-ED56EB06E9C9</string>
-			<key>IDESourceControlWCCName</key>
-			<string>DTXMLRPC</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0D480BE3-FECB-40EE-AA72-CCA03A674B16</string>
+			<string>4745B7EF-83BA-4F1E-B342-5DD067FFAF20</string>
 			<key>IDESourceControlWCCName</key>
 			<string>QuickRadar</string>
 		</dict>
