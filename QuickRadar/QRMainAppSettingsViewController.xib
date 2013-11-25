@@ -48,7 +48,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="77">
-                    <rect key="frame" x="18" y="111" width="135" height="17"/>
+                    <rect key="frame" x="28" y="113" width="135" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Handle rdar:// URLs:" id="78">
                         <font key="font" metaFont="system"/>
@@ -75,7 +75,7 @@
                     </connections>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" id="396">
-                    <rect key="frame" x="53" y="216" width="100" height="17"/>
+                    <rect key="frame" x="63" y="217" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Global hot key:" id="397">
                         <font key="font" metaFont="system"/>
