@@ -13,8 +13,93 @@
 
 #define kQRAppListApplePrefix @"com.apple"
 
+
+@interface QRSystemFakeApplication : NSObject
+
+-(id)	initWithSysVersionDict: (NSDictionary*)inSysVersionDict;
+
+@property (nonatomic,readwrite) NSDictionary*	sysVersionDict;
+@property (nonatomic, readonly) NSString *unlocalizedName;
+@property (nonatomic, readonly) NSString *version;
+@property (nonatomic, readonly) NSString *build;
+@property (nonatomic, readonly) NSString *versionAndBuild;
+@property (nonatomic, readonly) NSImage *icon;
+
+@end
+
+
+@implementation QRSystemFakeApplication
+
+-(id)	initWithSysVersionDict: (NSDictionary*)inSysVersionDict
+{
+	self = [super init];
+	if( self )
+		self.sysVersionDict = inSysVersionDict;
+	
+	return self;
+}
+
+
+-(NSString*)	unlocalizedName
+{
+	return [self.sysVersionDict objectForKey: @"ProductName"];
+}
+
+-(NSString*)	name
+{
+	return [self.sysVersionDict objectForKey: @"ProductName"];
+}
+
+-(NSString*)	version
+{
+	return [self.sysVersionDict objectForKey: @"ProductVersion"];
+}
+
+-(NSString*)	build
+{
+	return [self.sysVersionDict objectForKey: @"ProductBuildVersion"];
+}
+
+-(NSString*)	versionAndBuild
+{
+	return [NSString stringWithFormat: @"%@ (%@)", self.version, self.build];
+}
+
+-(NSImage*)	icon
+{
+	return [[NSWorkspace sharedWorkspace] iconForFileType: NSFileTypeForHFSTypeCode( 'macs' )];
+}
+
+
+-(BOOL)	didCrashRecently
+{
+	return NO;
+}
+
+
+- (NSString *)guessCategory
+{
+	NSString *identifier = @"com.apple.dock";	// Dock is a part of us, so good guess.
+	NSDictionary *categories = [[QRAppListManager sharedManager] categories];
+	NSEnumerator *enumerator = [categories keyEnumerator];
+	NSString *key;
+	while ((key = [enumerator nextObject])) {
+		NSArray *bundlePrefixes = categories[key];
+		for (NSString *prefix in bundlePrefixes) {
+			if ([identifier hasPrefix:prefix]) {
+				return key;
+			}
+		}
+	}
+	return nil;
+}
+
+@end
+
+
 @interface QRAppListManager ()
-@property (nonatomic, readwrite) NSMutableArray *appList;
+@property (nonatomic, readwrite) NSMutableArray *internalAppList;
+@property (nonatomic, readwrite) QRSystemFakeApplication *systemFakeAppObject;
 @end
 
 
@@ -46,11 +131,14 @@
 																   name:NSWorkspaceDidActivateApplicationNotification object:nil];
 		
 		// Try to load any cached list, otherwise start with empty list.
-		self.appList = [NSMutableArray arrayWithCapacity:15];
+		self.internalAppList = [NSMutableArray arrayWithCapacity:15];
 		NSArray *loadedList = [self loadList];
 		if (loadedList) {
-			[self.appList addObjectsFromArray:loadedList];
+			[self.internalAppList addObjectsFromArray:loadedList];
 		}
+		
+		NSDictionary	*	sysVersionDict = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
+		self.systemFakeAppObject = [[QRSystemFakeApplication alloc] initWithSysVersionDict: sysVersionDict];
     }
     return self;
 }
@@ -65,10 +153,10 @@
 		NSInteger oldIndex = [self.appList indexOfObject:app];
 		userInfo[kQRAppListNotificationOldIndexKey] = @(oldIndex);
 		QRCachedRunningApplication *existingApp = self.appList[oldIndex];
-		[self.appList removeObjectAtIndex:oldIndex];
-		[self.appList insertObject:existingApp atIndex:0];
+		[self.internalAppList removeObjectAtIndex:oldIndex];
+		[self.internalAppList insertObject:existingApp atIndex:0];
 	} else {
-		[self.appList insertObject:app atIndex:0];
+		[self.internalAppList insertObject:app atIndex:0];
 	}
 	[[NSNotificationCenter defaultCenter] postNotificationName:kQRAppListUpdatesNotification object:self userInfo:userInfo];
 }
@@ -101,7 +189,7 @@
 
 - (void)saveList {
 	NSString *plistPath = [[self cacheFolder] stringByAppendingPathComponent:@"AppList.plist"];
-	[NSKeyedArchiver archiveRootObject:self.appList toFile:plistPath];
+	[NSKeyedArchiver archiveRootObject:self.internalAppList toFile:plistPath];
 }
 
 - (NSArray *)loadList {
@@ -114,6 +202,13 @@
 		NSLog(@"Corrupted app list cache file at %@", plistPath);
 	}
 	return list;
+}
+
+
+- (NSArray*)appList {
+	NSMutableArray	*	apps = [[NSMutableArray alloc] initWithObjects: self.systemFakeAppObject, nil];
+	[apps addObjectsFromArray: self.internalAppList];
+	return apps;
 }
 
 #pragma mark -
