@@ -29,11 +29,11 @@
 		<string>com.apple.Java</string>
 		<string>com.apple.Jar</string>
 	</array>
-	<key>Mac App Store</key>
+	<key>OS X App Store</key>
 	<array>
 		<string>com.apple.appstore</string>
 	</array>
-	<key>Mac OS X</key>
+	<key>OS X</key>
 	<array>
 		<string>com.apple.finder</string>
 		<string>com.apple.dock</string>
