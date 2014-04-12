@@ -90,7 +90,7 @@ static NSString * const QRAppListFooterItem = @"Footer";
 }
 
 - (id)listItemAtIndex:(NSInteger)index appsOnly:(BOOL)appsOnly {
-    NSMutableArray *appList = [QRAppListManager sharedManager].appList;
+    NSArray *appList = [QRAppListManager sharedManager].appList;
     NSInteger appListCount = appList.count;
     if (index > 0 && index <= appListCount)
         return [QRAppListManager sharedManager].appList[index - 1];
