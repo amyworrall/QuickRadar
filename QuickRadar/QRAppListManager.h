@@ -14,7 +14,7 @@
 
 @interface QRAppListManager : NSObject
 
-@property (nonatomic, readonly) NSMutableArray *appList;
+@property (nonatomic, readonly) NSArray *appList;
 @property (nonatomic, readonly) NSDictionary *categories;
 
 + (QRAppListManager *)sharedManager;
