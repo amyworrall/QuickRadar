@@ -159,7 +159,7 @@
 		NSString *username = [prefs objectForKey: @"username"];
 		NSString *password = [self radarPassword];
 		
-		NSURL *bouncePageURL = [NSURL URLWithString:@"https://idmsa.apple.com/IDMSWebAuth/authenticate.html"];
+		NSURL *bouncePageURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://idmsa.apple.com/IDMSWebAuth/%@", loginPageValues[@"action"]]];
 		
 		
 		QRWebScraper *bouncePage = [[QRWebScraper alloc] init];
