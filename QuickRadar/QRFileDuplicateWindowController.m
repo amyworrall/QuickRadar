@@ -8,6 +8,7 @@
 
 #import "QRFileDuplicateWindowController.h"
 #import "QRRadar.h"
+#import "QRUserDefaultsKeys.h"
 #import "AppDelegate.h"
 
 @interface QRFileDuplicateWindowController ()
@@ -29,7 +30,10 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    
+
+	NSInteger windowLevel = [[NSUserDefaults standardUserDefaults] integerForKey:QRWindowLevelKey];
+	[self.window setLevel:windowLevel];
+
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 

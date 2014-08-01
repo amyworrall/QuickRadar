@@ -9,6 +9,7 @@
 #import "QRPreferencesWindowController.h"
 #import "QRMainAppSettingsViewController.h"
 #import "QRSubmissionService.h"
+#import "QRUserDefaultsKeys.h"
 
 @interface QRPreferencesWindowController () <NSToolbarDelegate>
 @property (strong, nonatomic) IBOutlet NSToolbar *toolbar;
@@ -34,7 +35,10 @@
 - (void)awakeFromNib
 {
 	[super awakeFromNib];
-	
+
+	NSInteger windowLevel = [[NSUserDefaults standardUserDefaults] integerForKey:QRWindowLevelKey];
+	[self.window setLevel:windowLevel];
+
 	self.window.title = NSLocalizedString(@"Preferences", @"Preferences Window Title");
 	self.toolbar.delegate = self;
 	self.toolbar.allowsUserCustomization = NO;
