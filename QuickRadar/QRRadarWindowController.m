@@ -12,6 +12,7 @@
 #import "QRRadar.h"
 #import "QRAppListPopover.h"
 #import "QRCachedRunningApplication.h"
+#import "QRUserDefaultsKeys.h"
 #import "NSButton+QuickRadar.h"
 #import "AppDelegate.h"
 #import <Growl/Growl.h>
@@ -35,9 +36,8 @@
 
 - (void)windowDidLoad
 {
-	// Because the window will be presented from QuickRadar, an LSStatusItem application,
-	// set its window level obnoxiously high so it doesn't get lost.
-	[self.window setLevel:NSStatusWindowLevel];
+	NSInteger windowLevel = [[NSUserDefaults standardUserDefaults] integerForKey:QRWindowLevelKey];
+	[self.window setLevel:windowLevel];
 	
 	[self.productMenu removeAllItems];
 	[self.classificationMenu removeAllItems];
