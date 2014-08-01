@@ -89,17 +89,33 @@ static NSString * const QRAppListFooterItem = @"Footer";
 	[self.outlineView reloadData];
 }
 
+// If appsOnly is YES, return nil for indexes correlating to non-app UI rows
 - (id)listItemAtIndex:(NSInteger)index appsOnly:(BOOL)appsOnly {
+	id foundItem = nil;
     NSArray *appList = [QRAppListManager sharedManager].appList;
     NSInteger appListCount = appList.count;
-    if (index > 0 && index <= appListCount)
-        return [QRAppListManager sharedManager].appList[index - 1];
 
-    if (!appsOnly) {
-        if (index == 0) return QRAppListHeaderItem;
-        if (index == appListCount + 1) return QRAppListFooterItem;
+	// Special indexes 0 and appListCount + 1 always correlate
+	// to the non-app header and footer items, but when appsOnly
+	// is YES we guarantee the caller we will return nil for these
+	// items.
+	if (index == 0) {
+		foundItem = appsOnly ? nil : QRAppListHeaderItem;
+	}
+	else if ((index == appListCount + 1) && !appsOnly) {
+		foundItem = appsOnly ? nil : QRAppListFooterItem;
     }
-    return nil;
+	else {
+		// Otherwise adjust the index to accommodate the non-app items,
+		// in this case that is solved by subtracting 1 to correlate to
+		// the "real apps" list.
+		NSInteger appIndex = index - 1;
+		if (appIndex >= 0 && appIndex < appListCount) {
+			foundItem = [QRAppListManager sharedManager].appList[appIndex];
+		}
+	}
+
+    return foundItem;
 }
 
 - (void)appSelected:(NSOutlineView *)outlineView {
@@ -110,13 +126,22 @@ static NSString * const QRAppListFooterItem = @"Footer";
 }
 
 - (void)completeAppListUpdate:(NSNotification *)notification {
+	// A little cheesy hardcoding this but it accommodates the fake "header" item
+	// as well as the fake Mac OS X item which should probably always be listed first
+	// so it doesn't get lost at the bottom just because it's never "active".
+	NSInteger newIndex = 2;
 	NSNumber *oldIndexNumber = notification.userInfo[kQRAppListNotificationOldIndexKey];
 	if (oldIndexNumber) {
+		// Have to adjust the old index as advertised by the app list manager
+		// to correlate with our index in the view (skip the header)
 		NSInteger oldIndex = [oldIndexNumber integerValue] + 1;
-		[self.outlineView moveItemAtIndex:oldIndex inParent:nil toIndex:1 inParent:nil];
-		[self.outlineView scrollRowToVisible:0];
+		if (oldIndex != newIndex)
+		{
+			[self.outlineView moveItemAtIndex:oldIndex inParent:nil toIndex:newIndex inParent:nil];
+			[self.outlineView scrollRowToVisible:0];
+		}
 	} else {
-		[self.outlineView insertItemsAtIndexes:[NSIndexSet indexSetWithIndex:1] inParent:nil withAnimation:NSTableViewAnimationSlideDown];
+		[self.outlineView insertItemsAtIndexes:[NSIndexSet indexSetWithIndex:newIndex] inParent:nil withAnimation:NSTableViewAnimationSlideDown];
 	}
 }
 
