@@ -35,6 +35,9 @@
 
 - (void)windowDidLoad
 {
+	// Because the window will be presented from QuickRadar, an LSStatusItem application,
+	// set its window level obnoxiously high so it doesn't get lost.
+	[self.window setLevel:NSStatusWindowLevel];
 	
 	[self.productMenu removeAllItems];
 	[self.classificationMenu removeAllItems];
