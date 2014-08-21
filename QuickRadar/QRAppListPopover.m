@@ -18,7 +18,8 @@
 // but on 10.10 and greater the view system will call it for us. Avoid calling it twice...
 - (BOOL) isMavericksOrOlder
 {
-	return (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_9);
+	// 1265 is the same as NSAppKitVersionNumber10_9. The latter constant doesn't exist on Mavericks!
+	return (floor(NSAppKitVersionNumber) <= 1265);	
 }
 
 - (QRAppListViewController *) listViewController
