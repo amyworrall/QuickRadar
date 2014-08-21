@@ -12,6 +12,7 @@
 #import "QRRadar.h"
 #import "QRAppListPopover.h"
 #import "QRCachedRunningApplication.h"
+#import "QRUserDefaultsKeys.h"
 #import "NSButton+QuickRadar.h"
 #import "AppDelegate.h"
 #import <Growl/Growl.h>
@@ -35,6 +36,8 @@
 
 - (void)windowDidLoad
 {
+	NSInteger windowLevel = [[NSUserDefaults standardUserDefaults] integerForKey:QRWindowLevelKey];
+	[self.window setLevel:windowLevel];
 	
 	[self.productMenu removeAllItems];
 	[self.classificationMenu removeAllItems];

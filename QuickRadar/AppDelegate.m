@@ -42,6 +42,7 @@
 	 QRShowInStatusBarKey: @YES,
 	 QRShowInDockKey : @NO,
 	 QRHandleRdarURLsKey : @(rdarURLsMethodFileDuplicate),
+	 QRWindowLevelKey : [NSNumber numberWithInt:NSStatusWindowLevel]
      }];
 }
 

@@ -152,8 +152,13 @@
 	if ([self.appList containsObject:app]) {
 		NSInteger oldIndex = [self.appList indexOfObject:app];
 		userInfo[kQRAppListNotificationOldIndexKey] = @(oldIndex);
-		QRCachedRunningApplication *existingApp = self.appList[oldIndex];
-		[self.internalAppList removeObjectAtIndex:oldIndex];
+
+		// We have to be sure we're working with the internal array's indexing because of a
+		// bogus "QRSystemFakeApplication" that is always (?) at index 0 in the accessor-generated
+		// self.appList. Move the item from wherever it is now to the beginning of the array.
+		NSInteger internalOldIndex = [self.internalAppList indexOfObject:app];
+		QRCachedRunningApplication *existingApp = self.internalAppList[internalOldIndex];
+		[self.internalAppList removeObjectAtIndex:internalOldIndex];
 		[self.internalAppList insertObject:existingApp atIndex:0];
 	} else {
 		[self.internalAppList insertObject:app atIndex:0];

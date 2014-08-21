@@ -134,7 +134,7 @@
                     </connections>
                 </popUpButton>
                 <button id="NDl-oj-Jfl">
-                    <rect key="frame" x="166" y="23" width="187" height="18"/>
+                    <rect key="frame" x="167" y="23" width="187" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Start QuickRadar on Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LQx-IL-Cn2">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

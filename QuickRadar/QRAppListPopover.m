@@ -14,30 +14,40 @@
 
 @implementation QRAppListPopover
 
-- (void)showRelativeToRect:(NSRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(NSRectEdge)preferredEdge {
-//	QRAppListViewController *viewController = (QRAppListViewController *)self.contentViewController;
-//	[viewController updateHeight];
-	[super showRelativeToRect:positioningRect ofView:positioningView preferredEdge:preferredEdge];
+// On versions of Mac OS X earlier than 10.10, we have to call viewWillAppear et. al. manually,
+// but on 10.10 and greater the view system will call it for us. Avoid calling it twice...
+- (BOOL) isMavericksOrOlder
+{
+	return (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_9);
+}
+
+- (QRAppListViewController *) listViewController
+{
+	return (QRAppListViewController *)self.contentViewController;
 }
 
 - (void)popoverWillShow:(NSNotification *)notification {
-	QRAppListViewController *viewController = (QRAppListViewController *)self.contentViewController;
-	[viewController viewWillAppear];
+	if ([self isMavericksOrOlder]) {
+		[[self listViewController] viewWillAppear];
+	}
 }
 
 - (void)popoverDidShow:(NSNotification *)notification {
-	QRAppListViewController *viewController = (QRAppListViewController *)self.contentViewController;
-	[viewController viewDidAppear];
+	if ([self isMavericksOrOlder]) {
+		[[self listViewController] viewDidAppear];
+	}
 }
 
 - (void)popoverWillClose:(NSNotification *)notification {
-	QRAppListViewController *viewController = (QRAppListViewController *)self.contentViewController;
-	[viewController viewWillDisappear];
+	if ([self isMavericksOrOlder]) {
+		[[self listViewController] viewWillDisappear];
+	}
 }
 
 - (void)popoverDidClose:(NSNotification *)notification {
-	QRAppListViewController *viewController = (QRAppListViewController *)self.contentViewController;
-	[viewController viewDidDisappear];
+	if ([self isMavericksOrOlder]) {
+		[[self listViewController] viewDidDisappear];
+	}
 }
 
 - (void)selectedApp:(QRCachedRunningApplication *)app {

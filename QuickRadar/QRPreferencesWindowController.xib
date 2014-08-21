@@ -7,7 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="QRPreferencesWindowController">
             <connections>
-                <outlet property="panesArrayController" destination="57" id="63"/>
                 <outlet property="toolbar" destination="145" id="151"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
