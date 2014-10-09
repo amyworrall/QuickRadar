@@ -134,7 +134,11 @@
 		self.internalAppList = [NSMutableArray arrayWithCapacity:15];
 		NSArray *loadedList = [self loadList];
 		if (loadedList) {
-			[self.internalAppList addObjectsFromArray:loadedList];
+			for (QRCachedRunningApplication *app in loadedList) {
+				if (![self.internalAppList containsObject:app]) {
+					[self.internalAppList addObject:app];
+				}
+			}
 		}
 		
 		NSDictionary	*	sysVersionDict = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
