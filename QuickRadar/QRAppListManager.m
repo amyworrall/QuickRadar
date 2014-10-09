@@ -175,12 +175,10 @@
 	// currently visible app list GUI can update itself.
 	NSRunningApplication *app =  notification.userInfo[NSWorkspaceApplicationKey];
 	QRCachedRunningApplication *cachedApp = [[QRCachedRunningApplication alloc] initWithRunningApplication:app];
-	if (![[NSRunningApplication currentApplication] isEqual:app] /*&& ![app.bundleIdentifier hasSuffix:@"Xcode"]*/) {
-		
-		BOOL onlyAppleApps = ![[NSUserDefaults standardUserDefaults] boolForKey:@"QRAppListShowAllApps"];
-		if (!onlyAppleApps || [app.bundleIdentifier hasPrefix:kQRAppListApplePrefix]) {
-			[self addApp:cachedApp];
-		}
+
+	BOOL onlyAppleApps = ![[NSUserDefaults standardUserDefaults] boolForKey:@"QRAppListShowAllApps"];
+	if (!onlyAppleApps || [app.bundleIdentifier hasPrefix:kQRAppListApplePrefix]) {
+		[self addApp:cachedApp];
 	}
 }
 
