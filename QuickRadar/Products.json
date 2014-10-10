@@ -1,34 +1,19 @@
  [{
   "categoryName": "OS and Development",
-  "productImage": "DeveloperTools",
-  "compNameForWeb": "Developer Tools",
+  "productImage": "iOS",
+  "compNameForWeb": "iOS",
   "buildVersionRequired": 1,
-  "productToolTip": "For all Xcode issues (including Xcode tools - Interface Builder, Instruments, compilers, simulators, command line tools, etc.)",
-  "buildVersionLabel": "Xcode Version/Build & OS X Version/Build",
-  "componentID": 175326
-  }, {
-  "buildVersionText": "Please provide the document title and the hyperlink to the document.",
-  "categoryName": "OS and Development",
-  "productImage": "Documentation",
-  "compNameForWeb": "Documentation",
-  "buildVersionRequired": 0,
-  "productToolTip": "For documentation issues (misinformation, broken links, typos, etc.)",
-  "buildVersionLabel": "Documentation Title & URL",
-  "componentID": 183045
-  }, {
-  "categoryName": "OS and Development",
-  "productImage": "iTuneConn",
-  "compNameForWeb": "iTunes Connect",
-  "buildVersionRequired": 0,
-  "productToolTip": "For all issues regarding iTunes Connect (a tool that allows developers to submit and manage apps for distribution).",
-  "componentID": 500515
+  "productToolTip": "For issues with iOS utilities and features",
+  "buildVersionLabel": "iOS Version/Build",
+  "componentID": 579020
   }, {
   "categoryName": "OS and Development",
   "productImage": "iOSSDK",
   "compNameForWeb": "iOS SDK",
   "buildVersionRequired": 1,
+  "productToolTip": "For all iOS SDK related issues",
   "buildVersionLabel": "iOS Version/Build",
-  "componentID": 501890
+  "componentID": 584784
   }, {
   "categoryName": "OS and Development",
   "productImage": "MacOSX",
@@ -54,6 +39,32 @@
   "buildVersionLabel": "OS X Server Version/Build",
   "componentID": 84100
   }, {
+  "categoryName": "OS and Development",
+  "productImage": "DeveloperTools",
+  "compNameForWeb": "Developer Tools",
+  "buildVersionRequired": 1,
+  "productToolTip": "For all Xcode issues (including Xcode tools - Interface Builder, Instruments, compilers, simulators, command line tools, etc.)",
+  "buildVersionLabel": "Xcode Version/Build & OS X Version/Build",
+  "componentID": 175326
+  }, {
+  "buildVersionText": "Please provide the document title and the hyperlink to the document.",
+  "categoryName": "OS and Development",
+  "productImage": "Documentation",
+  "compNameForWeb": "Documentation",
+  "buildVersionRequired": 0,
+  "productToolTip": "For documentation issues (misinformation, broken links, typos, etc.)",
+  "buildVersionLabel": "Documentation Title & URL",
+  "componentID": 183045
+  }, {
+  "buildVersionText": "Web Browser Name/Version/Build & Platform (incl. Version/Build)",
+  "categoryName": "OS and Development",
+  "productImage": "iTuneConn",
+  "compNameForWeb": "iTunes Connect",
+  "buildVersionRequired": 0,
+  "productToolTip": "For all issues regarding iTunes Connect (a tool that allows developers to submit and manage apps for distribution).",
+  "buildVersionLabel": "Version/Build (Platform: iOS, OS X or Windows?)",
+  "componentID": 500515
+  }, {
   "buildVersionText": "Please provide the name of the sample code and the hyperlink to the sample code.",
   "categoryName": "OS and Development",
   "productImage": "SampleCode",
@@ -71,6 +82,15 @@
   "productToolTip": "For all Technical Note & Technical Q&A issues (broken links, missing images, misinformation, typos, etc.)",
   "buildVersionLabel": "Tech Note/Q&A Title & URL",
   "componentID": 385563
+  }, {
+  "buildVersionText": null,
+  "categoryName": "Applications and Software",
+  "productImage": "iBooks",
+  "compNameForWeb": "iBooks",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with iBooks and iBooks Author",
+  "buildVersionLabel": "iBooks Version & OS X or iOS version/build",
+  "componentID": 571983
   }, {
   "buildVersionText": "Please provide the iCloud Apple ID and indicate the operating system (include version/build).",
   "categoryName": "Applications and Software",
@@ -183,6 +203,7 @@
   "productImage": "iPod",
   "compNameForWeb": "iPod",
   "buildVersionRequired": 1,
+  "productToolTip": "For iPod hardware issues",
   "buildVersionLabel": "iPod Version or Generation",
   "componentID": 185585
   }, {
@@ -206,7 +227,7 @@
   "buildVersionText": "Platform: iOS, OS X or Windows?",
   "categoryName": "Other",
   "productImage": "iOSAppStore",
-  "compNameForWeb": "iOS App Store",
+  "compNameForWeb": "App Store",
   "buildVersionRequired": 0,
   "productToolTip": "For issues with the iTunes Store (downloads, playlists, Genius, etc.)",
   "buildVersionLabel": "iTunes Version/Build & Platform (incl.Version/Build)",
@@ -215,7 +236,7 @@
   "buildVersionText": "Please provide the OS X App Store version/build in addition to the OS X version/build.",
   "categoryName": "Other",
   "productImage": "AppStore",
-  "compNameForWeb": "OS X App Store",
+  "compNameForWeb": "Mac App Store",
   "buildVersionRequired": 0,
   "productToolTip": "For issues with the Mac App Store (downloads, redemption codes, purchase backups, etc.)",
   "buildVersionLabel": "OS X App Store Version/Build & OS X Version/Build",

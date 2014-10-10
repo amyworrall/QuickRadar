@@ -124,6 +124,11 @@
 		return NO;
 	}
 	
+	if (data.length == 0)
+	{
+		return YES;
+	}
+	
 	self.cookiesReturned = conn.cookiesReturned;
 	self.returnedData = data;
 	

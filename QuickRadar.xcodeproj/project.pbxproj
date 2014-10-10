@@ -886,7 +886,6 @@
 		E1CC51A8156257BF0027FB83 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID Application: Double and Thrice Ltd. (R8P9272974)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -902,6 +901,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "Externals/DTXMLRPC/**";
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
@@ -911,7 +911,6 @@
 		E1CC51A9156257BF0027FB83 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID Application: Double and Thrice Ltd. (R8P9272974)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -927,6 +926,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "Externals/DTXMLRPC/**";
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;

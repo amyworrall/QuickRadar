@@ -520,9 +520,16 @@
 		// TODO: work out what error pages RadarWeb can display, and in this if statement make a new NSError filling in the text as appropriate.
 		if (radarNumberResult <= 0)
 		{
+			error = nil;
+			NSDictionary *errorMessage = [NSJSONSerialization JSONObjectWithData:resultData options:0 error:nil];
+			if (errorMessage) {
+				NSString *errorMessageString = errorMessage[@"message"];
+				error = [NSError errorWithDomain:QRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey : errorMessageString}];
+			}
+			
 			dispatch_sync(dispatch_get_main_queue(), ^{ 
 				self.submissionStatusValue = submissionStatusFailed;
-				completionBlock(NO, nil);
+				completionBlock(NO, error);
 			});
 			return;
 		}
