@@ -16,6 +16,7 @@
 #import "NSButton+QuickRadar.h"
 #import "AppDelegate.h"
 #import <Growl/Growl.h>
+#import "QRFileWell.h"
 
 @interface QRRadarWindowController ()
 
@@ -281,6 +282,16 @@
 
 - (IBAction)submitRadar:(id)sender;
 {
+	[self submitRadarWithDraft:NO];
+}
+
+- (IBAction)saveDraft:(id)sender;
+{
+	[self submitRadarWithDraft:YES];
+}
+
+- (void)submitRadarWithDraft:(BOOL)draft;
+{
     //hack to show login details
     NSUserDefaults *    prefs = [NSUserDefaults standardUserDefaults];
     NSString *username = [prefs objectForKey: @"username"];
@@ -309,11 +320,14 @@
 	radar.body = self.bodyTextView.string;
 	radar.dateOriginated = [NSDate date];
 	radar.status = @"Open";
+	radar.configurationString = self.configurationField.stringValue;
+	radar.attachmentURL = self.attachmentFileWell.URL;
 
 	
 	/* Submit it */
 	
 	[self.submitButton setEnabled:NO];
+	[self.draftButton setEnabled:NO];
 	[self.spinner startAnimation:self];
 	
 	self.submissionController = [[QRSubmissionController alloc] init];
@@ -331,6 +345,7 @@
 		dict[cell.representedObject] = @(selected);
 	}
 	self.submissionController.requestedOptionalServices = [NSDictionary dictionaryWithDictionary:dict];
+	self.submissionController.submitDraft = draft;
 
 	[self.submissionController startWithProgressBlock:^{
 		self.progressBar.doubleValue = self.submissionController.progress;
@@ -339,7 +354,27 @@
             statusText = @"Submitting";
         self.submitStatusField.stringValue = [NSString stringWithFormat:@"%@...", statusText];
 	} completionBlock:^(BOOL success, NSError *error) {
-		if (success && radar.radarNumber > 0)
+		if (success && draft) {
+			if (NSClassFromString(@"NSUserNotification"))
+			{
+				NSUserNotification *notification = [[NSUserNotification alloc] init];
+				notification.title = @"Draft saved";
+				notification.informativeText = [NSString stringWithFormat:@"Draft has been saved on RadarWeb"];
+				[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+			}
+			else
+			{
+				[GrowlApplicationBridge notifyWithTitle:@"Draft saved"
+											description:@"Draft has been saved on RadarWeb"
+									   notificationName:@"Submission Complete"
+											   iconData:nil
+											   priority:0
+											   isSticky:NO
+										   clickContext:nil];
+				
+			}
+		}
+		else if (success && radar.radarNumber > 0)
 		{
 			NSDictionary *clickContext = nil;
 			if (radar.submittedToOpenRadar)

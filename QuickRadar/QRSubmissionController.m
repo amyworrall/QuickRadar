@@ -8,6 +8,7 @@
 
 #import "QRSubmissionController.h"
 #import "QRSubmissionService.h"
+#import "QRRadarSubmissionService.h"
 
 @interface QRSubmissionController ()
 
@@ -45,34 +46,41 @@
 	self.inProgress = [NSMutableSet set];
 	self.waiting = [NSMutableSet set];
 	
-	NSLog(@"Dict %@", self.requestedOptionalServices);
-	
-	NSDictionary *services = [QRSubmissionService services];
-	
-	for (NSString *serviceID in services)
-	{
-		Class serviceClass = services[serviceID];
-		
-		if (![serviceClass isAvailable])
-		{
-			NSLog(@"%@ not available", serviceID);
-			continue;
-		}
-		
-		if ([serviceClass requireCheckBox])
-		{
-			if ([(self.requestedOptionalServices)[serviceID] boolValue] == NO)
-			{
-				NSLog(@"%@ not requested", serviceID);
-				continue;
-			}
-		}
-		
-		QRSubmissionService *service = [[serviceClass alloc] init];
+	if (self.submitDraft) {
+		// Special case drafts to just submit radar
+		QRRadarSubmissionService *service = [[QRRadarSubmissionService alloc] init];
 		service.radar = self.radar;
 		service.submissionWindow = self.submissionWindow;
-		
+		service.submitDraft = YES;
 		[self.waiting addObject:service];
+	} else {
+		NSDictionary *services = [QRSubmissionService services];
+		
+		for (NSString *serviceID in services)
+		{
+			Class serviceClass = services[serviceID];
+			
+			if (![serviceClass isAvailable])
+			{
+				NSLog(@"%@ not available", serviceID);
+				continue;
+			}
+			
+			if ([serviceClass requireCheckBox])
+			{
+				if ([(self.requestedOptionalServices)[serviceID] boolValue] == NO)
+				{
+					NSLog(@"%@ not requested", serviceID);
+					continue;
+				}
+			}
+			
+			QRSubmissionService *service = [[serviceClass alloc] init];
+			service.radar = self.radar;
+			service.submissionWindow = self.submissionWindow;
+			
+			[self.waiting addObject:service];
+		}
 	}
 
 	[self startNextAvailableServices];

@@ -11,4 +11,6 @@
 
 @interface QRRadarSubmissionService : QRSubmissionService
 
+@property (nonatomic, assign) BOOL submitDraft;
+
 @end

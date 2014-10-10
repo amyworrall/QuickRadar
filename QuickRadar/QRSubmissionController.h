@@ -15,7 +15,8 @@
 
 
 @property (nonatomic, strong) QRRadar *radar;
-@property (nonatomic, strong) NSDictionary *requestedOptionalServices;
+@property (nonatomic, strong) NSDictionary *requestedOptionalServices; // ignored if draft
+@property (nonatomic, assign) BOOL submitDraft;
 @property (readonly) CGFloat progress;
 @property (readonly) NSString *statusText;
 @property (nonatomic, strong) NSWindow *submissionWindow;

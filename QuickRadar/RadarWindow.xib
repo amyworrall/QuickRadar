@@ -9,10 +9,12 @@
             <connections>
                 <outlet property="appListButton" destination="519" id="568"/>
                 <outlet property="appListPopover" destination="564" id="566"/>
+                <outlet property="attachmentFileWell" destination="CcI-0m-LcD" id="rQr-4r-nvq"/>
                 <outlet property="bodyTextView" destination="8" id="482"/>
                 <outlet property="checkboxMatrix" destination="604" id="615"/>
                 <outlet property="classificationMenu" destination="79" id="478"/>
-                <outlet property="configurationField" destination="ETz-j8-WfP" id="77I-1W-lpb"/>
+                <outlet property="configurationField" destination="ETz-j8-WfP" id="YyK-lJ-52S"/>
+                <outlet property="draftButton" destination="jP2-uL-nAb" id="8Xw-3V-qjn"/>
                 <outlet property="productMenu" destination="42" id="477"/>
                 <outlet property="progressBar" destination="494" id="518"/>
                 <outlet property="reproducibleMenu" destination="82" id="480"/>
@@ -33,9 +35,6 @@
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="782" height="576"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <userGuides>
-                    <userLayoutGuide location="26" affinity="minY"/>
-                </userGuides>
                 <subviews>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3">
                         <rect key="frame" x="20" y="452" width="742" height="22"/>
@@ -93,8 +92,8 @@ DQ
                             <action selector="submitRadar:" target="-2" id="485"/>
                         </connections>
                     </button>
-                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="6">
-                        <rect key="frame" x="654" y="22" width="16" height="16"/>
+                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="6">
+                        <rect key="frame" x="554" y="23" width="16" height="16"/>
                     </progressIndicator>
                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="42">
                         <rect key="frame" x="112" y="530" width="255" height="26"/>
@@ -226,8 +225,8 @@ DQ
                             </column>
                         </cells>
                     </matrix>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="759">
-                        <rect key="frame" x="267" y="20" width="381" height="17"/>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="759">
+                        <rect key="frame" x="267" y="20" width="259" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="791"/>
                         </constraints>
@@ -251,6 +250,16 @@ DQ
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="CcI-0m-LcD" customClass="QRFileWell">
                         <rect key="frame" x="574" y="416" width="188" height="31"/>
                     </customView>
+                    <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jP2-uL-nAb">
+                        <rect key="frame" x="572" y="13" width="105" height="32"/>
+                        <buttonCell key="cell" type="push" title="Save Draft" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="n9s-Da-Jno">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="saveDraft:" target="-2" id="JF5-c3-ppL"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="3" secondAttribute="trailing" constant="20" symbolic="YES" id="361"/>
@@ -286,20 +295,23 @@ DQ
                     <constraint firstAttribute="bottom" secondItem="604" secondAttribute="bottom" constant="44" id="747"/>
                     <constraint firstAttribute="trailing" secondItem="604" secondAttribute="trailing" constant="20" symbolic="YES" id="750"/>
                     <constraint firstItem="759" firstAttribute="leading" secondItem="494" secondAttribute="trailing" constant="8" symbolic="YES" id="763"/>
-                    <constraint firstItem="6" firstAttribute="leading" secondItem="759" secondAttribute="trailing" constant="8" symbolic="YES" id="765"/>
+                    <constraint firstItem="6" firstAttribute="leading" secondItem="759" secondAttribute="trailing" constant="30" id="765"/>
                     <constraint firstAttribute="trailing" secondItem="5" secondAttribute="trailing" constant="20" symbolic="YES" id="781"/>
-                    <constraint firstItem="5" firstAttribute="leading" secondItem="6" secondAttribute="trailing" constant="8" symbolic="YES" id="782"/>
                     <constraint firstItem="5" firstAttribute="centerY" secondItem="6" secondAttribute="centerY" id="785"/>
                     <constraint firstAttribute="bottom" secondItem="5" secondAttribute="bottom" constant="20" symbolic="YES" id="788"/>
                     <constraint firstAttribute="bottom" secondItem="759" secondAttribute="bottom" constant="20" symbolic="YES" id="792"/>
                     <constraint firstAttribute="bottom" secondItem="494" secondAttribute="bottom" constant="20" symbolic="YES" id="793"/>
+                    <constraint firstItem="604" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="32" id="76N-rT-d0P"/>
                     <constraint firstAttribute="trailing" secondItem="ETz-j8-WfP" secondAttribute="trailing" constant="216" id="AjX-eW-Qmg"/>
                     <constraint firstItem="4" firstAttribute="top" secondItem="CcI-0m-LcD" secondAttribute="bottom" constant="4" id="IDN-2f-H6C"/>
                     <constraint firstItem="ETz-j8-WfP" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" id="JqU-i4-Mbk"/>
                     <constraint firstItem="CcI-0m-LcD" firstAttribute="top" secondItem="3" secondAttribute="bottom" constant="5" id="R4R-df-ygQ"/>
+                    <constraint firstItem="jP2-uL-nAb" firstAttribute="leading" secondItem="6" secondAttribute="trailing" constant="8" id="XPI-HP-6Wg"/>
                     <constraint firstItem="ETz-j8-WfP" firstAttribute="top" secondItem="3" secondAttribute="bottom" constant="10" id="ZRN-FL-aon"/>
+                    <constraint firstItem="5" firstAttribute="centerY" secondItem="jP2-uL-nAb" secondAttribute="centerY" id="Zgm-aE-Ojh"/>
                     <constraint firstItem="CcI-0m-LcD" firstAttribute="leading" secondItem="ETz-j8-WfP" secondAttribute="trailing" constant="8" id="cpT-aM-E7q"/>
                     <constraint firstItem="4" firstAttribute="top" secondItem="ETz-j8-WfP" secondAttribute="bottom" constant="8" id="oeR-Qu-cUa"/>
+                    <constraint firstItem="5" firstAttribute="leading" secondItem="jP2-uL-nAb" secondAttribute="trailing" constant="7" id="otE-nP-ArO"/>
                     <constraint firstAttribute="trailing" secondItem="CcI-0m-LcD" secondAttribute="trailing" constant="20" id="tbX-RP-vww"/>
                 </constraints>
             </view>

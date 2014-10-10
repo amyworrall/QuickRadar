@@ -442,16 +442,25 @@
 		 * Create our ticket *
 		 ***************************/
 		
+		OrderedDictionary *ticket = [OrderedDictionary new];
 
-        OrderedDictionary *ticket = [OrderedDictionary new];
-        
+		NSData *attachment;
+		if (self.radar.attachmentURL) {
+			attachment = [NSData dataWithContentsOfURL:self.radar.attachmentURL];
+			NSUInteger attachmentSize = [attachment length];
+			ticket[@"hiddenFileSizeNew"] = @[[NSString stringWithFormat:@"%lu", attachmentSize], @""];
+		} else {
+			ticket[@"hiddenFileSizeNew"] = @"";
+		}
+
         ticket[@"problemTitle"] = self.radar.title;
         ticket[@"configIDPop"] = @"";
         ticket[@"configTitlePop"] = @"";
         ticket[@"configDescriptionPop"] = @"";
-        ticket[@"configurationText"] = @"";
-        ticket[@"hiddenFileSizeNew"] = @"";
+		ticket[@"configurationText"] = self.radar.configurationString ?: @"";
         ticket[@"notes"] = @"";
+		ticket[@"configurationSplit"] = @"Configuration:\r\n";
+		ticket[@"configurationSplitValue"] = self.radar.configurationString ?: @"";
         ticket[@"workAroundText"] = @"";
         ticket[@"descriptionText"] = radarCompleteText;
         ticket[@"classificationCode"] = [NSString stringWithFormat:@"%ld", (long)self.radar.classificationCode];
@@ -462,7 +471,7 @@
         ticket[@"component"] = component;
         
         ticket[@"draftID"] = @"";
-        ticket[@"draftFlag"] = @"0";
+		ticket[@"draftFlag"] = self.submitDraft ? @"1" : @"0";
         ticket[@"versionBuild"] = @"";
         ticket[@"desctextvalidate"] = radarBody;
         ticket[@"stepstoreprvalidate"] = @"";
@@ -479,8 +488,54 @@
 		 * Page 5: Bug Submission Page *
 		 *******************************/
 		
+		if (self.submitDraft) {
+			self.submissionStatusText = @"Submitting draft to RadarWeb";
+			NSURL *bugSubmissionURL = [NSURL URLWithString:@"https://bugreport.apple.com/developer/problem/saveAsDrafts"];
+			
+			// Modify the description to the correct form for a draft
+			NSString *description = [NSString stringWithFormat:@"<draft><summary>%@</summary><reproducesteps></reproducesteps><expectedresults></expectedresults><actualresults></actualresults><version>%@</version><notes></notes><configuration>%@</configuration></draft>", radarBody, self.radar.version, self.radar.configurationString];
+			ticket[@"descriptionText"] = description;
+			jsonData = [NSJSONSerialization dataWithJSONObject:ticket options:0 error:&error];
+			
+			QRWebScraper *bugSubmissionPage = [[QRWebScraper alloc] init];
+			bugSubmissionPage.URL = bugSubmissionURL;
+			bugSubmissionPage.referrer = @"https://bugreport.apple.com/problem/viewproblem";
+			bugSubmissionPage.HTTPMethod = @"POST";
+			bugSubmissionPage.sendMultipartFormData = NO;
+			bugSubmissionPage.shouldParseXML = NO;
+			bugSubmissionPage.customBody = jsonData;
+			bugSubmissionPage.customHeaders = @{@"Accept" : @"application/json, text/javascript, */*; q=0.01",
+												@"Content-Type" : @"application/json; charset=UTF-8",
+												@"csrftokencheck" : csrfToken};
+			
+			if (![bugSubmissionPage fetch:&error])
+			{
+				dispatch_sync(dispatch_get_main_queue(), ^{
+					self.submissionStatusValue = submissionStatusFailed;
+					completionBlock(NO, error);
+				});
+				return;
+			}
+			else
+			{
+				self.progressValue = 1.0;
+				self.submissionStatusValue = submissionStatusFailed;// submissionStatusCompleted;
+				
+				dispatch_sync(dispatch_get_main_queue(), ^{
+					progressBlock();
+					completionBlock(NO, nil);//YES
+				});
+			}
+			NSString *string =  [[NSString alloc] initWithData:bugSubmissionPage.returnedData encoding:NSUTF8StringEncoding];
+			NSLog(@"Returned: %@", string);
+			
+			return;
+		}
+		
+		// It's not a draft, actually submit to radar
+		
         self.submissionStatusText = @"Submitting bug to RadarWeb";
-		NSURL *bugSubmissionURL =  [NSURL URLWithString:@"https://bugreport.apple.com/developer/problem/createNewDevUIProblem"];
+		NSURL *bugSubmissionURL = [NSURL URLWithString:@"https://bugreport.apple.com/developer/problem/createNewDevUIProblem"];
 		
 		QRWebScraper *bugSubmissionPage = [[QRWebScraper alloc] init];
 		bugSubmissionPage.URL = bugSubmissionURL;
@@ -491,6 +546,13 @@
 		
 		// Sets up all the fields necessary for submission.
 		[bugSubmissionPage addPostParameter:jsonText forKey:@"hJsonScreenVal"];
+		
+		// Attachment?
+		if (attachment) {
+			[bugSubmissionPage addPostParameter:attachment forKey:@"fileupload"];
+		}
+		
+		// Add them again for some reason
 		[bugSubmissionPage addPostParameter:jsonText forKey:@"hJsonScreenVal"];
 		
 		

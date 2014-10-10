@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "QRAppListPopover.h"
 #import "QRRadar.h"
+@class QRFileWell;
 
 @interface QRRadarWindowController : NSWindowController <QRAppListPopoverDelegate>
 
@@ -27,9 +28,12 @@
 @property (nonatomic, strong) IBOutlet NSButton *appListButton;
 @property (nonatomic, strong) IBOutlet QRAppListPopover *appListPopover;
 @property (nonatomic, strong) IBOutlet NSMatrix *checkboxMatrix;
+@property (nonatomic, strong) IBOutlet QRFileWell *attachmentFileWell;
+@property (nonatomic, strong) IBOutlet NSButton *draftButton;
 
 - (IBAction)showAppList:(id)sender;
 - (IBAction)submitRadar:(id)sender;
+- (IBAction)saveDraft:(id)sender;
 - (void)prepopulateWithApp:(QRCachedRunningApplication *)app;
 
 - (void)prepopulateWithRadar:(QRRadar *)radar;
