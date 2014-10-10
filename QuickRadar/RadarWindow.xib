@@ -12,6 +12,7 @@
                 <outlet property="bodyTextView" destination="8" id="482"/>
                 <outlet property="checkboxMatrix" destination="604" id="615"/>
                 <outlet property="classificationMenu" destination="79" id="478"/>
+                <outlet property="configurationField" destination="ETz-j8-WfP" id="77I-1W-lpb"/>
                 <outlet property="productMenu" destination="42" id="477"/>
                 <outlet property="progressBar" destination="494" id="518"/>
                 <outlet property="reproducibleMenu" destination="82" id="480"/>
@@ -237,7 +238,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ETz-j8-WfP">
-                        <rect key="frame" x="20" y="420" width="742" height="22"/>
+                        <rect key="frame" x="20" y="420" width="546" height="22"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Configuration" drawsBackground="YES" usesSingleLineMode="YES" id="obv-7R-Pvd">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -247,6 +248,9 @@ DQ
                             <outlet property="delegate" destination="-2" id="CPn-zk-Wy4"/>
                         </connections>
                     </textField>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="CcI-0m-LcD" customClass="QRFileWell">
+                        <rect key="frame" x="574" y="416" width="188" height="31"/>
+                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="3" secondAttribute="trailing" constant="20" symbolic="YES" id="361"/>
@@ -289,10 +293,14 @@ DQ
                     <constraint firstAttribute="bottom" secondItem="5" secondAttribute="bottom" constant="20" symbolic="YES" id="788"/>
                     <constraint firstAttribute="bottom" secondItem="759" secondAttribute="bottom" constant="20" symbolic="YES" id="792"/>
                     <constraint firstAttribute="bottom" secondItem="494" secondAttribute="bottom" constant="20" symbolic="YES" id="793"/>
-                    <constraint firstAttribute="trailing" secondItem="ETz-j8-WfP" secondAttribute="trailing" constant="20" id="AjX-eW-Qmg"/>
+                    <constraint firstAttribute="trailing" secondItem="ETz-j8-WfP" secondAttribute="trailing" constant="216" id="AjX-eW-Qmg"/>
+                    <constraint firstItem="4" firstAttribute="top" secondItem="CcI-0m-LcD" secondAttribute="bottom" constant="4" id="IDN-2f-H6C"/>
                     <constraint firstItem="ETz-j8-WfP" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" id="JqU-i4-Mbk"/>
+                    <constraint firstItem="CcI-0m-LcD" firstAttribute="top" secondItem="3" secondAttribute="bottom" constant="5" id="R4R-df-ygQ"/>
                     <constraint firstItem="ETz-j8-WfP" firstAttribute="top" secondItem="3" secondAttribute="bottom" constant="10" id="ZRN-FL-aon"/>
+                    <constraint firstItem="CcI-0m-LcD" firstAttribute="leading" secondItem="ETz-j8-WfP" secondAttribute="trailing" constant="8" id="cpT-aM-E7q"/>
                     <constraint firstItem="4" firstAttribute="top" secondItem="ETz-j8-WfP" secondAttribute="bottom" constant="8" id="oeR-Qu-cUa"/>
+                    <constraint firstAttribute="trailing" secondItem="CcI-0m-LcD" secondAttribute="trailing" constant="20" id="tbX-RP-vww"/>
                 </constraints>
             </view>
         </window>

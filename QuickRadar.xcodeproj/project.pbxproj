@@ -19,6 +19,8 @@
 		B4EC27EC1591577000E79E8B /* libPTHotkey-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */; };
 		B4EC27EF1591577A00E79E8B /* PTKeyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */; };
 		B4EC27F01591577A00E79E8B /* PTKeyComboPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */; };
+		E11013D019E85B8400DA8BE6 /* QRFileWell.m in Sources */ = {isa = PBXBuildFile; fileRef = E11013CF19E85B8400DA8BE6 /* QRFileWell.m */; };
+		E11013D519E86E6200DA8BE6 /* NSImage+ProportionalScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = E11013D419E86E6200DA8BE6 /* NSImage+ProportionalScaling.m */; };
 		E157B1A116D3853D0026EC3B /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B19816D3853D0026EC3B /* SRCommon.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E157B1A216D3853D0026EC3B /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B19A16D3853D0026EC3B /* SRKeyCodeTransformer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E157B1A316D3853D0026EC3B /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E157B19C16D3853D0026EC3B /* SRRecorderCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -144,6 +146,10 @@
 		B4EC27EB1591577000E79E8B /* libPTHotkey-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPTHotkey-OSX.a"; path = "PTHotkey/libPTHotkey-OSX.a"; sourceTree = "<group>"; };
 		B4EC27ED1591577A00E79E8B /* PTKeyCodes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = PTKeyCodes.plist; path = PTHotkey/PTKeyCodes.plist; sourceTree = SOURCE_ROOT; };
 		B4EC27EE1591577A00E79E8B /* PTKeyComboPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PTKeyComboPanel.xib; path = PTHotkey/PTKeyComboPanel.xib; sourceTree = SOURCE_ROOT; };
+		E11013CE19E85B8400DA8BE6 /* QRFileWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRFileWell.h; sourceTree = "<group>"; };
+		E11013CF19E85B8400DA8BE6 /* QRFileWell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRFileWell.m; sourceTree = "<group>"; };
+		E11013D319E86E6200DA8BE6 /* NSImage+ProportionalScaling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+ProportionalScaling.h"; sourceTree = "<group>"; };
+		E11013D419E86E6200DA8BE6 /* NSImage+ProportionalScaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+ProportionalScaling.m"; sourceTree = "<group>"; };
 		E157B19716D3853D0026EC3B /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCommon.h; sourceTree = "<group>"; };
 		E157B19816D3853D0026EC3B /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCommon.m; sourceTree = "<group>"; };
 		E157B19916D3853D0026EC3B /* SRKeyCodeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRKeyCodeTransformer.h; sourceTree = "<group>"; };
@@ -460,6 +466,10 @@
 				E17F4CF715E3EBB000FE8A33 /* NSString+URLEncoding.m */,
 				E17B6D8817E1F73700026899 /* OrderedDictionary.h */,
 				E17B6D8917E1F73700026899 /* OrderedDictionary.m */,
+				E11013CE19E85B8400DA8BE6 /* QRFileWell.h */,
+				E11013CF19E85B8400DA8BE6 /* QRFileWell.m */,
+				E11013D319E86E6200DA8BE6 /* NSImage+ProportionalScaling.h */,
+				E11013D419E86E6200DA8BE6 /* NSImage+ProportionalScaling.m */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -750,6 +760,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1CC519A156257BF0027FB83 /* main.m in Sources */,
+				E11013D019E85B8400DA8BE6 /* QRFileWell.m in Sources */,
 				E1CC51A1156257BF0027FB83 /* AppDelegate.m in Sources */,
 				E1CC51B115625A8D0027FB83 /* QRRadarWindowController.m in Sources */,
 				E1CC51BD156269CC0027FB83 /* QRSubmissionController.m in Sources */,
@@ -777,6 +788,7 @@
 				E17F4CF815E3EBB000FE8A33 /* NSString+URLEncoding.m in Sources */,
 				E169F3BD15E50D760019383F /* QRAppDotNetSubmissionService.m in Sources */,
 				E169F3C115E50D990019383F /* QRAppDotNetSubmissionServicePreferencesViewController.m in Sources */,
+				E11013D519E86E6200DA8BE6 /* NSImage+ProportionalScaling.m in Sources */,
 				E1F5305A16135C36000FCAC3 /* QRCopyToClipboardSubmissionService.m in Sources */,
 				E157B1A116D3853D0026EC3B /* SRCommon.m in Sources */,
 				E157B1A216D3853D0026EC3B /* SRKeyCodeTransformer.m in Sources */,

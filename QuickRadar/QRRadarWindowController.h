@@ -17,6 +17,7 @@
 @property (nonatomic, strong) IBOutlet NSPopUpButton *reproducibleMenu;
 @property (nonatomic, strong) IBOutlet NSTextField *versionField;
 @property (nonatomic, strong) IBOutlet NSTextField *titleField;
+@property (nonatomic, strong) IBOutlet NSTextField *configurationField;
 @property (nonatomic, strong) IBOutlet NSTextView *bodyTextView;
 @property (nonatomic, strong) IBOutlet NSButton *openRadarCheckbox;
 @property (nonatomic, strong) IBOutlet NSButton *submitButton;
