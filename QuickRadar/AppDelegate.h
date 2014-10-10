@@ -26,4 +26,7 @@
 - (IBAction)bugWindowControllerSubmissionComplete:(id)sender;
 - (IBAction)activateAndShowAbout:(id)sender;
 - (void)newBugWithRadar:(QRRadar*)radar;
+
+- (IBAction)goToAppleRadar:(id)sender;
+- (IBAction)goToOpenRadar:(id)sender;
 @end

@@ -134,7 +134,11 @@
 		self.internalAppList = [NSMutableArray arrayWithCapacity:15];
 		NSArray *loadedList = [self loadList];
 		if (loadedList) {
-			[self.internalAppList addObjectsFromArray:loadedList];
+			for (QRCachedRunningApplication *app in loadedList) {
+				if (![self.internalAppList containsObject:app]) {
+					[self.internalAppList addObject:app];
+				}
+			}
 		}
 		
 		NSDictionary	*	sysVersionDict = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
@@ -171,12 +175,10 @@
 	// currently visible app list GUI can update itself.
 	NSRunningApplication *app =  notification.userInfo[NSWorkspaceApplicationKey];
 	QRCachedRunningApplication *cachedApp = [[QRCachedRunningApplication alloc] initWithRunningApplication:app];
-	if (![[NSRunningApplication currentApplication] isEqual:app] /*&& ![app.bundleIdentifier hasSuffix:@"Xcode"]*/) {
-		
-		BOOL onlyAppleApps = ![[NSUserDefaults standardUserDefaults] boolForKey:@"QRAppListShowAllApps"];
-		if (!onlyAppleApps || [app.bundleIdentifier hasPrefix:kQRAppListApplePrefix]) {
-			[self addApp:cachedApp];
-		}
+
+	BOOL onlyAppleApps = ![[NSUserDefaults standardUserDefaults] boolForKey:@"QRAppListShowAllApps"];
+	if (!onlyAppleApps || [app.bundleIdentifier hasPrefix:kQRAppListApplePrefix]) {
+		[self addApp:cachedApp];
 	}
 }
 

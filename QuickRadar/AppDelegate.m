@@ -237,6 +237,18 @@
 }
 
 
+- (IBAction)goToAppleRadar:(id)sender
+{
+    NSURL *url = [NSURL URLWithString:@"https://bugreport.apple.com/"];
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
+- (IBAction)goToOpenRadar:(id)sender
+{
+    NSURL *url = [NSURL URLWithString:@"http://openradar.appspot.com/"];
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
 #pragma mark keyComboPanelDelegate
 
 
