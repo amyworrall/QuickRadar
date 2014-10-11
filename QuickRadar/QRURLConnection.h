@@ -12,6 +12,7 @@
 
 @property (strong) NSURLRequest *request;
 @property (strong) NSDictionary *postParameters;
+@property (strong) NSDictionary *postParametersFilenames;
 @property (strong) NSData *customBody;
 @property (strong) NSArray *fieldOrdering;
 @property (strong) NSString *HTTPUsername;

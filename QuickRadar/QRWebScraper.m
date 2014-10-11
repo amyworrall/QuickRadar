@@ -127,6 +127,7 @@
 	QRURLConnection *conn = [[QRURLConnection alloc] init];
 	conn.request = request;
 	conn.postParameters = self.postParamsKeyValues;
+	conn.postParametersFilenames = self.postParamsFilenames;
 	conn.fieldOrdering = self.postParamsOrder;
 	conn.useMultipartRatherThanURLEncoded = self.sendMultipartFormData;
 	conn.addRadarSpoofingHeaders = YES;
