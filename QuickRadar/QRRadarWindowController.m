@@ -359,7 +359,7 @@
 			{
 				NSUserNotification *notification = [[NSUserNotification alloc] init];
 				notification.title = @"Draft saved";
-				notification.informativeText = [NSString stringWithFormat:@"Draft has been saved on RadarWeb"];
+				notification.informativeText = [NSString stringWithFormat:@"Draft has been saved as draft ID %ld.", radar.draftNumber];
 				[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 			}
 			else
@@ -403,7 +403,10 @@
 			}
 			
 			
-			
+		}
+		
+		// Do for success in either a draft or a bug
+		if (success) {
 			// Move the window off screen, like Mail.app
 			CGFloat highestScreenHeight = 0.0f;
 			for (NSScreen *screen in [NSScreen screens]) {
@@ -424,6 +427,7 @@
                       (error.userInfo)[NSURLErrorFailingURLStringErrorKey]);
 
 			[self.submitButton setEnabled:YES];
+			[self.draftButton setEnabled:YES];
 			[self.spinner stopAnimation:self];
             self.submitStatusField.stringValue = @"";
 		}

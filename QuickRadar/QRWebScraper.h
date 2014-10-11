@@ -12,6 +12,7 @@
 
 // param can be a string or NSData object. The order they're added is the order they'll be in the response.
 - (void)addPostParameter:(id)param forKey:(NSString*)key;
+- (void)addPostParameter:(id)param forKey:(NSString*)key filename:(NSString*)filename;
 
 @property (nonatomic, strong) NSURL *URL;
 @property (nonatomic, copy) NSString *HTTPMethod;

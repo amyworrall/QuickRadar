@@ -32,6 +32,7 @@
 @property (nonatomic, copy) NSURL *attachmentURL;
 
 @property (nonatomic, assign) NSInteger radarNumber;
+@property (nonatomic, assign) NSInteger draftNumber;
 @property (nonatomic, assign) BOOL submittedToOpenRadar;
 
 @end

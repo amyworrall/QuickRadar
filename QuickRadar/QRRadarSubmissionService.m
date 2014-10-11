@@ -10,6 +10,7 @@
 #import "QRWebScraper.h"
 #import "NSError+Additions.h"
 #import "OrderedDictionary.h"
+#import "NSString+URLEncoding.h"
 
 
 @interface QRRadarSubmissionService ()
@@ -434,7 +435,6 @@
         
         radarBody = [radarBody stringByReplacingOccurrencesOfString:@"\n" withString:@"\r\n"];
         
-        
         NSString *radarCompleteText = [radarBody copy];
         
         
@@ -472,7 +472,7 @@
         
         ticket[@"draftID"] = @"";
 		ticket[@"draftFlag"] = self.submitDraft ? @"1" : @"0";
-        ticket[@"versionBuild"] = @"";
+        ticket[@"versionBuild"] = self.radar.version;
         ticket[@"desctextvalidate"] = radarBody;
         ticket[@"stepstoreprvalidate"] = @"";
         ticket[@"experesultsvalidate"] = @"";
@@ -484,16 +484,16 @@
 		NSString *jsonText = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         
  		
-		/*******************************
-		 * Page 5: Bug Submission Page *
-		 *******************************/
+		/****************************************
+		 * Page 5: Bug Submission Page (drafts) *
+		 ****************************************/
 		
 		if (self.submitDraft) {
 			self.submissionStatusText = @"Submitting draft to RadarWeb";
 			NSURL *bugSubmissionURL = [NSURL URLWithString:@"https://bugreport.apple.com/developer/problem/saveAsDrafts"];
 			
 			// Modify the description to the correct form for a draft
-			NSString *description = [NSString stringWithFormat:@"<draft><summary>%@</summary><reproducesteps></reproducesteps><expectedresults></expectedresults><actualresults></actualresults><version>%@</version><notes></notes><configuration>%@</configuration></draft>", radarBody, self.radar.version, self.radar.configurationString];
+			NSString *description = [NSString stringWithFormat:@"<draft><summary>%@</summary><reproducesteps></reproducesteps><expectedresults></expectedresults><actualresults></actualresults><version>%@</version><notes></notes><configuration>%@</configuration></draft>", [radarBody urlEncodeUsingEncoding:NSUTF8StringEncoding], [self.radar.version urlEncodeUsingEncoding:NSUTF8StringEncoding], [self.radar.configurationString urlEncodeUsingEncoding:NSUTF8StringEncoding]];
 			ticket[@"descriptionText"] = description;
 			jsonData = [NSJSONSerialization dataWithJSONObject:ticket options:0 error:&error];
 			
@@ -516,23 +516,40 @@
 				});
 				return;
 			}
-			else
-			{
+			
+			
+			
+			
+			NSDictionary *response = [NSJSONSerialization JSONObjectWithData:bugSubmissionPage.returnedData
+																	 options:0
+																	   error:nil];
+			NSString *draftID = response[@"draftid"];
+			if (draftID.length) {
+				self.radar.draftNumber = [draftID integerValue];
 				self.progressValue = 1.0;
-				self.submissionStatusValue = submissionStatusFailed;// submissionStatusCompleted;
+				self.submissionStatusValue = submissionStatusCompleted;
 				
 				dispatch_sync(dispatch_get_main_queue(), ^{
 					progressBlock();
-					completionBlock(NO, nil);//YES
+					completionBlock(YES, nil);
 				});
+			} else {
+				dispatch_sync(dispatch_get_main_queue(), ^{
+					self.submissionStatusValue = submissionStatusFailed;
+					NSError *error = [NSError errorWithDomain:QRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey : @"An unknown error occurred when saving a draft."}];
+					completionBlock(NO, error);
+				});
+				return;
 			}
-			NSString *string =  [[NSString alloc] initWithData:bugSubmissionPage.returnedData encoding:NSUTF8StringEncoding];
-			NSLog(@"Returned: %@", string);
 			
+			// Our work is done
 			return;
 		}
 		
-		// It's not a draft, actually submit to radar
+		
+		/*******************************
+		 * Page 5: Bug Submission Page *
+		 *******************************/
 		
         self.submissionStatusText = @"Submitting bug to RadarWeb";
 		NSURL *bugSubmissionURL = [NSURL URLWithString:@"https://bugreport.apple.com/developer/problem/createNewDevUIProblem"];
@@ -549,7 +566,7 @@
 		
 		// Attachment?
 		if (attachment) {
-			[bugSubmissionPage addPostParameter:attachment forKey:@"fileupload"];
+			[bugSubmissionPage addPostParameter:attachment forKey:@"fileupload" filename:[self.radar.attachmentURL lastPathComponent]];
 		}
 		
 		// Add them again for some reason

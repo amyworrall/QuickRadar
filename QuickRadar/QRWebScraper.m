@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) NSMutableArray *postParamsOrder;
 @property (nonatomic, strong) NSMutableDictionary *postParamsKeyValues;
+@property (nonatomic, strong) NSMutableDictionary *postParamsFilenames;
 
 @property (nonatomic, strong) NSArray *cookiesReturned;
 @property (nonatomic, strong) NSXMLDocument *xmlDocument;
@@ -46,6 +47,11 @@
 
 - (void)addPostParameter:(id)param forKey:(NSString*)key;
 {
+	[self addPostParameter:param forKey:key filename:nil];
+}
+
+- (void)addPostParameter:(id)param forKey:(NSString*)key filename:(NSString*)filename;
+{
 	if (!self.postParamsKeyValues)
 	{
 		self.postParamsKeyValues = [NSMutableDictionary dictionary];
@@ -56,12 +62,22 @@
 		self.postParamsOrder = [NSMutableArray  array];
 	}
 	
+	if (!self.postParamsFilenames)
+	{
+		self.postParamsFilenames = [NSMutableDictionary dictionary];
+	}
+	
 	if (param == nil || key == nil)
 	{
 		return;
 	}
 	
 	(self.postParamsKeyValues)[key] = param;
+	
+	if (filename) {
+		(self.postParamsFilenames)[key] = filename;
+	}
+	
 	[self.postParamsOrder addObject:key];
 }
 
