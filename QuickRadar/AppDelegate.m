@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "PTHotKeyLib.h"
 #import "QRRadarWindowController.h"
 #import "QRPreferencesWindowController.h"
 #import "QRUserDefaultsKeys.h"
@@ -15,6 +14,9 @@
 #import "SRCommon.h"
 #import "QRFileDuplicateWindowController.h"
 #import <Growl/Growl.h>
+#import "SGHotKeyCenter.h"
+#import "SGKeyCombo.h"
+#import "SGHotKey.h"
 
 @interface AppDelegate () <NSUserNotificationCenterDelegate, GrowlApplicationBridgeDelegate>
 {
@@ -42,7 +44,9 @@
 	 QRShowInStatusBarKey: @YES,
 	 QRShowInDockKey : @NO,
 	 QRHandleRdarURLsKey : @(rdarURLsMethodFileDuplicate),
-	 QRWindowLevelKey : [NSNumber numberWithInt:NSStatusWindowLevel]
+	 QRWindowLevelKey : [NSNumber numberWithInt:NSStatusWindowLevel],
+     
+     GlobalHotkeyName : @{ @"keyCode": @49, @"modifiers" : @6400 }
      }];
 }
 
@@ -69,13 +73,9 @@
 	}
 
 
-    //apply hotkey
-    [self applyHotkey];
-    
-    //observe defaults for hotkey
-    [[NSUserDefaultsController sharedUserDefaultsController]
-     addObserver:self forKeyPath:GlobalHotkeyKeyPath options:0 context: NULL];
-    
+    // NOTE: changes to hot keys must also be done in QRMainAppSettingsViewController -shortcutRecorder:keyComboDidChange:
+    [self registerHotKeyWithIdentifier:GlobalHotkeyName action:@selector(hitHotKey:)];
+	
 	windowControllerStore = [NSMutableSet set];
 	
 	if (NSClassFromString(@"NSUserNotificationCenter"))
@@ -198,6 +198,87 @@
 	[[NSWorkspace sharedWorkspace] openURL:url];
 }
 
+#pragma mark Menu Validation
+
+- (NSString *)keyEquivalentForKeyCode:(NSInteger)keyCode
+{
+    TISInputSourceRef tisSource = TISCopyCurrentKeyboardInputSource();
+    if (! tisSource) {
+        return nil;
+    }
+    
+    CFDataRef layoutData;
+    UInt32 keysDown = 0;
+    layoutData = (CFDataRef)TISGetInputSourceProperty(tisSource, kTISPropertyUnicodeKeyLayoutData);
+    
+    CFRelease(tisSource);
+    
+    // For non-unicode layouts such as Chinese, Japanese, and Korean, get the ASCII capable layout
+    if (! layoutData) {
+        tisSource = TISCopyCurrentASCIICapableKeyboardLayoutInputSource();
+        layoutData = (CFDataRef)TISGetInputSourceProperty(tisSource, kTISPropertyUnicodeKeyLayoutData);
+        CFRelease(tisSource);
+    }
+    
+	if (! layoutData) {
+		return nil;
+	}
+    
+    const UCKeyboardLayout *keyLayout = (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
+    
+	UniCharCount length = 4;
+	UniCharCount realLength = 0;
+    UniChar chars[4];
+    
+    OSStatus err = UCKeyTranslate(keyLayout,
+                         keyCode,
+                         kUCKeyActionDisplay,
+                         0,
+                         LMGetKbdType(),
+                         kUCKeyTranslateNoDeadKeysBit,
+                         &keysDown,
+                         length,
+                         &realLength,
+                         chars);
+    
+	if ( err != noErr ) {
+		return nil;
+	}
+	
+    return [NSString stringWithCharacters:chars length:1];
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+    BOOL result = YES;
+    
+    if ([menuItem menu] == _menu) {
+        if (menuItem.tag == 10) {
+            // update key equivalent with current hotkey
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            
+            NSString *keyEquivalent = @"";
+            NSUInteger keyEquivalentModifierMask = 0;
+            
+            id object = [userDefaults objectForKey:GlobalHotkeyName];
+            if (object) {
+                SGKeyCombo *keyCombo = [[SGKeyCombo alloc] initWithPlistRepresentation:object];
+                if (keyCombo && [keyCombo isValidHotKeyCombo]) {
+                    NSString *menuKeyEquivalent = [self keyEquivalentForKeyCode:keyCombo.keyCode];
+                    if (menuKeyEquivalent) {
+                        keyEquivalent = menuKeyEquivalent;
+                        keyEquivalentModifierMask = SRCarbonToCocoaFlags(keyCombo.modifiers);
+                    }
+                }
+            }
+            
+            menuItem.keyEquivalent = keyEquivalent;
+            menuItem.keyEquivalentModifierMask = keyEquivalentModifierMask;
+        }
+    }
+    
+    return result;
+}
 
 #pragma mark IBActions
 
@@ -249,65 +330,30 @@
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
-#pragma mark keyComboPanelDelegate
+#pragma mark Hotkey Support
 
-
-#pragma mark hotkey
-
-- (void)applyHotkey {
-	//unregister old
-	for (PTHotKey *hotkey in [[PTHotKeyCenter sharedCenter] allHotKeys]) {
-		[[PTHotKeyCenter sharedCenter] unregisterHotKey:hotkey];
-	}
+- (void)registerHotKeyWithIdentifier:(NSString *)identifier action:(SEL)action
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-	//read plist
-	id plistTool = [[NSUserDefaults standardUserDefaults] objectForKey:GlobalHotkeyName];
-    
-    //make default
-	if(!plistTool) {
-        plistTool = @{@"keyCode": @49,
-                     @"modifiers": @(cmdKey+controlKey+optionKey)};
-        
-        [[NSUserDefaults standardUserDefaults] setObject:plistTool forKey:GlobalHotkeyName];
-	}
-    
-    //get key combo
-    PTKeyCombo *kc = [[PTKeyCombo alloc] initWithPlistRepresentation:plistTool];
-    
-    //register it
-    PTHotKey *hotKey = [[PTHotKey alloc] init];
-    hotKey.name = GlobalHotkeyName;
-    hotKey.keyCombo = kc;
-    hotKey.target = self;
-    hotKey.action = @selector(hitHotKey:);
-    [[PTHotKeyCenter sharedCenter] registerHotKey:hotKey];
-    
-	
-	NSMenuItem *item = [_menu itemWithTag:10];
-	NSString *equiv = SRStringForKeyCode(kc.keyCode);
-	if ([equiv isEqualToString:@"Space"])
-	{
-		equiv = @" ";
-	}
-	item.keyEquivalent = equiv;
-	item.keyEquivalentModifierMask = SRCarbonToCocoaFlags(kc.modifiers);
-	
+    id object = [userDefaults objectForKey:identifier];
+    if (object) {
+        SGKeyCombo *keyCombo = [[SGKeyCombo alloc] initWithPlistRepresentation:object];
+        if (keyCombo) {
+            SGHotKey *hotKey = [[SGHotKey alloc] initWithIdentifier:identifier keyCombo:keyCombo];
+            [hotKey setTarget:nil]; // send the action to the first responder
+            [hotKey setAction:action];
+            [[SGHotKeyCenter sharedCenter] registerHotKey:hotKey];
+        }
+    }
 }
 
 - (void)hitHotKey:(id)sender {
     [self newBug:sender];
 }
 
-#pragma mark KVO
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:object
-						change:(NSDictionary *)change context:(void *)context {
-	if([keyPath isEqualToString:GlobalHotkeyKeyPath]) {
-		[self applyHotkey];
-	}
-}
-
 #pragma mark URL handling
+
 - (void)getUrl:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
 	// Get the URL
 	NSString *urlStr = [[event paramDescriptorForKeyword:keyDirectObject]

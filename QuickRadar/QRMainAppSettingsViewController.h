@@ -1,5 +1,5 @@
 //
-//  QBMainAppSettingsViewController.h
+//  QRMainAppSettingsViewController.h
 //  QuickRadar
 //
 //  Created by Amy Worrall on 29/06/2012.
@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "SRRecorderControl.h"
+
 @interface QRMainAppSettingsViewController : NSViewController
 
-- (IBAction)changeHotKey:(id)sender;
+@property (assign) IBOutlet SRRecorderControl *hotkeyRecorderControl;
 
 @end

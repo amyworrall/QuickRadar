@@ -7,11 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "PTKeyComboPanel.h"
 
 
 #define GlobalHotkeyName @"hotkey"
-#define GlobalHotkeyKeyPath @"values.hotkey"
 
 @class QRRadar;
 
@@ -29,4 +27,7 @@
 
 - (IBAction)goToAppleRadar:(id)sender;
 - (IBAction)goToOpenRadar:(id)sender;
+
+- (void)hitHotKey:(id)sender;
+
 @end
