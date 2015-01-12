@@ -45,6 +45,7 @@
 	 QRShowInDockKey : @NO,
 	 QRHandleRdarURLsKey : @(rdarURLsMethodFileDuplicate),
 	 QRWindowLevelKey : [NSNumber numberWithInt:NSStatusWindowLevel],
+	 QRFontSizeKey : @10,
      
      GlobalHotkeyName : @{ @"keyCode": @49, @"modifiers" : @6400 }
      }];

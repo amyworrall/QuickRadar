@@ -12,6 +12,7 @@
 #define QRHandleRdarURLsKey @"QRHandleRdarURLs"
 #define QRAppDotNetIncludeRdarLinksKey @"appDotNetIncludeRdarLinks"
 #define QRWindowLevelKey @"QRWindowLevel"
+#define QRFontSizeKey @"QRFontSize"
 
 typedef enum {
 	rdarURLsMethodDoNothing = 1,
