@@ -182,7 +182,7 @@
 	CGFloat accumulator = 0;
 	CGFloat number = 0;
 	
-	for (QRSubmissionService *service in self.waiting)
+	for (__unused QRSubmissionService *service in self.waiting)
 	{
 		number++;
 	}
@@ -191,7 +191,7 @@
 		number++;
 		accumulator += service.progress;
 	}
-	for (QRSubmissionService *service in self.completed)
+	for (__unused QRSubmissionService *service in self.completed)
 	{
 		number++;
 		accumulator += 1.0;
