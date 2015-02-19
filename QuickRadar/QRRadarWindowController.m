@@ -430,6 +430,7 @@
 			[self.submitButton setEnabled:YES];
 			[self.draftButton setEnabled:YES];
 			[self.spinner stopAnimation:self];
+            self.progressBar.doubleValue = 0;
             self.submitStatusField.stringValue = @"";
 		}
 
