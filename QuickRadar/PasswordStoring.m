@@ -55,7 +55,6 @@ NSString *serverName = @"bugreport.apple.com";
     if (!username) return YES;
     const char *passwordBytes = [self.radarPasswordField.stringValue cStringUsingEncoding: NSUTF8StringEncoding];
     UInt32 passwordLength = (UInt32)[self.radarPasswordField.stringValue lengthOfBytesUsingEncoding: NSUTF8StringEncoding];
-    if (!passwordLength) return YES;
     
     //find out if the password already exists
     SecKeychainItemRef keychainItem;
@@ -76,10 +75,17 @@ NSString *serverName = @"bugreport.apple.com";
                                                                   &keychainItem);
     OSStatus passwordStoreResult = errSecSuccess;
     if (keychainFindResult == errSecSuccess) {
-        passwordStoreResult = SecKeychainItemModifyAttributesAndData(keychainItem, NULL, passwordLength, passwordBytes);
+        // update keychain item if password field has a value, delete keychain item otherwise
+        if (passwordLength) {
+            passwordStoreResult = SecKeychainItemModifyAttributesAndData(keychainItem, NULL, passwordLength, passwordBytes);
+        } else {
+            passwordStoreResult = SecKeychainItemDelete(keychainItem);
+        }
         CFRelease(keychainItem);
     } else {
-        passwordStoreResult = SecKeychainAddInternetPassword(NULL,
+        // only add keychain item if password field has a value
+        if (passwordLength) {
+            passwordStoreResult = SecKeychainAddInternetPassword(NULL,
                                                                  (UInt32)[serverName lengthOfBytesUsingEncoding: NSUTF8StringEncoding],
                                                                  [serverName cStringUsingEncoding: NSUTF8StringEncoding],
                                                                  0,
@@ -94,6 +100,7 @@ NSString *serverName = @"bugreport.apple.com";
                                                                  passwordLength,
                                                                  passwordBytes,
                                                                  NULL);
+        }
     }
     if (passwordStoreResult) { NSLog(@"couldn't store password: %d", passwordStoreResult); };
     return YES;
