@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1070" defaultVersion="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <deployment version="1070" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6724"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="QBMainAppSettingsViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="QRMainAppSettingsViewController">
             <connections>
+                <outlet property="hotkeyRecorderControl" destination="8FZ-Tc-7yA" id="BDo-hx-4WG"/>
                 <outlet property="view" destination="1" id="2"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="1">
-            <rect key="frame" x="0.0" y="0.0" width="560" height="256"/>
+            <rect key="frame" x="0.0" y="5" width="560" height="305"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" id="3">
-                    <rect key="frame" x="163" y="207" width="139" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Change hot key" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="changeHotKey:" target="-2" id="7"/>
-                    </connections>
-                </button>
                 <button id="20">
-                    <rect key="frame" x="167" y="184" width="121" height="18"/>
+                    <rect key="frame" x="167" y="189" width="121" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show dock icon" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="21">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -39,11 +29,11 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" id="24">
-                    <rect key="frame" x="166" y="144" width="307" height="14"/>
+                    <rect key="frame" x="166" y="149" width="307" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="These setting takes effect when you restart QuickRadar." id="25">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="These settings take effect when you restart QuickRadar." id="25">
                         <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -57,7 +47,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="83">
-                    <rect key="frame" x="167" y="106" width="230" height="26"/>
+                    <rect key="frame" x="167" y="106" width="177" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="84">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -74,17 +64,26 @@
                         <binding destination="40" name="selectedTag" keyPath="values.QRHandleRdarURLs" id="96"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="396">
-                    <rect key="frame" x="63" y="217" width="100" height="17"/>
+                <textField verticalHuggingPriority="750" id="vIp-3t-jtw">
+                    <rect key="frame" x="63" y="227" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Global hot key:" id="397">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Font size:" id="Hm1-M8-p70">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="EY4-bo-vz7">
+                    <rect key="frame" x="63" y="190" width="100" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Access:" id="4ph-9q-ykR">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button id="415">
-                    <rect key="frame" x="167" y="164" width="155" height="18"/>
+                    <rect key="frame" x="167" y="169" width="155" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show status bar item" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="416">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -95,7 +94,7 @@
                     </connections>
                 </button>
                 <button id="420">
-                    <rect key="frame" x="167" y="79" width="225" height="18"/>
+                    <rect key="frame" x="167" y="74" width="225" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Automatically check for updates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="421">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -106,7 +105,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" id="424">
-                    <rect key="frame" x="195" y="56" width="51" height="17"/>
+                    <rect key="frame" x="195" y="51" width="51" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="…every" id="425">
                         <font key="font" metaFont="system"/>
@@ -115,7 +114,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="426">
-                    <rect key="frame" x="249" y="50" width="95" height="26"/>
+                    <rect key="frame" x="249" y="45" width="95" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="427">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -134,7 +133,7 @@
                     </connections>
                 </popUpButton>
                 <button id="NDl-oj-Jfl">
-                    <rect key="frame" x="167" y="23" width="187" height="18"/>
+                    <rect key="frame" x="167" y="18" width="187" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Start QuickRadar on Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LQx-IL-Cn2">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -144,7 +143,41 @@
                         <binding destination="1vU-FL-4Fv" name="value" keyPath="appStartsAtLogin" id="ZXe-Pl-Ez9"/>
                     </connections>
                 </button>
+                <customView id="8FZ-Tc-7yA" customClass="SRRecorderControl">
+                    <rect key="frame" x="168" y="263" width="144" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <popUpButton verticalHuggingPriority="750" id="1XG-kH-Cau">
+                    <rect key="frame" x="167" y="221" width="148" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Medium (12 pt)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="12" imageScaling="proportionallyDown" inset="2" selectedItem="NIB-YB-ebo" id="NVF-xV-74q">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="UxO-us-lbg">
+                            <items>
+                                <menuItem title="Small (10 pt)" tag="10" id="AYY-Yf-Wmd"/>
+                                <menuItem title="Medium (12 pt)" state="on" tag="12" id="NIB-YB-ebo"/>
+                                <menuItem title="Large (14 pt)" tag="14" id="WEP-OP-Z1x">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <binding destination="40" name="selectedTag" keyPath="values.QRFontSize" id="fCm-Fy-txS"/>
+                    </connections>
+                </popUpButton>
+                <textField verticalHuggingPriority="750" id="396">
+                    <rect key="frame" x="63" y="267" width="100" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Global hot key:" id="397">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
+            <point key="canvasLocation" x="491" y="289.5"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="40"/>
         <customObject id="419" userLabel="SUUpdater" customClass="SUUpdater"/>

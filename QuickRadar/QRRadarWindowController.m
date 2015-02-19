@@ -110,7 +110,8 @@
 	
 	[self setUpCheckboxes];
 	
-    self.bodyTextView.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
+	CGFloat fontSize = [[NSUserDefaults standardUserDefaults] doubleForKey:QRFontSizeKey];
+    self.bodyTextView.font = [NSFont systemFontOfSize:fontSize];
 	if (self.radarToPrepopulate.body.length>0)
 	{
 		self.bodyTextView.string = self.radarToPrepopulate.body;
