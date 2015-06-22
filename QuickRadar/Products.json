@@ -40,6 +40,22 @@
   "componentID": 84100
   }, {
   "categoryName": "OS and Development",
+  "productImage": "watchOS",
+  "compNameForWeb": "watchOS",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with watchOS apps and features",
+  "buildVersionLabel": "watchOS Version/Build",
+  "componentID": 645251
+  }, {
+  "categoryName": "OS and Development",
+  "productImage": "WatchKit",
+  "compNameForWeb": "watchOS SDK",
+  "buildVersionRequired": 1,
+  "productToolTip": "For all watchOS SDK related issues",
+  "buildVersionLabel": "watchOS SDK Version/Build",
+  "componentID": 645445
+  }, {
+  "categoryName": "OS and Development",
   "productImage": "DeveloperTools",
   "compNameForWeb": "Developer Tools",
   "buildVersionRequired": 1,
@@ -206,6 +222,15 @@
   "productToolTip": "For iPod hardware issues",
   "buildVersionLabel": "iPod Version or Generation",
   "componentID": 185585
+  }, {
+  "buildVersionText": "Please provide the version",
+  "categoryName": "Hardware",
+  "productImage": "HomeKitLogo",
+  "compNameForWeb": "HomeKit Accessory Certification",
+  "buildVersionRequired": 0,
+  "productToolTip": "For HomeKit issues",
+  "buildVersionLabel": "Version",
+  "componentID": 601986
   }, {
   "buildVersionText": "Please provide the printer/fax make and model in addition to the operating system version/build.",
   "categoryName": "Hardware",
