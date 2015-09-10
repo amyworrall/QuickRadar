@@ -40,6 +40,22 @@
   "componentID": 84100
   }, {
   "categoryName": "OS and Development",
+  "productImage": "tvOS",
+  "compNameForWeb": "tvOS",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with tvOS apps and features",
+  "buildVersionLabel": "tvOS Version/Build",
+  "componentID": 660932
+  }, {
+  "categoryName": "OS and Development",
+  "productImage": "tvOSSDK",
+  "compNameForWeb": "tvOS SDK",
+  "buildVersionRequired": 1,
+  "productToolTip": "For all tvOS SDK related issues",
+  "buildVersionLabel": "tvOS SDK Version/Build",
+  "componentID": 662000
+  }, {
+  "categoryName": "OS and Development",
   "productImage": "watchOS",
   "compNameForWeb": "watchOS",
   "buildVersionRequired": 1,
@@ -59,7 +75,7 @@
   "productImage": "DeveloperTools",
   "compNameForWeb": "Developer Tools",
   "buildVersionRequired": 1,
-  "productToolTip": "For all Xcode issues (including Xcode tools - Interface Builder, Instruments, compilers, simulators, command line tools, etc.)",
+  "productToolTip": "For all Xcode issues (including Xcode tools - Interface Builder, Instruments, compilers, simulators, command line tools, Swift Programming language, etc.)",
   "buildVersionLabel": "Xcode Version/Build & OS X Version/Build",
   "componentID": 175326
   }, {
@@ -80,6 +96,14 @@
   "productToolTip": "For all issues regarding iTunes Connect (a tool that allows developers to submit and manage apps for distribution).",
   "buildVersionLabel": "Version/Build (Platform: iOS, OS X or Windows?)",
   "componentID": 500515
+  }, {
+  "categoryName": "OS and Development",
+  "productImage": "ParallaxPreviewer",
+  "compNameForWeb": "Parallax Previewer",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with Parallax Previewer",
+  "buildVersionLabel": "Parallax Previewer Version/Build",
+  "componentID": 662170
   }, {
   "buildVersionText": "Please provide the name of the sample code and the hyperlink to the sample code.",
   "categoryName": "OS and Development",
@@ -187,15 +211,6 @@
   "buildVersionLabel": "Apple TV Model/Version & iOS Version/Build",
   "componentID": 430025
   }, {
-  "buildVersionText": "Please provide the hardware make and model in addition to the OS X version/build.",
-  "categoryName": "Hardware",
-  "productImage": "Hardware",
-  "compNameForWeb": "Hardware",
-  "buildVersionRequired": 0,
-  "productToolTip": "For issues with OS X hardware (desktops, laptops, monitors, etc.) and accessories",
-  "buildVersionLabel": "Hardware Make and Model & OS X Version/Build",
-  "componentID": 213680
-  }, {
   "buildVersionText": "Please indicate the iPad model in addition to the iOS version/build.",
   "categoryName": "Hardware",
   "productImage": "iPad",
@@ -223,14 +238,14 @@
   "buildVersionLabel": "iPod Version or Generation",
   "componentID": 185585
   }, {
-  "buildVersionText": "Please provide the version",
+  "buildVersionText": "Please provide the hardware make and model in addition to the OS X version/build.",
   "categoryName": "Hardware",
-  "productImage": "HomeKitLogo",
-  "compNameForWeb": "HomeKit Accessory Certification",
+  "productImage": "Hardware",
+  "compNameForWeb": "Mac",
   "buildVersionRequired": 0,
-  "productToolTip": "For HomeKit issues",
-  "buildVersionLabel": "Version",
-  "componentID": 601986
+  "productToolTip": "For issues with OS X hardware (desktops and portables only).",
+  "buildVersionLabel": "Hardware Make and Model & OS X Version/Build",
+  "componentID": 213680
   }, {
   "buildVersionText": "Please provide the printer/fax make and model in addition to the operating system version/build.",
   "categoryName": "Hardware",
@@ -241,12 +256,37 @@
   "buildVersionLabel": "Printer/Fax Make and Model & OS X Version/Build or iOS Version/Build",
   "componentID": 213679
   }, {
+  "categoryName": "Hardware",
+  "productImage": "Other Hardware",
+  "compNameForWeb": "Other Hardware",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with all other hardware accessories (monitors, pointing devices, speakers, etc.).",
+  "buildVersionLabel": "Hardware Make and Model",
+  "componentID": 657117
+  }, {
+  "categoryName": "Hardware",
+  "productImage": "CarPlay",
+  "compNameForWeb": "CarPlay Accessory Certification",
+  "buildVersionRequired": 1,
+  "productToolTip": "CarPlay",
+  "buildVersionLabel": "Hardware Make and Model",
+  "componentID": 571212
+  }, {
+  "buildVersionText": "Please provide the version",
+  "categoryName": "Hardware",
+  "productImage": "HomeKitLogo",
+  "compNameForWeb": "HomeKit Accessory Certification",
+  "buildVersionRequired": 0,
+  "productToolTip": "For HomeKit issues",
+  "buildVersionLabel": "Version",
+  "componentID": 601986
+  }, {
   "categoryName": "Other",
   "productImage": "Accessibility",
   "compNameForWeb": "Accessibility",
   "buildVersionRequired": 1,
   "productToolTip": "For all Accessibility / Universal Access related issues (Sticky Keys, Text-to-Speech, VoiceOver, etc.)",
-  "buildVersionLabel": "OS X Version/Build",
+  "buildVersionLabel": "OS Version/Build",
   "componentID": 437784
   }, {
   "buildVersionText": "Platform: iOS, OS X or Windows?",
