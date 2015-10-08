@@ -107,6 +107,6 @@ NSString *serverName = @"bugreport.apple.com";
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
-    [self control:radarPasswordField textShouldEndEditing:nil];
+    [self control:radarPasswordField textShouldEndEditing:(NSText*)[NSNull null]];
 }
 @end
