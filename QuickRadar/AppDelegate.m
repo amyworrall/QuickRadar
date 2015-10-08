@@ -13,12 +13,11 @@
 #import "QRAppListManager.h"
 #import "SRCommon.h"
 #import "QRFileDuplicateWindowController.h"
-#import <Growl/Growl.h>
 #import "SGHotKeyCenter.h"
 #import "SGKeyCombo.h"
 #import "SGHotKey.h"
 
-@interface AppDelegate () <NSUserNotificationCenterDelegate, GrowlApplicationBridgeDelegate>
+@interface AppDelegate () <NSUserNotificationCenterDelegate>
 {
 	NSMutableSet *windowControllerStore;
     NSStatusItem *statusItem;
@@ -83,11 +82,7 @@
 	{
 		[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 	}
-	else
-	{
-		[GrowlApplicationBridge setGrowlDelegate:self];
-	}
-	
+
 	self.preferencesWindowController = [[QRPreferencesWindowController alloc] init];
 	self.duplicatesWindowController = [[QRFileDuplicateWindowController alloc] initWithWindowNibName:@"QRFileDuplicateWindow"];
 
@@ -145,37 +140,6 @@
 	[[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 	[self.duplicatesWindowController showWindow:self];
 }
-
-#pragma mark growl support
-
-- (NSDictionary *) registrationDictionaryForGrowl;
-{
-	NSArray *notifications = @[@"Submission Complete", @"Submission Failed"];
-	
-	NSDictionary *dict = @{GROWL_NOTIFICATIONS_ALL: notifications, GROWL_NOTIFICATIONS_DEFAULT: notifications};
-	return dict;
-}
-
-- (NSString *) applicationNameForGrowl;
-{
-	return @"QuickRadar";
-}
-
-- (void) growlNotificationWasClicked:(id)clickContext;
-{
-	NSDictionary *dict = (NSDictionary*)clickContext;
-	
-	NSLog(@"Context %@", dict);
-	
-	NSString *stringURL = dict[@"URL"];
-	
-	if (!stringURL)
-		return;
-	
-	NSURL *url = [NSURL URLWithString:stringURL];
-	[[NSWorkspace sharedWorkspace] openURL:url];
-}
-
 
 #pragma mark - NSUserNotificationCenter
 

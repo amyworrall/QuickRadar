@@ -15,7 +15,6 @@
 #import "QRUserDefaultsKeys.h"
 #import "NSButton+QuickRadar.h"
 #import "AppDelegate.h"
-#import <Growl/Growl.h>
 #import "QRFileWell.h"
 
 @interface QRRadarWindowController ()
@@ -363,17 +362,6 @@
 				notification.informativeText = [NSString stringWithFormat:@"Draft has been saved as draft ID %ld.", radar.draftNumber];
 				[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 			}
-			else
-			{
-				[GrowlApplicationBridge notifyWithTitle:@"Draft saved"
-											description:@"Draft has been saved on RadarWeb"
-									   notificationName:@"Submission Complete"
-											   iconData:nil
-											   priority:0
-											   isSticky:NO
-										   clickContext:nil];
-				
-			}
 		}
 		else if (success && radar.radarNumber > 0)
 		{
@@ -390,17 +378,6 @@
 				notification.informativeText = [NSString stringWithFormat:@"Bug submitted as number %ld.", radar.radarNumber];
 				notification.userInfo = clickContext;
 				[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-			}
-			else
-			{
-				[GrowlApplicationBridge notifyWithTitle:@"Submission Complete"
-											description:[NSString stringWithFormat:@"Bug submitted as number %ld.", radar.radarNumber]
-									   notificationName:@"Submission Complete"
-											   iconData:nil
-											   priority:0
-											   isSticky:NO
-										   clickContext:clickContext];
-
 			}
 			
 			
