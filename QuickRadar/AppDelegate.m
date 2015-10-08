@@ -334,9 +334,9 @@
 	{
 		// TODO: some way of having the service class register a block for its URL handler. This is a quick-and-dirty method in the mean time.
 		
-		NSString *urlStr = [url.absoluteString stringByReplacingOccurrencesOfString:@"quickradar://" withString:@""];
+		NSString *urlPartStr = [url.absoluteString stringByReplacingOccurrencesOfString:@"quickradar://" withString:@""];
 		
-		if ([urlStr hasPrefix:@"appdotnetauth"])
+		if ([urlPartStr hasPrefix:@"appdotnetauth"])
 		{
 			NSArray *parts = [url.absoluteString componentsSeparatedByString:@"#"];
 			NSString *token = parts[1];

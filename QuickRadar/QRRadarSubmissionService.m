@@ -536,8 +536,8 @@
 			} else {
 				dispatch_sync(dispatch_get_main_queue(), ^{
 					self.submissionStatusValue = submissionStatusFailed;
-					NSError *error = [NSError errorWithDomain:QRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey : @"An unknown error occurred when saving a draft."}];
-					completionBlock(NO, error);
+					NSError *anError = [NSError errorWithDomain:QRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey : @"An unknown error occurred when saving a draft."}];
+					completionBlock(NO, anError);
 				});
 				return;
 			}
