@@ -128,7 +128,6 @@
         }
 		[request addValue:[NSString stringWithFormat:@"https://%@", request.URL.host] forHTTPHeaderField:@"Origin"];
 		[request addValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/536.30.1 (KHTML, like Gecko) Version/6.0.5 Safari/536.30.1" forHTTPHeaderField:@"User-Agent"];
-		[request addValue:request.URL.host forHTTPHeaderField:@"Host"];
 		[request addValue:@"gzip, deflate" forHTTPHeaderField:@"Accept-Encoding"];
 		[request addValue:@"en-us" forHTTPHeaderField:@"Accept-Language"];
 	}
@@ -137,8 +136,7 @@
     
     NSDictionary *existingHeaders = request.allHTTPHeaderFields;
     OrderedDictionary *orderedDict = [[OrderedDictionary alloc] init];
-    
-    if (existingHeaders[@"Host"]) [orderedDict setObject:existingHeaders[@"Host"] forKey:@"Host"];
+
     if (existingHeaders[@"User-Agent"]) [orderedDict setObject:existingHeaders[@"User-Agent"] forKey:@"User-Agent"];
     if (existingHeaders[@"Content-Length"]) [orderedDict setObject:existingHeaders[@"Content-Length"] forKey:@"Content-Length"];
     if (existingHeaders[@"Accept"]) [orderedDict setObject:existingHeaders[@"Accept"] forKey:@"Accept"];
