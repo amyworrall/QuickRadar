@@ -433,7 +433,7 @@
 #if 0
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			self.submissionStatusValue = submissionStatusFailed;
-			completionBlock(NO, [NSError errorWithDomain:@"QRDebugDomain" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Manaully canceled in `submitAsyncWithProgressBlock:`!"}]);
+			completionBlock(NO, [NSError errorWithDomain:@"QRDebugDomain" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Manually canceled in `submitAsyncWithProgressBlock:`!"}]);
 		});
 		return;
 #endif
