@@ -120,9 +120,9 @@
 		QRWebScraper *loginPage = [[QRWebScraper alloc] init];
 		loginPage.URL = [NSURL URLWithString:@"https://idmsa.apple.com/IDMSWebAuth/classicLogin.html?appIdKey=77e2a60d4bdfa6b7311c854a56505800be3c24e3a27a670098ff61b69fc5214b&sslEnabled=true&rv=3"];
 
-        // Start with a clean slate. Should be enough to just delete the "myacinfo" cookie,
-        // to fix re-authentication issues, but let's rather make it more predictable by purging all.
-        [loginPage deleteCookies];
+		// Start with a clean slate. Should be enough to just delete the "myacinfo" cookie,
+		// to fix re-authentication issues, but let's rather make it more predictable by purging all.
+		[loginPage deleteCookies];
 
 		if (![loginPage fetch:&error])
 		{
