@@ -167,6 +167,23 @@
 }
 
 
+- (BOOL)deleteCookies
+{
+	NSURL *url = self.URL;
+	NSAssert(url != nil, @"Set the URL before invoking this method.");
+
+	BOOL deleted = NO;
+	NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+	NSArray<NSHTTPCookie *> *cookies = [storage cookiesForURL:url];
+	for (NSHTTPCookie *cookie in cookies)
+	{
+		[storage deleteCookie:cookie];
+		deleted = YES;
+	}
+	return deleted;
+}
+
+
 - (NSDictionary*)stringValuesForXPathsDictionary:(NSDictionary*)dict error:(NSError**)retError;
 {
 //	NSLog(@"Data %@", [[NSString alloc] initWithData:self.returnedData encoding:NSUTF8StringEncoding]);

@@ -27,6 +27,9 @@
 /* A synchronous method */
 - (BOOL)fetch:(NSError**)error;
 
+/* Deletes any cookies currently present. Set the URL before invoking this method. */
+- (BOOL)deleteCookies;
+
 - (NSDictionary*)stringValuesForXPathsDictionary:(NSDictionary*)dict error:(NSError**)error;
 
 @end

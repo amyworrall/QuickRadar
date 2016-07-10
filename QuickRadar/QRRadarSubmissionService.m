@@ -116,10 +116,14 @@
 		 * Page 1: login page *
 		 **********************/
 		
-        self.submissionStatusText = @"Fetching RadarWeb signin page";
+		self.submissionStatusText = @"Fetching RadarWeb signin page";
 		QRWebScraper *loginPage = [[QRWebScraper alloc] init];
 		loginPage.URL = [NSURL URLWithString:@"https://idmsa.apple.com/IDMSWebAuth/classicLogin.html?appIdKey=77e2a60d4bdfa6b7311c854a56505800be3c24e3a27a670098ff61b69fc5214b&sslEnabled=true&rv=3"];
-		
+
+		// Start with a clean slate. Should be enough to just delete the "myacinfo" cookie,
+		// to fix re-authentication issues, but let's rather make it more predictable by purging all.
+		[loginPage deleteCookies];
+
 		if (![loginPage fetch:&error])
 		{
 			dispatch_sync(dispatch_get_main_queue(), ^{ 
@@ -425,6 +429,14 @@
 			});
 		}
 
+		// DEBUG: Enable to prevent posting dummy radars if debugging authentication.
+#if 0
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			self.submissionStatusValue = submissionStatusFailed;
+			completionBlock(NO, [NSError errorWithDomain:@"QRDebugDomain" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Manually canceled in `submitAsyncWithProgressBlock:`!"}]);
+		});
+		return;
+#endif
         
         
         /***************************
