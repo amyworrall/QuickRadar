@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C7F0E23F728CABFEF59E7EB1D1EC9757E1DE9BAF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C7F0E23F728CABFEF59E7EB1D1EC9757E1DE9BAF" : 0,
+    "422C0041F817004E349B37831E7CB20A8ACE8A07" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1258499B-E9EB-4624-9ED3-52ED8A4EB7A5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C7F0E23F728CABFEF59E7EB1D1EC9757E1DE9BAF" : "QuickRadar",
+    "422C0041F817004E349B37831E7CB20A8ACE8A07" : "QuickRadarExternals\/DTXMLRPC"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "QuickRadar",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "QuickRadar.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Cocoanetics\/DTXMLRPC.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "422C0041F817004E349B37831E7CB20A8ACE8A07"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chockenberry\/QuickRadar.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C7F0E23F728CABFEF59E7EB1D1EC9757E1DE9BAF"
+    }
+  ]
+}

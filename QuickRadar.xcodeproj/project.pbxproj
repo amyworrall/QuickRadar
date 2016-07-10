@@ -670,7 +670,7 @@
 				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					E1CC5188156257BF0027FB83 = {
-						DevelopmentTeam = RYQWBTQRPT;
+						DevelopmentTeam = R8P9272974;
 					};
 				};
 			};
@@ -918,6 +918,8 @@
 		E1CC51A8156257BF0027FB83 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATE_GROUP = admin;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -926,6 +928,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickRadar/QuickRadar-Prefix.pch";
 				INFOPLIST_FILE = "QuickRadar/QuickRadar-Info.plist";
+				INSTALL_GROUP = admin;
 				OTHER_LDFLAGS = (
 					"-Wl,-rpath,@loader_path/../Frameworks",
 					"-ObjC",
@@ -941,6 +944,8 @@
 		E1CC51A9156257BF0027FB83 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALTERNATE_GROUP = admin;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -949,6 +954,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickRadar/QuickRadar-Prefix.pch";
 				INFOPLIST_FILE = "QuickRadar/QuickRadar-Info.plist";
+				INSTALL_GROUP = admin;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-Wl,-rpath,@loader_path/../Frameworks",
 					"-ObjC",
