@@ -16,27 +16,27 @@
   "componentID": 584784
   }, {
   "categoryName": "OS and Development",
-  "productImage": "MacOSX",
-  "compNameForWeb": "OS X",
+  "productImage": "macOS",
+  "compNameForWeb": "macOS",
   "buildVersionRequired": 1,
   "productToolTip": "For issues with OS X utilities and features (file system, graphics, networking, security, scripting, etc.)",
-  "buildVersionLabel": "OS X Version/Build",
+  "buildVersionLabel": "macOS Version/Build",
   "componentID": 137701
   }, {
   "categoryName": "OS and Development",
-  "productImage": "MacOSXSDK",
-  "compNameForWeb": "OS X SDK",
+  "productImage": "MacOS_sdk",
+  "compNameForWeb": "macOS SDK",
   "buildVersionRequired": 1,
-  "productToolTip": "For all OS X SDK related issues",
+  "productToolTip": "For all macOS SDK related issues",
   "buildVersionLabel": "Xcode Version/Build & OS X Version/Build",
   "componentID": 430026
   }, {
   "categoryName": "OS and Development",
   "productImage": "MacOSXServer",
-  "compNameForWeb": "OS X Server",
+  "compNameForWeb": "Server",
   "buildVersionRequired": 1,
   "productToolTip": "For issues with OS X Server administration and features (backups, calendaring, file sharing, user profiles, etc.)",
-  "buildVersionLabel": "OS X Server Version/Build",
+  "buildVersionLabel": "Server Version/Build",
   "componentID": 84100
   }, {
   "categoryName": "OS and Development",
