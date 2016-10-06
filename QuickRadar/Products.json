@@ -103,7 +103,7 @@
   "buildVersionRequired": 1,
   "productToolTip": "For issues with Parallax Previewer",
   "buildVersionLabel": "Parallax Previewer Version/Build",
-  "componentID": 662170
+  "componentID": 720650
   }, {
   "buildVersionText": "Please provide the name of the sample code and the hyperlink to the sample code.",
   "categoryName": "OS and Development",
@@ -201,6 +201,15 @@
   "productToolTip": "For issues with the Safari app and related programming tools (including Webkit).",
   "buildVersionLabel": "Safari Version/Build & Platform (incl. Version/Build)",
   "componentID": 175305
+  }, {
+  "buildVersionText": "See Safari Technology Preview\u2019s \u201cAbout\u201d box.  Copy and paste a full version number, like \u201cVersion 9.1.1 (11601.6.10, 11602.1.25)\u201d.",
+  "categoryName": "Applications and Software",
+  "productImage": "Safari Technology Preview",
+  "compNameForWeb": "Safari Technology Preview",
+  "buildVersionRequired": 1,
+  "productToolTip": "For issues with Safari Technology Preview.",
+  "buildVersionLabel": "Safari Technology Preview Version",
+  "componentID": 697770
   }, {
   "buildVersionText": "Please provide the Apple TV model/version in addition to the iOS version/build.",
   "categoryName": "Hardware",
