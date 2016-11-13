@@ -32,4 +32,6 @@
 
 - (NSDictionary*)stringValuesForXPathsDictionary:(NSDictionary*)dict error:(NSError**)error;
 
+@property (nonatomic, strong, readonly) NSString *pageContent;
+
 @end

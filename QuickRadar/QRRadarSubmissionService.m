@@ -175,7 +175,9 @@
 		
 		[bouncePage addPostParameter:username forKey:@"appleId"];
 		[bouncePage addPostParameter:password forKey:@"accountPassword"];
-        [bouncePage addPostParameter:@"{\"U\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/536.30.1 (KHTML, like Gecko) Version/6.0.5 Safari/536.30.1\",\"L\":\"en-us\",\"Z\":\"GMT+01:00\",\"V\":\"1.1\",\"F\":\"TF1;016;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2010_8_4%29%20AppleWebKit/536.30.1%20%28KHTML%2C%20like%20Gecko%29%20Version/6.0.5%20Safari/536.30.1;20030107;undefined;true;;true;MacIntel;undefined;Mozilla/5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2010_8_4%29%20AppleWebKit/536.30.1%20%28KHTML%2C%20like%20Gecko%29%20Version/6.0.5%20Safari/536.30.1;en-us;iso-8859-1;idmsa.apple.com;undefined;undefined;undefined;undefined;true;true;1378980528007;0;7%20June%202005%2021%3A33%3A44%20BST;2560;1440;undefined;undefined;undefined;;undefined;undefined;2;0;-60;12%20September%202013%2011%3A08%3A48%20BST;24;2560;1330;0;22;;;;;;Shockwave%20Flash%7CShockwave%20Flash%2011.8%20r800;;;;QuickTime%20Plug-in%207.7.1%7CThe%20QuickTime%20Plugin%20allows%20you%20to%20view%20a%20wide%20variety%20of%20multimedia%20content%20in%20web%20pages.%20For%20more%20information%2C%20visit%20the%20%3CA%20HREF%3Dhttp%3A//www.apple.com/quicktime%3EQuickTime%3C/A%3E%20Web%20site.;;;;;;;;;18;;;;;;;\"}" forKey:@"fdcBrowserData"];
+
+        NSString *const fdcBrowserData = @"{\"U\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/536.30.1 (KHTML, like Gecko) Version/6.0.5 Safari/536.30.1\",\"L\":\"en-us\",\"Z\":\"GMT+01:00\",\"V\":\"1.1\",\"F\":\"TF1;016;;;;;;;;;;;;;;;;;;;;;;Mozilla;Netscape;5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2010_8_4%29%20AppleWebKit/536.30.1%20%28KHTML%2C%20like%20Gecko%29%20Version/6.0.5%20Safari/536.30.1;20030107;undefined;true;;true;MacIntel;undefined;Mozilla/5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2010_8_4%29%20AppleWebKit/536.30.1%20%28KHTML%2C%20like%20Gecko%29%20Version/6.0.5%20Safari/536.30.1;en-us;iso-8859-1;idmsa.apple.com;undefined;undefined;undefined;undefined;true;true;1378980528007;0;7%20June%202005%2021%3A33%3A44%20BST;2560;1440;undefined;undefined;undefined;;undefined;undefined;2;0;-60;12%20September%202013%2011%3A08%3A48%20BST;24;2560;1330;0;22;;;;;;Shockwave%20Flash%7CShockwave%20Flash%2011.8%20r800;;;;QuickTime%20Plug-in%207.7.1%7CThe%20QuickTime%20Plugin%20allows%20you%20to%20view%20a%20wide%20variety%20of%20multimedia%20content%20in%20web%20pages.%20For%20more%20information%2C%20visit%20the%20%3CA%20HREF%3Dhttp%3A//www.apple.com/quicktime%3EQuickTime%3C/A%3E%20Web%20site.;;;;;;;;;18;;;;;;;\"}";
+        [bouncePage addPostParameter:fdcBrowserData forKey:@"fdcBrowserData"];
 
 		
 		if (![bouncePage fetch:&error])
@@ -194,7 +196,81 @@
 			});
 		}
         
-        
+        // ------- 2-Factor-Auth Support by @steipete --------
+
+        if ([bouncePage.pageContent containsString:@"protected with two-factor authentication"]) {
+            NSLog(@"two-factor authentication detected!");
+
+            __block NSString *authCode;
+            dispatch_semaphore_t waiter = dispatch_semaphore_create(0);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSAlert *alert = [NSAlert new];
+                alert.messageText = @"Your Apple ID is protected with two-factor authentication. Enter the verification code shown on your other devices.";
+                [alert addButtonWithTitle:@"OK"];
+                [alert addButtonWithTitle:@"Cancel"];
+
+                NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 24)];
+                alert.accessoryView = input;
+
+                [alert beginSheetModalForWindow:NSApp.mainWindow completionHandler:^(NSModalResponse returnCode) {
+                    if (returnCode == NSAlertFirstButtonReturn) {
+                        authCode = [input stringValue];
+                        NSLog(@"Auth Code: %@", authCode);
+                    } else if (returnCode == NSAlertSecondButtonReturn) {
+                        NSLog(@"Cancel pressed");
+                    }
+                    dispatch_semaphore_signal(waiter);
+                }];
+            });
+
+            dispatch_semaphore_wait(waiter, DISPATCH_TIME_FOREVER);
+
+            // Validate and filter out everything but digits
+            authCode = [[authCode componentsSeparatedByCharactersInSet:NSCharacterSet.decimalDigitCharacterSet.invertedSet] componentsJoinedByString:@""];
+
+            // validate, exit if we didn't get what we want.
+            if (authCode.length != 6) {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    self.submissionStatusValue = submissionStatusFailed;
+                    completionBlock(NO, error);
+                });
+                return;
+            }
+
+            self.submissionStatusText = @"Submitting Two-Factor Auth Token...";
+            QRWebScraper *twoFactorAuthPage = [[QRWebScraper alloc] init];
+            twoFactorAuthPage.URL = [NSURL URLWithString:@"https://idmsa.apple.com/IDMSWebAuth/validateSecurityCode"];
+            twoFactorAuthPage.cookiesSource = bouncePage;
+            twoFactorAuthPage.referrer = bouncePage;
+            twoFactorAuthPage.HTTPMethod = @"POST";
+
+            // Really, Apple? REALLY? Needs to be digit1..6 with one digit per parameter
+            for (NSUInteger i = 0; i < 6; i++) {
+                [twoFactorAuthPage addPostParameter:[authCode substringWithRange:NSMakeRange(i, 1)] forKey:[NSString stringWithFormat:@"digit%tu", i+1]];
+            }
+            [twoFactorAuthPage addPostParameter:fdcBrowserData forKey:@"fdcBrowserData"];
+
+            // Add the ctkn key
+            NSString *ctknKey = @"ctkn";
+            NSDictionary *ctknToken = [bouncePage stringValuesForXPathsDictionary:@{ctknKey: @"//input[@id='ctkn']/@value"} error:&error];
+            [twoFactorAuthPage addPostParameter:ctknToken[ctknKey] forKey:ctknKey];
+
+            if (![twoFactorAuthPage fetch:&error])
+            {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    self.submissionStatusValue = submissionStatusFailed;
+                    completionBlock(NO, error);
+                });
+                return;
+            }
+            else
+            {
+                self.progressValue = 2.5 * (1.0/NUM_PAGES);
+                dispatch_sync(dispatch_get_main_queue(), ^{ 
+                    progressBlock();
+                });
+            }
+        }
        
 		// ------- Parsing --------
 		
