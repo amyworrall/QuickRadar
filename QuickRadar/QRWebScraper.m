@@ -216,5 +216,8 @@
 	return returnDict;
 }
 
+- (NSString *)pageContent {
+    return self.xmlDocument.stringValue;
+}
 
 @end
