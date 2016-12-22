@@ -83,7 +83,7 @@
 
 - (void)submitAsyncWithProgressBlock:(void (^)())progressBlock completionBlock:(void (^)(BOOL, NSError *))completionBlock
 {
-	NSString *radarNumString = [NSString stringWithFormat:@"%li", self.radar.radarNumber];
+	NSString *radarNumString = [NSString stringWithFormat:@"rdar://%li", self.radar.radarNumber];
 	
 	[[NSPasteboard generalPasteboard] clearContents];
 	[[NSPasteboard generalPasteboard] writeObjects:@[radarNumString]];
