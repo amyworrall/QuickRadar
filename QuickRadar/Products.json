@@ -9,11 +9,11 @@
   }, {
   "categoryName": "OS and Development",
   "productImage": "iOSSDK",
-  "compNameForWeb": "iOS SDK",
+  "compNameForWeb": "iOS + SDK",
   "buildVersionRequired": 1,
   "productToolTip": "For all iOS SDK related issues",
   "buildVersionLabel": "iOS Version/Build",
-  "componentID": 584784
+  "componentID": 579020
   }, {
   "categoryName": "OS and Development",
   "productImage": "macOS",
