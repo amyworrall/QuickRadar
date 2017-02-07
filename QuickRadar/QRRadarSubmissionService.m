@@ -648,7 +648,10 @@
 		bugSubmissionPage.HTTPMethod = @"POST";
 		bugSubmissionPage.sendMultipartFormData = YES;
         bugSubmissionPage.shouldParseXML = NO;
-		
+    bugSubmissionPage.customHeaders = @{@"Accept" : @"application/json, text/javascript, */*; q=0.01",
+                                        @"Content-Type" : @"application/json; charset=UTF-8",
+                                        @"csrftokencheck" : csrfToken};
+
 		// Sets up all the fields necessary for submission.
 		[bugSubmissionPage addPostParameter:jsonText forKey:@"hJsonScreenVal"];
 		
